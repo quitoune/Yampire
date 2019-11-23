@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Façon de mourir{% endblock %}
+
+{% block body %}
+    
+    <h1 class="display-4">Façons de mourir</h1>
+    
+    <div class="card text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} façons de mourir - {{ pagination.page }} / {{ pagination.nbPages }}
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                    </tr>
+                </thead>
+                {% for way_to_die in way_to_dies %}
+                    <tr>
+                        <td> {{ way_to_die.id }} </td>
+                        <td> {{ way_to_die.nom }} </td>
+                    </tr>
+                {% else %}
+                	<p class="text-info text-center">Il  n'y a aucune nationalité correspondant à la recherche.</p>
+                {% endfor %}
+                </table>
+            </div>
+        <div class="card-footer text-muted">
+        {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div> 
+{% endblock %}

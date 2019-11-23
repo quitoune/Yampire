@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col col-3 center_img">
+        {% if saison.photo is not null %}
+        	{{ photo(saison) | raw }}
+        {% endif %}
+	</div>
+	<div class="col col-9 center_img">
+		<table class="table table-sm">
+			<tr>
+				<th>Série</th>
+				<td>{{ saison.serie.nom }}</td>
+			</tr>
+			<tr>
+				<th>N° de saison</th>
+				<td>{{ saison.numeroSaison }}</td>
+			</tr>
+			<tr>
+				<th>Nombre d'épisode</th>
+				<td>{{ saison.nombreEpisode }}</td>
+			</tr>
+		</table>
+	</div>
+</div>

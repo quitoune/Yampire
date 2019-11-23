@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Espèce - ID {{ espece.id }} {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        <div class="card-header text-left">
+        	<ul class="nav nav-tabs card-header-tabs" id="first">
+        		<li class="nav-item">
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_espece_fiche', {'id':espece.id}) }}">Infos</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_personnages', {'id':espece.id, 'type':'espece'}) }}">Personnages</div>
+      			</li>
+    		</ul>
+        </div>
+        <div class="card-body text-center" id="bloc_espece">
+            Chargement...
+        </div>
+    </div>
+    
+    <div class="modal" tabindex="-1" role="dialog" id="bloc_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id ="modal_espece">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    
+    <script src="{{ asset('js/pagination/pagination.js') }}"></script>
+    <script src="{{ asset('js/tabs.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        	chargerTabs("{{ path('ajax_afficher_espece_fiche', {'id':espece.id}) }}", '#bloc_espece');
+            Pagination.demarrer();
+
+            $(".card .nav-link").click(function(){
+            	$(".card .nav-link").removeClass('active');
+            	$(this).addClass('active');
+            	chargerTabs($(this).data('link'), '#bloc_espece');
+            });
+        });
+    </script>
+{% endblock %}

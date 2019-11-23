@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acteurs{% endblock %}
+
+{% block body %}
+    <div class="card liste text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} acteurs - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('acteur_ajouter', {'page':pagination.page})) | raw }}
+            {% endif %}
+        </div>
+        <div class="card-body">
+                <div class="row">
+                	{% for acteur in acteurs %}
+                		<div class="col-img">
+                			<a href="{{ path('acteur_afficher', {'id':acteur.id, 'page':pagination.page}) }}">
+                    			{% if acteur.photo is not null %}
+        							{{ photo(acteur) | raw }}
+        						{% else %}
+                                    <span class="center">{{ nom_acteur(acteur) }}</span>
+        	                    {% endif %}
+    	                    </a>
+                		</div>
+                	{% endfor %}
+                </div>
+                {% if acteurs is empty %}
+                    <p class="text-info text-center">Il  n'y a aucun acteur correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+        <div class="card-footer text-muted">
+        {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div> 
+{% endblock %}

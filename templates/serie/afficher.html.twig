@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Série - ID {{ serie.id }} {% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header float-left">
+        	<ul class="nav nav-tabs card-header-tabs">
+        		<li class="nav-item">
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_serie_fiche', {'id':serie.id}) }}">Infos</div>
+      			</li>
+        		<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_saisons', {'id':serie.id, 'type':'serie'}) }}">Saisons</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('serie_afficher_episodes', {'id':serie.id}) }}">Episodes</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_personnages', {'id':serie.id, 'type':'serie'}) }}">Personnages</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'id':serie.id, 'type':'serie'}) }}">Citations</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_chansons', {'id':serie.id, 'type':'serie'}) }}">Chansons</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':serie.id, 'type':'serie'}) }}">Notes</div>
+      			</li>
+    		</ul>
+        </div>
+        <div class="card-body text-center" id="bloc_serie">
+            Chargement...
+        </div>
+    </div>
+    
+    <div class="modal" tabindex="-1" role="dialog" id="bloc_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id ="modal_serie">
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    
+    <script src="{{ asset('js/pagination/pagination.js') }}"></script>
+    <script src="{{ asset('js/tabs.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        	chargerTabs("{{ path('ajax_afficher_serie_fiche', {'id':serie.id}) }}", '#bloc_serie');
+            Pagination.demarrer();
+
+            $(".card .nav-link").click(function(){
+            	$(".card .nav-link").removeClass('active');
+            	$(this).addClass('active');
+            	chargerTabs($(this).data('link'), '#bloc_serie');
+            });
+        });
+    </script>
+{% endblock %}

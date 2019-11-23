@@ -1,0 +1,47 @@
+<div id="ajax_note_ajouter">
+    {{ form_start(form) }}
+    <div class="modal-header">
+        <h5 class="modal-title">
+            {% if type == 'personnage' %}
+                Ajouter une note au personnage {{ nom_usage(objet) }} 
+            {% elseif type == 'acteur' %}
+                Ajouter une note à 
+                {% if objet.sexe == 1 %}
+                    l'actrice 
+                {% else %}
+                    l'acteur 
+                {% endif %}
+                {{ objet.prenom }} {{ objet.nom }}
+            {% elseif type == 'episode' %}
+                Ajouter une note à l'épisode {{ objet.titre }} 
+            {% endif %}
+        
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+        {{ form_row(form.contenu) }}
+    </div>
+    
+    <div class="modal-footer">
+        {{ form_widget(form.save) }}
+    </div>
+    {{ form_rest(form) }}
+    {{ form_errors(form) }}
+    {{ form_end(form) }}
+</div>
+{% block javascripts %}
+    <script>
+        $('#bloc_modal').modal({
+            'show' : true,
+            'backdrop' : 'static'
+        });
+        
+        var url = '{{ path('note_ajax_ajouter', {'id':objet.id, 'type':type}) }}';
+        var url_base = '{{ path('ajax_afficher_notes', {'id':objet.id, 'type':type}) }}';
+        SubmitModal("note", "ajouter", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
+    </script>
+{% endblock %}

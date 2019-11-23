@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nationalités{% endblock %}
+
+{% block body %}
+    
+    <div class="card text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} nationalités - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('nationalite_ajouter', {'page':pagination.page})) | raw }}
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th><i class="fas fa-female"></i> <i class="fas fa-venus"></i></th>
+                        <th><i class="fas fa-male"></i> <i class="fas fa-mars"></i></th>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        	<th></th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                {% for nationalite in nationalites %}
+                    <tr>
+                        <td> {{ nationalite.id }} </td>
+                        <td> {{ nationalite.nomFeminin }}</td>
+                        <td> {{ nationalite.nomMasculin }}</td>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        	<td>{{ modifier(path('nationalite_modifier', {'id':nationalite.id, 'page':pagination.page})) | raw }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </table>
+                
+                {% if nationalites is empty %}
+                    <p class="text-info text-center">Il  n'y a aucune nationalité correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+        <div class="card-footer text-muted">
+        {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div> 
+{% endblock %}

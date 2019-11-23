@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quizz{% endblock %}
+
+{% block body %}
+    
+    <h1 class="display-4">Quizz</h1>
+    <div class="card text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} quizzs - {{ pagination.page }} / {{ pagination.nbPages }}
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Date de création</th>
+                    </tr>
+                </thead>
+                {% for quizz in quizzs %}
+                    <tr>
+                        <td> <a href="{{ path('quizz_afficher', {'id':quizz.id, 'page':pagination.page}) }}">{{ quizz.id }} </a></td>
+                        <td> {{ quizz.nom }}</td>
+                        <td> {{ quizz.utilisateur.prenom }} {{ quizz.utilisateur.nom }}</td>
+                        <td>
+                        {{ quizz.dateCreation | date('d-m-Y')}}
+                    </tr>
+                {% endfor %}
+                </table>
+                
+                {% if quizzs is empty %}
+                    <p class="text-info text-center">Il  n'y a aucun quizz correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+        <div class="card-footer text-muted">
+            {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div> 
+{% endblock %}
+

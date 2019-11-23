@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Citation - ID {{ citation.id }} {% endblock %}
+
+{% block body %}
+    {{ card_citation(citation, false, path_update) | raw }}
+{% endblock %}

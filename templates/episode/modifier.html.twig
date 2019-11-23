@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Episode - ID {{ episode.id }} {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        {{ form_start(form) }}
+		<div class="card-header">
+			Edition de {{ titre(episode, app.session) }} - ID {{ episode.id }}
+		</div>
+        
+        <div class="card-body">
+            <div class="row">
+            	<div class="col col-xs-6">
+            		{{ form_row(form.titre) }}
+            	</div>
+            	<div class="col col-xs-6">
+            	    {{ form_row(form.titre_original) }}
+            	</div>
+            </div>
+            
+            <div class="row">
+            	<div class="col col-xs-12">
+            		{{ form_row(form.description) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col col-xs-6">
+            		{{ form_row(form.numero_production) }}
+            	</div>
+            	<div class="col col-xs-6">
+            	    {{ form_row(form.numero_episode) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col col-xs-6">
+            		{{ form_row(form.premiere_diffusion) }}
+            	</div>
+            	<div class="col col-xs-6">
+            	    {{ form_row(form.duree) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col col-xs-6">
+            		{{ form_row(form.saison) }}
+            	</div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+	</div>
+    
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript">
+        $( document ).ready(function() {
+			$("#episode_premiere_diffusion select").each(function(){
+				$(this).select2();
+			});
+
+			$("#episode_saison").select2();
+        });
+    </script>
+{% endblock %}

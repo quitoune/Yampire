@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espèces{% endblock %}
+
+{% block body %}
+    
+    <div class="card text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} espèces - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('espece_ajouter', {'page':pagination.page})) | raw }}
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Infos supplémentaires</th>
+                    </tr>
+                </thead>
+                {% for espece in especes %}
+                    <tr>
+                        <td> <a href="{{ path('espece_afficher', {'id':espece.id, 'page':pagination.page}) }}">{{ espece.id }} </a> </td>
+                        <td> {{ espece.nom }}</td>
+                        <td> {{ espece.infoSup }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+                
+                {% if especes is empty %}
+                    <p class="text-info text-center">Il  n'y a aucune espèce correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+        <div class="card-footer text-muted">
+        {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div> 
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Séries {% endblock %}
+
+{% block body %}
+    
+    <div class="card mb-3">
+        <div class="card-header text-left">
+            {{ pagination.total }} séries - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('serie_ajouter', {'page':pagination.page})) | raw }}
+            {% endif %}
+        </div>
+        <div class="card-body text-center">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                    </tr>
+                </thead>
+                {% for serie in series %}
+                    <tr>
+                        <td> {{ serie.id }} </td>
+                        <td> <a href="{{ path('serie_afficher', {'slug':serie.slug}) }}"> {{ serie.nom }}</a></td>
+                    </tr>
+                {% endfor %}
+                </table>
+                
+                {% if series is empty %}
+                    <p class="text-info text-center">Il  n'y a aucune série correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+        <div class="card-footer text-muted">
+        {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div>
+
+{% endblock %}

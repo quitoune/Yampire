@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="col col-3 center_img">
+	    {% if serie.photo is not null %}
+        	{{ photo(serie) | raw }}
+        {% endif %}
+	</div>
+	<div class="col col-9 center_img">
+	    {{ form_start(form) }}
+        <table class="table table-sm">
+            <tr>
+        		<th>{{ form_label(form.nom) }}</th>
+        		<td>{{ form_errors(form.nom) }} {{ form_widget(form.nom) }} {{ form_help(form.nom) }}</td>
+        	</tr>
+        	<tr>
+        		<th>{{ form_label(form.nom_court) }}</th>
+        		<td>{{ form_errors(form.nom_court) }} {{ form_widget(form.nom_court) }} {{ form_help(form.nom_court) }}</td>
+        	</tr>
+        	<tr>
+        		<th>{{ form_label(form.nombre_saison) }}</th>
+        		<td>{{ form_errors(form.nombre_saison) }} {{ form_widget(form.nombre_saison) }} {{ form_help(form.nombre_saison) }}</td>
+        	</tr>
+        	<tr>
+        		<th>{{ form_label(form.nombre_episode) }}</th>
+        		<td>{{ form_errors(form.nombre_episode) }} {{ form_widget(form.nombre_episode) }} {{ form_help(form.nombre_episode) }}</td>
+        	</tr>
+        	<tr>
+        		<th>{{ form_row(form.terminee) }}</th>
+        		<td>{{ form_row(form.save) }}</td>
+        	</tr>
+        </table>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+	</div>
+</div>

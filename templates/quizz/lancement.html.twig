@@ -1,0 +1,30 @@
+<div id="test_quizz">
+    <div class="modal-header">
+        <h5 class="modal-title">
+            {{ quizz.nom }}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+        Démarrer le quizz<br>
+        {{ quizz.nom }}
+    </div>
+    
+    <div class="modal-footer">
+        <a id="lancer_test"class="btn btn-primary" href="{{ path('quizz_question_afficher', {'id': quizz.id, 'nbr': nbr, 'ordre':1}) }}">Lancer</a>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script>
+        $('#bloc_modal').modal({
+            'show' : true,
+            'backdrop' : 'static'
+        });
+        
+        Quizz.OuvrirModal('#lancer_test');
+    </script>
+{% endblock %}

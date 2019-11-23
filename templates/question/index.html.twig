@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Questions{% endblock %}
+
+{% block body %}
+<div>
+	{% for question in questions %}
+		{{ afficherQuestion(doctrine, question) | raw }}
+		<hr>
+	{% endfor %}
+</div>
+{% endblock %}

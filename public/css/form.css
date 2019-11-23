@@ -1,0 +1,113 @@
+.form {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 90%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+	border: 1px solid #800000;
+	-webkit-text-fill-color: #495057;
+	-webkit-box-shadow: 0 0 1px 1000px #FFEBCD inset;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+select:focus,
+textarea:focus,
+input[type=text]:focus, 
+input[type=number]:focus, 
+input[type=password]:focus {
+  box-shadow: 0 0 0 .2rem rgba(128,0,0,.25)!important;
+  border: 2px solid #800000!important;
+  color: #495057;
+  outline: 0;
+}
+
+.series input[type="checkbox"]{
+  width: 20px;
+  height: 20px;
+}
+
+.form-control {
+    color: #800000;
+    border: 1px solid #800000;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #800000;
+}
+
+.select2-container--default .select2-selection--single {
+    border: 1px solid #800000;
+    height: calc(2.25rem + 2px);
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid #800000;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: #800000 transparent transparent transparent;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    border-color: transparent transparent #800000 transparent;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--single,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+	-webkit-box-shadow: 0 0 1px 1000px #FFEBCD inset;
+    border: solid #800000 2px;
+    outline: 0;
+}
+
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: rgba(128,0,0,.25);
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #a90101;
+    color: white;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 35px;
+}
+
+.w-100 .select2.select2-container.select2-container--default {
+	width: 100%!important;
+}
+
+.delete {
+	color: #dc3545;
+    font-size: 20px;
+}
+
+.addElement {
+	color: #28a745;
+    font-size: 20px;
+}
+
+.collection {
+	margin-bottom: 15px;
+}
+
+
+.hidden_fields {
+	display: none;
+}
+
+.fields {
+	padding: 10px 30px;
+}
+
+.img-login {
+	border: none;
+}
+
+.card-footer .form-group {
+    margin-bottom: 0px;
+}

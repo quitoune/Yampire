@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Chanson - ID {{ chanson.id }} {% endblock %}
+
+{% block body %}
+    {{ card_chanson(chanson, true, path('chanson_liste', {'slug':chanson.episode.serie.slug, 'page':page})) | raw }}
+{% endblock %}

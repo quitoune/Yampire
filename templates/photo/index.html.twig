@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photos{% endblock %}
+
+{% block body %}
+    
+    <div class="card text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} photos - {{ pagination.page }} / {{ pagination.nbPages }}
+        </div>
+        <div class="card-body">
+        	<div class="row">
+        		{% for photo in photos %}
+                    <div class="col-img">
+                        {{ photo(photo) | raw }}
+                    </div>
+                {% endfor %}
+        	</div>
+            {% if photos is empty %}
+    	        <p class="text-info text-center">Il  n'y a aucune photo correspondant à la recherche.</p>
+            {% endif %}
+        </div>
+        <div class="card-footer text-muted">
+            {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div>
+
+{% endblock %}

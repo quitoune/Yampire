@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Quizz ID{{ quizz.id }} {% endblock %}
+
+{% block body %}
+    <div id="quizz" class="card">
+    	<div class="card-header">
+    		<div class="float-right">
+    			<a class="btn btn-dark active"><i class="fas fa-pen"></i> Editer le quizz</a>
+				<a class="btn btn-dark active"><i class="fas fa-plus"></i> Ajouter une question</a>
+				<a id="quizz_tester" href="{{ path('quizz_test', { 'id': quizz.id }) }}" class="btn btn-dark active"><i class="fas fa-play"></i> Tester</a>
+    		</div>
+		</div>
+		<div class="card-body">
+			<b>Nom :</b> {{ quizz.nom }} <br>
+			<b>Créateur: </b> {{ quizz.utilisateur.username }} <br>
+			<b>Date de création : </b> {{ quizz.dateCreation | date('d/m/Y') }}
+		</div>
+    </div>
+    
+    <hr>
+    
+    <!-- <div id="questions">
+    	{#% for quizzQuestion in quizz.quizzQuestions %#}
+    		<div class="card">
+    			<div class="card-header">
+    				# Question {#{ quizzQuestion.ordre }#}
+    				<div class="float-right">
+    					{#{ editQuestion(path('question_ajax_modifier', {'id': quizzQuestion.question.id}), quizzQuestion.question.id) | raw }#}
+    				</div>
+    			</div>
+    			<div class="card-body">
+    			    {#{ afficher(doctrine, quizzQuestion.question) | raw }#}
+    			</div>
+    		</div>
+    		<hr>
+    	{#% endfor %#}
+    </div> -->
+    
+    <div class="modal" tabindex="-1" role="dialog" id="bloc_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id ="modal_quizz">
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+	
+	<script src="{{ asset('js/question/question.js') }}"></script>
+	<script src="{{ asset('js/quizz/Quizz.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+//			var bloc = '#questions';
+//			var content_modal = '#modal_quizz';
+        	
+//        	var params = {
+//            	url_base : '{#{ path('question_ajax_modifier', {'id':quizz.id}) }#}',
+//                id_bloc : bloc,
+//                id_modal : '#bloc_modal',
+//                id_content_modal : content_modal
+//            };
+            
+//            Question.demarrer(params);
+
+//            {#% for quizzQuestion in quizz.quizzQuestions %#}
+//                Question.OuvrirModal('#btn-edit-question-' + {#{ quizzQuestion.question.id }#});
+//            {#% endfor %#}
+            
+            Quizz.demarrer({ id_content_modal : '#modal_quizz' });
+            Quizz.OuvrirModal('#quizz_tester');
+        });
+    </script>
+{% endblock %}

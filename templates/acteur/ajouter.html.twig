@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Acteur - Ajout {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        {{ form_start(form) }}
+		<div class="card-header">
+			Ajout d'un acteur
+		</div>
+        
+        <div class="card-body">
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-xs-12">
+            		{{ form_row(form.prenom) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-xs-12">
+            		{{ form_row(form.nom) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-xs-12">
+            		{{ form_row(form.date_naissance) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-xs-12">
+            		{{ form_row(form.date_deces) }}
+            	</div>
+            </div>
+            
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-xs-12">
+            		<div id="sexe" class="w-100">
+                        {{ form_row(form.sexe) }}
+                    </div>
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-xs-12">
+            		<div class="form-group w-100">
+            			<label class="form-control-label" for="acteur_nationalites">Nationalité(s)</label>
+                        {{ select("acteur[nationalites][]", nationalites, opt) |raw }}
+            		</div>
+            	</div>
+            </div>
+            
+            <hr>
+            
+            <div id="acteurPersonnages" class="row">
+            	<div class="col-sm-10 collection">Personnage(s) joué(s)</div>
+            	<div class="col-sm-2 addElement collection"><i class="fas fa-plus"></i></div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/collection.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+			$("#acteur_nationalites").select2({
+				"multiple": true
+			});
+
+			$("#acteur_sexe").select2({
+			    minimumResultsForSearch: -1
+			});
+
+			$("#acteur_date_naissance select").each(function(){
+				$(this).select2();
+			});
+			
+			$("#acteur_date_deces select").each(function(){
+				$(this).select2();
+			});
+			
+            var index = 0;
+			var select1 = "{{ select("acteur[acteurPersonnages][INDEX][personnage]", personnages, opt_perso) |raw }}";
+			var select2 = "{{ select_acteur_role("acteur_acteurPersonnages_INDEX_principal", "acteur[acteurPersonnages][INDEX][principal]") | raw }}";
+
+			$(".addElement").click(function(){
+				index = addNewActeurPersonnage(select1, select2, index);
+			});
+			
+			index = addNewActeurPersonnage(select1, select2, index);
+        });
+    </script>
+{% endblock %}

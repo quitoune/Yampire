@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Citation - Ajout {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        {{ form_start(form) }}
+		<div class="card-header">
+			Ajout d'un acteur
+		</div>
+        
+        <div class="card-body">
+        	<div class="row">
+            	<div class="col-lg-12 col-md-12 col-12">
+            		{{ form_row(form.texte) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.episode) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.from_personnage) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.to_personnage_1) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.to_personnage_2) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-12">
+            		{{ form_row(form.to_personnage) }}
+            	</div>
+            </div>
+        </div>
+        
+        <div class="card-footer text-center">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+			$("#citation_episode").select2();
+			$("#citation_from_personnage").select2();
+			$("#citation_to_personnage_1").select2();
+			$("#citation_to_personnage_2").select2();
+        });
+    </script>
+{% endblock %}

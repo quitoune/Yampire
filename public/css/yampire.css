@@ -1,0 +1,421 @@
+/********************************************
+*
+* DEFINITION DES FONTS
+*
+********************************************/
+@font-face {
+	font-family: 'Augusta';
+	src: url('../font/Augusta.ttf');
+}
+
+@font-face {
+	font-family: 'Joly Death';
+	src: url('../font/Joly Death.ttf');
+}
+
+@font-face {
+	font-family: 'Drakoheart';
+	src: url('../font/Drakoheart Leiend Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Drakoheart';
+	src: url('../font/Drakoheart Leiend Bold.ttf');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Drakoheart';
+	src: url('../font/Drakoheart Leiend Bold Italic.ttf');
+	font-weight: bold;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Drakoheart';
+	src: url('../font/Drakoheart Leiend Italic.ttf');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Vinque';
+	src: url('../font/vinque.ttf');
+}
+
+/********************************************
+*
+* GLOBAL
+*
+********************************************/
+html, body {
+	font-family: 'Vinque', 'Drakoheart', 'Joly Death', 'Augusta';
+	font-size: 18px;
+	overflow: hidden;
+	height: 100%;
+}
+
+a {
+	color: #9b111e;
+}
+
+a:hover {
+	color: #DC143C;
+	text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+    padding: 0px;
+    background-color: white;
+}
+ 
+::-webkit-scrollbar-thumb {
+	background-color: #9b111e;
+	border-radius: 25px;
+}
+
+img {
+	width: 100%;
+	border: 2px solid #9b111e;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+#container {
+	overflow: auto;
+	padding-bottom: 5%;
+	height: -webkit-calc(100% - 110px);
+}
+
+.hidden {
+    display: none;
+}
+
+.green {
+	color: #218838;
+}
+
+.red {
+	color: red;
+}
+
+.text-info {
+	color: #9b111e!important;
+}
+
+/********************************************
+*
+* DEBUT SURCHARGE NAV BOOTSTRAP
+*
+********************************************/
+.nav-link,
+.dropdown-item,
+.navbar-toggler {
+	color: #000000;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+	color: #000000!important;
+	font-weight:bolder;
+}
+
+.dropdown-item:hover {
+	background-color: #000000;
+	color: #9b111e!important;
+}
+
+.bg-primary {
+	background-color: #9b111e!important;
+	color: #000000;
+}
+
+.dropdown-divider {
+	border-top: 1px solid #000000!important;
+}
+
+.navbar-text a,
+.navbar-brand {
+	color: #000000;
+}
+
+.navbar-text a:hover {
+	color: #000000;
+	font-weight:bolder;
+}
+/********************************************
+*
+* FIN SURCHARGE NAV BOOTSTRAP
+*
+********************************************/
+
+/********************************************
+*
+* PAGINATION
+*
+*********************************************/
+.page-item.active .page-link{
+	background-color: #9b111e;
+    border-color: #9b111e;
+}
+
+a.page-link {
+	color: #9b111e;
+}
+
+a.page-link:hover {
+	box-shadow:0 0 0 .2rem rgba(128,0,0,.25)!important;
+	color: white;
+	background-color: #9b111e;
+}
+
+a.page-link:active {
+	box-shadow:0 0 0 .2rem rgba(128,0,0,.25)!important;
+}
+
+li.page-item:last-child,
+li.page-link {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+
+li.page-item:first-child,
+li.page-item {
+    margin-left: 0;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+/********************************************
+*
+* FIN PAGINATION
+*
+*********************************************/
+
+/* The container */
+.container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/********************************************
+*
+* RADIO INPUT (QUIZZ)
+*
+********************************************/
+
+/* Hide the browser's default radio button */
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+	background-color: #9b111e;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+}
+
+.container .red,
+.container .green {
+	margin-left: 10px;
+}
+
+.green .checkmark {
+    background-color: green!important;
+}
+
+.red .checkmark {
+    background-color: red!important;
+}
+
+#error_password_submit {
+	display: none;
+	color: red;
+	font-size: 14px;
+}
+
+/********************************************
+*
+* CHANSON
+*
+********************************************/
+.chanson.card {
+	width:70%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+@media only screen and (max-width: 600px) {
+	.chanson.card {
+		width: auto;
+	}
+}
+
+@media only screen and (min-width: 800px) {
+	.chanson.card {
+		width: 50%;
+	}
+}
+
+.mute {
+	color: #6c757d;
+	font-style: italic;
+}
+
+.chanson .symbol {
+	color: black;
+    font-size: 40px;
+    text-align: center;
+}
+
+.music {
+	color: #007bff;
+}
+
+.chanson .episode {
+	float: right;
+	color: black;
+}
+
+.chanson .interprete {
+	color: black;
+}
+
+.card {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.col-quotes .chanson.card {
+	width: 100%!important;
+}
+
+/********************************************
+*
+* CITATION
+*
+********************************************/
+.citation.card {
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.citation .card-header {
+	background-color: #17a2b8;
+    color: black;
+}
+
+.citation .card-body {
+	color: #17a2b8;
+}
+
+.citation .card-footer {
+	background-color: #d0ecf0;
+}
+
+
+/********************************************
+*
+* VERTICAL ALIGNMENT
+*
+********************************************/
+.col-img {
+	width: 20%;
+    padding: 15px;
+}
+
+.col-img img,
+.col-img .center {
+	width: 100%;
+    height: auto;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center_img img,
+.center_img > table,
+.center_img form {
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+.col-quotes {
+    width: 33.33%;
+    padding: 5px;
+}
+
+.col-quotes .card {
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+@media only screen and (max-width: 800px) {
+	.col-quotes {
+    	width: 100%!important;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.col-quotes {
+    	width: 50%;
+	}
+}

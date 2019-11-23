@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col col-3 center_img">
+    	{% if personnage.photo is not null %}
+    		{{ photo(personnage) |raw }}
+    	{% endif %}
+    </div>
+    <div class="col col-9 center_img">
+        <table class="table table-sm">
+        	<tr>
+        		<th>Nom complet</th>
+        		<td>{{ nom_complet(personnage) | raw }}</td>
+        	</tr>
+        	{% if personnage.dateNaissance is not null %}
+            	<tr>
+            		<th>Date de naissance</th>
+            		<td>{{ personnage.dateNaissance | date('d/m/Y') }}</td>
+            	</tr>
+        	{% endif %}
+        	<tr>
+        		<th>Sexe</th>
+        		<td>{{ personnage.sexe | sexe }}</td>
+        	</tr>
+        	<tr>
+        		<th>Espèce</th>
+        		<td>{{ personnage.espece.nom }}</td>
+        	</tr>
+        	{% if serieSaisons is not empty %}
+            	<tr>
+            		<th colspan="2">Séries</th>
+            	</tr>
+            	{% for serieSaison in serieSaisons %} 
+            		<tr>
+                		<th>
+                			{{ serieSaison.nom }}
+                		</th>
+                		<td>
+                            {% for saison in serieSaison.saisons %}
+                		    	- <b>{{ saison.nom }}</b> ({{ saison.role | role}})<br>
+                		    {% endfor %}
+                		</td>
+                	</tr>
+            	{% endfor %}
+        	{% endif %}
+        	{% if personnage.acteurPersonnages is not empty %}
+            	<tr>
+            		<th>Interprété{% if personnage.sexe %}e{% endif %} par
+            		</th>
+            		<td>
+            		    {% for acteurPersonnages in personnage.acteurPersonnages %} 
+            		    	<b>{{ acteurPersonnages.acteur.prenom }} {{ acteurPersonnages.acteur.nom }}</b> 
+            		    	({{ acteurPersonnages.principal | acteur_role }})<br>
+            			{% endfor %}
+            		</td>
+            	</tr>
+        	{% endif %}
+    	</table>
+    </div>
+</div>

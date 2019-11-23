@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Saison - ID {{ saison.id }} {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        {{ form_start(form) }}
+		<div class="card-header">
+			Edition de Saison {{ saison.numeroSaison }} - ID{{ saison.id }}
+		</div>
+        
+        <div class="card-body">
+        	<div class="row">
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.serie) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-12">
+            		{{ form_row(form.numero_saison) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-12">
+            		{{ form_row(form.nombre_episode) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.photo) }}
+            	</div>
+            </div>
+        </div>
+        
+        <div class="card-footer text-center">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+			$("#saison_photo").select2();
+			$("#saison_serie").select2({
+			    minimumResultsForSearch: 10
+			});
+        });
+    </script>
+{% endblock %}

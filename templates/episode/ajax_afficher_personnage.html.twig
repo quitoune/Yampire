@@ -1,0 +1,36 @@
+<div class="card" id="ajax_personnage_episode_see">
+	<div class="card-header">
+		<div class="row text-left">
+			<div class="col-6">
+				{{ select("saison", saisons, {'class': 'form-control'}) |raw }}
+			</div>
+		</div>
+    </div>
+    <div class="card-body">
+    	Chargement...
+	</div>
+
+	<div class="card-footer text-center">
+		{% if episodes is defined %}
+		    {{ episodes | length }} épisode{% if episodes | length > 1 %}s{% endif %}
+		{% endif %}
+    </div>
+</div>
+
+{% block javascripts %}
+	<script type="text/javascript">
+        $( document ).ready(function() {
+        	var url = "{{ path('ajax_afficher_episodes', {'id': 'val', 'type': 'personnage', 'perso_id': personnage.id }) }}";
+            url = url.replace('val', $("#saison").val());
+            
+        	Ajax(url, "#ajax_personnage_episode_see .card-body", "#ajax_personnage_episode_see");
+            
+			var saison_ch = $("#saison").select2();
+			saison_ch.on("change", function (e) {
+				var url_change = "{{ path('ajax_afficher_episodes', {'id': 'val', 'type': 'personnage', 'perso_id': personnage.id }) }}";
+				url_change = url_change.replace('val', $("#saison").val());
+				Ajax(url_change, "#ajax_personnage_episode_see .card-body", "#ajax_personnage_episode_see");
+			});
+        });
+    </script>
+{% endblock %}

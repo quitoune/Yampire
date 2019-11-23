@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Saison - ID {{ saison.id }} {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        <div class="card-header float-left">
+        	<ul class="nav nav-tabs card-header-tabs">
+        		<li class="nav-item">
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_saison_fiche', {'id':saison.id}) }}">Infos</div>
+      			</li>
+        		<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('saison_afficher_episodes', {'id':saison.id}) }}">Episodes</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_personnages', {'id':saison.id, 'type':'saison'}) }}">Personnages</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'id':saison.id, 'type':'saison'}) }}">Citations</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_chansons', {'id':saison.id, 'type':'saison'}) }}">Chansons</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':saison.id, 'type':'saison'}) }}">Notes</div>
+      			</li>
+    		</ul>
+        </div>
+        <div class="card-body text-center" id="bloc_saison">
+           Chargement...
+        </div>
+    </div>
+    
+    <div class="modal" tabindex="-1" role="dialog" id="bloc_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id ="modal_saison">
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    
+    <script src="{{ asset('js/pagination/pagination.js') }}"></script>
+    <script src="{{ asset('js/tabs.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        	chargerTabs("{{ path('ajax_afficher_saison_fiche', {'id':saison.id}) }}", '#bloc_saison');
+            Pagination.demarrer();
+
+            $(".card .nav-link").click(function(){
+            	$(".card .nav-link").removeClass('active');
+            	$(this).addClass('active');
+            	chargerTabs($(this).data('link'), '#bloc_saison');
+            });
+        });
+    </script>
+{% endblock %}

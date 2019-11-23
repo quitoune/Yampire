@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href='{{asset('image/appli/logo_coeur.png')}}' rel='shortcut icon' type='images/x-icon' >
+        
+        {% include 'header/css.html.twig' %}
+        {% include 'header/js.html.twig' %}
+        
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    	{% include 'outils/menu.html.twig' %}
+    	{% include 'outils/arborescence.html.twig' %}
+        <div class="container-fluid" id="container">
+            {% block body %}	{% endblock %}
+            {% block javascripts %}{% endblock %}
+        </div>
+        <div class="footer">
+        </div>
+    </body>
+</html>

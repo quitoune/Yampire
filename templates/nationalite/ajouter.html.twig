@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nationalité - Ajout {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        {{ form_start(form) }}
+		<div class="card-header">
+			Ajout d'une nationalité
+		</div>
+        
+        <div class="card-body">
+        	<div class="row">
+            	<div class="col col-md-6 col-12">
+                	<div class="form-group">
+                        <i class="fas fa-female"></i> <i class="fas fa-venus"></i> {{ form_label(form.nom_feminin) }}
+                        {{ form_widget(form.nom_feminin) }}
+                    
+                        <small>{{ form_help(form.nom_feminin) }}</small>
+                    
+                        <div class="form-error">
+                            {{ form_errors(form.nom_feminin) }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col col-md-6 col-12">
+                	<div class="form-group">
+                        <i class="fas fa-male"></i> <i class="fas fa-mars"></i> {{ form_label(form.nom_masculin) }}
+                        {{ form_widget(form.nom_masculin) }}
+                    
+                        <small>{{ form_help(form.nom_masculin) }}</small>
+                    
+                        <div class="form-error">
+                            {{ form_errors(form.nom_masculin) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+    </div>
+    
+{% endblock %}

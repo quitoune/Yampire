@@ -1,0 +1,48 @@
+<div class="card" id="ajax_{{ type }}_personnage_see">
+	<div class="card-header">
+		<div class=" float-left">
+    	    {{ pagination.nb_elements }} personnage{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
+    	</div>
+    </div>
+    <div class="card-body">
+    	<div class="row">
+        	{% for personnage in personnages %}
+            	<div class="col-img">
+            		{% if type != 'episode' and type != 'espece' %}
+                    	<a href="{{ path('personnage_afficher', {'id':personnage.personnage.id, 'slug':'the-vampire-diaries', 'page':pagination.page}) }}">
+                            {% if personnage.personnage.photo is not null %}
+                				{{ photo(personnage.personnage) | raw }}
+                			{% else %}
+                            	<span class="center">{{ nom_complet(personnage.personnage) }}</span>
+                	        {% endif %}
+        	            </a>
+    	            {% else %}
+    	            	<a href="{{ path('personnage_afficher', {'id':personnage.id, 'slug':'the-vampire-diaries', 'page':pagination.page}) }}">
+                            {% if personnage.photo is not null %}
+                				{{ photo(personnage) | raw }}
+                			{% else %}
+                            	<span class="center">{{ nom_complet(personnage) }}</span>
+                	        {% endif %}
+        	            </a>
+    	            {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        
+		{% if personnages is empty %}
+          	<p class="text-info text-center">Aucun personnage n'est associé à
+                {% if type == 'episode' %}
+                	cet épisode.
+                {% elseif type == 'serie' or type == 'saison' %}
+                    cette {{ type }}.
+                {% else %}
+                    ce {{ type }}.
+                {% endif %}
+            </p>
+        {% endif %}
+	</div>
+	
+	<div class="card-footer">
+    	{% include 'outils/ajax_pagination.html.twig' %}
+    </div>
+</div>

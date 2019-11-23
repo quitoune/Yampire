@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Citations de {{ serie.nom }}{% endblock %}
+
+{% block body %}
+    <div class="card liste text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} citations - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('citation_ajouter', {'slug':serie.slug, 'page':pagination.page})) | raw }}
+            {% endif %}
+        </div>
+        <div class="card-body">
+        	<div class="row">
+        		{% for citation in citations %}
+        			<div class="col-quotes">
+        			    {{ card_citation(citation, true, path('citation_afficher', {'id':citation.id, 'slug':serie.slug, 'page':pagination.page})) | raw }}
+        			</div>
+                {% endfor %}
+                
+                {% if citations is empty %}
+                    <p class="text-info text-center">Il  n'y a aucune citation correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted">
+                {% include 'outils/pagination.html.twig' %}
+            </div>
+        </div> 
+    </div>
+{% endblock %}

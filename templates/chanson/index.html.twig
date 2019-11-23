@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chansons de {{ serie.nom }}{% endblock %}
+
+{% block body %}
+    <div class="card liste text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} chansons - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('chanson_ajouter', {'slug':serie.slug, 'page':pagination.page})) | raw }}
+            {% endif %}
+        </div>
+        <div class="card-body">
+        	<div class="row">
+        		{% for chanson in chansons %}
+        			<div class="col-quotes">
+        			    {{ card_chanson(chanson, true, path('chanson_afficher', {'id':chanson.id, 'slug':serie.slug, 'page':pagination.page})) | raw }}
+        			</div>
+                {% endfor %}
+                
+                {% if chansons is empty %}
+                    <p class="text-info text-center">Il  n'y a aucune chanson correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+            <div class="card-footer text-muted">
+                {% include 'outils/pagination.html.twig' %}
+            </div>
+        </div>
+	</div>
+{% endblock %}

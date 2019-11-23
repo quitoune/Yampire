@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col col-3 center_img">
+	    {% if serie.photo is not null %}
+        	{{ photo(serie) | raw }}
+        {% endif %}
+	</div>
+	<div class="col col-9 center_img">
+        <table class="table table-sm">
+        	<tr>
+        		<th>Nom</th>
+        		<td>{{ serie.nom }}</td>
+        	</tr>
+        	<tr>
+        		<th>Abrégé</th>
+        		<td>{{ serie.nomCourt }}</td>
+        	</tr>
+        	<tr>
+        		<th>Nombre de saison</th>
+        		<td>{{ serie.nombreSaison }}</td>
+        	</tr>
+        	<tr>
+        		<th>Nombre d'épisode</th>
+        		<td>{{ serie.nombreEpisode }}</td>
+        	</tr>
+        	<tr>
+        		<th>Terminée</th>
+        		<td>{{ serie.terminee | bool }}</td>
+        	</tr>
+        </table>
+	</div>
+</div>
+
+{% block javascripts %} 
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('#btn-modifier').click(function(event){
+                event.preventDefault();
+        		OuvrirModal('#btn-modifier', '#bloc_serie')
+            });
+        });
+    </script>
+{% endblock %}

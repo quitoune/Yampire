@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Série - Ajout {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        {{ form_start(form) }}
+		<div class="card-header">
+			Ajout d'une série
+		</div>
+        
+        <div class="card-body">
+        	<div class="row">
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.nom) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-12">
+            		{{ form_row(form.nom_court) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-12">
+            		{{ form_row(form.nombre_saison) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.nombre_episode) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-12">
+            		{{ form_row(form.terminee) }}
+            	</div>
+            	<div class="col-lg-6 col-md-6 col-12">
+            		Saisons
+            	</div>
+            </div>
+        </div>
+        
+        <div class="card-footer text-center">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+    </div>
+    
+{% endblock %}

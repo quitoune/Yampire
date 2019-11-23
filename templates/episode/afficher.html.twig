@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Episode - ID {{ episode.id }} {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        <div class="card-header text-left">
+        	<ul class="nav nav-tabs card-header-tabs" id="first">
+        		<li class="nav-item">
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_episode_fiche', {'id':episode.id}) }}">
+        				Info
+        			</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_personnages', {'id':episode.id, 'type':'episode'}) }}">
+        				Personnages
+        			</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'id':episode.id, 'type':'episode'}) }}">
+        				Citations
+        			</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_chansons', {'id':episode.id, 'type':'episode'}) }}">
+        				Chansons
+        			</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':episode.id, 'type':'episode'}) }}">
+        				Notes
+        			</div>
+      			</li>
+    		</ul>
+        </div>
+        <div class="card-body text-center" id="bloc_episode">
+            Chargement...
+        </div>
+    </div>
+    
+    <div class="modal fade" tabindex="-1" role="dialog" id="bloc_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id ="modal_episode">
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/pagination/pagination.js') }}"></script>
+    <script src="{{ asset('js/tabs.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        	chargerTabs("{{ path('ajax_afficher_episode_fiche', {'id':episode.id}) }}", '#bloc_episode');
+            Pagination.demarrer();
+
+            $(".card .nav-link").click(function(){
+            	$(".card .nav-link").removeClass('active');
+            	$(this).addClass('active');
+            	chargerTabs($(this).data('link'), '#bloc_episode');
+            });
+        });
+    </script>
+{% endblock %}

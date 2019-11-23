@@ -1,0 +1,64 @@
+<div id="test_quizz">
+    <div class="modal-header">
+        <h5 class="modal-title">
+            {{ question_quizz.quizz.nom }}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+        {{ afficher(doctrine, question_quizz.question, ordre) | raw }}
+    </div>
+    
+    <div class="modal-footer">
+        <button id="prev" class="btn btn-primary"  href="{{ path('question_quizz_afficher', {'id': quizz.id, 'nbr': nbr, 'ordre': ordre - 1}) }}"{% if ordre == 1 %}disabled{% endif %}>
+        	<i class="fas fa-chevron-left"></i> Précédent
+        </button>
+        <button id="check" class="btn btn-success">
+        	<i class="fas fa-check-double"></i> Vérifier
+        </button>
+        {% if ordre == nbr %}
+            <button class="btn btn-primary">
+            	Terminer
+            </button>
+        {% else %}
+        	<button id="next" class="btn btn-primary" href="{{ path('question_quizz_afficher', {'id': quizz.id, 'nbr': nbr, 'ordre': ordre + 1}) }}">
+            	Suivant <i class="fas fa-chevron-right"></i>
+            </button>
+        {% endif %}
+    </div>
+</div>
+
+{% block javascripts %}
+    <script>
+        $('#bloc_modal').modal({
+            'show' : true,
+            'backdrop' : 'static'
+        });
+        
+        Quizz.OuvrirModal('#next');
+        Quizz.OuvrirModal('#prev');
+
+        $(".form-check").click(function(){
+        	$(".form-check").removeClass('check');
+        	$(this).addClass('check');
+        });
+        
+        $("#check").click(function(){
+            $(".explication").removeClass("hidden");
+            $(".form-check").each(function(index){
+                var j = parseInt(index + 1);
+				if($(this).data('reponse') == 1){
+					$(".form-check[data-proposition=" + j + "] .green").removeClass("hidden");
+					$(".form-check[data-proposition=" + j + "] .container").addClass("green");
+				} else if ($(this).data('reponse') == 0 && $(this).hasClass("check")) {
+					$(".form-check[data-proposition=" + j + "] .red").removeClass("hidden");
+					$(".form-check[data-proposition=" + j + "] .container").addClass("red");
+				}
+            });
+        });
+        
+    </script>
+{% endblock %}

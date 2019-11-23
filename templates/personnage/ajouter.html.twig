@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Personnage - Ajout {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        {{ form_start(form) }}
+		<div class="card-header">
+			Ajout d'un personnage
+		</div>
+        
+        <div class="card-body">
+            <div class="row">
+            	<div class="col col-xs-6">{{ form_row(form.prenom) }}</div>
+               	<div class="col col-xs-6">{{ form_row(form.prenom_usage) }}</div>
+            </div>
+            <div class="row">
+            	<div class="col col-xs-6">{{ form_row(form.nom) }}</div>
+            	<div class="col col-xs-6">{{ form_row(form.date_naissance) }}</div>
+            </div>
+            <div class="row">
+              	<div class="col col-xs-6 w-100" id="sexe">{{ form_row(form.sexe) }}</div>
+            	<div class="col col-xs-6 w-100">{{ form_row(form.espece) }}</div>
+            </div>
+            
+            <hr>
+            
+            <div id="personnageActeurs" class="row">
+            	<div class="col-sm-10 collection">Interprété(e) par</div>
+            	<div class="col-sm-2 addElement collection"><i class="fas fa-plus"></i></div>
+            </div>
+            
+            <hr>
+            
+            <label class="form-control-label">Episodes</label>
+            
+            <div class="series fields">
+            	{% for serie in series %}
+            		<input type="checkbox" data-link="saisons_{{ serie.id }}" name="personnage[personnageSeries][{{ serie.id }}][serie_id]"> {{ serie.nom }} 
+            		({{ radio_role('personnage[personnageSeries][' ~ serie.id ~ '][principal]') | raw }}) <br>
+            		
+            		<div id="saisons_{{ serie.id }}" class="fields hidden_fields">
+            			{% for saison in serie.saisons %}
+            				
+            				<input type="checkbox" data-link="episodes_{{ saison.id }}" name="personnage[personnageSaisons][{{ saison.id }}][saison_id]"> Saison {{ saison.numeroSaison }} 
+            				({{ radio_role('personnage[personnageSaisons][' ~ saison.id ~ '][principal]') | raw }}) <br>
+            				
+            				
+            				<div id="episodes_{{ saison.id }}" class="fields hidden_fields">
+            					<input type="checkbox" data-id="{{ saison.id }}" class="all_episodes">Tous les épisodes<br>
+            					
+            			        {% for episode in saison.episodes %}
+            						<input type="checkbox" name="personnage[personnageEpisodes][{{ episode.id }}]">
+            						#{{ episode.numeroEpisode }} - 
+                                    {% if isVo(app.session) %}
+                                    	{{ episode.titreOriginal }}
+                                    {% else %}
+                                        {{ episode.titre }}
+                                    {% endif %} 
+            						<br>
+            					{% endfor %}
+            				</div>
+            			{% endfor %}
+            		</div>
+            	{% endfor %}
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+	</div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/collection.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+			$("#personnage_sexe").select2({
+			    minimumResultsForSearch: -1
+			});
+
+			$("#personnage_espece").select2();
+
+			$("#personnage_date_naissance select").each(function(){
+				$(this).select2();
+			});
+
+			var index = 0;
+			var select1 = "{{ select("personnage[personnageActeurs][INDEX][acteur]", acteurs, opt_act) |raw }}";
+			var select2 = "{{ select_acteur_role("personnage_personnageActeurs_INDEX_principal", "personnage[personnageActeurs][INDEX][principal]") | raw }}";
+
+			$(".addElement").click(function(){
+				console.log(select1);
+				index = addNewPersonnageActeur(select1, select2, index);
+			});
+			
+			index = addNewPersonnageActeur(select1, select2, index);
+
+			$('.series :checkbox').change(function() {
+			    if (this.checked) {
+			    	$("#" + $(this).data('link')).removeClass("hidden_fields");
+			    } else {
+			        $("#" + $(this).data('link')).addClass("hidden_fields");
+			    }
+			    $('.hidden_fields :checkbox').each(function(){
+			    	$(this).prop( "checked", false );
+			    	if($("#" + $(this).data('link'))){
+			    		$("#" + $(this).data('link')).addClass("hidden_fields");
+				   	}
+				})
+			});
+
+			$(".all_episodes").change(function(){
+				if (this.checked) {
+					$("#episodes_" + $(this).data('id') + " :checkbox").each(function(){
+						$(this).prop( "checked", true );
+					});
+				} else {
+					$("#episodes_" + $(this).data('id') + " :checkbox").each(function(){
+						$(this).prop( "checked", false );
+					});
+				}
+			});
+        });
+    </script>
+{% endblock %}

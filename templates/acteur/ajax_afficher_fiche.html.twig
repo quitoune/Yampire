@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col col-3 center_img">
+    	{% if acteur.photo is not null %}
+    		{{ photo(acteur) | raw }}
+    	{% endif %}
+    </div>
+    <div class="col col-9 center_img">
+        <table class="table table-sm table-borderless">
+        	<tr>
+        		<th>Nom complet</th>
+        		<td>{{ nom_acteur(acteur) | raw }}</td>
+        	</tr>
+        	{% if acteur.dateNaissance is not null %}
+            	<tr>
+            		<th>Date de naissance</th>
+            		<td>{{ acteur.dateNaissance | date('d/m/Y') }}</td>
+            	</tr>
+        	{% endif %}
+        	{% if acteur.nationalites is not empty %}
+            	<tr>
+            		<th>Nationalité{% if acteur.nationalites | length > 1 %}s{% endif %}</th>
+            		<td>
+            		    {% for nationalite in acteur.nationalites %} 
+            		        {{ nationalite | nationalite_genre(acteur.sexe) }} <br /> 
+            			{% endfor %}
+            		</td>
+            	</tr>
+        	{% endif %}
+        	{% if acteur.acteurPersonnages is not empty %}
+            	<tr>
+            		<th>Personnage{% if acteur.acteurPersonnages | length > 1 %}s{% endif %}</th>
+            		<td>
+            		    {% for acteurPersonnage in acteur.acteurPersonnages %} 
+            		        {{ nom_usage(acteurPersonnage.personnage) }}<br />
+            			{% endfor %}
+            		</td>
+            	</tr>
+        	{% endif %}
+        </table>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Episodes de {{ serie.nom }}{% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        <div class="card-header text-left">
+            {{ pagination.total }} épisodes - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('episode_ajouter', {'slug':serie.slug, 'page':pagination.page})) | raw }}
+            {% endif %}
+        </div>
+        <div class="card-body text-center">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Première diffusion</th>
+                </tr>
+                </thead>
+                {% for episode in episodes %}
+                    <tr>
+                        <td><a href="{{ path('episode_afficher', {'id': episode.id, 'slug': serie.slug, 'page': pagination.page}) }}">{{ episode.id }} </a></td>
+                		<td> {{ codeEpisode(episode, false) }} -         
+                            {{ titre(episode, app.session) }} 
+                        </td>
+                        <td> 
+                        	{% if episode.premiereDiffusion is not null %}
+                                {{ episode.premiereDiffusion | date('d/m/Y') }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+            {% if episodes is empty %}
+                <p class="text-info text-center">Il  n'y a aucun épisode correspondant à la recherche.</p>
+            {% endif %}
+        </div>
+        <div class="card-footer text-muted">
+        {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div>    
+{% endblock %}

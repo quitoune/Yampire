@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        <div class="card-header">
+            {{ pagination.total }} utilisateurs - {{ pagination.page }} / {{ pagination.nbPages }}
+        </div>
+        <div class="card-body text-center">
+            <table class="table table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Login</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                    </tr>
+                {% for utilisateur in utilisateurs %}
+                    <tr>
+                        <td> {{ utilisateur.id }} </td>
+                        <td> {{ utilisateur.username }}</td>
+                        <td> {{ utilisateur.prenom }}</td>
+                        <td> {{ utilisateur.nom }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+                
+                {% if utilisateurs is empty %}
+                    <p class="text-info text-center">Il  n'y a aucun utilisateur correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+        <div class="card-footer text-muted">
+        {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div> 
+{% endblock %}

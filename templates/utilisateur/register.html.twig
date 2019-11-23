@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+    <div class="card mx-auto mt-5 shadow" style="width: 40rem;">
+    	<div class="row text-center">
+    		<div class="col col-xs-4"></div>
+    		<div class="col col-xs-4">
+    			<img class="card-img-top mt-3" src="{{asset('image/appli/logo_coeur.png')}}" alt="Yampire" style="width:50%">
+    		</div>
+    		<div class="col col-xs-4"></div>
+    	</div>
+      	<div class="card-body">
+      	    {{ form_start(form, {'attr': {'id': 'register_user'}}) }}
+      		
+      		<div class="row">
+      			<div class="col col-xs-6">{{ form_row(form.prenom) }}</div>
+      			<div class="col col-xs-6">{{ form_row(form.nom) }}</div>
+      		</div>
+      		
+      		<div class="row">
+      			<div class="col col-xs-6">{{ form_row(form.username) }}</div>
+      			<div class="col col-xs-6">
+      			    {{ form_label(form.password.first) }}  {{ popup(info_password(), "Le mot de passe doit...", '<i class="fas fa-question-circle"></i>') |raw }} <br>
+      			    {{ form_widget(form.password.first) }}
+      			    {{ form_label(form.password.second) }}
+      			    {{ form_widget(form.password.second) }}
+      			    <div id="error_password_submit">Le mot de passe ne correspond pas aux règles de sécurité</div>
+      			</div>
+      		</div>
+      		
+      		<div class="row">
+      			<div class="col col-xs-6">{{ form_row(form.vo) }}</div>
+      			<div class="col col-xs-6"></div>
+      		</div>
+      		
+      		<div class="row">
+      			<div class="col col-xs-6">
+      			    {{ form_row(form.question_1) }}
+      			    {{ form_row(form.reponse_1) }}
+      			</div>
+      			<div class="col col-xs-6">
+      			    {{ form_row(form.question_2) }}
+      			    {{ form_row(form.reponse_2) }}
+      			</div>
+      		</div>
+      		
+      		<div class="row text-center">
+        		<div class="col col-xs-4"></div>
+        		<div class="col col-xs-4">
+        			{{ form_row(form.save) }}
+        		</div>
+        		<div class="col col-xs-4"></div>
+        	</div>
+      		
+      		<div class="row">
+      			{{ form_errors(form.password) }}
+      		</div>
+      		
+      		{{ form_rest(form) }}
+            {{ form_end(form) }}
+    	</div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{asset('js/outils.js')}}"></script>
+    <script type="text/javascript">
+    	$(function () {
+    		$('[data-toggle="popover"]').popover()
+    	});
+    	
+    	$(function () {
+        	$('.example-popover').popover({
+        		container: 'body'
+        	})
+    	});
+        $('.popover-dismiss').popover({
+        	trigger: 'hover'
+        });
+    </script>
+{% endblock %}

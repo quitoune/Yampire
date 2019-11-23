@@ -1,0 +1,36 @@
+<div class="card" id="ajax_serie_episode_see">
+	<div class="card-header">
+		<div class=" float-left">
+			{{ select("saison", saisons, {'class': 'form-control'}) |raw }}
+		</div>
+    </div>
+    <div class="card-body row">
+		<div class="row">
+        	{% for episode in episodes %}
+            	<div class="col-lg-4 col-md-6 col-12">
+                	#{{ episode.numeroEpisode }} - {{ titre(episode, app.session) }} 
+        		</div>
+        	{% endfor %}
+        </div>
+	</div>
+
+	<div class="card-footer text-center">
+		{{ episodes | length }} épisode{% if episodes | length > 1 %}s{% endif %}
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="{{ asset('js/tabs.js') }}"></script>
+    
+	<script type="text/javascript">
+        $( document ).ready(function() {
+
+            var saison_ch = $("#saison").select2();
+			saison_ch.on("change", function (e) {
+				var url_change = "{{ path('ajax_afficher_episodes', {'id': 'val', 'type': 'serie', 'perso_id': 0 }) }}";
+				url_change = url_change.replace('val', $("#saison").val());
+				Ajax(url_change, "#ajax_serie_episode_see .card-body", "#ajax_serie_episode_see");
+			});
+        });
+    </script>
+{% endblock %}

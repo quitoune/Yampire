@@ -1,0 +1,207 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Utilisateur;
+
+class AppController extends AbstractController
+{
+    /**
+     * Nombre de résultat par page
+     * @var integer
+     */
+    const nbr_max = 20;
+
+    /**
+     * Nombre de résultat par page dans les fiches des éléments
+     * @var integer
+     */
+    const nbr_max_ajax = 5;
+
+    /**
+     * Rôles des personnages dans les saisons ou les séries
+     * @var array
+     */
+    const PERSONNAGE_SERIE_ROLES = array(
+        0 => 'Invité',
+        1 => 'Principal',
+        2 => 'Récurrent'
+    );
+    
+    /**
+     * Acteur principal ou non d'un personnage
+     * @var array
+     */
+    const ACTEUR_PERSONNAGE_ROLES = array(
+        0 => 'Secondaire',
+        1 => 'Principal'
+    );
+    
+    /**
+     * Rôles des personnages dans les saisons ou les séries
+     * @var array
+     */
+    const CORRECTION = array(
+        1 => 'Correction après chaque question',
+        2 => 'Correction à la fin du quizz'
+    );
+    
+    /**
+     * Renvoie le nombre d'éléments à afficher pour un utilisateur
+     * @return string
+     */
+    public function getNbrMax() {
+        return (!is_null($this->get('session')->get('nbr_max')) ? $this->get('session')->get('nbr_max') : self::nbr_max);
+    }
+    
+    /**
+     * Renvoie le nombre de sous-élément d'un élément à afficher pour un utilisateur
+     * @return string
+     */
+    public function getNbrMaxAjax() {
+        return (!is_null($this->get('session')->get('nbr_max_ajax')) ? $this->get('session')->get('nbr_max_ajax') : self::nbr_max);
+    }
+    
+    /**
+     *
+     * @return string
+     */
+    public function homeURL()
+    {
+        return $this->generateUrl('index');
+    }
+    
+    /**
+     * Affichage d'un array sous une meilleure forme
+     *
+     * @param array $array
+     */
+    public function pre(array $array)
+    {
+        echo "<pre>";
+        print_r($array);
+        echo "</pre>";
+    }
+    
+    /**
+     * Récupération des infos de l'utilisateur connecté
+     *
+     * @return Utilisateur
+     */
+    public function getUtilisateur()
+    {
+        $repo = $this->getDoctrine()->getRepository(Utilisateur::class);
+        $membres = $repo->findById($this->getUser()
+            ->getId());
+        
+        return (count($membres) ? $membres[0] : new Utilisateur());
+    }
+    
+    /**
+     *
+     * @param array $elements
+     * @param string $appelation
+     * @return array[]
+     */
+    public function sortArrayCollection(array $elements = array(), string $appelation = "getNom"){
+        $names = array();
+        $sort_array = array();
+        
+        foreach ($elements as $id => $element){
+            $names[$id] = $element->{$appelation}();
+        }
+        asort($names);
+        
+        foreach ($names as $id => $name){
+            $sort_array[] = $elements[$id];
+        }
+        
+        return $sort_array;
+    }
+    
+    public function array_first(array $array){
+        foreach(array_flip($array) as $key){
+            return $key;
+        }
+        return null;
+    }
+    
+    /**
+     * Renvoie le type d'objet, l'ID et le nom/titre s'il existe
+     * @param $objet
+     * @param string $type
+     * @return string
+     */
+    public function getIdNom($objet, string $type){
+        switch($type){
+            case 'acteur':
+                if($objet->getSexe()){
+                    return " l'actrice " . $objet->getId() . ' - ' . $objet->getPrenom() . ' ' . $objet->getNom();
+                } else {
+                    return " l'acteur " . $objet->getId() . ' - ' . $objet->getPrenom() . ' ' . $objet->getNom();
+                }
+                break;
+            case 'chanson':
+                return ' la chanson ' . $objet->getId() . ' - ' . $objet->getTitre();
+                break;
+            case 'citation':
+                return ' la citation ' . $objet->getId();
+                break;
+            case 'episode':
+                if($this->get('session')->get('user')['vo']){
+                    return " l'épisode " . $objet->getId() . " - " . $objet->getTitreOriginal();
+                } else {
+                    return " l'épisode " . $objet->getId() . " - " . $objet->getTitre();
+                }
+                break;
+            case 'espece':
+                return " l'espèce " . $objet->getId() . " - " . $objet->getNom();
+                break;
+            case 'nationalite':
+                return ' la nationnalité ' . $objet->getId() . ' - ' . $objet->getNomFeminin();
+                break;
+            case 'personnage':
+                return ' personnage ' . $objet->getId() . ' - ' . $objet->getNomComplet();
+                break;
+            case 'quizz':
+                return ' quizz ' . $objet->getId() . ' - ' . $objet->getNom();
+                break;
+            case 'saison':
+                return ' la saison ' . $objet->getId() . ' - Saison ' . $objet->getNumeroSaison();
+                break;
+            case 'serie':
+                return ' la série ' . $objet->getId() . ' - ' . $objet->getNom();
+                break;
+            case 'utilisateur':
+                return ' l\'utilisateur ' . $objet->getId() . ' - ' . $objet->getNomComplet();
+                break;
+        }
+    }
+    
+    /**
+     *
+     * @return array[]|string
+     */
+    public function getSaisons(){
+        $saisons = array();
+        
+        $query  = "";
+        $query .= "SELECT Se.nom as serie_nom, Sa.id as saison_id, Sa.numero_saison as num_saison ";
+        $query .= "FROM `saison` Sa, `serie` Se WHERE Se.id = Sa.serie_id ";
+        $query .= "ORDER BY Se.id, Sa.numero_saison";
+        
+        $em = $this->getDoctrine()->getManager();
+        $statement = $em->getConnection()->prepare($query);
+        $statement->execute();
+        
+        $serie_saisons = $statement->fetchAll();
+        foreach($serie_saisons as $serie_saison){
+            if(!isset($serie_saison["serie_nom"])){
+                $saisons[$serie_saison["serie_nom"]] = array();
+            }
+            $saisons[$serie_saison["serie_nom"]][$serie_saison["saison_id"]] = 'Saison ' . $serie_saison["num_saison"];
+        }
+        return $saisons;
+    }
+}

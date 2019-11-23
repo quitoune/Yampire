@@ -1,0 +1,23 @@
+<div class="row">
+	{% for episode in episodes %}
+    	<div class="col-lg-4 col-md-6 col-12">
+        	#{{ episode.numeroEpisode }} - 
+            {{ titre(episode, app.session) }}
+		</div>
+	{% endfor %}
+</div>
+
+{% block javascripts %}
+	<script type="text/javascript">
+        $( document ).ready(function() {
+            var type = "{{ type }}";
+            var length = "{{ episodes | length }}";
+            var html = length + " épisode";
+            if(length > 1){
+				html += "s";
+            }
+            $("#ajax_" + type + "_episode_see .card-footer").html(html);
+			//Mettre à jour le footer avec la taille de épisodes
+        });
+    </script>
+{% endblock %}

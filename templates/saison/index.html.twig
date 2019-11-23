@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Saisons {% endblock %}
+
+{% block body %}
+    
+    <div class="card mb-3">
+        <div class="card-header text-left">
+            {{ pagination.total }} saisons - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('saison_ajouter', {'slug':serie.slug, 'page':pagination.page})) | raw }}
+            {% endif %}
+        </div>
+        <div class="card-body text-center">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Nombre d'épisodes</th>
+                        <th>Série</th>
+                    </tr>
+                </thead>
+                {% for saison in saisons %}
+                    <tr>
+                        <td> <a href="{{ path('saison_afficher', {'id':saison.id, 'slug': serie.slug}) }}"> {{ saison.id }} </a></td>
+                        <td> Saison {{ saison.numeroSaison }} </td>
+                        <td> {{ saison.nombreEpisode }} </td>
+                        <td> {{ saison.serie.nom }} </td>
+                    </tr>
+                {% endfor %}
+                </table>
+                
+                {% if saisons is empty %}
+                    <p class="text-info text-center">Il  n'y a aucune saison correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+        <div class="card-footer text-muted">
+            {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
