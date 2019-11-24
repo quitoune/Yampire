@@ -5,6 +5,7 @@ namespace App\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Question;
 
 class QuestionController extends AppController
 {
@@ -49,4 +50,30 @@ class QuestionController extends AppController
         4 => 'Proposition 4',
         5 => 'Proposition 5'
     );
+    
+    /**
+     * Liste des séries
+     *
+     * @Route("/question/liste/{page}", name="question_liste")
+     *
+     * @param int $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function liste(int $page = 1)
+    {
+        $repository = $this->getDoctrine()->getRepository(Question::class);
+        
+        $questions = $repository->findAll();
+        
+        $paths = array(
+            'home' => $this->homeURL(),
+            'paths' => array(),
+            'active' => 'Questions'
+        );
+        
+        return $this->render('question/index.html.twig', array(
+            'questions' => $questions,
+            'paths' => $paths
+        ));
+    }
 }

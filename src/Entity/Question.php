@@ -29,12 +29,12 @@ class Question
     private $type_proposition;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $intitule;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $reponse;
 
@@ -72,6 +72,11 @@ class Question
      * @ORM\ManyToOne(targetEntity="App\Entity\Citation")
      */
     private $citation;
+    
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_creation;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur", inversedBy="questions")
@@ -122,7 +127,7 @@ class Question
         return $this->intitule;
     }
 
-    public function setIntitule(string $intitule): self
+    public function setIntitule(?string $intitule): self
     {
         $this->intitule = $intitule;
 
@@ -134,7 +139,7 @@ class Question
         return $this->reponse;
     }
 
-    public function setReponse(int $reponse): self
+    public function setReponse(?int $reponse): self
     {
         $this->reponse = $reponse;
 
@@ -222,6 +227,18 @@ class Question
     {
         $this->citation = $citation;
 
+        return $this;
+    }
+    
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->date_creation;
+    }
+    
+    public function setDateCreation(\DateTimeInterface $date_creation): self
+    {
+        $this->date_creation = $date_creation;
+        
         return $this;
     }
 

@@ -5,7 +5,7 @@
 {% block body %}
 <div>
 	{% for question in questions %}
-		{{ afficherQuestion(doctrine, question) | raw }}
+		{{ afficher(question) | raw }}
 		<hr>
 	{% endfor %}
 </div>

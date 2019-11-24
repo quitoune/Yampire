@@ -7,6 +7,8 @@ use Twig\TwigFilter;
 use Twig\TwigFunction;
 use App\Controller\QuestionController;
 use App\Controller\AppController;
+use App\Entity\Question;
+use App\Entity\Citation;
 
 class QuestionExtension extends AbstractExtension
 {
@@ -93,5 +95,163 @@ class QuestionExtension extends AbstractExtension
         $select .= "</select>";
         
         return $select;
+    }
+    
+    /**
+     * Affichage d'une question
+     * 
+     * @param Question $question
+     * @param int $ordre
+     * @return string
+     */
+    public function afficherQuestion(Question $question, int $ordre = 0)
+    {
+        switch($question->getTypeQuestion()){
+            case 7:
+                return $this->afficherVraiFaux($question, $ordre);
+                break;
+            case 2:
+                return $this->afficherCitation($question->getCitation(), $ordre);
+                break;
+            default:
+                return $this->afficherQcm($question, $ordre);
+                break;
+        }
+    }
+    
+    /**
+     * Affichage d'une question de type citation
+     *
+     * @param Citation $citation
+     * @param int $ordre
+     * @return string
+     */
+    public function afficherCitation(Citation $citation = null, int $ordre = 0)
+    {
+        $return = "OK";
+        if(!is_null($citation)){
+            $id = $citation->getId();
+            
+            $return = '<div class="card">';
+            $return .= '<div class="card-header">';
+            if($ordre){
+                $return .= '#' . $ordre;
+            } else {
+                $return .= '#' . $id;
+            }
+            $return .= ' <br> <span style="color:blue;font-style:italic;">' . $citation->getTexte() . '</span>';
+            $return .= '</div>';
+            
+            $return .= '<div class="card-body">';
+            $return .= 'Qui est l\'auteur de cette citation ? <br>';
+            $return .= 'A qui la dit-elle ? <br>';
+            $return .= 'Dans quel épisode ? <br>';
+            $return .= '</div>';
+            
+            $return .= '<div class="card-footer">';
+            $return .= '</div>';
+            $return .= '</div>';
+        }
+        
+        return $return;
+    }
+    
+    /**
+     * Affichage d'une question de type citation
+     *
+     * @param Question $question
+     * @param int $ordre
+     * @return string
+     */
+    public function afficherVraiFaux(Question $question, int $ordre = 0)
+    {
+        $id = $question->getId();
+        
+        $return = '<div class="card">';
+        $return .= '<div class="card-header">';
+        if($ordre){
+            $return .= '#' . $ordre . ' - ' . $question->getIntitule();
+        } else {
+            $return .= '#' . $id . ' - ' . $question->getIntitule();
+        }
+        $return .= '</div>';
+        
+        $return .= '<div class="card-body">';
+        
+        $return .= '<div class="form-check">';
+        $return .= '<label class="container">Vrai';
+        $return .= '<input type="radio" name="question_quizz_' . $id . '" id="question_quizz_' . $id . '" value="1">';
+        $return .= '<span class="checkmark"></span>';
+        $return .= '</label>';
+        
+        
+        $return .= '</div>';
+        
+        $return .= '<div class="form-check">';
+        $return .= '<label class="container">Faux';
+        $return .= '<input type="radio" name="question_quizz_' . $id . '" id="question_quizz_' . $id . '" value="0">';
+        $return .= '<span class="checkmark"></span>';
+        $return .= '</div>';
+        
+        $return .= '</div>';
+        
+        $return .= '<div class="card-footer">';
+        $return .= '</div>';
+        $return .= '</div>';
+        
+        return $return;
+    }
+    
+    /**
+     * Affichage d'une question de type Question
+     *
+     * @param Question $question
+     * @param int $ordre
+     * @return string
+     */
+    public function afficherQcm(Question $question, int $ordre = 0)
+    {
+        $id = $question->getId();
+        
+        $reponse = $question->getReponse();
+        
+        $return = '<div class="card">';
+        $return .= '<div class="card-header">';
+        if($ordre){
+            $return .= '#' . $ordre . ' - ' . $question->getIntitule();
+        } else {
+            $return .= '#' . $id . ' - ' . $question->getIntitule();
+        }
+        $return .= '</div>';
+        $return .= '<div class="card-body">';
+        for ($i = 1; $i <= 5; $i ++) {
+            $methode = 'getProposition' . $i;
+            $valeur = $question->{$methode}();
+            if (! is_null($valeur)) {
+                $return .= '<div class="form-check" data-proposition="' . $i . '"';
+                if($i == $reponse){
+                    $return .= ' data-reponse="1"';
+                } else {
+                    $return .= ' data-reponse="0"';
+                }
+                $return .= '>';
+                $return .= '<label class="container">' . $valeur;
+                $return .= '<span class="red hidden"><i class="fas fa-times"></i></span><span class="green hidden"><i class="fas fa-check"></i></span>';
+                $return .= '<input type="radio" name="quizz_question_' . $id . '" id="quizz_question_' . $id . '" value="' . $i . '">';
+                $return .= '<span class="checkmark"></span>';
+                $return .= '</label>';
+                $return .= '</div>';
+            }
+        }
+        $return .= '</div>';
+        $return .= '<div class="card-footer">';
+        if (!is_null($question->getExplication())) {
+            $return .= '<div class="explication hidden">';
+            $return .= $question->getExplication();
+            $return .= '</div>';
+        }
+        $return .= '</div>';
+        $return .= '</div>';
+        return $return;
     }
 }

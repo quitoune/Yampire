@@ -47,6 +47,11 @@ class Acteur
      * @ORM\ManyToMany(targetEntity="App\Entity\Nationalite", inversedBy="acteurs")
      */
     private $nationalite;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Photo", inversedBy="acteurs")
+     */
+    private $photo;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ActeurPersonnage", mappedBy="acteur")
@@ -158,6 +163,18 @@ class Acteur
             $this->nationalite->removeElement($nationalite);
         }
 
+        return $this;
+    }
+    
+    public function getPhoto(): ?Photo
+    {
+        return $this->photo;
+    }
+    
+    public function setPhoto(?Photo $photo): self
+    {
+        $this->photo = $photo;
+        
         return $this;
     }
 
