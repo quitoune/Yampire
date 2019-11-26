@@ -40,6 +40,14 @@ class QuestionExtension extends AbstractExtension
             new TwigFunction('select_correction', array(
                 $this,
                 'getSelectCorrection'
+            )),
+            new TwigFunction('select_type_question', array(
+                $this,
+                'selectTypeQuestion'
+            )),
+            new TwigFunction('select_type_proposition', array(
+                $this,
+                'selectTypeProposition'
             ))
         );
     }
@@ -64,6 +72,44 @@ class QuestionExtension extends AbstractExtension
     public function getTypeQuestion(int $key)
     {
         return (isset(QuestionController::TYPE_QUESTION[$key]) ? QuestionController::TYPE_QUESTION[$key] : $key);
+    }
+    
+    /**
+     * Récupération des types de proposition
+     *
+     * @param int $key
+     * @return int|string
+     */
+    public function selectTypeProposition(string $name, string $id = "")
+    {
+        if(!$id){
+            $id = $name;
+        }
+        $select = '<select id="' . $id . '" name="' . $name . '" class="form-control">';
+        foreach (QuestionController::TYPE_PROPOSITION as $index => $valeur){
+            $select .= '<option value="' . $index .  '">' . $valeur . '</option>';
+        }
+        $select .= '</select>';
+        return $select;
+    }
+    
+    /**
+     * Récupération des types de question
+     *
+     * @param int $key
+     * @return int|string
+     */
+    public function selectTypeQuestion(string $name, string $id = "")
+    {
+        if(!$id){
+            $id = $name;
+        }
+        $select = '<select id="' . $id . '" name="' . $name . '" class="form-control">';
+        foreach (QuestionController::TYPE_QUESTION as $index => $valeur){
+            $select .= '<option value="' . $index .  '">' . $valeur . '</option>';
+        }
+        $select .= '</select>';
+        return $select;
     }
     
     /**

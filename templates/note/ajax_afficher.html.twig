@@ -61,16 +61,10 @@
 {% block javascripts %} 
     <script type="text/javascript">
         $( document ).ready(function() {
-            $('#btn-ajouter').click(function(event){
-                event.preventDefault();
-        		OuvrirModal('#btn-ajouter', '#modal_{{ type }}')
-            });
+            OuvrirModal('#btn-ajouter', '#modal_{{ type }}');
 
             {% for note in notes %}
-            	$('#btn-modifier-' + {{ note.id }}).click(function(event){
-            		event.preventDefault();
-            		OuvrirModal('#btn-modifier-' + {{ note.id }}, '#modal_{{ type }}')
-                });
+            	OuvrirModal('#btn-modifier-' + {{ note.id }}, '#modal_{{ type }}');
             {% endfor %}
         });
     </script>

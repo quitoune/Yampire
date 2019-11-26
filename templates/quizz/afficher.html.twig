@@ -6,9 +6,15 @@
     <div id="quizz" class="card">
     	<div class="card-header">
     		<div class="float-right">
-    			<a class="btn btn-dark active"><i class="fas fa-pen"></i> Editer le quizz</a>
-				<a class="btn btn-dark active"><i class="fas fa-plus"></i> Ajouter une question</a>
-				<a id="quizz_tester" href="{{ path('quizz_test', { 'id': quizz.id }) }}" class="btn btn-dark active"><i class="fas fa-play"></i> Tester</a>
+    			<span class="btn btn-dark active">
+    				<i class="fas fa-pen"></i> Editer le quizz
+    			</span>
+				<span class="btn btn-dark active">
+					<i class="fas fa-plus"></i> Ajouter une question
+				</span>
+				<span id="quizz_tester" href="{{ path('quizz_test', { 'id': quizz.id }) }}" class="btn btn-dark active">
+					<i class="fas fa-play"></i> Tester
+				</span>
     		</div>
 		</div>
 		<div class="card-body">
@@ -47,9 +53,7 @@
 {% endblock %}
 
 {% block javascripts %}
-	
-	<script src="{{ asset('js/question/question.js') }}"></script>
-	<script src="{{ asset('js/quizz/Quizz.js') }}"></script>
+	<script src="{{ asset('js/tabs.js') }}"></script>
     
     <script type="text/javascript">
         $( document ).ready(function() {
@@ -70,8 +74,7 @@
 //                Question.OuvrirModal('#btn-edit-question-' + {#{ quizzQuestion.question.id }#});
 //            {#% endfor %#}
             
-            Quizz.demarrer({ id_content_modal : '#modal_quizz' });
-            Quizz.OuvrirModal('#quizz_tester');
+            OuvrirModal('#quizz_tester', '#modal_quizz');
         });
     </script>
 {% endblock %}

@@ -22,20 +22,18 @@ class QuestionQuizzController extends AppController
      */
     public function afficher(Quizz $quizz, int $ordre, int $nbr)
     {
-
         $question_quizz = $this->getDoctrine()
-            ->getRepository(QuestionQuizz::class)
-            ->findOneBy(array(
-                'quizz' => $quizz,
-                'ordre' => $ordre
-            ));
-
+        ->getRepository(QuestionQuizz::class)
+        ->findOneBy(array(
+            'quizz' => $quizz,
+            'ordre' => $ordre
+        ));
+        
         return $this->render('question_quizz/afficher.html.twig', array(
             'quizz' => $quizz,
             'question_quizz' => $question_quizz,
             'nbr' => $nbr,
-            'ordre' => $ordre,
-            'doctrine' => $this->getDoctrine()
+            'ordre' => $ordre
         ));
     }
 }

@@ -100,7 +100,7 @@ class QuizzController extends AppController
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function tester(Quizz $quizz){
-        $nbr = count($quizz->getQuizzQuestions());
+        $nbr = count($quizz->getQuestionQuizzs());
         return $this->render('quizz/lancement.html.twig', array(
             'quizz' => $quizz,
             'nbr' => $nbr

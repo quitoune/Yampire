@@ -35,10 +35,13 @@ function chargerTabs(url_base, id_bloc){
 };
 
 function OuvrirModal(id, id_content_modal){
-	$("html").showLoading();
-    Ajax($(id).attr('href'), id_content_modal);
+	$(id).click(function(event){
+        event.preventDefault();
+        $("html").showLoading();
+        Ajax($(id).attr('href'), id_content_modal);
     
-    return false;
+        return false;
+	});
 };
 
 function SubmitModal(objet, type, url, id_modal, url_base, id_bloc){

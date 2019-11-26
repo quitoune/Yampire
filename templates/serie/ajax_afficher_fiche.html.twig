@@ -33,10 +33,7 @@
 {% block javascripts %} 
     <script type="text/javascript">
         $( document ).ready(function() {
-            $('#btn-modifier').click(function(event){
-                event.preventDefault();
-        		OuvrirModal('#btn-modifier', '#bloc_serie')
-            });
+            OuvrirModal('#btn-modifier', '#bloc_serie');
         });
     </script>
 {% endblock %}

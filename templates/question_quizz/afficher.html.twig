@@ -9,7 +9,7 @@
     </div>
     
     <div class="modal-body">
-        {{ afficher(doctrine, question_quizz.question, ordre) | raw }}
+        {{ afficher(question_quizz.question, ordre) | raw }}
     </div>
     
     <div class="modal-footer">
@@ -37,9 +37,9 @@
             'show' : true,
             'backdrop' : 'static'
         });
-        
-        Quizz.OuvrirModal('#next');
-        Quizz.OuvrirModal('#prev');
+
+        OuvrirModal('#next', '#modal_quizz');
+        OuvrirModal('#prev', '#modal_quizz');
 
         $(".form-check").click(function(){
         	$(".form-check").removeClass('check');

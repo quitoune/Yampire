@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Note|null find($id, $lockMode = null, $lockVersion = null)
@@ -61,5 +62,53 @@ class NoteRepository extends ServiceEntityRepository
             'paginator' => $paginator,
             'nombre' => $nb
         );
+    }
+    
+    /**
+     * Génération de la requête
+     *
+     * @param QueryBuilder $query
+     * @param array $params
+     *            [order] => ordre de tri
+     *            [page] => page (pagination)
+     *            [search] => tableau contenant les éléments de la recherche
+     *            [repository] => repository (objet courant)
+     *            [field] => champ de tri,
+     *            [condition] => tableau contenant des conditions supplémentaires en dehors des filtres de l'utilisateur
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    private function generateParamsSql(QueryBuilder $query, array $params)
+    {
+        $index = 1;
+        if (isset($params['search'])) {
+            foreach ($params['search'] as $searchKey => $valueKey) {
+                $explode_key = explode('-', $searchKey);
+                if (count($explode_key) == 3) {
+                    $query = $query->join($explode_key[0] . '.' . $explode_key[1], $explode_key[1]);
+                    $query->andWhere($explode_key[1] . "." . $explode_key[2] . " LIKE :searchTerm$index");
+                    $query->setParameter('searchTerm' . $index, '%' . $valueKey . '%');
+                } else {
+                    $query->andWhere(str_replace('-', '.', $searchKey) . " LIKE :searchTerm$index");
+                    $query->setParameter('searchTerm' . $index, '%' . $valueKey . '%');
+                }
+                $index ++;
+            }
+        }
+        if (isset($params['jointure'])) {
+            
+            foreach ($params['jointure'] as $jointure) {
+                $query->join($jointure['oldrepository'] . '.' . $jointure['newrepository'], $jointure['newrepository']);
+            }
+        }
+        if (isset($params['condition'])) {
+            if (is_array($params['condition'])) {
+                foreach ($params['condition'] as $condition) {
+                    $query->andWhere($condition);
+                }
+            } else {
+                $query->andWhere($params['condition']);
+            }
+        }
+        return $query;
     }
 }

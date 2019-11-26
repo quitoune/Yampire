@@ -168,6 +168,18 @@ class Personnage
 
         return $this;
     }
+    
+    public function getNomComplet(): ?string
+    {
+        $nom_complet = $this->prenom;
+        if(!is_null($this->prenom_usage)){
+            $nom_complet .= ' "' . $this->prenom_usage . '"';
+        }
+        if($this->nom){
+            $nom_complet .= " " . $this->nom;
+        }
+        return $nom_complet;
+    }
 
     public function getDateNaissance(): ?\DateTimeInterface
     {
