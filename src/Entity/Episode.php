@@ -179,6 +179,16 @@ class Episode
 
         return $this;
     }
+    
+    public function getCodeEpisode($avec_serie = true)
+    {
+        $code = '';
+        if($avec_serie){
+            $code .= $this->getSerie()->getNomCourt() . ' - ';
+        }
+        $code .= 'S' . $this->getSaison()->getNumeroSaison() . 'E' . $this->numero_episode;
+        return $code;
+    }
 
     public function getPremiereDiffusion(): ?\DateTimeInterface
     {

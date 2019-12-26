@@ -6,6 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Question;
+use Symfony\Component\Console\Tests\Question\QuestionTest;
+use App\Form\QuestionType;
+use Symfony\Component\HttpFoundation\Request;
 
 class QuestionController extends AppController
 {
@@ -73,6 +76,42 @@ class QuestionController extends AppController
         
         return $this->render('question/index.html.twig', array(
             'questions' => $questions,
+            'paths' => $paths
+        ));
+    }
+    
+    /**
+     * @Route("/question/ajouter", name="question_ajouter")
+     * 
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function ajouter(Request $request){
+        $question = new Question();
+        
+        $form = $this->createForm(QuestionType::class, $question);
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $question = $form->getData();
+            
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($question);
+            $manager->flush();
+            
+            return $this->redirectToRoute('question_liste', array(
+                'page' => 1
+            ));
+        }
+        
+        $paths = array(
+            'home' => $this->homeURL(),
+            'paths' => array(),
+            'active' => "Ajout d'une question"
+        );
+        
+        return $this->render('question/ajouter.html.twig', array(
+            'form' => $form->createView(),
             'paths' => $paths
         ));
     }

@@ -37,6 +37,10 @@ class QuestionExtension extends AbstractExtension
                 $this,
                 'afficherQuestion'
             )),
+            new TwigFunction('select_vrai_faux', array(
+                $this,
+                'getSelectVraiFaux'
+            )),
             new TwigFunction('select_correction', array(
                 $this,
                 'getSelectCorrection'
@@ -138,6 +142,24 @@ class QuestionExtension extends AbstractExtension
         foreach(AppController::CORRECTION as $key => $role){
             $select .= "<option value = '" . $key . "' " . ($key == 1 ? "selected" : "") . " >" . $role . "</option>";
         }
+        $select .= "</select>";
+        
+        return $select;
+    }
+    
+    /**
+     * 
+     * @param string $id
+     * @param string $name
+     */
+    public function getSelectVraiFaux(string $id, string $name = ""){
+        if($name == ""){
+            $id = $name;
+        }
+        
+        $select  = "<select id = '" . $id . "' name = '" . $name . "' class = 'form-control'>";
+        $select .= "<option value='1'>Vrai</option>";
+        $select .= "<option value='0'>Faux</option>";
         $select .= "</select>";
         
         return $select;
