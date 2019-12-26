@@ -52,3 +52,4 @@
 /.web-server-pid
 public/image/photo/*
 .settings/*
+src/DataFixtures/resources/*
