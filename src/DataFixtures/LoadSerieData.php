@@ -28,6 +28,7 @@ class LoadSerieData extends Fixture implements DependentFixtureInterface, Contai
             
             foreach ($objet as $key => $val) {
                 switch($key){
+                    case 'setTag':
                     case 'setPhoto':
                         $val = $this->getReference($val);
                         break;
@@ -44,6 +45,7 @@ class LoadSerieData extends Fixture implements DependentFixtureInterface, Contai
     public function getDependencies()
     {
         return array(
+            LoadTagData::class,
             LoadPhotoData::class
         );
     }

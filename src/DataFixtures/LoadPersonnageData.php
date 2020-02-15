@@ -28,6 +28,7 @@ class LoadPersonnageData extends Fixture implements DependentFixtureInterface, C
             
             foreach ($objet as $key => $val) {
                 switch($key){
+                    case 'setTag':
                     case 'setPhoto':
                     case 'setEspece':
                         $val = $this->getReference($val);
@@ -53,6 +54,7 @@ class LoadPersonnageData extends Fixture implements DependentFixtureInterface, C
     public function getDependencies()
     {
         return array(
+            LoadTagData::class,
             LoadPhotoData::class,
             LoadEspeceData::class
         );

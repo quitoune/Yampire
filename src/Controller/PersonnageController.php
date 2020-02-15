@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Acteur;
 use App\Entity\ActeurPersonnage;
 use App\Form\PersonnageType;
+use App\Entity\Espece;
 
 class PersonnageController extends AppController
 {
@@ -231,7 +232,7 @@ class PersonnageController extends AppController
                 $repository = $this->getDoctrine()->getRepository(Episode::class);
                 break;
             case 'espece':
-                $repository = $this->getDoctrine()->getRepository(Episode::class);
+                $repository = $this->getDoctrine()->getRepository(Espece::class);
                 break;
             case 'saison':
                 $repository = $this->getDoctrine()->getRepository(Saison::class);

@@ -176,6 +176,12 @@ class AppController extends AbstractController
             case 'utilisateur':
                 return ' l\'utilisateur ' . $objet->getId() . ' - ' . $objet->getNomComplet();
                 break;
+            case 'photo':
+                return ' la photo ' . $objet->getId() . ' - ' . $objet->getNom();
+                break;
+            case 'photo':
+                return ' la façon de mourir ' . $objet->getId() . ' - ' . $objet->getNom();
+                break;
         }
     }
     

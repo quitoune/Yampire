@@ -1,0 +1,29 @@
+<div id="ajax_serie_photo_see">
+	<div>
+	    
+    </div>
+    
+    <div class="row">
+    	{% for photo in photos %}
+        	<div class="col-img">
+        		<a href="{{ path('ajax_afficher_photos', { 'id':serie.id, 'page':1 }) }}">
+                    {% if photo is not null %}
+        				{{ photo(photo) | raw }}
+        			{% else %}
+                    	<span class="center">{{ photo.nom }}</span>
+        	        {% endif %}
+	            </a>
+            </div>
+        {% endfor %}
+    </div>
+    
+	<div>
+		{% if photos is empty %}
+          	<p class="text-info text-center">Aucune photo n'est associé à cette série.</p>
+        {% endif %}
+	</div>
+	
+	<div>
+    	
+    </div>
+</div>

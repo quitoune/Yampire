@@ -1,30 +1,25 @@
-<div class="card" id="ajax_{{ type }}_saison_see">
-	<div class="card-header">
-		<div class=" float-left">
-    	    {{ pagination.nb_elements }} saison{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
-    	</div>
+<div id="ajax_{{ type }}_saison_see">
+	<div>
+	    {{ pagination.nb_elements }} saison{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
     </div>
-    <div class="card-body">
-    	<table class="table table-striped table-light table-sm">
-        	<tr>
-            	<th>ID</th>
-                <th>Nom</th>
-                <th>Nombre d'épisodes</th>
-            </tr>
-            {% for saison in saisons %}
-            	<tr>
-            		<td>{{ saison.id }}</td>
-            		<td><a href="{{ path('saison_afficher', {'id':saison.id,'slug':saison.serie.slug}) }}"> Saison {{ saison.numeroSaison }}</a></td>
-            		<td>{{ saison.nombreEpisode }}</td>
-            	</tr>
-            {% endfor %}
-		</table>
-		{% if saisons is empty %}
-          	<p class="text-info text-center">Cette série n'a aucune saison.</p>
-        {% endif %}
+    
+    <div class="row">
+	    {% for saison in saisons %}
+            <div class="col-img">
+				<a href="{{ path('saison_afficher', {'id':saison.id,'slug':saison.serie.slug}) }}">
+                    {{ photo(saison.photo) | raw }}
+                </a>
+            </div>
+        {% endfor %}
 	</div>
 	
-	<div class="card-footer">
+    <div>
+        {% if saisons is empty %}
+            <p class="text-info text-center">Cette série n'a aucune saison.</p>
+        {% endif %}
+    </div>
+	
+	<div>
     	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>

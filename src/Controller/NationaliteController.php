@@ -49,34 +49,6 @@ class NationaliteController extends AppController
     }
 
     /**
-     * Formulaire d'ajout d'une nationalité
-     *
-     * @Route("/nationalite/afficher/{id}/{page}", name="nationalite_afficher")
-     *
-     * @param Nationalite $nationalite
-     * @param int $page
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function afficher(Nationalite $nationalite, int $page = 1)
-    {
-        $paths = array(
-            'home' => $this->homeURL(),
-            'paths' => array(
-                $this->generateUrl('nationalite_liste', array(
-                    'page' => $page
-                )) => 'Nationalités'
-            ),
-            'active' => 'Affichage' . $this->getIdNom($nationalite, 'nationalite')
-        );
-
-        return $this->render('nationalite/afficher.html.twig', array(
-            'page' => $page,
-            'nationalite' => $nationalite,
-            'paths' => $paths
-        ));
-    }
-
-    /**
      * Formulaire de modification d'une nationalité
      *
      * @Route("/nationalite/modifier/{id}/{page}", name="nationalite_modifier")

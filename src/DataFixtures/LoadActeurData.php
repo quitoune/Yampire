@@ -27,9 +27,9 @@ class LoadActeurData extends Fixture implements DependentFixtureInterface, Conta
             $acteur = new Acteur();
             
             foreach ($objet as $key => $val) {
-                
                 switch ($key){
                     case 'setPhoto':
+                    case 'setTag':
                         $val = $this->getReference($val);
                         $acteur->{$key}($val);
                         break;
@@ -56,6 +56,7 @@ class LoadActeurData extends Fixture implements DependentFixtureInterface, Conta
     public function getDependencies()
     {
         return array(
+            LoadTagData::class,
             LoadNationaliteData::class,
             LoadPhotoData::class
         );

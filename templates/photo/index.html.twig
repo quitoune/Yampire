@@ -3,7 +3,6 @@
 {% block title %}Photos{% endblock %}
 
 {% block body %}
-    
     <div class="card text-center">
         <div class="card-header text-left">
             {{ pagination.total }} photos - {{ pagination.page }} / {{ pagination.nbPages }}
@@ -12,7 +11,9 @@
         	<div class="row">
         		{% for photo in photos %}
                     <div class="col-img">
-                        {{ photo(photo) | raw }}
+						<a href="{{ path('photo_afficher', {'id':photo.id, 'page':pagination.page}) }}">
+                            {{ photo(photo) | raw }}
+                        </a>
                     </div>
                 {% endfor %}
         	</div>

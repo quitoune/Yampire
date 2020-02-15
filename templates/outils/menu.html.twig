@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+<nav class="navbar navbar-expand-lg navbar-primary bg-yampire">
     <button id="navbar-button" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     	<i class="fas fa-align-justify"></i>
   	</button>
@@ -10,7 +10,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans %}Séries{% endtrans %}
                 </a>
-                <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
                     	<a class="dropdown-item" href="{{ path('serie_afficher', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
                     {% endfor %}
@@ -21,7 +21,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans %}Episodes{% endtrans %}
                 </a>
-                <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
                     	<a class="dropdown-item" href="{{ path('episode_liste', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
                     {% endfor %}
@@ -32,7 +32,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans %}Personnages{% endtrans %}
                 </a>
-                <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
                     	<a class="dropdown-item" href="{{ path('personnage_liste', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
                     {% endfor %}
@@ -43,7 +43,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans %}Citations{% endtrans %}
                 </a>
-                <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                 	{% for serie in app.session.get('series') %}
                     	<a class="dropdown-item" href="{{ path('citation_liste', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
                     {% endfor %}
@@ -53,7 +53,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {% trans %}Chansons{% endtrans %}
                 </a>
-                <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                 	{% for serie in app.session.get('series') %}
                     	<a class="dropdown-item" href="{{ path('chanson_liste', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
                     {% endfor %}
@@ -63,7 +63,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Univers
                 </a>
-                <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('espece_liste') }}">Espèces</a>
                     <a class="dropdown-item" href="{{ path('way_to_die_liste') }}">Façon de mourir</a>
                		<a class="dropdown-item" href="{{ path('acteur_liste') }}">Acteurs</a>
@@ -75,7 +75,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Jeux
                 </a>
-                <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Lancer un quizz</a>
                     <a class="dropdown-item" href="#">Créer un quizz</a>
                 </div>
@@ -84,7 +84,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Plus
                 </a>
-                <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                 	<a class="dropdown-item" href="{{ path('quizz_liste') }}">Quizz</a>
                     <a class="dropdown-item" href="{{ path('question_liste') }}">Questions</a>
                 </div>
@@ -98,7 +98,7 @@
                 		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   			Bonjour {{ app.user.username }}
                 		</a>
-                		<div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                		<div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                   			<a class="dropdown-item" href=""><i class="fas fa-user"></i> Mon compte</a>
                   			{% if is_granted('ROLE_ADMIN') %}
                     			<a class="dropdown-item" href="{{ path('utilisateur_liste', {'page': 1}) }}"><i class="fas fa-user-friends"></i> Utilisateurs</a>

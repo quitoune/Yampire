@@ -4,11 +4,12 @@
 
 {% block body %}
     
-    <h1 class="display-4">Façons de mourir</h1>
-    
     <div class="card text-center">
         <div class="card-header text-left">
             {{ pagination.total }} façons de mourir - {{ pagination.page }} / {{ pagination.nbPages }}
+            {% if is_granted("ROLE_ADMIN") %}
+                {{ ajouter(path('way_to_die_ajouter', {'page':pagination.page})) | raw }}
+            {% endif %}
         </div>
         <div class="card-body">
             <table class="table table-striped">
@@ -16,15 +17,21 @@
                     <tr>
                         <th>ID</th>
                         <th>Nom</th>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        	<th></th>
+                        {% endif %}
                     </tr>
                 </thead>
                 {% for way_to_die in way_to_dies %}
                     <tr>
                         <td> {{ way_to_die.id }} </td>
                         <td> {{ way_to_die.nom }} </td>
+                        {% if is_granted("ROLE_ADMIN") %}
+                        	<td>{{ modifier(path('way_to_die_modifier', {'id':way_to_die.id, 'page':pagination.page})) | raw }}</td>
+                        {% endif %}
                     </tr>
                 {% else %}
-                	<p class="text-info text-center">Il  n'y a aucune nationalité correspondant à la recherche.</p>
+                	<p class="text-info text-center">Il  n'y a aucune façon d mourir correspondant à la recherche.</p>
                 {% endfor %}
                 </table>
             </div>

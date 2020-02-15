@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Photo - ID {{ photo.id }} {% endblock %}
+
+{% block body %}
+	<div class="row">
+    	<div class="col-4">
+    	    {{ photo(photo) | raw }}
+    	</div>
+    	<div class="col-8" id="photo_tag">
+    		{% for tag in photo.tag %}
+    			<span class="badge badge-pill badge-yampire">
+    			    {{ tag.nom }} 
+    			    <span class="supprimer" data-link="{{ path('photo_tag_supprimer', { 'photo_id': photo.id, 'tag_id': tag.id }) }}">
+            	    	<i class="fas fa-times"></i>
+            	    </span>
+    			</span>
+            {% endfor %}
+    	</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/tabs.js') }}"></script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		$(".supprimer").click(function(){
+			Ajax($(this).data('link'), "#photo_tag");
+		});
+	});
+	</script>
+{% endblock %}

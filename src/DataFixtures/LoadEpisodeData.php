@@ -28,6 +28,7 @@ class LoadEpisodeData extends Fixture implements DependentFixtureInterface, Cont
             
             foreach ($objet as $key => $val) {
                 switch($key){
+                    case 'setTag':
                     case 'setSerie':
                     case 'setSaison':
                         $val = $this->getReference($val);
@@ -53,6 +54,7 @@ class LoadEpisodeData extends Fixture implements DependentFixtureInterface, Cont
     public function getDependencies()
     {
         return array(
+            LoadTagData::class,
             LoadSerieData::class,
             LoadSaisonData::class
         );

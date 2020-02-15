@@ -129,7 +129,7 @@ img {
 	color: #9b111e!important;
 }
 
-.bg-primary {
+.bg-yampire {
 	background-color: #9b111e!important;
 	color: #000000;
 }
@@ -173,7 +173,8 @@ a.page-link:hover {
 	background-color: #9b111e;
 }
 
-a.page-link:active {
+a.page-link:active,
+a.page-link:focus {
 	box-shadow:0 0 0 .2rem rgba(128,0,0,.25)!important;
 }
 
@@ -418,4 +419,9 @@ li.page-item {
 	.col-quotes {
     	width: 50%;
 	}
+}
+
+.badge-yampire {
+    color: #fff;
+    background-color: #9b111e;
 }

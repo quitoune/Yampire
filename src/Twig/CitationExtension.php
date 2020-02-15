@@ -136,7 +136,7 @@ class CitationExtension extends AbstractExtension
             $card_citation .= $citation->getUtilisateur()->getUsername();
         } else {
             $card_citation .= 'Créée le ' . $citation->getDateCreation()->format('d/m/Y à H:i');
-            $card_citation .= ' par ' . $citation->getUtilisateur()->getNomComplet();
+            $card_citation .= ' par ' . $citation->getUtilisateur()->getUsername();
         }
         $card_citation .= '</div>';
         

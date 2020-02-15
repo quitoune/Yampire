@@ -6,8 +6,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class LoadEspeceData extends Fixture implements ContainerAwareInterface
+class LoadEspeceData extends Fixture implements DependentFixtureInterface, ContainerAwareInterface
 {
     private $container;
     
@@ -26,6 +27,11 @@ class LoadEspeceData extends Fixture implements ContainerAwareInterface
             $espece = new Espece();
 
             foreach ($objet as $key => $val) {
+                switch($key){
+                    case 'setTag':
+                        $val = $this->getReference($val);
+                        break;
+                }
                 $espece->{$key}($val);
             }
             $manager->persist($espece);
@@ -33,5 +39,12 @@ class LoadEspeceData extends Fixture implements ContainerAwareInterface
         }
 
         $manager->flush();
+    }
+    
+    public function getDependencies()
+    {
+        return array(
+            LoadTagData::class
+        );
     }
 }
