@@ -1,4 +1,10 @@
 <table class="table table-sm">
+    {% if is_granted("ROLE_UTILISATEUR") %}
+    	<tr>
+    		<th></th>
+    		<td>{{ modifier(path('espece_modifier', {'slug':espece.slug, 'page':page}), false) | raw }}</td>
+    	</tr>
+	{% endif %}
 	<tr>
 		<th>Nom</th>
 		<td>{{ espece.nom }}</td>

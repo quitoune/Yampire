@@ -8,7 +8,7 @@
         <div class="card-header text-left">
         	<ul class="nav nav-tabs card-header-tabs" id="first">
         		<li class="nav-item">
-        			<div class="nav-link active" data-link="{{ path('ajax_afficher_episode_fiche', {'id':episode.id}) }}">
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_episode_fiche', {'slug':episode.serie.slug, 'slug_episode':episode.slug, 'page':page}) }}">
         				Info
         			</div>
       			</li>
@@ -54,7 +54,7 @@
     
     <script type="text/javascript">
         $( document ).ready(function() {
-        	chargerTabs("{{ path('ajax_afficher_episode_fiche', {'id':episode.id}) }}", '#bloc_episode');
+        	chargerTabs("{{ path('ajax_afficher_episode_fiche', {'slug':episode.serie.slug, 'slug_episode':episode.slug, 'page':page}) }}", '#bloc_episode');
             Pagination.demarrer();
 
             $(".card .nav-link").click(function(){

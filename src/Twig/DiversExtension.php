@@ -53,6 +53,10 @@ class DiversExtension extends AbstractExtension
             new TwigFunction('ajouter', array(
                 $this,
                 'boutonAjouter'
+            )),
+            new TwigFunction('supprimer', array(
+                $this,
+                'boutonSupprimer'
             ))
         );
     }
@@ -162,43 +166,43 @@ class DiversExtension extends AbstractExtension
             $opt['default'] = array($opt['default']);
         }
         
-        $select = "<select name='" . $name . "' id='" . $opt['id'] . "'";
+        $select = '<select name="' . $name . '" id="' . $opt['id'] . '"';
         
         if($opt['class']){
-            $select .= " class='" . $opt['class'] . "'";
+            $select .= ' class="' . $opt['class'] . '"';
         }
         
         if($opt['multiple']){
-            $select .= " multiple='multiple'";
+            $select .= ' multiple="multiple"';
         }
         
         $select .= ">";
         
         if($opt['null']){
-            $select .= "<option value=''></option>";
+            $select .= '<option value=""></option>';
         }
         
         foreach($values as $index => $value){
             if(is_array($value)){
-                $select .= "<optgroup label='" . $index . "'>";
+                $select .= '<optgroup label="' . $index . '">';
                 foreach($value as $key => $label){
-                    $select .= "<option value='" . $key . "'";
+                    $select .= '<option value="' . $key . '"';
                     if(in_array($key, $opt['default'])){
-                        $select .= " selected='selected'";
+                        $select .= ' selected="selected"';
                     }
-                    $select .= ">" . $label . "</option>";
+                    $select .= '>' . str_replace("'", "\'", $label) . '</option>';
                 }
-                $select .= "</optgroup>";
+                $select .= '</optgroup>';
             } else {
-                $select .= "<option value='" . $index . "'";
+                $select .= '<option value="' . $index . '"';
                 if(in_array($index, $opt['default'])){
-                    $select .= " selected='selected'";
+                    $select .= ' selected="selected"';
                 }
-                $select .= ">" . $value . "</option>";
+                $select .= '>' . str_replace("'", "\'", $value) . '</option>';
             }
         }
         
-        $select .= "</select>";
+        $select .= '</select>';
         
         return $select;
     }
@@ -274,6 +278,24 @@ class DiversExtension extends AbstractExtension
             $return .= ' id="' . $id . '"';
         }
         $return .= '><i class="fas fa-pen"></i></a>';
+        return $return;
+    }
+    
+    /**
+     *
+     * @param string $path
+     * @param string $id
+     * @return string
+     */
+    function boutonSupprimer($path, $right = true, $id = ""){
+        $return  = '<a href="' . $path . '" ';
+        if($right){
+            $return .= 'class="float-right"';
+        }
+        if($id){
+            $return .= ' id="' . $id . '"';
+        }
+        $return .= '><i class="fas fa-times"></i></a>';
         return $return;
     }
 }

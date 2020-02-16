@@ -10,7 +10,7 @@
     	{% for personnage in personnages %}
         	<div class="col-img">
         		{% if type != 'episode' and type != 'espece' %}
-                	<a href="{{ path('personnage_afficher', {'id':personnage.personnage.id, 'slug':'the-vampire-diaries', 'page':pagination.page}) }}">
+                	<a href="{{ path('personnage_afficher', {'id':personnage.personnage.id, 'slug':'the_vampire_diaries', 'page':pagination.page}) }}">
                         {% if personnage.personnage.photo is not null %}
             				{{ photo(personnage.personnage) | raw }}
             			{% else %}
@@ -18,7 +18,7 @@
             	        {% endif %}
     	            </a>
 	            {% else %}
-	            	<a href="{{ path('personnage_afficher', {'id':personnage.id, 'slug':'the-vampire-diaries', 'page':pagination.page}) }}">
+	            	<a href="{{ path('personnage_afficher', {'id':personnage.id, 'slug':'the_vampire_diaries', 'page':pagination.page}) }}">
                         {% if personnage.photo is not null %}
             				{{ photo(personnage) | raw }}
             			{% else %}

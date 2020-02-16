@@ -65,12 +65,12 @@ class ActeurExtension extends AbstractExtension
             $id = $name;
         }
         
-        $select = "<select id = '" . $id . "' name = '" . $name . "' class = 'form-control'>";
+        $select = '<select id = "' . $id . '" name = "' . $name . '" class = "form-control">';
         
         foreach(AppController::ACTEUR_PERSONNAGE_ROLES as $key => $role){
-            $select .= "<option value = '" . $key . "' " . ($principal == $key ? "selected" : "") . " >" . $role . "</option>";
+            $select .= '<option value = "' . $key . '" ' . ($principal == $key ? 'selected' : '') . ' >' . $role . '</option>';
         }
-        $select .= "</select>";
+        $select .= '</select>';
         
         return $select;
     }

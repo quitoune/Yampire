@@ -7,6 +7,10 @@
 	<div class="col col-9 center_img">
         <table class="table table-sm">
         	<tr>
+        		<th></th>
+        		<td>{{ modifier(path('serie_modifier', {'slug':serie.slug}), false) | raw }}</td>
+        	</tr>
+        	<tr>
         		<th>Nom</th>
         		<td>{{ serie.nom }}</td>
         	</tr>

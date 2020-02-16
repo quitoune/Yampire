@@ -223,4 +223,28 @@ class NoteController extends AppController
             ));
         }
     }
+    
+    /**
+     * Suppression d'une note
+     *
+     * @Route("/note/ajax/supprimer/{note_id}/{type}/{id}/{page}", name="note_ajax_supprimer")
+     * @ParamConverter("note", options={"mapping"={"note_id"="id"}})
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * 
+     * @param Note $note
+     * @param int $id
+     * @param string $type
+     * @param int $page
+     */
+    public function ajaxSupprimer(Note $note, int $id, string $type, int $page  = 1){
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($note);
+        $manager->flush();
+        
+        return $this->redirectToRoute('ajax_afficher_notes', array(
+            'id' => $id,
+            'type' => $type,
+            'page' => $page
+        ));
+    }
 }

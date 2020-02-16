@@ -46,7 +46,7 @@ class Acteur
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Nationalite", inversedBy="acteurs")
      */
-    private $nationalite;
+    private $nationalites;
     
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Photo", inversedBy="acteurs")
@@ -143,15 +143,15 @@ class Acteur
     /**
      * @return Collection|Nationalite[]
      */
-    public function getNationalite(): Collection
+    public function getNationalites(): Collection
     {
-        return $this->nationalite;
+        return $this->nationalites;
     }
 
     public function addNationalite(Nationalite $nationalite): self
     {
-        if (!$this->nationalite->contains($nationalite)) {
-            $this->nationalite[] = $nationalite;
+        if (!$this->nationalites->contains($nationalite)) {
+            $this->nationalites[] = $nationalite;
         }
 
         return $this;
@@ -159,8 +159,8 @@ class Acteur
 
     public function removeNationalite(Nationalite $nationalite): self
     {
-        if ($this->nationalite->contains($nationalite)) {
-            $this->nationalite->removeElement($nationalite);
+        if ($this->nationalites->contains($nationalite)) {
+            $this->nationalites->removeElement($nationalite);
         }
 
         return $this;

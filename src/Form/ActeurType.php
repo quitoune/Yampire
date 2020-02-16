@@ -25,12 +25,6 @@ class ActeurType extends AbstractType
             'format' => 'ddMMyyyy',
             'required' => false
         ))
-        ->add('date_deces', BirthdayType::class, array(
-            'label' => 'Date de décès',
-            'widget' => 'choice',
-            'format' => 'ddMMyyyy',
-            'required' => false
-        ))
         ->add('sexe', SexeType::class)
         ->add('save', SubmitType::class, array(
             'label' => ($options['update'] ? 'Sauvegarder' : 'Ajouter'),

@@ -6,7 +6,7 @@
     <div class="card liste text-center">
         <div class="card-header text-left">
             {{ pagination.total }} citations - {{ pagination.page }} / {{ pagination.nbPages }}
-            {% if is_granted("ROLE_ADMIN") %}
+            {% if is_granted("ROLE_UTILISATEUR") %}
             	{% if type == 'serie' %}
                     {{ ajouter(path('citation_ajouter', {'slug':objet.slug, 'page':pagination.page})) | raw }}
                 {% elseif type == 'saison' or type == 'episode' %}

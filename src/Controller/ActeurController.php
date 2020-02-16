@@ -58,25 +58,26 @@ class ActeurController extends AppController
     /**
      * Affichage d'un acteur
      *
-     * @Route("/acteur/ajax/afficher/{id}", name="ajax_afficher_acteur_fiche")
+     * @Route("/acteur/ajax/afficher/{id}/{page}", name="ajax_afficher_acteur_fiche")
      * @ParamConverter("acteur", options={"mapping"={"id"="id"}})
      *
      * @param Acteur $acteur
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ajaxAfficher(Acteur $acteur)
+    public function ajaxAfficher(Acteur $acteur, int $page)
     {
         return $this->render('acteur/ajax_afficher_fiche.html.twig', array(
-            'acteur' => $acteur
+            'acteur' => $acteur,
+            'page' => $page
         ));
     }
 
     /**
      * Affichage d'un acteur
      *
-     * @Route("/acteur/afficher/{id}/{page}", name="acteur_afficher")
+     * @Route("/acteur/{slug}/afficher/{page}", name="acteur_afficher")
      *
-     * @ParamConverter("acteur", options={"mapping"={"id"="id"}})
+     * @ParamConverter("acteur", options={"mapping"={"slug"="slug"}})
      *
      * @param Acteur $acteur
      * @param int $page
@@ -104,7 +105,7 @@ class ActeurController extends AppController
     /**
      * Formulaire de modification d'un acteur
      *
-     * @Route("/acteur/modifier/{id}/{page}", name="acteur_modifier")
+     * @Route("/acteur/{slug}/modifier/{page}", name="acteur_modifier")
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      *
      * @param Request $request
@@ -189,7 +190,8 @@ class ActeurController extends AppController
             $manager->persist($acteur);
             $manager->flush();
 
-            return $this->redirectToRoute('acteur_liste', array(
+            return $this->redirectToRoute('acteur_afficher', array(
+                'slug' => $acteur->getSlug(),
                 'page' => $page
             ));
         }

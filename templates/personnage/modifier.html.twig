@@ -59,13 +59,13 @@
 
 
 			var index = 0;
-			var select1 = "{{ select("personnage[personnageActeurs][INDEX][acteur]", acteurs, opt_act) |raw }}";
-			var select2 = "{{ select_acteur_role("personnage_personnageActeurs_INDEX_principal", "personnage[personnageActeurs][INDEX][principal]") | raw }}";
+			var select1 = '{{ select("personnage[personnageActeurs][INDEX][acteur]", acteurs, opt_act) |raw }}';
+			var select2 = '{{ select_acteur_role("personnage_personnageActeurs_INDEX_principal", "personnage[personnageActeurs][INDEX][principal]") | raw }}';
 
 			{% for personnageActeur in personnage.acteurPersonnages %}
 				var id = {{ personnageActeur.id }};
-    			var select_1 = "{{ select("personnage[personnageActeurs][INDEX][acteur]", acteurs, opt_act|merge({'default': personnageActeur.acteur.id })) |raw }}";
-    			var select_2 = "{{ select_acteur_role("personnage_personnageActeurs_INDEX_principal", "personnage[personnageActeurs][INDEX][principal]", personnageActeur.principal) | raw }}";
+    			var select_1 = '{{ select("personnage[personnageActeurs][INDEX][acteur]", acteurs, opt_act|merge({'default': personnageActeur.acteur.id })) |raw }}';
+    			var select_2 = '{{ select_acteur_role("personnage_personnageActeurs_INDEX_principal", "personnage[personnageActeurs][INDEX][principal]", personnageActeur.principal) | raw }}';
     
     			index = addNewPersonnageActeur(select_1, select_2, index, id);
 			{% endfor %}

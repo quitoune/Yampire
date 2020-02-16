@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Form\newType\YesNoType;
 
 class SerieType extends AbstractType
 {
@@ -25,7 +26,7 @@ class SerieType extends AbstractType
         ->add('nombre_episode', NumberType::class, array(
             'label' => 'Nombre d\'épisodes'
         ))
-        ->add('terminee', CheckboxType::class, array(
+        ->add('terminee', YesNoType::class, array(
             'label' => 'Terminée',
             'required' => false
         ))

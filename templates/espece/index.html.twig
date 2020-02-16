@@ -7,7 +7,7 @@
     <div class="card text-center">
         <div class="card-header text-left">
             {{ pagination.total }} espèces - {{ pagination.page }} / {{ pagination.nbPages }}
-            {% if is_granted("ROLE_ADMIN") %}
+            {% if is_granted("ROLE_UTILISATEUR") %}
                 {{ ajouter(path('espece_ajouter', {'page':pagination.page})) | raw }}
             {% endif %}
         </div>
@@ -22,7 +22,7 @@
                 </thead>
                 {% for espece in especes %}
                     <tr>
-                        <td> <a href="{{ path('espece_afficher', {'id':espece.id, 'page':pagination.page}) }}">{{ espece.id }} </a> </td>
+                        <td> <a href="{{ path('espece_afficher', {'slug':espece.slug, 'page':pagination.page}) }}">{{ espece.id }} </a> </td>
                         <td> {{ espece.nom }}</td>
                         <td> {{ espece.infoSup }}</td>
                     </tr>

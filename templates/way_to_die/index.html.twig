@@ -7,7 +7,7 @@
     <div class="card text-center">
         <div class="card-header text-left">
             {{ pagination.total }} façons de mourir - {{ pagination.page }} / {{ pagination.nbPages }}
-            {% if is_granted("ROLE_ADMIN") %}
+            {% if is_granted("ROLE_UTILISATEUR") %}
                 {{ ajouter(path('way_to_die_ajouter', {'page':pagination.page})) | raw }}
             {% endif %}
         </div>
@@ -17,7 +17,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nom</th>
-                        {% if is_granted("ROLE_ADMIN") %}
+                        {% if is_granted("ROLE_UTILISATEUR") %}
                         	<th></th>
                         {% endif %}
                     </tr>
@@ -26,7 +26,7 @@
                     <tr>
                         <td> {{ way_to_die.id }} </td>
                         <td> {{ way_to_die.nom }} </td>
-                        {% if is_granted("ROLE_ADMIN") %}
+                        {% if is_granted("ROLE_UTILISATEUR") %}
                         	<td>{{ modifier(path('way_to_die_modifier', {'id':way_to_die.id, 'page':pagination.page})) | raw }}</td>
                         {% endif %}
                     </tr>

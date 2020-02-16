@@ -5,26 +5,14 @@
     	</div>
     </div>
     <div class="card-body">
-    	<table class="table table-striped table-light table-sm">
-        	<tr>
-            	<th>ID</th>
-                <th>Chanson</th>
-                <th>Interprète</th>
-                {% if type != 'episode' %}
-                	<th>Episode</th>
-                {% endif %}
-            </tr>
-            {% for chanson in chansons %}
-            	<tr>
-                	<td>{{ chanson.id }}</td>
-                    <td>{{ chanson.titre }}</td>
-                    <td>{{ chanson.interprete }}</td>
-                    {% if type != 'episode' %}
-                    	<td>{{ chanson.episode.titreOriginal }} {{ codeEpisode(chanson.episode, 0) }}</td>
-                    {% endif %}
-                </tr>
+    	<div class="row">
+    	    {% for chanson in chansons %}
+    			<div class="col-quotes">
+    			    {{ card_chanson(chanson, true, path('chanson_afficher', {'id':chanson.id, 'slug':chanson.episode.serie.slug, 'page':pagination.page})) | raw }}
+    			</div>
             {% endfor %}
-		</table>
+        </div>
+        
 		{% if chansons is empty %}
           	<p class="text-info text-center">Aucune chanson n'est associé à
                 {% if type == 'episode' %}

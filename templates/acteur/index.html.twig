@@ -6,7 +6,7 @@
     <div class="card liste text-center">
         <div class="card-header text-left">
             {{ pagination.total }} acteurs - {{ pagination.page }} / {{ pagination.nbPages }}
-            {% if is_granted("ROLE_ADMIN") %}
+            {% if is_granted("ROLE_UTILISATEUR") %}
                 {{ ajouter(path('acteur_ajouter', {'page':pagination.page})) | raw }}
             {% endif %}
         </div>
@@ -14,7 +14,7 @@
                 <div class="row">
                 	{% for acteur in acteurs %}
                 		<div class="col-img">
-                			<a href="{{ path('acteur_afficher', {'id':acteur.id, 'page':pagination.page}) }}">
+                			<a href="{{ path('acteur_afficher', {'slug':acteur.slug, 'page':pagination.page}) }}">
                     			{% if acteur.photo is not null %}
         							{{ photo(acteur) | raw }}
         						{% else %}

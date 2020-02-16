@@ -6,6 +6,12 @@
     </div>
     <div class="col col-9 center_img">
         <table class="table table-sm table-borderless">
+        	{% if is_granted("ROLE_UTILISATEUR") %}
+            	<tr>
+            		<th></th>
+            		<td>{{ modifier(path('acteur_modifier', {'slug':acteur.slug, 'page':page}), false) | raw }}</td>
+            	</tr>
+        	{% endif %}
         	<tr>
         		<th>Nom complet</th>
         		<td>{{ nom_acteur(acteur) | raw }}</td>

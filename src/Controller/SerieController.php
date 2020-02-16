@@ -131,16 +131,15 @@ class SerieController extends AppController
     /**
      * Formulaire de modifcation d'une série
      *
-     * @Route("/{slug}/modifier/{page}", name="serie_modifier")
+     * @Route("/{slug}/modifier", name="serie_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      *
      * @param Request $request
      * @param Serie $serie
-     * @param int $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function modifier(Request $request, Serie $serie, int $page = 1)
+    public function modifier(Request $request, Serie $serie)
     {
         $form = $this->createForm(SerieType::class, $serie, array(
             'update' => true
@@ -156,25 +155,19 @@ class SerieController extends AppController
             $entityManager->flush();
 
             return $this->redirectToRoute('serie_afficher', array(
-                'page' => $page,
                 'slug' => $serie->getSlug()
             ));
         }
 
         $paths = array(
             'home' => $this->homeURL(),
-            'paths' => array(
-                $this->generateUrl('serie_liste', array(
-                    'page' => $page
-                )) => 'Séries'
-            ),
+            'paths' => array(),
             'active' => 'Modification de' . $this->getIdNom($serie, 'serie')
         );
 
         return $this->render('serie/modifier.html.twig', array(
             'form' => $form->createView(),
             'serie' => $serie,
-            'page' => $page,
             'paths' => $paths
         ));
     }
@@ -182,7 +175,7 @@ class SerieController extends AppController
     /**
      * Formulaire d'ajout d'une série
      *
-     * @Route("/serie/ajouter/{page}", name="serie_ajouter")
+     * @Route("/serie/ajouter", name="serie_ajouter")
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      *
      * @param Request $request
@@ -205,18 +198,14 @@ class SerieController extends AppController
             $manager->persist($serie);
             $manager->flush();
 
-            return $this->redirectToRoute('serie_liste', array(
-                'page' => $page
+            return $this->redirectToRoute('serie_afficher', array(
+                'slug' => $serie->getSlug()
             ));
         }
 
         $paths = array(
             'home' => $this->homeURL(),
-            'paths' => array(
-                $this->generateUrl('serie_liste', array(
-                    'page' => $page
-                )) => 'Séries'
-            ),
+            'paths' => array(),
             'active' => "Ajout d'une série"
         );
 

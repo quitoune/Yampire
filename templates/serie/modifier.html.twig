@@ -31,9 +31,6 @@
             	<div class="col-lg-6 col-md-6 col-12">
             		{{ form_row(form.terminee) }}
             	</div>
-            	<div class="col-lg-6 col-md-6 col-12">
-            		Saisons
-            	</div>
             </div>
         </div>
         
@@ -45,4 +42,14 @@
         {{ form_end(form) }}
     </div>
     
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $( document ).ready(function() {
+			$("#serie_terminee").select2({
+				minimumResultsForSearch: -1
+			});
+        });
+    </script>
 {% endblock %}

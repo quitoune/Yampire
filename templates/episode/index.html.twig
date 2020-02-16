@@ -22,7 +22,7 @@
                 </thead>
                 {% for episode in episodes %}
                     <tr>
-                        <td><a href="{{ path('episode_afficher', {'id': episode.id, 'slug': serie.slug, 'page': pagination.page}) }}">{{ episode.id }} </a></td>
+                        <td><a href="{{ path('episode_afficher', {'slug_episode': episode.slug, 'slug': serie.slug, 'page': pagination.page}) }}">{{ episode.id }} </a></td>
                 		<td> {{ codeEpisode(episode, false) }} -         
                             {{ titre(episode, app.session) }} 
                         </td>

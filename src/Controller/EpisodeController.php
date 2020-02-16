@@ -70,16 +70,18 @@ class EpisodeController extends AppController
     /**
      * Affichage d'un épisode
      *
-     * @Route("/episode/ajax/afficher/{id}", name="ajax_afficher_episode_fiche")
-     * @ParamConverter("episode", options={"mapping"={"id"="id"}})
+     * @Route("/{slug}/episode/{slug_episode}/ajax/afficher/{page}", name="ajax_afficher_episode_fiche")
+     * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
+     * @ParamConverter("episode", options={"mapping"={"slug_episode"="slug"}})
      *
      * @param Episode $episode
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ajaxAfficherFiche(Episode $episode)
+    public function ajaxAfficherFiche(Serie $serie, Episode $episode, int $page)
     {
         return $this->render('episode/ajax_afficher_fiche.html.twig', array(
-            'episode' => $episode
+            'episode' => $episode,
+            'page' => $page
         ));
     }
     
@@ -118,9 +120,9 @@ class EpisodeController extends AppController
     /**
      * Affichage d'un épisode
      *
-     * @Route("/{slug}/episode/afficher/{id}/{page}", name="episode_afficher")
+     * @Route("/{slug}/episode/{slug_episode}/afficher/{page}", name="episode_afficher")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @ParamConverter("episode", options={"mapping"={"id"="id"}})
+     * @ParamConverter("episode", options={"mapping"={"slug_episode"="slug"}})
      *
      * @param Episode $episode
      * @param int $page
@@ -149,8 +151,9 @@ class EpisodeController extends AppController
     /**
      * Formulaire de modification d'un épisode
      *
-     * @Route("/{slug}/episode/modifier/{id}/{page}", name="episode_modifier")
+     * @Route("/{slug}/episode/{slug_episode}/modifier/{page}", name="episode_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
+     * @ParamConverter("episode", options={"mapping"={"slug_episode"="slug"}})
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      *
      * @param Request $request

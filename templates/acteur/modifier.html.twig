@@ -26,17 +26,14 @@
             		{{ form_row(form.date_naissance) }}
             	</div>
             	<div class="col-lg-6 col-md-6 col-xs-12">
-            		{{ form_row(form.date_deces) }}
-            	</div>
-            </div>
-            
-        	<div class="row">
-            	<div class="col-lg-6 col-md-6 col-xs-12">
             		<div id="sexe" class="w-100">
                         {{ form_row(form.sexe) }}
                     </div>
             	</div>
-            	<div class="col-lg-6 col-md-6 col-xs-12">
+            </div>
+            
+        	<div class="row">
+            	<div class="col-lg-12 col-md-12 col-xs-12">
             		<div class="form-group w-100">
             			<label class="form-control-label" for="acteur_nationalites">Nationalité(s)</label>
                         {{ select("acteur[nationalites][]", nationalites, opt) |raw }}
@@ -77,19 +74,15 @@
 			$("#acteur_date_naissance select").each(function(){
 				$(this).select2();
 			});
-			
-			$("#acteur_date_deces select").each(function(){
-				$(this).select2();
-			});
 
 			var index = 0;
-			var select1 = "{{ select("acteur[acteurPersonnages][INDEX][personnage]", personnages, opt_perso) |raw }}";
-			var select2 = "{{ select_acteur_role("acteur_acteurPersonnages_INDEX_principal", "acteur[acteurPersonnages][INDEX][principal]") | raw }}";
+			var select1 = '{{ select("acteur[acteurPersonnages][INDEX][personnage]", personnages, opt_perso) |raw }}';
+			var select2 = '{{ select_acteur_role("acteur_acteurPersonnages_INDEX_principal", "acteur[acteurPersonnages][INDEX][principal]") | raw }}';
 
 			{% for acteurPersonnage in acteur.acteurPersonnages %}
 				var id = {{ acteurPersonnage.id }};
-    			var select_1 = "{{ select("acteur[acteurPersonnages][INDEX][personnage]", personnages, opt_perso|merge({'default': acteurPersonnage.personnage.id })) |raw }}";
-    			var select_2 = "{{ select_acteur_role("acteur_acteurPersonnages_INDEX_principal", "acteur[acteurPersonnages][INDEX][principal]", acteurPersonnage.principal) | raw }}";
+    			var select_1 = '{{ select("acteur[acteurPersonnages][INDEX][personnage]", personnages, opt_perso|merge({'default': acteurPersonnage.personnage.id })) |raw }}';
+    			var select_2 = '{{ select_acteur_role("acteur_acteurPersonnages_INDEX_principal", "acteur[acteurPersonnages][INDEX][principal]", acteurPersonnage.principal) | raw }}';
     
     			index = addNewActeurPersonnage(select_1, select_2, index, id);
 			{% endfor %}

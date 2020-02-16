@@ -1,28 +1,42 @@
-<table class="table table-sm">
-	<tr>
-		<th>Titre</th>
-		<td>{{ episode.titre }}</td>
-		<th>Titre Original</th>
-		<td>{{ episode.titreOriginal }}</td>
-	</tr>
-	<tr>
-		<th>N° épisode</th>
-		<td>{{ episode.numeroEpisode }}</td>
-		<th>N° de production</th>
-		<td>{{ episode.numeroProduction }}</td>
-	</tr>
-	<tr>
-		<th>Première diffusion</th>
-		<td>
-			{% if episode.premiereDiffusion is not null %}
-		        {{ episode.premiereDiffusion | date('d/m/Y') }}
-		    {% endif %}
-		</td>
-		<th>Durée</th>
-		<td>{{ episode.duree }}min</td>
-	</tr>
-	<tr>
-		<th>Description</th>
-		<td colspan="3">{{ episode.description }}</td>
-	</tr>
-</table>
+<div class="row">
+	<div class="col col-3 center_img">
+	    {% if episode.saison.photo is not null %}
+        	{{ photo(episode.saison) | raw }}
+        {% endif %}
+	</div>
+	<div class="col col-9 center_img">
+		<table class="table table-sm">
+			{% if is_granted("ROLE_UTILISATEUR") %}
+            	<tr>
+            		<td colspan="4">{{ modifier(path('episode_modifier', {'slug':episode.serie.slug, 'slug_episode':episode.slug, 'page':page}), false) | raw }}</td>
+            	</tr>
+        	{% endif %}
+        	<tr>
+        		<th>Titre</th>
+        		<td>{{ episode.titre }}</td>
+        		<th>Titre Original</th>
+        		<td>{{ episode.titreOriginal }}</td>
+        	</tr>
+        	<tr>
+        		<th>N° épisode</th>
+        		<td>{{ episode.numeroEpisode }}</td>
+        		<th>N° de production</th>
+        		<td>{{ episode.numeroProduction }}</td>
+        	</tr>
+        	<tr>
+        		<th>Première diffusion</th>
+        		<td>
+        			{% if episode.premiereDiffusion is not null %}
+        		        {{ episode.premiereDiffusion | date('d/m/Y') }}
+        		    {% endif %}
+        		</td>
+        		<th>Durée</th>
+        		<td>{{ episode.duree }}min</td>
+        	</tr>
+        	<tr>
+        		<th>Description</th>
+        		<td colspan="3">{{ episode.description }}</td>
+        	</tr>
+        </table>
+	</div>
+</div>

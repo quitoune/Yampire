@@ -29,7 +29,7 @@ class Nationalite
     private $nom_masculin;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Acteur", mappedBy="nationalite")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Acteur", mappedBy="nationalites")
      */
     private $acteurs;
 

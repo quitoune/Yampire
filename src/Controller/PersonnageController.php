@@ -118,16 +118,19 @@ class PersonnageController extends AppController
     /**
      * Affichage d'un personnage
      *
-     * @Route("/personnage/ajax/afficher/{id}", name="ajax_afficher_personnage_fiche")
-     * @ParamConverter("personnage", options={"mapping"={"id"="id"}})
+     * @Route("/{slug}/personnage/ajax/afficher/{slug_perso}/{page}", name="ajax_afficher_personnage_fiche")
+     * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
+     * @ParamConverter("personnage", options={"mapping"={"slug_perso"="slug"}})
      *
      * @param Personnage $personnage
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ajaxAfficherFiche(Personnage $personnage)
+    public function ajaxAfficherFiche(Serie $serie, Personnage $personnage, int $page = 1)
     {
         $serieSaisons = $this->getSerieSaison($personnage);
         return $this->render('personnage/ajax_afficher_fiche.html.twig', array(
+            'page' => $page,
+            'serie' => $serie,
             'personnage' => $personnage,
             'serieSaisons' => $serieSaisons
         ));
@@ -186,9 +189,9 @@ class PersonnageController extends AppController
     /**
      * Affichage d'un personnage
      *
-     * @Route("/{slug}/personnage/afficher/{id}/{page}", name="personnage_afficher")
+     * @Route("/{slug}/personnage/{slug_perso}/afficher/{page}", name="personnage_afficher")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @ParamConverter("personnage", options={"mapping"={"id"="id"}})
+     * @ParamConverter("personnage", options={"mapping"={"slug_perso"="slug"}})
      *
      * @param Personnage $personnage
      * @param int $page
@@ -329,8 +332,9 @@ class PersonnageController extends AppController
     /**
      * Formulaire de modification d'un personnage
      *
-     * @Route("/{slug}/personnage/modifier/{id}/{page}", name="personnage_modifier")
+     * @Route("/{slug}/personnage/{slug_perso}/modifier/{page}", name="personnage_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
+     * @ParamConverter("personnage", options={"mapping"={"slug_perso"="slug"}})
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      *
      * @param Request $request
@@ -400,9 +404,10 @@ class PersonnageController extends AppController
             $manager->persist($personnage);
             $manager->flush();
 
-            return $this->redirectToRoute('personnage_liste', array(
+            return $this->redirectToRoute('personnage_afficher', array(
                 'page' => $page,
-                'slug' => $serie->getSlug()
+                'slug' => $serie->getSlug(),
+                'slug_perso' => $personnage->getSlug()
             ));
         }
 

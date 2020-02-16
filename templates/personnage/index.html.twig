@@ -15,7 +15,7 @@
                 <div class="row">
                 	{% for personnageSerie in personnageSeries %}
                 		<div class="col-img">
-                			<a href="{{ path('personnage_afficher', {'id':personnageSerie.personnage.id, 'slug':serie.slug, 'page':pagination.page}) }}">
+                			<a href="{{ path('personnage_afficher', {'slug_perso':personnageSerie.personnage.slug, 'slug':serie.slug, 'page':pagination.page}) }}">
                     			{% if personnageSerie.personnage.photo is not null %}
         							{{ photo(personnageSerie.personnage) | raw }}
         						{% else %}

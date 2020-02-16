@@ -8,7 +8,7 @@
         <div class="card-header text-left">
         	<ul class="nav nav-tabs card-header-tabs" id="first">
         	<li class="nav-item">
-        			<div class="nav-link active" data-link="{{ path('ajax_afficher_personnage_fiche', {'id':personnage.id}) }}">Infos</div>
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_personnage_fiche', {'slug_perso':personnage.slug, 'slug':serie.slug, 'page':page}) }}">Infos</div>
       			</li>
       			<li class="nav-item">
         			<div class="nav-link" data-link="{{ path('personnage_afficher_episodes', {'id':personnage.id}) }}">Episodes</div>
@@ -41,7 +41,7 @@
     
     <script type="text/javascript">
         $( document ).ready(function() {
-        	chargerTabs("{{ path('ajax_afficher_personnage_fiche', {'id':personnage.id}) }}", '#bloc_personnage');
+        	chargerTabs("{{ path('ajax_afficher_personnage_fiche', {'slug_perso':personnage.slug, 'slug':serie.slug, 'page':page}) }}", '#bloc_personnage');
             Pagination.demarrer();
 
             $(".card .nav-link").click(function(){

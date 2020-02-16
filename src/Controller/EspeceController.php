@@ -51,23 +51,24 @@ class EspeceController extends AppController
     /**
      * Affichage d'une espece
      *
-     * @Route("/espece/ajax/afficher/{id}", name="ajax_afficher_espece_fiche")
+     * @Route("/espece/ajax/afficher/{id}/{page}", name="ajax_afficher_espece_fiche")
      * @ParamConverter("espece", options={"mapping"={"id"="id"}})
      *
      * @param Espece $espece
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ajaxAfficherFiche(Espece $espece)
+    public function ajaxAfficherFiche(Espece $espece, int $page)
     {
         return $this->render('espece/ajax_afficher_fiche.html.twig', array(
-            'espece' => $espece
+            'espece' => $espece,
+            'page' => $page
         ));
     }
 
     /**
      * Affichage d'une espèce
      *
-     * @Route("/espece/afficher/{id}/{page}", name="espece_afficher")
+     * @Route("/espece/{slug}/afficher/{page}", name="espece_afficher")
      *
      * @param Espece $espece
      * @param int $page
@@ -95,7 +96,7 @@ class EspeceController extends AppController
     /**
      * Formulaire de modification d'une espèce
      *
-     * @Route("/espece/modifier/{id}/{page}", name="espece_modifier")
+     * @Route("/espece/{slug}/modifier/{page}", name="espece_modifier")
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      *
      * @param Request $request
@@ -118,7 +119,8 @@ class EspeceController extends AppController
             $manager->persist($espece);
             $manager->flush();
 
-            return $this->redirectToRoute('espece_liste', array(
+            return $this->redirectToRoute('espece_afficher', array(
+                'slug' => $espece->getSlug(),
                 'page' => $page
             ));
         }

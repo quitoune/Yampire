@@ -3,7 +3,6 @@
 {% block title %}Personnages{% endblock %}
 
 {% block body %}
-    
     <div class="card text-center">
         <div class="card-header text-left">
             {{ pagination.total }} personnages - {{ pagination.page }} / {{ pagination.nbPages }}
@@ -12,7 +11,7 @@
                 <div class="row">
                 	{% for personnage in personnages %}
                 		<div class="col-img">
-                			<a href="{{ path('personnage_afficher', {'id':personnage.id, 'slug':'legacies', 'page':pagination.page}) }}">
+                			<a href="{{ path('personnage_afficher', {'slug_perso':personnage.slug, 'slug':serie.slug, 'page':pagination.page}) }}">
                     			{% if personnage.photo is not null %}
         							{{ photo(personnage) | raw }}
         						{% else %}

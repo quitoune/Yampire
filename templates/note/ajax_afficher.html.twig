@@ -13,7 +13,7 @@
                 	<th>Episode</th>
                 {% endif %}
                 <th>
-                    {% if is_granted("ROLE_ADMIN") %}
+                    {% if is_granted("ROLE_UTILISATEUR") %}
                 		{{ ajouter(path('note_ajax_ajouter', {'id':objet.id, 'type':type}), false, 'btn-ajouter') | raw }}
                 	{% endif %}
                 </th>
@@ -26,8 +26,9 @@
                 		<td>{{ note.episode.titreOriginal }} {{ codeEpisode(note.episode, 0) }}</td>
                     {% endif %}
                     <td>
-                    	{% if is_granted("ROLE_ADMIN") %}
-                    	    {{ modifier(path('note_ajax_modifier', {'note_id':note.id,'id':objet.id, 'type':type, 'page':pagination.page}), true, "btn-modifier-" ~ note.id) | raw }}
+                    	{% if is_granted("ROLE_UTILISATEUR") and app.user.username == note.utilisateur.username %}
+                    	    {{ modifier(path('note_ajax_modifier', {'note_id':note.id,'id':objet.id, 'type':type, 'page':pagination.page}), false, "btn-modifier-" ~ note.id) | raw }}
+                    	    {{ supprimer(path('note_ajax_supprimer', {'note_id':note.id,'id':objet.id, 'type':type, 'page':pagination.page}), false, "btn-supprimer-" ~ note.id) | raw }}
                     	{% endif %}
                     </td>
                 </tr>
@@ -64,6 +65,10 @@
             OuvrirModal('#btn-ajouter', '#modal_{{ type }}');
 
             {% for note in notes %}
+            	$('#btn-supprimer-' + {{ note.id }}).click(function(event){
+                	event.preventDefault();
+                	Ajax(document.getElementById('btn-supprimer-' + {{ note.id }}).href, "#bloc_{{ type }}");
+                });
             	OuvrirModal('#btn-modifier-' + {{ note.id }}, '#modal_{{ type }}');
             {% endfor %}
         });
