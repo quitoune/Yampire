@@ -2,7 +2,16 @@
 	<div>
 	    {{ pagination.nb_elements }} personnage{% if pagination.nb_elements > 1 %}s{% endif %} 
 	    {% if pagination.pages_count > 0 %}
-	     - Page {{ pagination.page }} / {{ pagination.pages_count }} 
+	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
+	    {% endif %}
+	    {% if is_granted('ROLE_UTILISATEUR') and type != 'espece' %}
+	    	{% if type == 'episode' %}
+	    		{{ ajouter(path('ajax_ajouter_personnage_episode', {'id':objet.id}), false, 'btn-ajouter') | raw }}
+	    	{% elseif type == 'saison' %}
+	    		{{ ajouter(path('ajax_ajouter_personnage_saison', {'id':objet.id}), false, 'btn-ajouter') | raw }}
+	    	{% else %}
+	    		{{ ajouter(path('ajax_ajouter_personnage_' ~ type, {'slug':objet.slug}), false, 'btn-ajouter') | raw }}
+	    	{% endif %}
 	    {% endif %}
     </div>
     
@@ -10,7 +19,7 @@
     	{% for personnage in personnages %}
         	<div class="col-img">
         		{% if type != 'episode' and type != 'espece' %}
-                	<a href="{{ path('personnage_afficher', {'id':personnage.personnage.id, 'slug':'the_vampire_diaries', 'page':pagination.page}) }}">
+                	<a href="{{ path('personnage_afficher', {'slug_perso':personnage.personnage.slug, 'slug':'the_vampire_diaries', 'page':pagination.page}) }}">
                         {% if personnage.personnage.photo is not null %}
             				{{ photo(personnage.personnage) | raw }}
             			{% else %}
@@ -18,7 +27,7 @@
             	        {% endif %}
     	            </a>
 	            {% else %}
-	            	<a href="{{ path('personnage_afficher', {'id':personnage.id, 'slug':'the_vampire_diaries', 'page':pagination.page}) }}">
+	            	<a href="{{ path('personnage_afficher', {'slug_perso':personnage.slug, 'slug':'the_vampire_diaries', 'page':pagination.page}) }}">
                         {% if personnage.photo is not null %}
             				{{ photo(personnage) | raw }}
             			{% else %}
@@ -48,3 +57,11 @@
     	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>
+
+{% block javascripts %} 
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            OuvrirModal('#btn-ajouter', '#modal_{{ type }}');
+        });
+    </script>
+{% endblock %}

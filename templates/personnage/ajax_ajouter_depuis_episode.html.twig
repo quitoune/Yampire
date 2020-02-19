@@ -1,0 +1,48 @@
+<div id="ajax_personnage_episode_ajouter">
+    {{ form_start(form) }}
+    <div class="modal-header">
+        <h5 class="modal-title">
+            Ajouter un personnage à l'épisode {{ codeEpisode(episode, false) }} - {{ titre(episode, app.session) }} 
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+    	<div class="row">
+    		<div class="col col-12">
+    			{{ form_row(form.episode) }}
+    		</div>
+    		<div class="col col-12 w-100">
+    		    {{ form_row(form.personnage) }}
+    		</div>
+    	</div>
+    </div>
+    
+    <div class="modal-footer">
+        {{ form_widget(form.save) }}
+    </div>
+    {{ form_rest(form) }}
+    {{ form_errors(form) }}
+    {{ form_end(form) }}
+</div>
+{% block javascripts %}
+    <script>
+        $('#bloc_modal').modal({
+            'show' : true,
+            'backdrop' : 'static'
+        });
+        
+        $("#episode_personnage_episode").val({{ episode.id }})
+		$("#episode_personnage_personnage").select2({
+			multiple: true,
+			placeholder: 'Sélectionner un personnage'
+		});
+
+        var url = '{{ path('ajax_ajouter_personnage_episode', {'id':episode.id}) }}';
+        var url_base = '{{ path('ajax_afficher_personnages', {'id':episode.id, 'type':'episode'}) }}';
+        SubmitModal("episode_personnage", "ajouter", url, "#bloc_modal", url_base, "#bloc_episode");
+        
+    </script>
+{% endblock %}

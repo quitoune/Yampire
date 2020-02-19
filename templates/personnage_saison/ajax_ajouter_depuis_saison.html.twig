@@ -1,0 +1,50 @@
+<div id="ajax_personnage_saison_ajouter">
+    {{ form_start(form) }}
+    <div class="modal-header">
+        <h5 class="modal-title">
+            Ajouter un personnage à la saison {{ saison.serie.nomCourt }} - Saison {{ saison.numeroSaison }}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+    	<div class="row">
+    		<div class="col col-12">
+    		    {{ form_row(form.saison) }}
+    		</div>
+    		<div class="col col-12">
+    			{{ form_row(form.personnage) }}
+    		</div>
+    		<div class="col col-12">
+    			{{ form_row(form.principal) }}
+    		</div>
+    	</div>
+    </div>
+    
+    <div class="modal-footer">
+        {{ form_widget(form.save) }}
+    </div>
+    {{ form_rest(form) }}
+    {{ form_errors(form) }}
+    {{ form_end(form) }}
+</div>
+{% block javascripts %}
+    <script>
+        $('#bloc_modal').modal({
+            'show' : true,
+            'backdrop' : 'static'
+        });
+        
+        $("#personnage_saison_saison").val({{ saison.id }})
+		$("#personnage_saison_personnage").select2();
+		$("#personnage_saison_principal").select2({
+		    minimumResultsForSearch: -1
+		});
+        
+        var url = '{{ path('ajax_ajouter_personnage_saison', {'id':saison.id}) }}';
+        var url_base = '{{ path('ajax_afficher_personnages', {'id':saison.id, 'type':'saison'}) }}';
+        SubmitModal("personnage_saison", "ajouter", url, "#bloc_modal", url_base, "#bloc_saison");
+    </script>
+{% endblock %}

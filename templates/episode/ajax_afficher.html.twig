@@ -1,8 +1,9 @@
 <div class="row">
 	{% for episode in episodes %}
     	<div class="col-lg-4 col-md-6 col-12">
-        	#{{ episode.numeroEpisode }} - 
-            {{ titre(episode, app.session) }}
+    		<a href="{{ path('episode_afficher', {'slug': episode.serie.slug, 'slug_episode': episode.slug}) | raw }}">
+        		#{{ episode.numeroEpisode }} - {{ titre(episode, app.session) }}
+        	</a>
 		</div>
 	{% endfor %}
 </div>

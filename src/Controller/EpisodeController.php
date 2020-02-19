@@ -11,6 +11,8 @@ use App\Entity\Saison;
 use App\Entity\Personnage;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EpisodeType;
+use App\Form\EpisodePersonnageType;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class EpisodeController extends AppController
 {
@@ -254,6 +256,50 @@ class EpisodeController extends AppController
             'form' => $form->createView(),
             'page' => $page,
             'paths' => $paths
+        ));
+    }
+    
+    /**
+     * Ajouter une connexion entre un personnage et une saison
+     *
+     * @Route("/personnage_episode/ajax_ajouter/{id}", name="ajax_ajouter_personnage_episode")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param Episode $episode
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxAjouterPersonnages(Request $request, SessionInterface $session, Episode $episode){
+        $form = $this->createForm(EpisodePersonnageType::class, null, array(
+            'session' => $session,
+            'disabled_episode' => true
+        ));
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            if(isset($request->request->all()["episode_personnage"]["personnage"])){
+                $repo = $this->getDoctrine()->getRepository(Personnage::class);
+                $personnages = $request->request->all()["episode_personnage"]["personnage"];
+                
+                foreach($personnages as $personnage){
+                    $episode->addPersonnage($repo->findOneBy(array('id' => $personnage)));
+                }
+                $manager = $this->getDoctrine()->getManager();
+                
+                $manager->persist($episode);
+                $manager->flush();
+            }
+            
+            return $this->json(array(
+                'statut' => true
+            ));
+        }
+        
+        return $this->render('personnage/ajax_ajouter_depuis_episode.html.twig', array(
+            'form'  => $form->createView(),
+            'episode' => $episode
         ));
     }
 }

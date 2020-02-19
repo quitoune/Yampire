@@ -92,8 +92,8 @@
 			});
 
 			var index = 0;
-			var select1 = "{{ select("personnage[personnageActeurs][INDEX][acteur]", acteurs, opt_act) |raw }}";
-			var select2 = "{{ select_acteur_role("personnage_personnageActeurs_INDEX_principal", "personnage[personnageActeurs][INDEX][principal]") | raw }}";
+			var select1 = '{{ select("personnage[personnageActeurs][INDEX][acteur]", acteurs, opt_act) |raw }}';
+			var select2 = '{{ select_acteur_role("personnage_personnageActeurs_INDEX_principal", "personnage[personnageActeurs][INDEX][principal]") | raw }}';
 
 			$(".addElement").click(function(){
 				console.log(select1);

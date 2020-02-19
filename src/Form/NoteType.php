@@ -44,9 +44,6 @@ class NoteType extends AbstractType
         if ($options['avec_perso']) {
             $builder->add('personnage', EntityType::class, array(
                 'class' => Personnage::class,
-                'choice_label' => function ($personnage) {
-                return $personnage->getPrenom() . ' ' . $personnage->getNom();
-                },
                 'query_builder' => function (PersonnageRepository $pr) {
                 return $pr->createQueryBuilder('p')
                 ->orderBy('p.nom ASC, p.prenom', 'ASC');
