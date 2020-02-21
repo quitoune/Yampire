@@ -4,6 +4,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Utilisateur;
+use App\Entity\Acteur;
+use App\Entity\Serie;
+use App\Entity\Quizz;
+use App\Entity\Personnage;
+use App\Entity\Espece;
+use App\Entity\Episode;
 
 class AppController extends AbstractController
 {
@@ -209,5 +215,62 @@ class AppController extends AbstractController
             $saisons[$serie_saison["serie_nom"]][$serie_saison["saison_id"]] = 'Saison ' . $serie_saison["num_saison"];
         }
         return $saisons;
+    }
+    
+    /**
+     * Créer un slug unique
+     * 
+     * @param string $texte
+     * @param string $type
+     * @return string
+     */
+    public function createSlug(string $texte, string $type){
+        $slug = htmlentities($texte, ENT_NOQUOTES, "utf-8" );
+        
+        $slug = preg_replace('#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $slug);
+        $slug = preg_replace('#&([A-za-z]{2})(?:lig);#', '\1', $slug);
+        $slug = preg_replace('#&[^;]+;#', '', $slug);
+        
+        $slug = str_replace(array("/", "\\", "'"), '-', $slug);
+        $slug = str_replace(array("?", ","), '', $slug);
+        $slug = trim($slug);
+        $slug = implode("_", explode(' ', $slug));
+        
+        switch($type){
+            case 'Acteur':
+                $repository = $this->getDoctrine()->getRepository(Acteur::class);
+                break;
+            case 'Episode':
+                $repository = $this->getDoctrine()->getRepository(Episode::class);
+                break;
+            case 'Espece':
+                $repository = $this->getDoctrine()->getRepository(Espece::class);
+                break;
+            case 'Personnage':
+                $repository = $this->getDoctrine()->getRepository(Personnage::class);
+                break;
+            case 'Quizz':
+                $repository = $this->getDoctrine()->getRepository(Quizz::class);
+                break;
+            case 'Serie':
+                $repository = $this->getDoctrine()->getRepository(Serie::class);
+                break;
+            default:
+                return $texte;
+                break;
+        }
+        
+        $object = $repository->findOneBy(array('slug' => $slug));
+        if(is_null($object)){
+            return $slug;
+        } else {
+            for($i = 1; $i <= 1000; $i++){
+                $object = $repository->findOneBy(array('slug' => $slug . "_" . $i));
+                if(is_null($object)){
+                    return $slug . "_" . $i;
+                }
+            }
+        }
+        return $slug . "_0";
     }
 }

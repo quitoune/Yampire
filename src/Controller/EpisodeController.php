@@ -230,6 +230,8 @@ class EpisodeController extends AppController
 
             $episode = $form->getData();
             $episode->setSerie($serie);
+            $slug = $this->createSlug($request->request->all()["episode"]["titre_original"], 'Episode');
+            $episode->setSlug($slug);
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($episode);

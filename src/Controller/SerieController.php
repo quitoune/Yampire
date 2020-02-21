@@ -193,6 +193,8 @@ class SerieController extends AppController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $serie = $form->getData();
+            $slug = $this->createSlug($request->request->all()["serie"]["nom"], 'Serie');
+            $serie->setSlug($slug);
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($serie);

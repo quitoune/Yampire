@@ -286,11 +286,16 @@ class ActeurController extends AppController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $acteur = $form->getData();
+            $full_name = $request->request->all()["acteur"]["prenom"] . " " . $request->request->all()["acteur"]["nom"];
+            $slug = $this->createSlug($full_name, 'Acteur');
+            $acteur->setSlug($slug);
 
-            foreach ($request->request->all()["acteur"]["nationalites"] as $nationalite){
-                $nat = $repo_nat->findOneBy(array("id" => $nationalite));
-                $acteur->addNationalite($nat);
-                $nat->addActeur($acteur);
+            if(isset($request->request->all()["acteur"]["nationalites"])){
+                foreach ($request->request->all()["acteur"]["nationalites"] as $nationalite){
+                    $nat = $repo_nat->findOneBy(array("id" => $nationalite));
+                    $acteur->addNationalite($nat);
+                    $nat->addActeur($acteur);
+                }
             }
 
             $manager = $this->getDoctrine()->getManager();

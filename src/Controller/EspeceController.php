@@ -164,7 +164,9 @@ class EspeceController extends AppController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $espece = $form->getData();
-
+            $slug = $this->createSlug($request->request->all()["espece"]["nom"], 'Espece');
+            $espece->setSlug($slug);
+            
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($espece);
             $manager->flush();

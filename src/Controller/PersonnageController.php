@@ -480,6 +480,16 @@ class PersonnageController extends AppController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $personnage = $form->getData();
+            
+            $full_name = " " . $request->request->all()["personnage"]["nom"];
+            if(isset($request->request->all()["personnage"]["prenom_usage"]) && $request->request->all()["personnage"]["prenom_usage"]){
+                $full_name = $request->request->all()["personnage"]["prenom_usage"] . $full_name;
+            } else {
+                $full_name = $request->request->all()["personnage"]["prenom"] . $full_name;
+            }
+            $slug = $this->createSlug($full_name, 'Personnage');
+            echo $full_name . " ->" . $slug;die();
+            $personnage->setSlug($slug);
 
             if (isset($request->request->all()["personnage"]["personnageSeries"])) {
                 $form_personnageSeries = $request->request->all()['personnage']['personnageSeries'];
