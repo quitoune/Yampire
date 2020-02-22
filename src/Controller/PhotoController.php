@@ -124,6 +124,12 @@ class PhotoController extends AppController
         
         $objet = $repository->findOneBy(array('id' => $id));
         
+        if(is_null($objet->getTag())){
+            $id_tag = 0;
+        } else {
+            $id_tag = $objet->getTag()->getId();
+        }
+        
         $repo = $this->getDoctrine()->getRepository(Photo::class);
         
         $nbr_max_ajax = $this->getNbrMaxAjax();
@@ -131,7 +137,7 @@ class PhotoController extends AppController
             'repository' => 'Photo',
             'field' => 'Photo.id',
             'order' => 'ASC',
-            'condition' => 'tag.id = ' . $objet->getTag()->getId(),
+            'condition' => 'tag.id = ' . $id_tag,
             'jointure' => array(
                 array(
                     'oldrepository' => 'Photo',
