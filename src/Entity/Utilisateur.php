@@ -478,4 +478,9 @@ class Utilisateur implements AdvancedUserInterface
         return true;
     }
 
+    public function getReponse1(): ?string
+    {
+        return $this->reponse_1;
+    }
+
 }

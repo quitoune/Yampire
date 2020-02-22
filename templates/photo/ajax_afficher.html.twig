@@ -1,12 +1,15 @@
-<div id="ajax_serie_photo_see">
+<div id="ajax_{{ type }}_photo_see">
 	<div>
-	    
+	    {{ pagination.nb_elements }} photo{% if pagination.nb_elements > 1 %}s{% endif %} 
+	    {% if pagination.pages_count > 0 %}
+	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
+	    {% endif %}
     </div>
     
     <div class="row">
     	{% for photo in photos %}
         	<div class="col-img">
-        		<a href="{{ path('ajax_afficher_photos', { 'id':serie.id, 'page':1 }) }}">
+        		<a href="{{ path('photo_afficher', { 'id':photo.id, 'page':1 }) }}">
                     {% if photo is not null %}
         				{{ photo(photo) | raw }}
         			{% else %}
@@ -19,11 +22,29 @@
     
 	<div>
 		{% if photos is empty %}
-          	<p class="text-info text-center">Aucune photo n'est associé à cette série.</p>
+          	<p class="text-info text-center">Aucune photo n'est associé à 
+          	{% if type == 'acteur' %}
+          		{% if objet.sexe %}
+          			cette actrice
+          		{% else %}
+          			cet acteur
+          		{% endif %}
+          	{% elseif type == 'episode' %}
+          		cet épisode
+          	{% elseif type == 'espece' %}
+          		cet espèce
+          	{% elseif type == 'personnage' %}
+          		ce personnage
+          	{% elseif type == 'saison' %}
+          		cette saison
+          	{% elseif type == 'serie' %}
+          		cette série
+          	{% endif %}
+          	.</p>
         {% endif %}
 	</div>
 	
 	<div>
-    	
+    	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>

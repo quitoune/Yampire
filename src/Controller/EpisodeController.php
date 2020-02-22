@@ -179,8 +179,9 @@ class EpisodeController extends AppController
             $manager->persist($episode);
             $manager->flush();
 
-            return $this->redirectToRoute('episode_liste', array(
+            return $this->redirectToRoute('episode_afficher', array(
                 'page' => $page,
+                'slug_perso' => $episode->getSlug(),
                 'slug' => $serie->getSlug()
             ));
         }

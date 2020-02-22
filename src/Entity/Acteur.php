@@ -70,9 +70,9 @@ class Acteur
 
     public function __construct()
     {
-        $this->nationalite = new ArrayCollection();
         $this->acteurPersonnages = new ArrayCollection();
         $this->notes = new ArrayCollection();
+        $this->nationalites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -165,16 +165,16 @@ class Acteur
 
         return $this;
     }
-    
+
     public function getPhoto(): ?Photo
     {
         return $this->photo;
     }
-    
+
     public function setPhoto(?Photo $photo): self
     {
         $this->photo = $photo;
-        
+
         return $this;
     }
 
