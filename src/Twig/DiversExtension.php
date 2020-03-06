@@ -226,18 +226,22 @@ class DiversExtension extends AbstractExtension
      * @param $element
      * @return string
      */
-    public function getPhoto($element){
+    public function getPhoto($element, $class = ""){
         $photo = '';
         
         if((new \ReflectionClass($element))->getShortName() == "Photo"){
             $photo  = '<img src="/image/photo/' . $element->getChemin() . '"';
-            $photo .= ' alt="' . $element->getNom() . '"';
-            $photo .= ' title="' . $element->getNom() . '">';
+            if($class){
+                $photo .= ' class="' . $class . '"';
+            }
+            $photo .= ' alt="' . $element->getNom() . '">';
         } else {
             if(!is_null($element->getPhoto())){
                 $photo  = '<img src="/image/photo/' . $element->getPhoto()->getChemin() . '"';
-                $photo .= ' alt="' . $element->getPhoto()->getNom() . '"';
-                $photo .= ' title="' . $element->getPhoto()->getNom() . '">';
+                if($class){
+                    $photo .= ' class="' . $class . '"';
+                }
+                $photo .= ' alt="' . $element->getPhoto()->getNom() . '">';
             }
         }
         return $photo;

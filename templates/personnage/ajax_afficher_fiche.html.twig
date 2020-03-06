@@ -6,14 +6,14 @@
     </div>
     <div class="col col-9 center_img">
         <table class="table table-sm">
-        	<tr>
-        		<th></th>
-        		<td>
-        		    {% if is_granted("ROLE_UTILISATEUR") %}
+            {% if is_granted("ROLE_UTILISATEUR") %}
+            	<tr>
+            		<th></th>
+            		<td>
                         {{ modifier(path('personnage_modifier', {'slug_perso':personnage.slug, 'slug':serie.slug, 'page':page}), false) | raw }}
-                   	{% endif %}
-                </td>
-        	</tr>
+                	</td>
+        		</tr>
+            {% endif %}
         	<tr>
         		<th>Nom complet</th>
         		<td>{{ nom_complet(personnage) | raw }}</td>

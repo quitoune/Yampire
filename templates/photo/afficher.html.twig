@@ -3,19 +3,22 @@
 {% block title %} Photo - ID {{ photo.id }} {% endblock %}
 
 {% block body %}
-	<div class="row">
+	<div class="row photo">
     	<div class="col-4">
-    	    {{ photo(photo) | raw }}
+    	    {{ photo(photo, "w-auto") | raw }}
     	</div>
     	<div class="col-8" id="photo_tag">
-    		{% for tag in photo.tag %}
-    			<span class="badge badge-pill badge-yampire">
-    			    {{ tag.nom }} 
-    			    <span class="supprimer" data-link="{{ path('photo_tag_supprimer', { 'photo_id': photo.id, 'tag_id': tag.id }) }}">
-            	    	<i class="fas fa-times"></i>
-            	    </span>
-    			</span>
-            {% endfor %}
+    		<div class="center_div">
+        		{% for tag in photo.tag %}
+        			<span class="badge badge-pill badge-yampire">
+        			    {{ tag.nom }} 
+        			    <span class="supprimer" data-link="{{ path('photo_tag_supprimer', { 'photo_id': photo.id, 'tag_id': tag.id }) }}">
+                	    	<i class="fas fa-times"></i>
+                	    </span>
+        			</span>
+                {% endfor %}
+                <span class="badge badge-pill badge-yampire"><i class="fas fa-plus"></i></span>
+    		</div>
     	</div>
 	</div>
 {% endblock %}
