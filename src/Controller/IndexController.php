@@ -14,20 +14,23 @@ class IndexController extends AppController
      */
     public function index(SessionInterface $session)
     {
-        $repository = $this->getDoctrine()->getRepository(Serie::class);
-        $series = $repository->findAll();
-        
-        $session_series = array();
-        
-        foreach ($series as $serie) {
-            $session_series[$serie->getId()] = array(
-                'id'  => $serie->getId(),
-                'nom'  => $serie->getNom(),
-                'slug' => $serie->getSlug()
-            );
-        }
-        
+        if(is_null($session->get('series', null))){
+            $repository = $this->getDoctrine()->getRepository(Serie::class);
+            $series = $repository->findAll();
+            
+            $session_series = array();
+            
+            foreach ($series as $serie) {
+                $session_series[$serie->getId()] = array(
+                    'id'  => $serie->getId(),
+                    'titre'  => $serie->getTitre(),
+                    'titre_original'  => $serie->getTitreOriginal(),
+                    'slug' => $serie->getSlug()
+                );
+            }
+            
         $session->set('series', $session_series);
+        }
         
         return $this->render('index/index.html.twig', array(
             'paths' => array(

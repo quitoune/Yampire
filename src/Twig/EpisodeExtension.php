@@ -6,6 +6,8 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use App\Entity\Episode;
+use App\Entity\Serie;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class EpisodeExtension extends AbstractExtension
 {
@@ -14,7 +16,7 @@ class EpisodeExtension extends AbstractExtension
         return array(
             new TwigFilter('titre', array(
                 $this,
-                'getTitreEpisode'
+                'getTitre'
             ))
         );
     }
@@ -28,28 +30,55 @@ class EpisodeExtension extends AbstractExtension
             )),
             new TwigFunction('titre', array(
                 $this,
-                'getTitreEpisode'
+                'getTitre'
+            )),
+            new TwigFunction('titreMenu', array(
+                $this,
+                'getTitreMenu'
             ))
         );
     }
     
     /**
      *
-     * @param Episode $episode
+     * @param Serie $serie
+     * @param Session $session
      * @return string
      */
-    public function getTitreEpisode(Episode $episode, $session){
+    public function getTitreMenu($serie, $session){
         $is_vo = 0;
         if($session->get('user')){
-            $is_vo = $session->get('user')['vo'];
+            $is_vo = $session->get('user')['serie_vo'];
         }
         
         if($is_vo){
-            return $episode->getTitreOriginal();
-        } elseif(!$is_vo && is_null($episode->getTitre())){
-            return $episode->getTitreOriginal();
+            return $serie['titre_original'];
+        } elseif(!$is_vo && is_null($serie['titre'])){
+            return $serie['titre_original'];
         } else {
-            return $episode->getTitre();
+            return $serie['titre'];
+        }
+    }
+    
+    /**
+     *
+     * @param string $type
+     * @param Serie/Episode $objet
+     * @param Session $session
+     * @return string
+     */
+    public function getTitre(string $type, $objet, $session){
+        $is_vo = 0;
+        if($session->get('user')){
+            $is_vo = $session->get('user')[$type . '_vo'];
+        }
+        
+        if($is_vo){
+            return $objet->getTitreOriginal();
+        } elseif(!$is_vo && is_null($objet->getTitre())){
+            return $objet->getTitreOriginal();
+        } else {
+            return $objet->getTitre();
         }
     }
     
@@ -63,7 +92,7 @@ class EpisodeExtension extends AbstractExtension
     {
         $code = '';
         if($avec_serie){
-            $code .= $episode->getSerie()->getNomCourt() . ' - ';
+            $code .= $episode->getSerie()->getTitreCourt() . ' - ';
         }
         $code .= 'S' . $episode->getSaison()->getNumeroSaison() . 'E' . $episode->getNumeroEpisode();
         return $code;

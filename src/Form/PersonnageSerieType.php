@@ -37,7 +37,7 @@ class PersonnageSerieType extends AbstractType
             },
             'query_builder' => function (SerieRepository $sr) {
                 return $sr->createQueryBuilder('s')
-                    ->orderBy('s.nom', 'ASC');
+                    ->orderBy('s.titre_original', 'ASC');
             },
             'disabled' => $options['disabled_serie']
         ))

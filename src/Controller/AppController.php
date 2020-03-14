@@ -70,6 +70,15 @@ class AppController extends AbstractController
     }
     
     /**
+     * 
+     * @param string $type
+     * @return number
+     */
+    public function getVo(string $type){
+        return (!is_null($this->get('session')->get('user')) ? $this->get('session')->get('user')[$type . '_vo'] : 0);
+    }
+    
+    /**
      *
      * @return string
      */
@@ -155,7 +164,7 @@ class AppController extends AbstractController
                 return ' la citation ' . $objet->getId();
                 break;
             case 'episode':
-                if($this->get('session')->get('user')['vo']){
+                if($this->get('session')->get('user')['episode_vo']){
                     return " l'épisode " . $objet->getId() . " - " . $objet->getTitreOriginal();
                 } else {
                     return " l'épisode " . $objet->getId() . " - " . $objet->getTitre();
@@ -177,7 +186,11 @@ class AppController extends AbstractController
                 return ' la saison ' . $objet->getId() . ' - Saison ' . $objet->getNumeroSaison();
                 break;
             case 'serie':
-                return ' la série ' . $objet->getId() . ' - ' . $objet->getNom();
+                if(!$this->get('session')->get('user')['serie_vo'] && !is_null($objet->getTitre())){
+                    return " la série " . $objet->getId() . " - " . $objet->getTitre();
+                } else {
+                    return " la série " . $objet->getId() . " - " . $objet->getTitreOriginal();
+                }
                 break;
             case 'utilisateur':
                 return ' l\'utilisateur ' . $objet->getId() . ' - ' . $objet->getNomComplet();
@@ -185,7 +198,7 @@ class AppController extends AbstractController
             case 'photo':
                 return ' la photo ' . $objet->getId() . ' - ' . $objet->getNom();
                 break;
-            case 'photo':
+            case 'way_to_die':
                 return ' la façon de mourir ' . $objet->getId() . ' - ' . $objet->getNom();
                 break;
         }

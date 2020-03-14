@@ -104,7 +104,7 @@ class PersonnageController extends AppController
         $paths = array(
             'home' => $this->homeURL(),
             'paths' => array(),
-            'active' => 'Personnages de ' . $serie->getNom()
+            'active' => 'Personnages de ' . $serie->getNom($this->getVo("serie"))
         );
 
         return $this->render('personnage/index.html.twig', array(
@@ -205,7 +205,7 @@ class PersonnageController extends AppController
                 $this->generateUrl('personnage_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Personnages de ' . $serie->getNom()
+                )) => 'Personnages de ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => 'Affichage du' . $this->getIdNom($personnage, 'personnage')
         );
@@ -417,7 +417,7 @@ class PersonnageController extends AppController
                 $this->generateUrl('personnage_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Personnages de ' . $serie->getNom()
+                )) => 'Personnages de ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => 'Modification du' . $this->getIdNom($personnage, 'personnage')
         );
@@ -570,7 +570,7 @@ class PersonnageController extends AppController
                 $this->generateUrl('personnage_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Personnages de ' . $serie->getNom()
+                )) => 'Personnages de ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => "Ajout d'un personnage"
         );

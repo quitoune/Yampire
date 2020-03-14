@@ -2,7 +2,7 @@
     {{ form_start(form) }}
     <div class="modal-header">
         <h5 class="modal-title">
-            Ajouter un personnage à l'épisode {{ codeEpisode(episode, false) }} - {{ titre(episode, app.session) }} 
+            Ajouter un personnage à l'épisode {{ codeEpisode(episode, false) }} - {{ titre("episode", episode, app.session) }} 
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>

@@ -112,6 +112,14 @@ img {
 	color: #9b111e!important;
 }
 
+/*svg:not(:root) {
+	vertical-align: text-top!important;
+}
+
+.sf-toolbar svg:not(:root) {
+	vertical-align: top!important;
+}*/
+
 /********************************************
 *
 * DEBUT SURCHARGE NAV BOOTSTRAP
@@ -467,4 +475,8 @@ li.page-item {
 	width: 80%;
 	margin-right: auto;
 	margin-left: auto;
+}
+
+.marg-l-10 {
+	margin-left: 10px;
 }

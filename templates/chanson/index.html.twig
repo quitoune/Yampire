@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Chansons de {{ serie.nom }}{% endblock %}
+{% block title %}Chansons de {{ titre("serie", serie, app.session) }}{% endblock %}
 
 {% block body %}
     <div class="card liste text-center">

@@ -8,12 +8,16 @@
 	    {{ form_start(form) }}
         <table class="table table-sm">
             <tr>
-        		<th>{{ form_label(form.nom) }}</th>
-        		<td>{{ form_errors(form.nom) }} {{ form_widget(form.nom) }} {{ form_help(form.nom) }}</td>
+        		<th>{{ form_label(form.titre) }}</th>
+        		<td>{{ form_errors(form.titre) }} {{ form_widget(form.titre) }} {{ form_help(form.titre) }}</td>
+        	</tr>
+            <tr>
+        		<th>{{ form_label(form.titre_original) }}</th>
+        		<td>{{ form_errors(form.titre_original) }} {{ form_widget(form.titre_original) }} {{ form_help(form.titre_original) }}</td>
         	</tr>
         	<tr>
-        		<th>{{ form_label(form.nom_court) }}</th>
-        		<td>{{ form_errors(form.nom_court) }} {{ form_widget(form.nom_court) }} {{ form_help(form.nom_court) }}</td>
+        		<th>{{ form_label(form.titre_court) }}</th>
+        		<td>{{ form_errors(form.titre_court) }} {{ form_widget(form.titre_court) }} {{ form_help(form.titre_court) }}</td>
         	</tr>
         	<tr>
         		<th>{{ form_label(form.nombre_saison) }}</th>

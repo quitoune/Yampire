@@ -16,9 +16,12 @@ class SerieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')
-        ->add('nom_court', TextType::class, array(
-            'label' => 'Nom court'
+        $builder->add('titre')
+        ->add('titre_original', TextType::class, array(
+            'label' => 'Titre Original'
+        ))
+        ->add('titre_court', TextType::class, array(
+            'label' => 'Titre court'
         ))
         ->add('nombre_saison', NumberType::class, array(
             'label' => 'Nombre de saisons'

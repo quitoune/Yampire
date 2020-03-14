@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %} 
-    {% if acteur.sexe %}Actrice{% else %}Acteur{% endif %} - ID {{ acteur.id }} 
+    {% if acteur.sexe %}Actrice{% else %}Acteur{% endif %} - {{ nom_acteur(acteur) }} 
 {% endblock %}
 
 {% block body %}

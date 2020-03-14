@@ -53,7 +53,7 @@ class SaisonController extends AppController
         $paths = array(
             'home' => $this->homeURL(),
             'paths' => array(),
-            'active' => 'Saisons ' . $serie->getNom()
+            'active' => 'Saisons ' . $serie->getNom($this->getVo("serie"))
         );
 
         return $this->render('saison/index.html.twig', array(
@@ -144,7 +144,7 @@ class SaisonController extends AppController
             'paths' => array(
                 $this->generateUrl('serie_afficher', array(
                     'slug' => $serie->getSlug()
-                )) => $serie->getNom()
+                )) => $serie->getNom($this->getVo("serie"))
             ),
             'active' => 'Affichage de' . $this->getIdNom($saison, 'saison')
         );
@@ -194,7 +194,7 @@ class SaisonController extends AppController
                 $this->generateUrl('saison_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Saisons ' . $serie->getNom()
+                )) => 'Saisons ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => 'Modification' . $this->getIdNom($saison, 'saison')
         );
@@ -246,7 +246,7 @@ class SaisonController extends AppController
                 $this->generateUrl('saison_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Saisons ' . $serie->getNom()
+                )) => 'Saisons ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => "Ajout d'une saison"
         );

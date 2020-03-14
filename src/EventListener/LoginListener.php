@@ -26,7 +26,8 @@ class LoginListener
             'prenom' => $user->getPrenom(),
             'nom' => $user->getNom(),
             'username' => $user->getUsername(),
-            'vo' => $user->getVo()
+            'episode_vo' => $user->getEpisodeVo(),
+            'serie_vo' => $user->getSerieVo()
         ));
         
         if($user->getNbrMax()){
@@ -51,7 +52,8 @@ class LoginListener
             foreach ($series as $serie) {
                 $session_series[$serie->getId()] = array(
                     'id'   => $serie->getId(),
-                    'nom'  => $serie->getNom(),
+                    'titre'  => $serie->getTitre(),
+                    'titre_original'  => $serie->getTitreOriginal(),
                     'slug' => $serie->getSlug()
                 );
             }

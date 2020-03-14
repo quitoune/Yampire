@@ -7,28 +7,31 @@
     <div class="card">
         {{ form_start(form) }}
 		<div class="card-header">
-			Edition de {{ serie.nom }} - ID {{ serie.id }}
+			Edition de {{ titre("serie", serie, app.session) }} - ID {{ serie.id }}
 		</div>
         
         <div class="card-body">
         	<div class="row">
-            	<div class="col-lg-6 col-md-6 col-12 w-100">
-            		{{ form_row(form.nom) }}
+            	<div class="col-lg-6 col-md-6 col-12">
+            		{{ form_row(form.titre) }}
             	</div>
             	<div class="col-lg-6 col-md-6 col-12">
-            		{{ form_row(form.nom_court) }}
+            		{{ form_row(form.titre_original) }}
             	</div>
             </div>
             <div class="row">
             	<div class="col-lg-6 col-md-6 col-12">
+            		{{ form_row(form.titre_court) }}
+            	</div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-4 col-md-6 col-12">
             		{{ form_row(form.nombre_saison) }}
             	</div>
-            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            	<div class="col-lg-4 col-md-6 col-12">
             		{{ form_row(form.nombre_episode) }}
             	</div>
-            </div>
-            <div class="row">
-            	<div class="col-lg-6 col-md-6 col-12">
+            	<div class="col-lg-4 col-md-6 col-12 w-100">
             		{{ form_row(form.terminee) }}
             	</div>
             </div>

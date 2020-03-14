@@ -35,7 +35,10 @@ class UtilisateurType extends AbstractType
         ->add('username', TextType::class, array(
             'label' => 'Pseudo'
         ))
-        ->add('vo', YesNoType::class, array(
+        ->add('serie_vo', YesNoType::class, array(
+            'label' => 'Titre original des séries'
+        ))
+        ->add('episode_vo', YesNoType::class, array(
             'label' => 'Titre original des épisodes'
         ))
         ->add('question_1', TextareaType::class, array(

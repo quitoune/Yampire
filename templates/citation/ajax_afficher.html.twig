@@ -1,19 +1,29 @@
-<div class="card" id="ajax_{{ type }}_citation_see">
-	<div class="card-header text-left">
-	    {{ pagination.nb_elements }} citation{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
-	    {% if is_granted("ROLE_ADMIN") %}
-            {{ ajouter(path('citation_ajouter', {'slug':objet.slug, 'page':pagination.page})) | raw }}
+<div id="ajax_{{ type }}_citation_see">
+	<div class="text-center">
+	    {{ pagination.nb_elements }} citation{% if pagination.nb_elements > 1 %}s{% endif %} 
+	    {% if pagination.pages_count > 0 %}
+	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
+	    {% endif %}
+	    {% if is_granted("ROLE_UTILISATEUR") %}
+        	{% if type == 'serie' %}
+                {{ ajouter(path('citation_ajouter', {'slug':objet.slug, 'page':pagination.page}), false, 'btn-ajouter') | raw }}
+            {% elseif type == 'saison' or type == 'episode' %}
+                {{ ajouter(path('citation_ajouter', {'slug':objet.serie.slug, 'page':pagination.page}), false, 'btn-ajouter') | raw }}
+            {% elseif type == 'personnage' %}
+                {{ ajouter(path('citation_ajouter', {'slug':objet.personnageSeries[0].serie.slug, 'page':pagination.page}), false, 'btn-ajouter') | raw }}
+            {% endif %}
         {% endif %}
     </div>
-    <div class="card-body">
-    	<div class="row">
-		    {% for citation in citations %}
-    			<div class="col-quotes">
-    			    {{ card_citation(citation, true, path('citation_afficher', {'id':citation.id, 'slug':citation.episode.serie.slug, 'page':pagination.page})) | raw }}
-    			</div>
-            {% endfor %}
-		</div>
-        {% if citations is empty %}
+    <div class="row">
+	    {% for citation in citations %}
+			<div class="col-quotes">
+			    {{ card_citation(citation, true, path('citation_afficher', {'id':citation.id, 'slug':citation.episode.serie.slug, 'page':pagination.page})) | raw }}
+			</div>
+        {% endfor %}
+	</div>
+	
+    {% if citations is empty %}
+        <div class="text-center">
           	<p class="text-info text-center">Aucune citation n'est associé à
                 {% if type == 'episode' %}
                 	cet épisode.
@@ -23,10 +33,10 @@
                     ce {{ type }}.
                 {% endif %}
             </p>
-        {% endif %}
-	</div>
+		</div>
+    {% endif %}
 	
-	<div class="card-footer">
+	<div class="text-center">
     	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>

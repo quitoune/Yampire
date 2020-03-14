@@ -5,8 +5,13 @@
 {% block body %}
 <div>
 	{% for question in questions %}
-		{{ afficher(question) | raw }}
+		{{ afficher(question, 0, doctrine) | raw }}
 		<hr>
 	{% endfor %}
 </div>
+{% endblock %}
+{% block javascripts %}
+    <script>		
+        $("select.form-control").select2();
+	</script>
 {% endblock %}

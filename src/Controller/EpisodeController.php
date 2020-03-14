@@ -58,7 +58,7 @@ class EpisodeController extends AppController
         $paths = array(
             'home' => $this->homeURL(),
             'paths' => array(),
-            'active' => 'Episodes de ' . $serie->getNom()
+            'active' => 'Episodes de ' . $serie->getNom($this->getVo("serie"))
         );
 
         return $this->render('episode/index.html.twig', array(
@@ -138,7 +138,7 @@ class EpisodeController extends AppController
                 $this->generateUrl('episode_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Episodes de ' . $episode->getSerie()->getNom()
+                )) => 'Episodes de ' . $episode->getSerie()->getNom($this->getVo("serie"))
             ),
             'active' => 'Affichage de' . $this->getIdNom($episode, 'episode')
         );
@@ -192,7 +192,7 @@ class EpisodeController extends AppController
                 $this->generateUrl('episode_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Episodes de ' . $episode->getSerie()->getNom()
+                )) => 'Episodes de ' . $episode->getSerie()->getNom($this->getVo("serie"))
             ),
             'active' => 'Modification de' . $this->getIdNom($episode, 'episode')
         );
@@ -250,9 +250,9 @@ class EpisodeController extends AppController
                 $this->generateUrl('episode_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Episodes de ' . $serie->getNom()
+                )) => 'Episodes de ' . $serie->getNom($this->getVo("serie"))
             ),
-            'active' => "Ajout d'un épisode pour la série " . $serie->getNom()
+            'active' => "Ajout d'un épisode pour la série " . $serie->getNom($this->getVo("serie"))
         );
 
         return $this->render('episode/ajouter.html.twig', array(
@@ -263,7 +263,7 @@ class EpisodeController extends AppController
     }
     
     /**
-     * Ajouter une connexion entre un personnage et une saison
+     * Ajouter une connexion entre un personnage et un épisode
      *
      * @Route("/personnage_episode/ajax_ajouter/{id}", name="ajax_ajouter_personnage_episode")
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
@@ -276,6 +276,7 @@ class EpisodeController extends AppController
     public function ajaxAjouterPersonnages(Request $request, SessionInterface $session, Episode $episode){
         $form = $this->createForm(EpisodePersonnageType::class, null, array(
             'session' => $session,
+            'label_button' => 'Ajouter',
             'disabled_episode' => true
         ));
         
@@ -301,6 +302,52 @@ class EpisodeController extends AppController
         }
         
         return $this->render('personnage/ajax_ajouter_depuis_episode.html.twig', array(
+            'form'  => $form->createView(),
+            'episode' => $episode
+        ));
+    }
+    
+    /**
+     * Supprimer une connexion entre un personnage et un épisode
+     *
+     * @Route("/personnage_episode/ajax_supprimer/{id}", name="ajax_supprimer_personnage_episode")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     *
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param Episode $episode
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxSupprimerPersonnages(Request $request, SessionInterface $session, Episode $episode){
+        $form = $this->createForm(EpisodePersonnageType::class, null, array(
+            'session' => $session,
+            'label_button' => 'Supprimer',
+            'choices' => $episode->getPersonnage(),
+            'disabled_episode' => true
+        ));
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            if(isset($request->request->all()["episode_personnage"]["personnage"])){
+                $repo = $this->getDoctrine()->getRepository(Personnage::class);
+                $personnages = $request->request->all()["episode_personnage"]["personnage"];
+                
+                foreach($personnages as $personnage){
+                    $episode->removePersonnage($repo->findOneBy(array('id' => $personnage)));
+                }
+                $manager = $this->getDoctrine()->getManager();
+                
+                $manager->persist($episode);
+                $manager->flush();
+            }
+            
+            return $this->json(array(
+                'statut' => true
+            ));
+        }
+        
+        return $this->render('personnage/ajax_supprimer_depuis_episode.html.twig', array(
             'form'  => $form->createView(),
             'episode' => $episode
         ));

@@ -29,7 +29,10 @@
                         <td> {{ nationalite.nomFeminin }}</td>
                         <td> {{ nationalite.nomMasculin }}</td>
                         {% if is_granted("ROLE_ADMIN") %}
-                        	<td>{{ modifier(path('nationalite_modifier', {'id':nationalite.id, 'page':pagination.page})) | raw }}</td>
+                        	<td>
+                                {{ supprimer(path('nationalite_supprimer', { 'id':nationalite.id, 'page':pagination.page }), true, "", "marg-l-10") | raw }}
+                        	    {{ modifier(path('nationalite_modifier', {'id':nationalite.id, 'page':pagination.page})) | raw }}
+                        	</td>
                         {% endif %}
                     </tr>
                 {% endfor %}

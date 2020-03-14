@@ -12,7 +12,7 @@
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
-                    	<a class="dropdown-item" href="{{ path('serie_afficher', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
+                    	<a class="dropdown-item" href="{{ path('serie_afficher', { 'slug': serie.slug }) }}">{{ titreMenu(serie, app.session) }}</a>
                     {% endfor %}
                 </div>
             </li>
@@ -23,7 +23,7 @@
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
-                    	<a class="dropdown-item" href="{{ path('episode_liste', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
+                    	<a class="dropdown-item" href="{{ path('episode_liste', { 'slug': serie.slug }) }}">{{ titreMenu(serie, app.session) }}</a>
                     {% endfor %}
                 </div>
             </li>
@@ -34,7 +34,7 @@
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
-                    	<a class="dropdown-item" href="{{ path('personnage_liste', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
+                    	<a class="dropdown-item" href="{{ path('personnage_liste', { 'slug': serie.slug }) }}">{{ titreMenu(serie, app.session) }}</a>
                     {% endfor %}
                 </div>
             </li>
@@ -45,7 +45,7 @@
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                 	{% for serie in app.session.get('series') %}
-                    	<a class="dropdown-item" href="{{ path('citation_liste', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
+                    	<a class="dropdown-item" href="{{ path('citation_liste', { 'slug': serie.slug }) }}">{{ titreMenu(serie, app.session) }}</a>
                     {% endfor %}
                 </div>
             </li>
@@ -55,7 +55,7 @@
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                 	{% for serie in app.session.get('series') %}
-                    	<a class="dropdown-item" href="{{ path('chanson_liste', { 'slug': serie.slug }) }}">{{ serie.nom }}</a>
+                    	<a class="dropdown-item" href="{{ path('chanson_liste', { 'slug': serie.slug }) }}">{{ titreMenu(serie, app.session) }}</a>
                     {% endfor %}
                 </div>
             </li>

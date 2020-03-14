@@ -13,10 +13,15 @@
         <div class="card-body">
         	<div class="row">
             	<div class="col-lg-6 col-md-6 col-12 w-100">
-            		{{ form_row(form.nom) }}
+            		{{ form_row(form.titre) }}
             	</div>
+            	<div class="col-lg-6 col-md-6 col-12 w-100">
+            		{{ form_row(form.titre_original) }}
+            	</div>
+            </div>
+            <div class="row">
             	<div class="col-lg-6 col-md-6 col-12">
-            		{{ form_row(form.nom_court) }}
+            		{{ form_row(form.titre_court) }}
             	</div>
             </div>
             <div class="row">

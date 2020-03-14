@@ -52,12 +52,7 @@
             					
             			        {% for episode in saison.episodes %}
             						<input type="checkbox" name="personnage[personnageEpisodes][{{ episode.id }}]">
-            						#{{ episode.numeroEpisode }} - 
-                                    {% if isVo(app.session) %}
-                                    	{{ episode.titreOriginal }}
-                                    {% else %}
-                                        {{ episode.titre }}
-                                    {% endif %} 
+            						#{{ episode.numeroEpisode }} - {{ titre("episode", episode, app.session) }}
             						<br>
             					{% endfor %}
             				</div>

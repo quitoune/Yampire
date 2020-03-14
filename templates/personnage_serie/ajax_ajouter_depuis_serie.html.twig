@@ -2,7 +2,7 @@
     {{ form_start(form) }}
     <div class="modal-header">
         <h5 class="modal-title">
-            Ajouter un personnage à la série {{ serie.nom }}
+            Ajouter un personnage à la série {{ titre("serie", serie, app.session) }}
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -14,10 +14,10 @@
     		<div class="col col-12">
     		    {{ form_row(form.serie) }}
     		</div>
-    		<div class="col col-12">
+    		<div class="col col-12 w-100">
     			{{ form_row(form.personnage) }}
     		</div>
-    		<div class="col col-12">
+    		<div class="col col-12 w-100">
     			{{ form_row(form.principal) }}
     		</div>
     	</div>

@@ -63,7 +63,7 @@ class CitationController extends AppController
         $paths = array(
             'home' => $this->homeURL(),
             'paths' => array(),
-            'active' => 'Citations de ' . $serie->getNom()
+            'active' => 'Citations de ' . $serie->getNom($this->getVo("serie"))
         );
 
         return $this->render('citation/index.html.twig', array(
@@ -216,7 +216,7 @@ class CitationController extends AppController
                 $this->generateUrl('citation_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Citations de ' . $citation->getEpisode()->getSerie()->getNom()
+                )) => 'Citations de ' . $citation->getEpisode()->getSerie()->getNom($this->getVo("serie"))
             ),
             'active' => 'Modification de' . $this->getIdNom($citation, 'citation')
         );
@@ -247,7 +247,7 @@ class CitationController extends AppController
                 $this->generateUrl('citation_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Citations de ' . $serie->getNom()
+                )) => 'Citations de ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => 'Affichage de' . $this->getIdNom($citation, 'citation')
         );
@@ -315,9 +315,9 @@ class CitationController extends AppController
                 $this->generateUrl('citation_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Citations de ' . $serie->getNom()
+                )) => 'Citations de ' . $serie->getNom($this->getVo("serie"))
             ),
-            'active' => "Ajout d'une citation pour la série " . $serie->getNom()
+            'active' => "Ajout d'une citation pour la série " . $serie->getNom($this->getVo("serie"))
         );
 
         return $this->render('citation/ajouter.html.twig', array(

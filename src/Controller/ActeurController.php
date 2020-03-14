@@ -313,7 +313,8 @@ class ActeurController extends AppController
             $manager->persist($acteur);
             $manager->flush();
 
-            return $this->redirectToRoute('acteur_liste', array(
+            return $this->redirectToRoute('acteur_afficher', array(
+                'slug' => $slug,
                 'page' => $page
             ));
         }

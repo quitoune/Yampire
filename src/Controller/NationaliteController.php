@@ -144,4 +144,34 @@ class NationaliteController extends AppController
             'paths' => $paths
         ));
     }
+    
+    /**
+     * Supprimer une nationalité
+     *
+     * @Route("/nationalite/supprimer/{id}/{page}", name="nationalite_supprimer")
+     * @ParamConverter("nationalite", options={"mapping"={"id"="id"}})
+     *
+     * @param Nationalite $nationalite
+     * @param int $page
+     */
+    public function supprimer(Nationalite $nationalite, int $page)
+    {
+        
+        $manager = $this->getDoctrine()->getManager();
+        
+        $acteurs = $nationalite->getActeurs();
+        
+        foreach ($acteurs as $acteur){
+            $nationalite->removeActeur($acteur);
+        }
+        
+        $manager->persist($nationalite);
+        
+        $manager->remove($nationalite);
+        $manager->flush();
+        
+        return $this->redirectToRoute('nationalite_liste', array(
+            'page' => $page
+        ));
+    }
 }

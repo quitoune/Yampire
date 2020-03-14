@@ -27,7 +27,10 @@
                         <td> {{ way_to_die.id }} </td>
                         <td> {{ way_to_die.nom }} </td>
                         {% if is_granted("ROLE_UTILISATEUR") %}
-                        	<td>{{ modifier(path('way_to_die_modifier', {'id':way_to_die.id, 'page':pagination.page})) | raw }}</td>
+                        	<td>
+                        	    {{ supprimer(path('way_to_die_supprimer', { 'id':way_to_die.id, 'page':pagination.page }), true, "", "marg-l-10") | raw }}
+                        	    {{ modifier(path('way_to_die_modifier', { 'id':way_to_die.id, 'page':pagination.page })) | raw }}
+                    	    </td>
                         {% endif %}
                     </tr>
                 {% else %}

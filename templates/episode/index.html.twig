@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Episodes de {{ serie.nom }}{% endblock %}
+{% block title %}Episodes de {{ titre("serie", serie, app.session) }}{% endblock %}
 
 {% block body %}
     
@@ -24,7 +24,7 @@
                     <tr>
                         <td><a href="{{ path('episode_afficher', {'slug_episode': episode.slug, 'slug': serie.slug, 'page': pagination.page}) }}">{{ episode.id }} </a></td>
                 		<td> {{ codeEpisode(episode, false) }} -         
-                            {{ titre(episode, app.session) }} 
+                            {{ titre("episode", episode, app.session) }} 
                         </td>
                         <td> 
                         	{% if episode.premiereDiffusion is not null %}

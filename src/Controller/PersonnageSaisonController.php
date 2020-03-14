@@ -43,11 +43,20 @@ class PersonnageSaisonController extends AppController
         
         if ($form->isSubmitted() && $form->isValid()) {
             $personnage_saison = $form->getData();
-            $personnage_saison->setSaison($saison);
-            $manager = $this->getDoctrine()->getManager();
             
-            $manager->persist($personnage_saison);
-            $manager->flush();
+            $repo = $this->getDoctrine()->getRepository(PersonnageSaison::class);
+            $element = $repo->findOneBy(array(
+                'saison' => $saison->getId(),
+                'personnage' => $personnage_saison->getPersonnage()->getId()
+            ));
+            
+            if(is_null($element)){
+                $personnage_saison->setSaison($saison);
+                $manager = $this->getDoctrine()->getManager();
+                
+                $manager->persist($personnage_saison);
+                $manager->flush();
+            }
             
             return $this->json(array(
                 'statut' => true

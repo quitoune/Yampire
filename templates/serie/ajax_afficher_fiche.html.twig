@@ -5,7 +5,7 @@
         {% endif %}
 	</div>
 	<div class="col col-9 center_img">
-        <table class="table table-sm">
+        <table class="table table-sm table-borderless">
             {% if is_granted("ROLE_UTILISATEUR") %}
             	<tr>
             		<th></th>
@@ -13,12 +13,16 @@
             	</tr>
             {% endif %}
         	<tr>
-        		<th>Nom</th>
-        		<td>{{ serie.nom }}</td>
+        		<th>Titre</th>
+        		<td>{{ serie.titre }}</td>
+        	</tr>
+        	<tr>
+        		<th>Titre Original</th>
+        		<td>{{ serie.titreOriginal }}</td>
         	</tr>
         	<tr>
         		<th>Abrégé</th>
-        		<td>{{ serie.nomCourt }}</td>
+        		<td>{{ serie.titreCourt }}</td>
         	</tr>
         	<tr>
         		<th>Nombre de saison</th>

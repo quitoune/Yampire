@@ -16,13 +16,13 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Nom</th>
+                        <th>Titre</th>
                     </tr>
                 </thead>
                 {% for serie in series %}
                     <tr>
                         <td> {{ serie.id }} </td>
-                        <td> <a href="{{ path('serie_afficher', {'slug':serie.slug}) }}"> {{ serie.nom }}</a></td>
+                        <td> <a href="{{ path('serie_afficher', {'slug':serie.slug}) }}"> {{ titre("serie", serie, app.session) }}</a></td>
                     </tr>
                 {% endfor %}
                 </table>

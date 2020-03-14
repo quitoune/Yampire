@@ -1,11 +1,14 @@
-{% for tag in photo.tag %}
-	<span class="badge badge-pill badge-yampire">
-	    {{ tag.nom }} 
-	    <span class="supprimer" data-link="{{ path('photo_tag_supprimer', { 'photo_id': photo.id, 'tag_id': tag.id }) }}">
-	    	<i class="fas fa-times"></i>
-	    </span>
-	</span>
-{% endfor %}
+<div class="center_div">
+    {% for tag in photo.tag %}
+    	<span class="badge badge-pill badge-yampire">
+    	    {{ tag.nom }} 
+    	    <span class="supprimer" data-link="{{ path('photo_tag_supprimer', { 'photo_id': photo.id, 'tag_id': tag.id }) }}">
+    	    	<i class="fas fa-times"></i>
+    	    </span>
+    	</span>
+    {% endfor %}
+	<span class="badge badge-pill badge-yampire"><i class="fas fa-plus"></i></span>
+</div>
 {% block javascripts %}
 	<script type="text/javascript">
 	$( document ).ready(function() {

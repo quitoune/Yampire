@@ -46,6 +46,7 @@ class Saison
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Episode", mappedBy="saison")
+     * @ORM\OrderBy({"numero_episode" = "ASC"})
      */
     private $episodes;
 

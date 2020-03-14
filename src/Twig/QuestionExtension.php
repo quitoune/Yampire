@@ -9,6 +9,7 @@ use App\Controller\QuestionController;
 use App\Controller\AppController;
 use App\Entity\Question;
 use App\Entity\Citation;
+use App\Entity\Serie;
 
 class QuestionExtension extends AbstractExtension
 {
@@ -40,6 +41,10 @@ class QuestionExtension extends AbstractExtension
             new TwigFunction('select_vrai_faux', array(
                 $this,
                 'getSelectVraiFaux'
+            )),
+            new TwigFunction('select_episode', array(
+                $this,
+                'getSelectEpisode'
             )),
             new TwigFunction('select_correction', array(
                 $this,
@@ -148,6 +153,7 @@ class QuestionExtension extends AbstractExtension
     }
     
     /**
+     * Retourne une liste déroulante Vrai/Faux
      * 
      * @param string $id
      * @param string $name
@@ -166,20 +172,59 @@ class QuestionExtension extends AbstractExtension
     }
     
     /**
+     * 
+     * @param $doctrine
+     * @param string $id
+     * @param string $classe
+     * @param string $name
+     * @return string
+     */
+    public function getSelectEpisode($doctrine, string $id, int $reponse, string $classe = "", string $name = ""){
+        $series = $doctrine->getRepository(Serie::class)->findAll();
+        if($name == ""){
+            $name = $id;
+        }
+        
+        $select  = "<select id = '" . $id . "' data-reponse='" . $reponse . "' name = '" . $name . "' class = 'form-control";
+        if($classe){
+            $select .= " " . $classe;
+        }
+        $select .= "'>";
+        
+        foreach ($series as $serie){
+            $select .= "<optgroup label='" . $serie->getNom() . "'>";
+            foreach ($serie->getSaisons() as $saison){
+                $select .= "<optgroup label='&nbsp;&nbsp;&nbsp;&nbsp;Saison " . $saison->getNumeroSaison() . "'>";
+                foreach($saison->getEpisodes() as $episode){
+                    $select .= "<option value='" . $episode->getId() . "'>";
+                    $select .= "&nbsp;&nbsp;&nbsp;&nbsp;" . $episode->getNumeroEpisode() . ". " . $episode->getTitreOriginal();
+                    $select .= "</option>";
+                }
+                $select .= "</optgroup>";
+            }
+            $select .= "</optgroup>";
+        }
+        
+        $select .= "</select>";
+        
+        return $select;
+    }
+    
+    /**
      * Affichage d'une question
      * 
      * @param Question $question
      * @param int $ordre
      * @return string
      */
-    public function afficherQuestion(Question $question, int $ordre = 0)
+    public function afficherQuestion(Question $question, int $ordre = 0, $doctrine)
     {
         switch($question->getTypeQuestion()){
             case 7:
                 return $this->afficherVraiFaux($question, $ordre);
                 break;
             case 2:
-                return $this->afficherCitation($question->getCitation(), $ordre);
+                return $this->afficherCitation($question->getCitation(), $ordre, $doctrine);
                 break;
             default:
                 return $this->afficherQcm($question, $ordre);
@@ -192,9 +237,10 @@ class QuestionExtension extends AbstractExtension
      *
      * @param Citation $citation
      * @param int $ordre
+     * @param $doctrine
      * @return string
      */
-    public function afficherCitation(Citation $citation = null, int $ordre = 0)
+    public function afficherCitation(Citation $citation = null, int $ordre = 0, $doctrine)
     {
         $return = "OK";
         if(!is_null($citation)){
@@ -211,9 +257,19 @@ class QuestionExtension extends AbstractExtension
             $return .= '</div>';
             
             $return .= '<div class="card-body">';
-            $return .= 'Qui est l\'auteur de cette citation ? <br>';
-            $return .= 'A qui la dit-elle ? <br>';
-            $return .= 'Dans quel épisode ? <br>';
+            
+            $return .= '<div class="form-group">';
+            $return .= '<label for="auteur_' . $id . '">Qui est l\'auteur de cette citation ? </label>';
+            $return .= '</div>';
+            
+            $return .= '<div class="form-group">';
+            $return .= '<label for="destinataire_' . $id . '">A qui est-elle destinée ?</label>';
+            $return .= '</div>';
+            
+            $return .= '<div class="form-group w-100">';
+            $return .= '<label for="episode_' . $id . '">Dans quel épisode est-elle prononcée ?</label>';
+            $return .= $this->getSelectEpisode($doctrine, "episode_" . $id, $citation->getEpisode()->getId());
+            $return .= '</div>';
             $return .= '</div>';
             
             $return .= '<div class="card-footer">';
@@ -246,8 +302,16 @@ class QuestionExtension extends AbstractExtension
         
         $return .= '<div class="card-body">';
         
-        $return .= '<div class="form-check">';
+        $return .= '<div class="form-check" data-proposition="1"';
+        if($question->getReponse()){
+            $return .= ' data-reponse="1"';
+        } else {
+            $return .= ' data-reponse="0"';
+        }
+        $return .= '>';
         $return .= '<label class="container">Vrai';
+        $return .= '<span class="red hidden"><i class="fas fa-times"></i></span>';
+        $return .= '<span class="green hidden"><i class="fas fa-check"></i></span>';
         $return .= '<input type="radio" name="question_quizz_' . $id . '" id="question_quizz_' . $id . '" value="1">';
         $return .= '<span class="checkmark"></span>';
         $return .= '</label>';
@@ -255,8 +319,16 @@ class QuestionExtension extends AbstractExtension
         
         $return .= '</div>';
         
-        $return .= '<div class="form-check">';
+        $return .= '<div class="form-check" data-proposition="2"';
+        if($question->getReponse()){
+            $return .= ' data-reponse="0"';
+        } else {
+            $return .= ' data-reponse="1"';
+        }
+        $return .= '>';
         $return .= '<label class="container">Faux';
+        $return .= '<span class="red hidden"><i class="fas fa-times"></i></span>';
+        $return .= '<span class="green hidden"><i class="fas fa-check"></i></span>';
         $return .= '<input type="radio" name="question_quizz_' . $id . '" id="question_quizz_' . $id . '" value="0">';
         $return .= '<span class="checkmark"></span>';
         $return .= '</div>';
@@ -304,7 +376,8 @@ class QuestionExtension extends AbstractExtension
                 }
                 $return .= '>';
                 $return .= '<label class="container">' . $valeur;
-                $return .= '<span class="red hidden"><i class="fas fa-times"></i></span><span class="green hidden"><i class="fas fa-check"></i></span>';
+                $return .= '<span class="red hidden"><i class="fas fa-times"></i></span>';
+                $return .= '<span class="green hidden"><i class="fas fa-check"></i></span>';
                 $return .= '<input type="radio" name="quizz_question_' . $id . '" id="quizz_question_' . $id . '" value="' . $i . '">';
                 $return .= '<span class="checkmark"></span>';
                 $return .= '</label>';

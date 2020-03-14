@@ -147,4 +147,25 @@ class WayToDieController extends AppController
             'paths' => $paths
         ));
     }
+    
+    /**
+     * Supprimer une façon de mourir
+     *
+     * @Route("/way_to_die/supprimer/{id}/{page}", name="way_to_die_supprimer")
+     * @ParamConverter("way_to_die", options={"mapping"={"id"="id"}})
+     *
+     * @param WayToDie $way_to_die
+     * @param int $page
+     */
+    public function supprimer(WayToDie $way_to_die, int $page)
+    {
+        
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($way_to_die);
+        $manager->flush();
+        
+        return $this->redirectToRoute('way_to_die_liste', array(
+            'page' => $page
+        ));
+    }
 }

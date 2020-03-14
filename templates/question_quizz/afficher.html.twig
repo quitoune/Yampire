@@ -9,7 +9,7 @@
     </div>
     
     <div class="modal-body">
-        {{ afficher(question_quizz.question, ordre) | raw }}
+        {{ afficher(question_quizz.question, ordre, doctrine) | raw }}
     </div>
     
     <div class="modal-footer">
@@ -37,7 +37,9 @@
             'show' : true,
             'backdrop' : 'static'
         });
-
+		
+        $("select.form-control").select2();
+        
         OuvrirModal('#next', '#modal_quizz');
         OuvrirModal('#prev', '#modal_quizz');
 
@@ -47,18 +49,28 @@
         });
         
         $("#check").click(function(){
-            $(".explication").removeClass("hidden");
-            $(".form-check").each(function(index){
-                var j = parseInt(index + 1);
-				if($(this).data('reponse') == 1){
-					$(".form-check[data-proposition=" + j + "] .green").removeClass("hidden");
-					$(".form-check[data-proposition=" + j + "] .container").addClass("green");
-				} else if ($(this).data('reponse') == 0 && $(this).hasClass("check")) {
-					$(".form-check[data-proposition=" + j + "] .red").removeClass("hidden");
-					$(".form-check[data-proposition=" + j + "] .container").addClass("red");
-				}
-            });
+            var type = parseInt({{ question_quizz.question.typeQuestion }});
+            if(type == 2){
+                $("select.form-control").each(function(index){
+                    if($(this).data('reponse') == $(this).val()){
+                        console.log('correct');
+                    } else {
+                        console.log('incorrect');
+                    }
+                })
+            } else {
+                $(".explication").removeClass("hidden");
+                $(".form-check").each(function(index){
+                    var j = parseInt(index + 1);
+    				if($(this).data('reponse') == 1){
+    					$(".form-check[data-proposition=" + j + "] .green").removeClass("hidden");
+    					$(".form-check[data-proposition=" + j + "] .container").addClass("green");
+    				} else if ($(this).data('reponse') == 0 && $(this).hasClass("check")) {
+    					$(".form-check[data-proposition=" + j + "] .red").removeClass("hidden");
+    					$(".form-check[data-proposition=" + j + "] .container").addClass("red");
+    				}
+                });
+            }
         });
-        
     </script>
 {% endblock %}

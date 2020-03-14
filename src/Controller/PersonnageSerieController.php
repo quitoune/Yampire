@@ -43,11 +43,20 @@ class PersonnageSerieController extends AppController
         
         if ($form->isSubmitted() && $form->isValid()) {
             $personnage_serie = $form->getData();
-            $personnage_serie->setSerie($serie);
-            $manager = $this->getDoctrine()->getManager();
             
-            $manager->persist($personnage_serie);
-            $manager->flush();
+            $repo = $this->getDoctrine()->getRepository(PersonnageSerie::class);
+            $element = $repo->findOneBy(array(
+                'serie' => $serie->getId(),
+                'personnage' => $personnage_serie->getPersonnage()->getId()
+            ));
+            
+            if(is_null($element)){
+                $personnage_serie->setSerie($serie);
+                $manager = $this->getDoctrine()->getManager();
+                
+                $manager->persist($personnage_serie);
+                $manager->flush();
+            }
             
             return $this->json(array(
                 'statut' => true

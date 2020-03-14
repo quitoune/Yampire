@@ -23,7 +23,7 @@
                     <td>{{ note.id }}</td>
                     <td>{{ note.contenu }}</td>
                     {% if type == 'serie' or type == 'saison' %}
-                		<td>{{ note.episode.titreOriginal }} {{ codeEpisode(note.episode, 0) }}</td>
+                		<td>{{ titre("episode", note.episode, app.session) }}  {{ codeEpisode(note.episode, 0) }}</td>
                     {% endif %}
                     <td>
                     	{% if is_granted("ROLE_UTILISATEUR") and app.user.username == note.utilisateur.username %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Saison - ID {{ saison.id }} {% endblock %}
+{% block title %} {{ titre("serie", saison.serie, app.session) }} - Saison {{ saison.numeroSaison }} {% endblock %}
 
 {% block body %}
     

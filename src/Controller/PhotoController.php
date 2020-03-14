@@ -169,7 +169,7 @@ class PhotoController extends AppController
     /**
      * Supprimer un tag d'une photo
      *
-     * @Route("/photo/delete/{photo_id}/{tag_id}", name="photo_tag_supprimer")
+     * @Route("/photo/supprimer/{photo_id}/{tag_id}", name="photo_tag_supprimer")
      *
      * @ParamConverter("photo", options={"mapping"={"photo_id"="id"}})
      * @ParamConverter("tag", options={"mapping"={"tag_id"="id"}})

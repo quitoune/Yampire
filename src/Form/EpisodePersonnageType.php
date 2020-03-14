@@ -16,22 +16,36 @@ class EpisodePersonnageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('personnage', EntityType::class, array(
-            'class' => Personnage::class,
-            'query_builder' => function (PersonnageRepository $pr) {
-            return $pr->createQueryBuilder('p')
-            ->orderBy('p.nom ASC, p.prenom', 'ASC');
-            },
-            'choice_label' => function (Personnage $personnage) {
-            return ($personnage->getPrenomUsage() ? $personnage->getPrenomUsage() : $personnage->getPrenom()) . ' ' . $personnage->getNom();
-            },
-            'required' => false,
-            'multiple' => true,
-            'disabled' => $options['disabled_perso']
-            ))
-            ->add('episode', EntityType::class, array(
+        if($options['choices']){
+            $builder->add('personnage', EntityType::class, array(
+                'class' => Personnage::class,
+                'choices' => $options['choices'],
+                'choice_label' => function (Personnage $personnage) {
+                return ($personnage->getPrenomUsage() ? $personnage->getPrenomUsage() : $personnage->getPrenom()) . ' ' . $personnage->getNom();
+                },
+                'required' => false,
+                'multiple' => true,
+                'disabled' => $options['disabled_perso']
+                ));
+        } else {
+            $builder->add('personnage', EntityType::class, array(
+                'class' => Personnage::class,
+                'query_builder' => function (PersonnageRepository $pr) {
+                return $pr->createQueryBuilder('p')
+                ->orderBy('p.nom ASC, p.prenom', 'ASC');
+                },
+                'choice_label' => function (Personnage $personnage) {
+                return ($personnage->getPrenomUsage() ? $personnage->getPrenomUsage() : $personnage->getPrenom()) . ' ' . $personnage->getNom();
+                },
+                'required' => false,
+                'multiple' => true,
+                'disabled' => $options['disabled_perso']
+                ));
+        }
+        
+        $builder->add('episode', EntityType::class, array(
                 'class' => Episode::class,
-                'choice_label' => ($options['session']->get('user')['vo'] ? 'titreOriginal' : 'titre'),
+                'choice_label' => ($options['session']->get('user')['episode_vo'] ? 'titreOriginal' : 'titre'),
                 'query_builder' => function (EpisodeRepository $er) {
                 return $er->createQueryBuilder('e')
                 ->orderBy('e.numero_episode', 'ASC');
@@ -42,7 +56,7 @@ class EpisodePersonnageType extends AbstractType
                 'disabled' => $options['disabled_episode']
                 ))
                 ->add('save', SubmitType::class, array(
-                    'label' => ($options['update'] ? 'Sauvegarder' : 'Ajouter'),
+                    'label' => $options['label_button'],
                     'attr' => array(
                         'class' => 'btn btn-dark'
                     )
@@ -52,8 +66,9 @@ class EpisodePersonnageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'update' => false,
+            'label_button' => 'Ajouter',
             'disabled_perso' => false,
+            'choices' => false,
             'disabled_episode' => false
         ));
         

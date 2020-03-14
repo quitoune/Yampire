@@ -60,7 +60,7 @@ class ChansonController extends AppController
         $paths = array(
             'home' => $this->homeURL(),
             'paths' => array(),
-            'active' => 'Chansons de ' . $serie->getNom()
+            'active' => 'Chansons de ' . $serie->getNom($this->getVo("serie"))
         );
 
         return $this->render('chanson/index.html.twig', array(
@@ -89,7 +89,7 @@ class ChansonController extends AppController
                 $this->generateUrl('chanson_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Chansons de ' . $serie->getNom()
+                )) => 'Chansons de ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => 'Affichage de' . $this->getIdNom($chanson, 'chanson')
         );
@@ -226,7 +226,7 @@ class ChansonController extends AppController
                 $this->generateUrl('chanson_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Chansons de ' . $serie->getNom()
+                )) => 'Chansons de ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => 'Modification de' . $this->getIdNom($chanson, 'chanson')
         );
@@ -283,7 +283,7 @@ class ChansonController extends AppController
                 $this->generateUrl('chanson_liste', array(
                     'page' => $page,
                     'slug' => $serie->getSlug()
-                )) => 'Chansons de ' . $serie->getNom()
+                )) => 'Chansons de ' . $serie->getNom($this->getVo("serie"))
             ),
             'active' => "Ajout d'une chanson"
         );

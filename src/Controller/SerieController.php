@@ -119,7 +119,7 @@ class SerieController extends AppController
         $paths = array(
             'home' => $this->homeURL(),
             'paths' => array(),
-            'active' => 'Série ' . $serie->getNom()
+            'active' => 'Série ' . $this->getIdNom($serie, 'serie')
         );
 
         return $this->render('serie/afficher.html.twig', array(

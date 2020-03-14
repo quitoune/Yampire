@@ -1,19 +1,21 @@
-<div class="card" id="ajax_{{ type }}_chanson_see">
-	<div class="card-header">
-		<div class=" float-left">
-    	    {{ pagination.nb_elements }} chanson{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
-    	</div>
+<div id="ajax_{{ type }}_chanson_see">
+	<div class="text-center">
+	    {{ pagination.nb_elements }} chanson{% if pagination.nb_elements > 1 %}s{% endif %} 
+	    {% if pagination.pages_count > 0 %}
+	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
+	    {% endif %}
     </div>
-    <div class="card-body">
-    	<div class="row">
-    	    {% for chanson in chansons %}
-    			<div class="col-quotes">
-    			    {{ card_chanson(chanson, true, path('chanson_afficher', {'id':chanson.id, 'slug':chanson.episode.serie.slug, 'page':pagination.page})) | raw }}
-    			</div>
-            {% endfor %}
-        </div>
+    
+	<div class="row">
+	    {% for chanson in chansons %}
+			<div class="col-quotes">
+			    {{ card_chanson(chanson, true, path('chanson_afficher', {'id':chanson.id, 'slug':chanson.episode.serie.slug, 'page':pagination.page})) | raw }}
+			</div>
+        {% endfor %}
+    </div>
         
-		{% if chansons is empty %}
+	{% if chansons is empty %}
+		<div class="text_center">
           	<p class="text-info text-center">Aucune chanson n'est associé à
                 {% if type == 'episode' %}
                 	cet épisode.
@@ -23,10 +25,10 @@
                     ce {{ type }}.
                 {% endif %}
             </p>
-        {% endif %}
-	</div>
+    	</div>
+    {% endif %}
 	
-	<div class="card-footer">
+	<div class="text-center">
     	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>

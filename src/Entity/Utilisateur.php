@@ -44,11 +44,16 @@ class Utilisateur implements AdvancedUserInterface
      * @ORM\Column(type="text")
      */
     private $password;
-
+    
     /**
      * @ORM\Column(type="boolean")
      */
-    private $vo;
+    private $episode_vo;
+    
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $serie_vo;
 
     /**
      * @ORM\Column(type="array")
@@ -181,16 +186,28 @@ class Utilisateur implements AdvancedUserInterface
 
         return $this;
     }
-
-    public function getVo(): ?bool
+    
+    public function getEpisodeVo(): ?bool
     {
-        return $this->vo;
+        return $this->episode_vo;
     }
-
-    public function setVo(bool $vo): self
+    
+    public function setEpisodeVo(bool $episode_vo): self
     {
-        $this->vo = $vo;
-
+        $this->episode_vo = $episode_vo;
+        
+        return $this;
+    }
+    
+    public function getSerieVo(): ?bool
+    {
+        return $this->serie_vo;
+    }
+    
+    public function setSerieVo(bool $serie_vo): self
+    {
+        $this->serie_vo = $serie_vo;
+        
         return $this;
     }
 

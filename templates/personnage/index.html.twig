@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Personnages de {{ serie.nom }}{% endblock %}
+{% block title %}Personnages de {{ titre("serie", serie, app.session) }}{% endblock %}
 
 {% block body %}
     

@@ -1,19 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Citations de {{ serie.nom }}{% endblock %}
+{% block title %}Citations de {{ titre("serie", serie, app.session) }}{% endblock %}
 
 {% block body %}
     <div class="card liste text-center">
         <div class="card-header text-left">
             {{ pagination.total }} citations - {{ pagination.page }} / {{ pagination.nbPages }}
             {% if is_granted("ROLE_UTILISATEUR") %}
-            	{% if type == 'serie' %}
-                    {{ ajouter(path('citation_ajouter', {'slug':objet.slug, 'page':pagination.page})) | raw }}
-                {% elseif type == 'saison' or type == 'episode' %}
-                    {{ ajouter(path('citation_ajouter', {'slug':objet.serie.slug, 'page':pagination.page})) | raw }}
-                {% elseif type == 'personnage' %}
-                    {{ ajouter(path('citation_ajouter', {'slug':objet.personnageSeries[0].serie.slug, 'page':pagination.page})) | raw }}
-                {% endif %}
+                {{ ajouter(path('citation_ajouter', {'slug':serie.slug, 'page':pagination.page})) | raw }}
             {% endif %}
         </div>
         <div class="card-body">

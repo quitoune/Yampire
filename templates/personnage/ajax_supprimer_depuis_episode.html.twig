@@ -1,8 +1,8 @@
-<div id="ajax_personnage_saison_ajouter">
+<div id="ajax_personnage_episode_supprimer">
     {{ form_start(form) }}
     <div class="modal-header">
         <h5 class="modal-title">
-            Ajouter un personnage à la saison {{ saison.serie.titreCourt }} - Saison {{ saison.numeroSaison }}
+            Suprimer un personnage à l'épisode {{ codeEpisode(episode, false) }} - {{ titre("episode", episode, app.session) }} 
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -12,13 +12,10 @@
     <div class="modal-body">
     	<div class="row">
     		<div class="col col-12">
-    		    {{ form_row(form.saison) }}
+    			{{ form_row(form.episode) }}
     		</div>
     		<div class="col col-12 w-100">
-    			{{ form_row(form.personnage) }}
-    		</div>
-    		<div class="col col-12 w-100">
-    			{{ form_row(form.principal) }}
+    		    {{ form_row(form.personnage) }}
     		</div>
     	</div>
     </div>
@@ -37,14 +34,15 @@
             'backdrop' : 'static'
         });
         
-        $("#personnage_saison_saison").val({{ saison.id }})
-		$("#personnage_saison_personnage").select2();
-		$("#personnage_saison_principal").select2({
-		    minimumResultsForSearch: -1
+        $("#episode_personnage_episode").val({{ episode.id }})
+		$("#episode_personnage_personnage").select2({
+			multiple: true,
+			placeholder: 'Sélectionner un personnage'
 		});
+
+        var url = '{{ path('ajax_supprimer_personnage_episode', {'id':episode.id}) }}';
+        var url_base = '{{ path('ajax_afficher_personnages', {'id':episode.id, 'type':'episode'}) }}';
+        SubmitModal("episode_personnage", "supprimer", url, "#bloc_modal", url_base, "#bloc_episode");
         
-        var url = '{{ path('ajax_ajouter_personnage_saison', {'id':saison.id}) }}';
-        var url_base = '{{ path('ajax_afficher_personnages', {'id':saison.id, 'type':'saison'}) }}';
-        SubmitModal("personnage_saison", "ajouter", url, "#bloc_modal", url_base, "#bloc_saison");
     </script>
 {% endblock %}

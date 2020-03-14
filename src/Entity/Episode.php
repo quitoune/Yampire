@@ -72,6 +72,7 @@ class Episode
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Personnage", inversedBy="episodes")
+     * @ORM\OrderBy({"nom" = "ASC", "prenom" = "ASC"})
      */
     private $personnage;
 
@@ -184,7 +185,7 @@ class Episode
     {
         $code = '';
         if($avec_serie){
-            $code .= $this->getSerie()->getNomCourt() . ' - ';
+            $code .= $this->getSerie()->getTitreCourt() . ' - ';
         }
         $code .= 'S' . $this->getSaison()->getNumeroSaison() . 'E' . $this->numero_episode;
         return $code;

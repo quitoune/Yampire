@@ -32,6 +32,7 @@ class QuestionQuizzController extends AppController
         return $this->render('question_quizz/afficher.html.twig', array(
             'quizz' => $quizz,
             'question_quizz' => $question_quizz,
+            'doctrine' => $this->getDoctrine(),
             'nbr' => $nbr,
             'ordre' => $ordre
         ));

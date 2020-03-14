@@ -13,7 +13,7 @@
                 {% endif %}
                 {{ objet.prenom }} {{ objet.nom }}
             {% elseif type == 'episode' %}
-                Ajouter une note à l'épisode {{ objet.titre }} 
+                Ajouter une note à l'épisode {{ titre("episode", objet, app.session) }} 
             {% endif %}
         
         </h5>

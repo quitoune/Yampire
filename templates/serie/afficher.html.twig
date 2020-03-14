@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Série - ID {{ serie.id }} {% endblock %}
+{% block title %} {{ titre("serie", serie, app.session) }} {% endblock %}
 
 {% block body %}
     <div class="card">

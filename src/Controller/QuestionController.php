@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Question;
-use Symfony\Component\Console\Tests\Question\QuestionTest;
 use App\Form\QuestionType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -76,6 +75,7 @@ class QuestionController extends AppController
         
         return $this->render('question/index.html.twig', array(
             'questions' => $questions,
+            'doctrine' => $this->getDoctrine(),
             'paths' => $paths
         ));
     }

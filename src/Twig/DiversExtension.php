@@ -213,9 +213,9 @@ class DiversExtension extends AbstractExtension
      * @param Session $session
      * @return number
      */
-    public function getVO($session){
+    public function getVO($session, $type){
         if($session->get('user')){
-            return $session->get('user')['vo'];
+            return $session->get('user')[$type . '_vo'];
         } else {
             return 0;
         }
@@ -234,7 +234,7 @@ class DiversExtension extends AbstractExtension
             if($class){
                 $photo .= ' class="' . $class . '"';
             }
-            $photo .= ' alt="' . $element->getNom() . '">';
+            $photo .= ' alt="' . $element->getNom(0) . '">';
         } else {
             if(!is_null($element->getPhoto())){
                 $photo  = '<img src="/image/photo/' . $element->getPhoto()->getChemin() . '"';
@@ -291,10 +291,10 @@ class DiversExtension extends AbstractExtension
      * @param string $id
      * @return string
      */
-    function boutonSupprimer($path, $right = true, $id = ""){
+    function boutonSupprimer($path, $right = true, $id = "", $classe = ""){
         $return  = '<a href="' . $path . '" ';
         if($right){
-            $return .= 'class="float-right"';
+            $return .= 'class="float-right ' . $classe . '"';
         }
         if($id){
             $return .= ' id="' . $id . '"';

@@ -22,16 +22,21 @@ class Serie
      * @ORM\Column(type="string", length=150, unique=true)
      */
     private $slug;
-
+    
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    private $titre;
+    
     /**
      * @ORM\Column(type="string", length=150)
      */
-    private $nom;
+    private $titre_original;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $nom_court;
+    private $titre_court;
 
     /**
      * @ORM\Column(type="integer")
@@ -60,11 +65,13 @@ class Serie
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Saison", mappedBy="serie")
+     * @ORM\OrderBy({"numero_saison" = "ASC"})
      */
     private $saisons;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Episode", mappedBy="serie")
+     * @ORM\OrderBy({"numero_production" = "ASC"})
      */
     private $episodes;
 
@@ -77,7 +84,7 @@ class Serie
      * @ORM\ManyToOne(targetEntity="App\Entity\Tag", inversedBy="series")
      */
     private $tag;
-
+    
     public function __construct()
     {
         $this->saisons = new ArrayCollection();
@@ -101,31 +108,51 @@ class Serie
 
         return $this;
     }
-
-    public function getNom(): ?string
+    
+    public function getTitre(): ?string
     {
-        return $this->nom;
+        return $this->titre;
+    }
+    
+    public function setTitre(?string $titre): self
+    {
+        $this->titre = $titre;
+        
+        return $this;
+    }
+    
+    public function getTitreOriginal(): ?string
+    {
+        return $this->titre_original;
+    }
+    
+    public function setTitreOriginal(string $titre_original): self
+    {
+        $this->titre_original = $titre_original;
+        
+        return $this;
     }
 
-    public function setNom(string $nom): self
+    public function getTitreCourt(): ?string
     {
-        $this->nom = $nom;
+        return $this->titre_court;
+    }
+
+    public function setNomCourt(?string $titre_court): self
+    {
+        $this->titre_court = $titre_court;
 
         return $this;
     }
 
-    public function getNomCourt(): ?string
-    {
-        return $this->nom_court;
+    public function getNom($is_vo = 0){
+        if(!$is_vo && !is_null($this->titre)){
+            return $this->titre;
+        } else {
+            return $this->titre_original;
+        }
     }
-
-    public function setNomCourt(?string $nom_court): self
-    {
-        $this->nom_court = $nom_court;
-
-        return $this;
-    }
-
+    
     public function getNombreSaison(): ?int
     {
         return $this->nombre_saison;
