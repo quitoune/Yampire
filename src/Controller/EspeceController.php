@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Espece;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\EspeceType;
+use App\Entity\Tag;
 
 class EspeceController extends AppController
 {
@@ -165,9 +166,15 @@ class EspeceController extends AppController
 
             $espece = $form->getData();
             $slug = $this->createSlug($request->request->all()["espece"]["nom"], 'Espece');
+            
+            $tag = new Tag();
+            $tag->setNom(str_replace('_', ' ', $slug));
+            
             $espece->setSlug($slug);
+            $espece->setTag($tag);
             
             $manager = $this->getDoctrine()->getManager();
+            $manager->persist($tag);
             $manager->persist($espece);
             $manager->flush();
 

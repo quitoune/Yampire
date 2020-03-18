@@ -1,0 +1,39 @@
+/** Debut btn-yampire **/
+.btn-yampire {
+  color: #fff;
+  background-color: #9b111e;
+  border-color: #AC051F;
+}
+
+.btn-yampire:hover {
+  color: #fff;
+  background-color: #df3434;
+  border-color: #AC051F;
+}
+
+.btn-yampire:focus, 
+.btn-yampire.focus {
+  box-shadow: 0 0 0 0.2rem rgba(172,5,31, 0.5); 
+}
+
+.btn-yampire.disabled, 
+.btn-yampire:disabled {
+  color: #fff;
+  background-color: #D79FA5;
+  border-color: #D79FA5;
+}
+
+.btn-yampire:not(:disabled):not(.disabled):active, 
+.btn-yampire:not(:disabled):not(.disabled).active,
+.show > .btn-yampire.dropdown-toggle {
+  color: #fff;
+  background-color: #AC051F;
+  border-color: #786D59;
+}
+
+.btn-yampire:not(:disabled):not(.disabled):active:focus, 
+.btn-yampire:not(:disabled):not(.disabled).active:focus,
+.show > .btn-yampire.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(172,5,31, 0.5);
+}
+/** fin btn-yampire **/

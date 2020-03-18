@@ -5,7 +5,7 @@
     	{% endif %}
     </div>
     <div class="col col-9 center_img">
-        <table class="table table-sm">
+        <table class="table table-sm table-borderless">
             {% if is_granted("ROLE_UTILISATEUR") %}
             	<tr>
             		<th></th>
@@ -32,6 +32,18 @@
         		<th>Espèce</th>
         		<td>{{ personnage.espece.nom }}</td>
         	</tr>
+        	{% if personnage.acteurPersonnages is not empty %}
+            	<tr>
+            		<th>Interprété{% if personnage.sexe %}e{% endif %} par
+            		</th>
+            		<td>
+            		    {% for acteurPersonnages in personnage.acteurPersonnages %} 
+            		    	<b>{{ acteurPersonnages.acteur.prenom }} {{ acteurPersonnages.acteur.nom }}</b> 
+            		    	({{ acteurPersonnages.principal | acteur_role }})<br>
+            			{% endfor %}
+            		</td>
+            	</tr>
+        	{% endif %}
         	{% if serieSaisons is not empty %}
             	<tr>
             		<th colspan="2">Séries</th>
@@ -48,18 +60,6 @@
                 		</td>
                 	</tr>
             	{% endfor %}
-        	{% endif %}
-        	{% if personnage.acteurPersonnages is not empty %}
-            	<tr>
-            		<th>Interprété{% if personnage.sexe %}e{% endif %} par
-            		</th>
-            		<td>
-            		    {% for acteurPersonnages in personnage.acteurPersonnages %} 
-            		    	<b>{{ acteurPersonnages.acteur.prenom }} {{ acteurPersonnages.acteur.nom }}</b> 
-            		    	({{ acteurPersonnages.principal | acteur_role }})<br>
-            			{% endfor %}
-            		</td>
-            	</tr>
         	{% endif %}
     	</table>
     </div>

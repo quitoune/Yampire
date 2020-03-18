@@ -9,6 +9,7 @@ use App\Entity\Serie;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\SerieType;
 use App\Entity\Saison;
+use App\Entity\Tag;
 
 class SerieController extends AppController
 {
@@ -193,10 +194,16 @@ class SerieController extends AppController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $serie = $form->getData();
-            $slug = $this->createSlug($request->request->all()["serie"]["nom"], 'Serie');
+            $slug = $this->createSlug($request->request->all()["serie"]["titre_original"], 'Serie');
+            
+            $tag = new Tag();
+            $tag->setNom(str_replace('_', ' ', $slug));
+            
             $serie->setSlug($slug);
+            $serie->setTag($tag);
 
             $manager = $this->getDoctrine()->getManager();
+            $manager->persist($tag);
             $manager->persist($serie);
             $manager->flush();
 

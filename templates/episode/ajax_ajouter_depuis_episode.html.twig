@@ -1,0 +1,39 @@
+<div>
+	<div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+        <div class="series fields">
+        	{% for serie in series %}
+        		<input type="checkbox" data-link="saisons_{{ serie.id }}" name="personnage[personnageSeries][{{ serie.id }}][serie_id]"> {{ serie.nom }} 
+        		({{ radio_role('personnage[personnageSeries][' ~ serie.id ~ '][principal]') | raw }}) <br>
+        		
+        		<div id="saisons_{{ serie.id }}" class="fields hidden_fields">
+        			{% for saison in serie.saisons %}
+        				
+        				<input type="checkbox" data-link="episodes_{{ saison.id }}" name="personnage[personnageSaisons][{{ saison.id }}][saison_id]"> Saison {{ saison.numeroSaison }} 
+        				({{ radio_role('personnage[personnageSaisons][' ~ saison.id ~ '][principal]') | raw }}) <br>
+        				
+        				<div id="episodes_{{ saison.id }}" class="fields hidden_fields">
+        					<input type="checkbox" data-id="{{ saison.id }}" class="all_episodes">Tous les épisodes<br>
+        					
+        			        {% for episode in saison.episodes %}
+        						<input type="checkbox" name="personnage[personnageEpisodes][{{ episode.id }}]">
+        						#{{ episode.numeroEpisode }} - {{ titre("episode", episode, app.session) }}
+        						<br>
+        					{% endfor %}
+        				</div>
+        			{% endfor %}
+        		</div>
+        	{% endfor %}
+        </div>
+	</div>
+    
+    <div class="modal-footer">
+        {{ form_widget(form.save) }}
+    </div>
+</div>

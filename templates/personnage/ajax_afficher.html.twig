@@ -10,10 +10,10 @@
 	    		{{ supprimer(path('ajax_supprimer_personnage_episode', {'id':objet.id}), false, 'btn-supprimer') | raw }}
 	    	{% elseif type == 'saison' %}
 	    		{{ ajouter(path('ajax_ajouter_personnage_saison', {'id':objet.id}), false, 'btn-ajouter') | raw }}
-	    		{{ supprimer(path('ajax_supprimer_personnage_saison', {'id':objet.id}), false, 'btn-supprimer') | raw }}
+	    		{#{ supprimer(path('ajax_supprimer_personnage_saison', {'id':objet.id}), false, 'btn-supprimer') | raw }#}
 	    	{% else %}
 	    		{{ ajouter(path('ajax_ajouter_personnage_' ~ type, {'slug':objet.slug}), false, 'btn-ajouter') | raw }}
-	    		{{ supprimer(path('ajax_supprimer_personnage_' ~ type, {'id':objet.id}), false, 'btn-supprimer') | raw }}
+	    		{#{ supprimer(path('ajax_supprimer_personnage_' ~ type, {'slug':objet.slug}), false, 'btn-supprimer') | raw }#}
 	    	{% endif %}
 	    {% endif %}
     </div>

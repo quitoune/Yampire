@@ -3,11 +3,10 @@
 {% block title %}Nationalités{% endblock %}
 
 {% block body %}
-    
     <div class="card text-center">
         <div class="card-header text-left">
             {{ pagination.total }} nationalités - {{ pagination.page }} / {{ pagination.nbPages }}
-            {% if is_granted("ROLE_ADMIN") %}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ ajouter(path('nationalite_ajouter', {'page':pagination.page})) | raw }}
             {% endif %}
         </div>
@@ -18,7 +17,7 @@
                         <th>ID</th>
                         <th><i class="fas fa-female"></i> <i class="fas fa-venus"></i></th>
                         <th><i class="fas fa-male"></i> <i class="fas fa-mars"></i></th>
-                        {% if is_granted("ROLE_ADMIN") %}
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         	<th></th>
                         {% endif %}
                     </tr>
@@ -28,10 +27,14 @@
                         <td> {{ nationalite.id }} </td>
                         <td> {{ nationalite.nomFeminin }}</td>
                         <td> {{ nationalite.nomMasculin }}</td>
-                        {% if is_granted("ROLE_ADMIN") %}
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         	<td>
-                                {{ supprimer(path('nationalite_supprimer', { 'id':nationalite.id, 'page':pagination.page }), true, "", "marg-l-10") | raw }}
-                        	    {{ modifier(path('nationalite_modifier', {'id':nationalite.id, 'page':pagination.page})) | raw }}
+                        		{% if is_granted("ROLE_ADMIN") %}
+                                    {{ supprimer(path('nationalite_confirmer', { 'id':nationalite.id, 'page':pagination.page }), true, "btn-delete-" ~ nationalite.id, "marg-l-10") | raw }}
+                                {% endif %}
+                                {% if is_granted("ROLE_UTILISATEUR") or is_granted("ROLE_ADMIN") %}
+                        	        {{ modifier(path('nationalite_modifier', {'id':nationalite.id, 'page':pagination.page})) | raw }}
+                        	    {% endif %}
                         	</td>
                         {% endif %}
                     </tr>
@@ -43,7 +46,31 @@
                 {% endif %}
             </div>
         <div class="card-footer text-muted">
-        {% include 'outils/pagination.html.twig' %}
+            {% include 'outils/pagination.html.twig' %}
+        </div>
+        
+        <div class="modal fade" tabindex="-1" role="dialog" id="bloc_modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" id ="modal_nationalite">
+                    Chargement...
+                </div>
+            </div>
         </div>
     </div> 
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/tabs.js') }}"></script>
+    
+    <script type="text/javascript">
+    {% for nationalite in nationalites %}
+        {% if is_granted("ROLE_ADMIN") %}
+        	var id = "#btn-delete-{{ nationalite.id }}";
+        	$(id).click(function(event){
+            	event.preventDefault();
+                OuvrirModal("#" + $(this).attr('id'), "#modal_nationalite");
+            });
+		{% endif %}
+	{% endfor %}
+    </script>
 {% endblock %}

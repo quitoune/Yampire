@@ -1,0 +1,53 @@
+<div id="ajax_saison_ajouter">
+    {{ form_start(form) }}
+    <div class="modal-header">
+        <h5 class="modal-title">
+            Ajouter une saison à la série {{ titre("serie", serie, app.session) }} 
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+        <div class="row">
+        	<div class="col-lg-12 col-md-12 col-12 w-100">
+        		{{ form_row(form.serie) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12">
+        		{{ form_row(form.numero_saison) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12">
+        		{{ form_row(form.nombre_episode) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12">
+        		{{ form_row(form.description) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12 w-100">
+        		{{ form_row(form.photo) }}
+        	</div>
+        </div>
+    </div>
+    
+    <div class="modal-footer">
+        {{ form_widget(form.save) }}
+    </div>
+    {{ form_rest(form) }}
+    {{ form_errors(form) }}
+    {{ form_end(form) }}
+</div>
+{% block javascripts %}
+    <script>
+        $('#bloc_modal').modal({
+            'show' : true,
+            'backdrop' : 'static'
+        });
+
+		$("#saison_photo").select2();
+		$("#saison_serie").select2();
+        
+        var url = '{{ path('saison_ajax_ajouter', {'slug':serie.slug}) }}';
+        var url_base = '{{ path('ajax_afficher_saisons', {'slug':serie.slug}) }}';
+        SubmitModal("saison", "ajouter", url, "#bloc_modal", url_base, "#bloc_serie");
+    </script>
+{% endblock %}

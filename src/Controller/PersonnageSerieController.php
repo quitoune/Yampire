@@ -24,7 +24,7 @@ class PersonnageSerieController extends AppController
     
     /**
      * Ajouter une connexion entre un personnage et une série
-     * 
+     *
      * @Route("/personnage_serie/ajax_ajouter/{slug}", name="ajax_ajouter_personnage_serie")
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      *
@@ -65,6 +65,24 @@ class PersonnageSerieController extends AppController
         
         return $this->render('personnage_serie/ajax_ajouter_depuis_serie.html.twig', array(
             'form'  => $form->createView(),
+            'serie' => $serie
+        ));
+    }
+    
+    /**
+     * Ajouter une connexion entre un personnage et une série
+     *
+     * @Route("/personnage_serie/ajax_supprimer/{slug}", name="ajax_supprimer_personnage_serie")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     *
+     * @param Request $request
+     * @param Serie $serie
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxSupprimerDepuisSerie(Request $request, Serie $serie){
+        
+        
+        return $this->render('personnage_serie/ajax_supprimer_depuis_serie.html.twig', array(
             'serie' => $serie
         ));
     }

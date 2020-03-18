@@ -1,23 +1,18 @@
-<div class="card" id="ajax_serie_episode_see">
-	<div class="card-header">
-		<div class=" float-left">
-			{{ select("saison", saisons, {'class': 'form-control'}) |raw }}
-		</div>
-    </div>
-    <div class="card-body row">
-		<div class="row">
-        	{% for episode in episodes %}
-            	<div class="col-lg-4 col-md-6 col-12">
-            		<a href="{{ path('episode_afficher', {'slug': episode.serie.slug, 'slug_episode': episode.slug}) | raw }}">
-            			#{{ episode.numeroEpisode }} - {{ titre("episode", episode, app.session) }}
-            		</a>
-        		</div>
-        	{% endfor %}
-        </div>
+<div id="ajax_serie_episode_see">
+	<div class="row text-center" style="display: block; margin-bottom: 15px;">
+		{{ select("saison", saisons, {'class': 'form-control'}) |raw }}
+		<span style="margin-left: 10px">
+		    {{ episodes | length }} épisode{% if episodes | length > 1 %}s{% endif %}
+		</span>
 	</div>
-
-	<div class="card-footer text-center">
-		{{ episodes | length }} épisode{% if episodes | length > 1 %}s{% endif %}
+	<div class="row" id="episode_serie">
+    	{% for episode in episodes %}
+        	<div class="col-lg-4 col-md-6 col-12">
+        		<a href="{{ path('episode_afficher', {'slug': episode.serie.slug, 'slug_episode': episode.slug}) | raw }}">
+        			#{{ episode.numeroEpisode }} - {{ titre("episode", episode, app.session) }}
+        		</a>
+    		</div>
+    	{% endfor %}
     </div>
 </div>
 
@@ -31,7 +26,7 @@
 			saison_ch.on("change", function (e) {
 				var url_change = "{{ path('ajax_afficher_episodes', {'id': 'val', 'type': 'serie', 'perso_id': 0 }) }}";
 				url_change = url_change.replace('val', $("#saison").val());
-				Ajax(url_change, "#ajax_serie_episode_see .card-body", "#ajax_serie_episode_see");
+				Ajax(url_change, "#episode_serie", "#ajax_serie_episode_see");
 			});
         });
     </script>

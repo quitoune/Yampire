@@ -16,6 +16,7 @@ use App\Entity\Acteur;
 use App\Entity\ActeurPersonnage;
 use App\Form\PersonnageType;
 use App\Entity\Espece;
+use App\Entity\Tag;
 
 class PersonnageController extends AppController
 {
@@ -144,7 +145,7 @@ class PersonnageController extends AppController
     private function getSerieSaison(Personnage $personnage, bool $fiche = true){
         $serie_saison = array();
         
-        $query  = "SELECT Se.id as serie_id, Se.nom as serie_nom, ";
+        $query  = "SELECT Se.id as serie_id, Se.titre as serie_nom, Se.titre_court as serie_nom_court, ";
         $query .= "PSe.principal as serie_role, Sa.numero_saison as saison_numero, ";
         $query .= "Sa.id as saison_id, PSa.principal as saison_role ";
         $query .= "FROM `serie` Se, `personnage_serie` PSe, `personnage_saison` PSa, ";
@@ -178,7 +179,8 @@ class PersonnageController extends AppController
                     
                     $serie_saison[$seriesaison['serie_nom']] = array();
                 }
-                $serie_saison[$seriesaison['serie_nom']][$seriesaison['saison_id']] = 'Saison ' . $seriesaison['saison_numero'];
+                
+                $serie_saison[$seriesaison['serie_nom']][$seriesaison['saison_id']] = $seriesaison['serie_nom_court'] . ' - Saison ' . $seriesaison['saison_numero'];
             }
         }
         
@@ -488,8 +490,12 @@ class PersonnageController extends AppController
                 $full_name = $request->request->all()["personnage"]["prenom"] . $full_name;
             }
             $slug = $this->createSlug($full_name, 'Personnage');
-            echo $full_name . " ->" . $slug;die();
+            
+            $tag = new Tag();
+            $tag->setNom(str_replace('_', ' ', $slug));
+            
             $personnage->setSlug($slug);
+            $personnage->setTag($tag);
 
             if (isset($request->request->all()["personnage"]["personnageSeries"])) {
                 $form_personnageSeries = $request->request->all()['personnage']['personnageSeries'];
@@ -520,7 +526,7 @@ class PersonnageController extends AppController
                 $episode->addPersonnage($personnage);
                 $manager->persist($episode);
             }
-
+            
             // Ajout des séries
             foreach ($form_personnageSeries as $id_serie => $infos) {
                 $personnageSerie = new PersonnageSerie();
@@ -528,7 +534,11 @@ class PersonnageController extends AppController
                 $personnageSerie->setSerie($repo_serie->findOneBy(array(
                     "id" => $id_serie
                 )));
-                $personnageSerie->setPrincipal($infos['principal']);
+                if(isset($infos['principal'])){
+                    $personnageSerie->setPrincipal($infos['principal']);
+                } else {
+                    $personnageSerie->setPrincipal(0);
+                }
                 $manager->persist($personnageSerie);
             }
 
@@ -539,7 +549,11 @@ class PersonnageController extends AppController
                 $personnageSaison->setSaison($repo_saison->findOneBy(array(
                     "id" => $id_saison
                 )));
-                $personnageSaison->setPrincipal($info['principal']);
+                if(isset($info['principal'])){
+                    $personnageSaison->setPrincipal($info['principal']);
+                } else {
+                    $personnageSaison->setPrincipal(0);
+                }
                 $manager->persist($personnageSaison);
             }
 
@@ -550,11 +564,16 @@ class PersonnageController extends AppController
                     $acteurPersonnage->setActeur($repo_acteur->findOneBy(array(
                         "id" => $acteur['acteur']
                     )));
-                    $acteurPersonnage->setPrincipal($acteur['principal']);
+                    if(isset($acteur['principal'])){
+                        $acteurPersonnage->setPrincipal($acteur['principal']);
+                    } else {
+                        $acteurPersonnage->setPrincipal(0);
+                    }
                     $manager->persist($acteurPersonnage);
                 }
             }
-
+            
+            $manager->persist($tag);
             $manager->persist($personnage);
             $manager->flush();
 
@@ -645,5 +664,14 @@ class PersonnageController extends AppController
             'saisons' => $saisons,
             'personnage' => $personnage
         ));
+    }
+    
+    /**
+     * 
+     * @param Request $request
+     * @param Personnage $personnage
+     */
+    public function ajouterEpisode(Request $request, Personnage $personnage){
+        
     }
 }

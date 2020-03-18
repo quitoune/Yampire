@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-header text-left">
             {{ pagination.total }} épisodes - {{ pagination.page }} / {{ pagination.nbPages }}
-            {% if is_granted("ROLE_ADMIN") %}
+            {% if is_granted("ROLE_UTILISATEUR") %}
                 {{ ajouter(path('episode_ajouter', {'slug':serie.slug, 'page':pagination.page})) | raw }}
             {% endif %}
         </div>

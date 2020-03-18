@@ -9,6 +9,7 @@ use App\Entity\Serie;
 use App\Entity\Saison;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\SaisonType;
+use App\Entity\Tag;
 
 class SaisonController extends AppController
 {
@@ -67,7 +68,7 @@ class SaisonController extends AppController
     /**
      * Affichage d'une saison
      *
-     * @Route("/saison/ajax/afficher/{id}", name="ajax_afficher_saison_fiche")
+     * @Route("/saison/ajax/afficher_serie/{id}", name="ajax_afficher_saison_fiche")
      * @ParamConverter("saison", options={"mapping"={"id"="id"}})
      *
      * @param Saison $saison
@@ -83,24 +84,21 @@ class SaisonController extends AppController
     /**
      * Affichage des saisons d'une série
      *
-     * @Route("/saison/ajax/afficher/{type}/{id}/{page}", name="ajax_afficher_saisons")
+     * @Route("/saison/ajax/afficher/{slug}/{page}", name="ajax_afficher_saisons")
+     * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
      *
-     * @param int $id
-     * @param string $type
+     * @param Serie $serie
      * @param int $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ajaxAfficher(int $id, string $type, int $page = 1)
+    public function ajaxAfficher(Serie $serie, int $page = 1)
     {
         $repo = $this->getDoctrine()->getRepository(Saison::class);
-        $repository = $this->getDoctrine()->getRepository(Serie::class);
-        $objets = $repository->findById($id);
-        $objet = $objets[0];
 
         $params = array(
             'repository' => 'Saison',
             'field' => 'Saison.numero_saison',
-            'condition' => 'Saison.serie = ' . $id,
+            'condition' => 'Saison.serie = ' . $serie->getId(),
             'order' => 'ASC',
             'page' => $page
         );
@@ -114,15 +112,14 @@ class SaisonController extends AppController
             'pages_count' => ceil($result['nombre'] / $nbr_max_ajax),
             'nb_elements' => $result['nombre'],
             'route_params' => array(
-                'id' => $id,
-                'type' => $type
+                'slug' => $serie->getSlug()
             )
         );
 
         return $this->render('saison/ajax_afficher.html.twig', array(
             'saisons' => $result['paginator'],
-            'type' => $type,
-            'objet' => $objet,
+            'serie' => $serie,
+            'type' => 'serie',
             'pagination' => $pagination
         ));
     }
@@ -229,8 +226,13 @@ class SaisonController extends AppController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $saison = $form->getData();
-
+            
+            $tag = new Tag();
+            $tag->setNom($saison->getSerie()->getTitreCourt() . ' - Saison ' . $saison->getNumeroSaison());
+            $saison->setTag($tag);
+            
             $manager = $this->getDoctrine()->getManager();
+            $manager->persist($tag);
             $manager->persist($saison);
             $manager->flush();
 
@@ -272,6 +274,51 @@ class SaisonController extends AppController
         return $this->render('episode/ajax_afficher_saison.html.twig', array(
             'saison' => $saison,
             'episodes' => $saison->getEpisodes()
+        ));
+    }
+    
+    /**
+     * Formulaire d'ajout d'une saison dans une modal
+     *
+     * @Route("/saison/ajax/ajouter/{slug}", name="saison_ajax_ajouter")
+     * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * 
+     * @param Request $request
+     * @param Serie $serie
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxAjouter(Request $request, Serie $serie){
+        $saison = new Saison();
+        $saison->setSerie($serie);
+        
+        $form = $this->createForm(SaisonType::class, $saison, array(
+            'disabled_serie' => true
+        ));
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $saison = $form->getData();
+            
+            $tag = new Tag();
+            $tag->setNom($saison->getSerie()->getTitreCourt() . ' - Saison ' . $saison->getNumeroSaison());
+            $saison->setTag($tag);
+            
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($saison);
+            $manager->persist($tag);
+            $manager->flush();
+            
+            return $this->json(array(
+                'statut' => true
+            ));
+        }
+        
+        return $this->render('saison/ajax_ajouter.html.twig', array(
+            'form' => $form->createView(),
+            'serie' => $serie
         ));
     }
 }

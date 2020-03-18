@@ -1,10 +1,12 @@
-<div class="card" id="ajax_{{ type }}_note_see">
-	<div class="card-header">
-		<div class=" float-left">
-    	    {{ pagination.nb_elements }} note{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
-    	</div>
+<div id="ajax_{{ type }}_note_see">
+	<div class="text-center">
+        {{ pagination.nb_elements }} note{% if pagination.nb_elements > 1 %}s{% endif %} 
+        {% if pagination.pages_count > 0 %}
+        	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
+        {% endif %}
     </div>
-    <div class="card-body">
+    
+    <div class="text-center" style="margin-top: 15px">
         <table class="table table-striped table-light table-sm">
         	<tr>
                 <th>ID</th>
@@ -34,9 +36,11 @@
                 </tr>
             {% endfor %}
         </table>
-
-        {% if notes is empty %}
-            <p class="text-info text-center">Aucune note n'est associée à
+	</div>
+	
+    {% if notes is empty %}
+        <div class="text_center">
+        	<p class="text-info text-center">Aucune note n'est associée à
                 {% if type == 'acteur' %}
                     {% if objet.sexe == 1 %}
                         cette actrice.
@@ -51,10 +55,10 @@
                     ce {{ type }}.
                 {% endif %}
             </p>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
 	
-	<div class="card-footer">
+	<div class="text-center">
     	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>

@@ -20,6 +20,12 @@
         		<th>Titre Original</th>
         		<td>{{ serie.titreOriginal }}</td>
         	</tr>
+			{% if serie.description is not null %}
+				<tr>
+					<th>Description</th>
+					<td>{{ serie.description }}</td>
+				</tr>
+			{% endif %}
         	<tr>
         		<th>Abrégé</th>
         		<td>{{ serie.titreCourt }}</td>

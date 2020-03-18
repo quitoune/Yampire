@@ -63,11 +63,11 @@ html, body {
 	height: 100%;
 }
 
-a {
+a, .link {
 	color: #9b111e;
 }
 
-a:hover {
+a:hover, .link:hover {
 	color: #DC143C;
 	text-decoration: none;
 }

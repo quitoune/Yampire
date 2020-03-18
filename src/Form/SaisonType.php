@@ -25,13 +25,17 @@ class SaisonType extends AbstractType
         ))
         ->add('serie', EntityType::class, array(
             'class' => Serie::class,
-            'choice_label' => 'nom',
+            'choice_label' => function ($serie) {
+            return $serie->getNom();
+            },
             'label' => 'Série',
             'query_builder' => function (SerieRepository $sr) {
             return $sr->createQueryBuilder('s')
-            ->orderBy('s.nom', 'ASC');
-            }
+            ->orderBy('s.titre_original', 'ASC');
+            },
+            'disabled' => $options['disabled_serie']
             ))
+            ->add('description')
             ->add('photo', EntityType::class, array(
                 'class' => Photo::class,
                 'choice_label' => 'nom',
@@ -49,6 +53,7 @@ class SaisonType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => Saison::class,
+            'disabled_serie' => false,
             'update' => false
         ));
     }

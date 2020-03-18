@@ -1,25 +1,40 @@
-<div id="ajax_{{ type }}_saison_see">
+<div id="ajax_serie_saison_see">
 	<div>
 	    {{ pagination.nb_elements }} saison{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
+	    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+	        {{ ajouter(path('saison_ajax_ajouter', {'slug': serie.slug}), false, 'btn-ajouter') | raw }}
+	    {% endif %}
     </div>
     
     <div class="row">
 	    {% for saison in saisons %}
             <div class="col-img">
 				<a href="{{ path('saison_afficher', {'id':saison.id,'slug':saison.serie.slug}) }}">
-                    {{ photo(saison.photo) | raw }}
+					{% if saison.photo is not null %}
+                        {{ photo(saison.photo) | raw }}
+                    {% else %}
+                    	<span class="center">Saison {{ saison.numeroSaison }}</span>
+                    {% endif %}
                 </a>
             </div>
         {% endfor %}
 	</div>
 	
-    <div>
-        {% if saisons is empty %}
+    {% if saisons is empty %}
+    	<div>
             <p class="text-info text-center">Cette série n'a aucune saison.</p>
-        {% endif %}
-    </div>
+    	</div>
+    {% endif %}
 	
 	<div>
     	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>
+
+{% block javascripts %} 
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            OuvrirModal('#btn-ajouter', '#modal_serie');
+        });
+    </script>
+{% endblock %}

@@ -39,7 +39,7 @@ function OuvrirModal(id, id_content_modal){
         event.preventDefault();
         $("html").showLoading();
         Ajax($(id).attr('href'), id_content_modal);
-    
+        
         return false;
 	});
 };
@@ -67,4 +67,26 @@ function SubmitModal(objet, type, url, id_modal, url_base, id_bloc){
            }
        });
     });
+};
+
+function saveModal(id, url, url_base){
+	$(id).click(function(event){
+		$("body").showLoading();
+        $(this).prop('disabled', true).html('Chargement...');
+        
+        event.preventDefault();
+        
+        $.ajax({
+            url:url,
+            method:'POST',
+        }).done(function(reponse){
+    		$("body").hideLoading();
+            if(reponse.statut){
+                $("#bloc_modal").modal('hide');
+                Ajax(url_base, "body", "body");
+            } else {
+                $('#modal_nationalite .modal-body').html(reponse);
+            }
+        });
+	});
 };

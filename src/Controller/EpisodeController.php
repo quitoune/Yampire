@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\EpisodeType;
 use App\Form\EpisodePersonnageType;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Entity\Tag;
 
 class EpisodeController extends AppController
 {
@@ -107,7 +108,7 @@ class EpisodeController extends AppController
             $episodes = $epis;
         } else {
             foreach ($epis as $epi){
-                if($epi->getPersonnages()->contains($personnage)){
+                if($epi->getPersonnage()->contains($personnage)){
                     $episodes[] = $epi;
                 }
             }
@@ -232,9 +233,15 @@ class EpisodeController extends AppController
             $episode = $form->getData();
             $episode->setSerie($serie);
             $slug = $this->createSlug($request->request->all()["episode"]["titre_original"], 'Episode');
+            
+            $tag = new Tag();
+            $tag->setNom(str_replace('_', ' ', $slug));
+            
             $episode->setSlug($slug);
+            $episode->setTag($tag);
 
             $manager = $this->getDoctrine()->getManager();
+            $manager->persist($tag);
             $manager->persist($episode);
             $manager->flush();
 
@@ -276,7 +283,6 @@ class EpisodeController extends AppController
     public function ajaxAjouterPersonnages(Request $request, SessionInterface $session, Episode $episode){
         $form = $this->createForm(EpisodePersonnageType::class, null, array(
             'session' => $session,
-            'label_button' => 'Ajouter',
             'disabled_episode' => true
         ));
         

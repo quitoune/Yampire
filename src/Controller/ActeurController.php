@@ -11,6 +11,7 @@ use App\Entity\Nationalite;
 use App\Entity\Personnage;
 use App\Entity\ActeurPersonnage;
 use App\Form\ActeurType;
+use App\Entity\Tag;
 
 class ActeurController extends AppController
 {
@@ -288,7 +289,12 @@ class ActeurController extends AppController
             $acteur = $form->getData();
             $full_name = $request->request->all()["acteur"]["prenom"] . " " . $request->request->all()["acteur"]["nom"];
             $slug = $this->createSlug($full_name, 'Acteur');
+            
+            $tag = new Tag();
+            $tag->setNom(str_replace('_', ' ', $slug));
+            
             $acteur->setSlug($slug);
+            $acteur->setTag($tag);
 
             if(isset($request->request->all()["acteur"]["nationalites"])){
                 foreach ($request->request->all()["acteur"]["nationalites"] as $nationalite){
@@ -310,6 +316,7 @@ class ActeurController extends AppController
                 }
             }
             
+            $manager->persist($tag);
             $manager->persist($acteur);
             $manager->flush();
 

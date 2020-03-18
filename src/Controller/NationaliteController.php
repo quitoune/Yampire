@@ -101,7 +101,7 @@ class NationaliteController extends AppController
      * Formulaire d'ajout d'une nationalité
      *
      * @Route("/nationalite/ajouter/{page}", name="nationalite_ajouter")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @Security("is_granted('ROLE_ADMIN')")
      *
      * @param Request $request
      * @param int $page
@@ -146,15 +146,31 @@ class NationaliteController extends AppController
     }
     
     /**
+     * Confirmer la suppression d'une nationalité
+     *
+     * @Route("/nationalite/confirmer/{id}/{page}", name="nationalite_confirmer")
+     * @ParamConverter("nationalite", options={"mapping"={"id"="id"}})
+     * 
+     * @param Nationalite $nationalite
+     * @param int $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function confirmerSuppression(Nationalite $nationalite, int $page){
+        return $this->render('nationalite/supprimer.html.twig', array(
+            'nationalite' => $nationalite,
+            'page' => $page
+        ));
+    }
+    
+    /**
      * Supprimer une nationalité
      *
-     * @Route("/nationalite/supprimer/{id}/{page}", name="nationalite_supprimer")
+     * @Route("/nationalite/supprimer/{id}", name="nationalite_supprimer")
      * @ParamConverter("nationalite", options={"mapping"={"id"="id"}})
      *
      * @param Nationalite $nationalite
-     * @param int $page
      */
-    public function supprimer(Nationalite $nationalite, int $page)
+    public function supprimer(Nationalite $nationalite)
     {
         
         $manager = $this->getDoctrine()->getManager();
@@ -170,8 +186,9 @@ class NationaliteController extends AppController
         $manager->remove($nationalite);
         $manager->flush();
         
-        return $this->redirectToRoute('nationalite_liste', array(
-            'page' => $page
+        
+        return $this->json(array(
+            'statut' => true
         ));
     }
 }

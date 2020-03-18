@@ -18,6 +18,12 @@
 				<th>Nombre d'épisode</th>
 				<td>{{ saison.nombreEpisode }}</td>
 			</tr>
+			{% if saison.description is not null %}
+				<tr>
+					<th>Description</th>
+					<td>{{ saison.description }}</td>
+				</tr>
+			{% endif %}
 		</table>
 	</div>
 </div>
