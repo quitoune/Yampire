@@ -10,6 +10,7 @@ use App\Entity\Quizz;
 use App\Entity\Personnage;
 use App\Entity\Espece;
 use App\Entity\Episode;
+use App\Entity\Chanson;
 
 class AppController extends AbstractController
 {
@@ -245,13 +246,16 @@ class AppController extends AbstractController
         $slug = preg_replace('#&[^;]+;#', '', $slug);
         
         $slug = str_replace(array("/", "\\", "'"), '-', $slug);
-        $slug = str_replace(array("?", ","), '', $slug);
+        $slug = str_replace(array("?", ",", "(", ")"), '', $slug);
         $slug = trim($slug);
         $slug = implode("_", explode(' ', $slug));
         
         switch($type){
             case 'Acteur':
                 $repository = $this->getDoctrine()->getRepository(Acteur::class);
+                break;
+            case 'Chanson':
+                $repository = $this->getDoctrine()->getRepository(Chanson::class);
                 break;
             case 'Episode':
                 $repository = $this->getDoctrine()->getRepository(Episode::class);

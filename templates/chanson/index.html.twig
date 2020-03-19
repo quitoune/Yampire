@@ -6,7 +6,7 @@
     <div class="card liste text-center">
         <div class="card-header text-left">
             {{ pagination.total }} chansons - {{ pagination.page }} / {{ pagination.nbPages }}
-            {% if is_granted("ROLE_ADMIN") %}
+            {% if is_granted("ROLE_UTILISATEUR") %}
                 {{ ajouter(path('chanson_ajouter', {'slug':serie.slug, 'page':pagination.page})) | raw }}
             {% endif %}
         </div>
@@ -14,7 +14,7 @@
         	<div class="row">
         		{% for chanson in chansons %}
         			<div class="col-quotes">
-        			    {{ card_chanson(chanson, true, path('chanson_afficher', {'id':chanson.id, 'slug':serie.slug, 'page':pagination.page})) | raw }}
+        			    {{ card_chanson(chanson, true, path('chanson_afficher', {'slug_song':chanson.slug, 'slug':serie.slug, 'page':pagination.page}), app.session) | raw }}
         			</div>
                 {% endfor %}
                 

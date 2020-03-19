@@ -144,6 +144,14 @@ class Episode
 
         return $this;
     }
+    
+    public function getNom($is_vo = 0){
+        if(!$is_vo && !is_null($this->titre)){
+            return $this->titre;
+        } else {
+            return $this->titre_original;
+        }
+    }
 
     public function getDescription(): ?string
     {

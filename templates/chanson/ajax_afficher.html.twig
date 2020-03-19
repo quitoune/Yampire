@@ -9,7 +9,7 @@
 	<div class="row">
 	    {% for chanson in chansons %}
 			<div class="col-quotes">
-			    {{ card_chanson(chanson, true, path('chanson_afficher', {'id':chanson.id, 'slug':chanson.episode.serie.slug, 'page':pagination.page})) | raw }}
+			    {{ card_chanson(chanson, true, path('chanson_afficher', {'slug_song':chanson.slug, 'slug':chanson.episode.serie.slug, 'page':pagination.page}), app.session) | raw }}
 			</div>
         {% endfor %}
     </div>

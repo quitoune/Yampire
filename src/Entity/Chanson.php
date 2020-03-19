@@ -15,6 +15,11 @@ class Chanson
      * @ORM\Column(type="integer")
      */
     private $id;
+    
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=150)
@@ -50,6 +55,18 @@ class Chanson
     public function getId(): ?int
     {
         return $this->id;
+    }
+    
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+    
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+        
+        return $this;
     }
 
     public function getTitre(): ?string

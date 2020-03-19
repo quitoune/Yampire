@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Episode - ID {{ episode.id }} {% endblock %}
+{% block title %} Episode: {{ titre("episode", episode, app.session) | raw }} {% endblock %}
 
 {% block body %}
     

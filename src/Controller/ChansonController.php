@@ -12,6 +12,7 @@ use App\Entity\Saison;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Form\ChansonType;
+use App\Entity\Tag;
 
 class ChansonController extends AppController
 {
@@ -31,7 +32,7 @@ class ChansonController extends AppController
         $nbr_max = $this->getNbrMax();
         $paginator = $repository->findAllElements($page, $nbr_max, array(
             'repository' => 'Chanson',
-            'field' => 'Chanson.id',
+            'field' => 'episode.numero_production',
             'order' => 'ASC',
             'condition' => 'serie.id = ' . $serie->getId(),
             'jointure' => array(
@@ -74,8 +75,9 @@ class ChansonController extends AppController
     /**
      * Affichage des chansons
      *
-     * @Route("/{slug}/chanson/afficher/{id}/{page}", name="chanson_afficher")
+     * @Route("/{slug}/chanson/afficher/{slug_song}/{page}", name="chanson_afficher")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
+     * @ParamConverter("chanson", options={"mapping"={"slug_song"="slug"}})
      *
      * @param Chanson $chanson
      * @param int $page
@@ -187,8 +189,9 @@ class ChansonController extends AppController
     /**
      * Formulaire de modifcation d'une chanson
      *
-     * @Route("/{slug}/chanson/modifier/{id}/{page}", name="chanson_modifier")
+     * @Route("/{slug}/chanson/modifier/{slug_song}/{page}", name="chanson_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
+     * @ParamConverter("serie", options={"mapping"={"slug_song"="slug"}})
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      * 
      * @param Request $request
@@ -266,14 +269,18 @@ class ChansonController extends AppController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $chanson = $form->getData();
+            
+            $slug = $this->createSlug($request->request->all()["chanson"]["titre"], 'Chanson');
+            $chanson->setSlug($slug);
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($chanson);
             $manager->flush();
 
-            return $this->redirectToRoute('chanson_liste', array(
+            return $this->redirectToRoute('chanson_afficher', array(
                 'page' => $page,
-                'slug' => $serie->getSlug()
+                'slug' => $serie->getSlug(),
+                'slug_song' => $slug
             ));
         }
 

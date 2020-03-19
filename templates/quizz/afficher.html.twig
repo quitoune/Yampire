@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Quizz ID{{ quizz.id }} {% endblock %}
+{% block title %} Quizz: {{ quizz.nom }} {% endblock %}
 
 {% block body %}
     <div id="quizz" class="card">
@@ -19,6 +19,9 @@
 		</div>
 		<div class="card-body">
 			<b>Nom :</b> {{ quizz.nom }} <br>
+			{% if quizz.description is not null %}
+				<b>Description</b>: {{ quizz.description }}<br>
+			{% endif %}
 			<b>Créateur: </b> {{ quizz.utilisateur.username }} <br>
 			<b>Date de création : </b> {{ quizz.dateCreation | date('d/m/Y') }}
 		</div>

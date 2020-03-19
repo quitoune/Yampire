@@ -27,7 +27,10 @@ class ChansonType extends AbstractType
         ->
         add('episode', EntityType::class, array(
             'class' => Episode::class,
-            'choice_label' => ($options['session']->get('user')['episode_vo'] ? 'titreOriginal' : 'titre'),
+//             'choice_label' => ($options['session']->get('user')['episode_vo'] ? 'titreOriginal' : 'titre'),
+            'choice_label' => function (Episode $episode) {
+            return $episode->getTitre() . ' (' . $episode->getTitreOriginal() . ')';
+            },
             'group_by' => function (Episode $episode) {
             return 'Saison ' . $episode->getSaison()->getNumeroSaison();
             },

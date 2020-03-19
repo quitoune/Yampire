@@ -39,10 +39,12 @@
         		<th>Durée</th>
         		<td>{{ episode.duree }}min</td>
         	</tr>
-        	<tr>
-        		<th>Description</th>
-        		<td colspan="3">{{ episode.description }}</td>
-        	</tr>
+        	{% if episode.description is not null %}
+            	<tr>
+            		<th>Description</th>
+            		<td colspan="3">{{ episode.description }}</td>
+            	</tr>
+        	{% endif %}
         </table>
 	</div>
 </div>
