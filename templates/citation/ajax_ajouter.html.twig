@@ -1,0 +1,68 @@
+<div id="ajax_citation_ajouter">
+    {{ form_start(form) }}
+	<div class="modal-header">
+        <h5 class="modal-title">
+        	Ajouter une citation 
+            {% if type == 'personnage' %}
+                au personnage {{ nom_usage(objet) }} 
+            {% elseif type == 'episode' %}
+                à l'épisode {{ titre("episode", objet, app.session) }} 
+            {% elseif type == "serie" %}
+            	à la série {{ titre("serie", objet, app.session) }}
+            {% elseif type == "saison" %}
+            	à {{ objet.serie.titreCourt }} - Saison {{ objet.numeroSaison }}
+            {% endif %}
+        
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    <div class="modal-body">
+    	<div class="row">
+        	<div class="col-lg-12 col-md-12 col-12">
+        		{{ form_row(form.texte) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12 w-100">
+        		{{ form_row(form.episode) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12 w-100">
+        		{{ form_row(form.from_personnage) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12 w-100">
+        		{{ form_row(form.to_personnage_1) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12 w-100">
+        		{{ form_row(form.to_personnage_2) }}
+        	</div>
+        	<div class="col-lg-12 col-md-12 col-12">
+        		{{ form_row(form.to_personnage) }}
+        	</div>
+        </div>
+        
+        <div class="modal-footer">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+    </div>
+</div>
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $('#bloc_modal').modal({
+            'show' : true,
+            'backdrop' : 'static'
+        });
+        
+		$("#citation_episode, #citation_from_personnage, #citation_to_personnage_1, #citation_to_personnage_2").select2({
+			minimumResultsForSearch: -1
+		});
+		
+        var url = '{{ path('citation_ajax_ajouter', {'slug': serie.slug, 'id':objet.id, 'type':type}) }}';
+        var url_base = '{{ path('ajax_afficher_citations', {'slug': serie.slug, 'id':objet.id, 'type':type}) }}';
+        SubmitModal("citation", "ajouter", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
+    </script>
+{% endblock %}

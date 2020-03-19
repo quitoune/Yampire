@@ -180,6 +180,39 @@ class Personnage
         }
         return $nom_complet;
     }
+    
+    public function getNomUsage(): ?string
+    {
+        $nom_complet = "";
+        
+        if (!is_null($this->getPrenomUsage())) {
+            $nom_complet .= $this->getPrenomUsage();
+        } else if(!is_null($this->getPrenom())) {
+            $nom_complet .= $this->getPrenom();
+        }
+        
+        if (!is_null($this->getNom())) {
+            $nom_complet .= ($nom_complet != "" ? ' ' : '') . $this->getNom();
+        }
+        
+        return $nom_complet;
+    }
+    
+    public function getNomToSort(): ?string
+    {
+        $nom_complet = "";
+        if (!is_null($this->getNom())) {
+            $nom_complet .= $this->getNom();
+        }
+        
+        if (!is_null($this->getPrenomUsage())) {
+            $nom_complet .= ($nom_complet != "" ? ' ' : '') . $this->getPrenomUsage();
+        } else if(!is_null($this->getPrenom())) {
+            $nom_complet .= ($nom_complet != "" ? ' ' : '') . $this->getPrenom();
+        }
+        
+        return $nom_complet;
+    }
 
     public function getDateNaissance(): ?\DateTimeInterface
     {

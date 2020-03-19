@@ -120,19 +120,32 @@ class AppController extends AbstractController
      * @param string $appelation
      * @return array[]
      */
-    public function sortArrayCollection(array $elements = array(), string $appelation = "getNom"){
+    public function sortArrayCollection($elements = array(), string $appelation = "getNom", string $classe = ""){
         $names = array();
         $sort_array = array();
         
-        foreach ($elements as $id => $element){
-            $names[$id] = $element->{$appelation}();
+        if($classe == "PersonnageSerie" || $classe == "PersonnageSaison"){
+            $repo = $this->getDoctrine()->getRepository(Personnage::class);
+            foreach($elements as $element){
+                $names[$element->getPersonnage()->getId()] = $element->getPersonnage()->{$appelation}();
+            }
+            asort($names);
+//             $this->pre($names); die();
+            foreach ($names as $id => $name){
+                $sort_array[] = $repo->findOneBy(array(
+                    'id' => $id
+                ));
+            }
+        } else {
+            foreach ($elements as $id => $element){
+                $names[$id] = $element->{$appelation}();
+            }
+            asort($names);
+            
+            foreach ($names as $id => $name){
+                $sort_array[] = $elements[$id];
+            }
         }
-        asort($names);
-        
-        foreach ($names as $id => $name){
-            $sort_array[] = $elements[$id];
-        }
-        
         return $sort_array;
     }
     

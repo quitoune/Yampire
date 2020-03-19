@@ -50,12 +50,18 @@ class ChansonExtension extends AbstractExtension
         }
         
         $card_chanson .= '<div class="episode">';
+        if(!$index){
+            $card_chanson .= '<a href="' . $path . '">';
+        }
         if(!is_null($session) && $session->get('user') != null){
             $card_chanson .= $chanson->getEpisode()->getNom($session->get('user')['episode_vo']);
         } else {
             $card_chanson .= $chanson->getEpisode()->getTitreOriginal();
         }
         $card_chanson .= ' (' . $chanson->getEpisode()->getCodeEpisode(false) . ')</div>';
+        if(!$index){
+            $card_chanson .= '</a>';
+        }
         $card_chanson .= '</div>';
         
         if($index){

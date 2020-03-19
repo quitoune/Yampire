@@ -77,13 +77,14 @@ class CitationController extends AppController
     /**
      * Affichage des notes d'un personnage / d'un acteur / d'un episode
      *
-     * @Route("/citation/ajax/afficher/{type}/{id}/{page}", name="ajax_afficher_citations")
+     * @Route("/{slug}/citation/ajax/afficher/{type}/{id}/{page}", name="ajax_afficher_citations")
+     * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
      *
      * @param int $id
      * @param string $type
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ajaxAfficher(int $id, string $type, int $page = 1)
+    public function ajaxAfficher(Serie $serie, int $id, string $type, int $page = 1)
     {
         switch ($type) {
             case 'episode':
@@ -99,8 +100,7 @@ class CitationController extends AppController
                 $repository = $this->getDoctrine()->getRepository(Serie::class);
                 break;
         }
-        $objets = $repository->findById($id);
-        $objet = $objets[0];
+        $objet = $repository->findOneBy(array('id' => $id));
 
         $repo = $this->getDoctrine()->getRepository(Citation::class);
 
@@ -160,6 +160,7 @@ class CitationController extends AppController
             'pages_count' => ceil($result['nombre'] / $nbr_max_ajax),
             'nb_elements' => $result['nombre'],
             'route_params' => array(
+                'slug' => $serie->getSlug(),
                 'id' => $id,
                 'type' => $type
             )
@@ -167,6 +168,7 @@ class CitationController extends AppController
 
         return $this->render('citation/ajax_afficher.html.twig', array(
             'citations' => $result['paginator'],
+            'serie' => $serie,
             'type' => $type,
             'objet' => $objet,
             'pagination' => $pagination
@@ -189,10 +191,10 @@ class CitationController extends AppController
     public function modifier(Request $request, SessionInterface $session, Serie $serie, Citation $citation, int $page = 1)
     {
         $form = $this->createForm(CitationType::class, $citation, array(
-            'update' => true,
+            'update' => 'Sauvegarder',
             'session' => $session,
             'choices_episodes' => $citation->getEpisode()->getSerie()->getEpisodes(),
-            'choices_personnages' => $this->sortArrayCollection($citation->getEpisode()->getSerie()->getPersonnages(), "getNomToSort")
+            'choices_personnages' => $this->sortArrayCollection($serie->getPersonnageSeries(), "getNomToSort", "PersonnageSerie")
         ));
 
         $form->handleRequest($request);
@@ -204,9 +206,10 @@ class CitationController extends AppController
             $manager->persist($citation);
             $manager->flush();
 
-            return $this->redirectToRoute('citation_liste', array(
+            return $this->redirectToRoute('citation_afficher', array(
                 'page' => $page,
-                'slug' => $serie->getSlug()
+                'slug' => $serie->getSlug(),
+                'id' => $citation->getId()
             ));
         }
 
@@ -286,7 +289,7 @@ class CitationController extends AppController
         $form = $this->createForm(CitationType::class, $citation, array(
             'session' => $session,
             'choices_episodes' => $serie->getEpisodes(),
-            'choices_personnages' => $this->sortArrayCollection($serie->getPersonnages(), "getNomToSort")
+            'choices_personnages' => $this->sortArrayCollection($serie->getPersonnageSeries(), "getNomToSort", "PersonnageSerie")
         ));
 
         $form->handleRequest($request);
@@ -324,6 +327,99 @@ class CitationController extends AppController
             'form' => $form->createView(),
             'page' => $page,
             'paths' => $paths
+        ));
+    }
+    
+    /**
+     * Formulaire d'ajout d'une citation
+     *
+     * @Route("/{slug}/citation/ajax_ajouter/{type}/{id}", name="citation_ajax_ajouter")
+     * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * 
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param Serie $serie
+     * @param string $type
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxAjouter(Request $request, SessionInterface $session, Serie $serie, string $type, int $id){
+        $citation = new Citation();
+        
+        $disabled_episode = false;
+        $disabled_personnage = false;
+        $choices_episodes = array();
+        $choices_personnages = array();
+        
+        switch($type){
+            case 'serie':
+                $objet = $serie;
+                $choices_episodes = $serie->getEpisodes();
+                $choices_personnages = $this->sortArrayCollection($serie->getPersonnageSeries(), "getNomToSort", "PersonnageSerie");
+                break;
+            case 'saison':
+                $repo = $this->getDoctrine()->getRepository(Saison::class);
+                $saison = $repo->findOneBy(array('id' => $id));
+                $objet = $saison;
+                
+                $choices_episodes = $saison->getEpisodes();
+                $choices_personnages = $this->sortArrayCollection($saison->getPersonnageSaisons(), "getNomToSort", "PersonnageSaison");
+                break;
+            case 'episode':
+                $disabled_episode = true;
+                $repo = $this->getDoctrine()->getRepository(Episode::class);
+                $episode = $repo->findOneBy(array('id' => $id));
+                $objet = $episode;
+                
+                $citation->setEpisode($episode);
+                $choices_episodes = $episode->getSaison()->getEpisodes();
+                $choices_personnages = $this->sortArrayCollection($episode->getPersonnage());
+                break;
+            case 'personnage':
+                $disabled_personnage = true;
+                $repo = $this->getDoctrine()->getRepository(Personnage::class);
+                $personnage = $repo->findOneBy(array('id' => $id));
+                $objet = $personnage;
+                
+                $citation->setFromPersonnage($personnage);
+                $choices_episodes = $personnage->getEpisodes();
+                $choices_personnages = $this->sortArrayCollection($serie->getPersonnageSeries(), "getNomToSort", "PersonnageSerie");
+                break;
+        }
+        
+        $form = $this->createForm(CitationType::class, $citation, array(
+            'session' => $session,
+            'disabled_episode' => $disabled_episode,
+            'disabled_personnage' => $disabled_personnage,
+            'choices_episodes' => $choices_episodes,
+            'choices_personnages' => $choices_personnages
+        ));
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $citation = $form->getData();
+            
+            $manager = $this->getDoctrine()->getManager();
+            
+            $citation->setDateCreation(new \DateTime());
+            $citation->setUtilisateur($this->getUtilisateur());
+            
+            $manager->persist($citation);
+            $manager->flush();
+            
+            return $this->json(array(
+                'statut' => true
+            ));
+        }
+        
+        return $this->render('citation/ajax_ajouter.html.twig', array(
+            'form' => $form->createView(),
+            'serie' => $serie,
+            'type' => $type,
+            'objet' => $objet
         ));
     }
 }

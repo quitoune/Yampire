@@ -17,7 +17,7 @@
         			<div class="nav-link" data-link="{{ path('ajax_afficher_personnages', {'id':saison.id, 'type':'saison'}) }}">Personnages</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'id':saison.id, 'type':'saison'}) }}">Citations</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'slug':saison.serie.slug, 'id':saison.id, 'type':'saison'}) }}">Citations</div>
       			</li>
       			<li class="nav-item">
         			<div class="nav-link" data-link="{{ path('ajax_afficher_chansons', {'id':saison.id, 'type':'saison'}) }}">Chansons</div>

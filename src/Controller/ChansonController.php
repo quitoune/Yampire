@@ -272,6 +272,9 @@ class ChansonController extends AppController
             
             $slug = $this->createSlug($request->request->all()["chanson"]["titre"], 'Chanson');
             $chanson->setSlug($slug);
+            
+            $chanson->setDateCreation(new \DateTime());
+            $chanson->setUtilisateur($this->getUtilisateur());
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($chanson);

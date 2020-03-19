@@ -5,13 +5,7 @@
 	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
 	    {% endif %}
 	    {% if is_granted("ROLE_UTILISATEUR") %}
-        	{% if type == 'serie' %}
-                {{ ajouter(path('citation_ajouter', {'slug':objet.slug, 'page':pagination.page}), false, 'btn-ajouter') | raw }}
-            {% elseif type == 'saison' or type == 'episode' %}
-                {{ ajouter(path('citation_ajouter', {'slug':objet.serie.slug, 'page':pagination.page}), false, 'btn-ajouter') | raw }}
-            {% elseif type == 'personnage' %}
-                {{ ajouter(path('citation_ajouter', {'slug':objet.personnageSeries[0].serie.slug, 'page':pagination.page}), false, 'btn-ajouter') | raw }}
-            {% endif %}
+            {{ ajouter(path('citation_ajax_ajouter', {'slug':serie.slug, 'type':type, 'id': objet.id}), false, 'btn-ajouter') | raw }}
         {% endif %}
     </div>
     <div class="row">
@@ -27,7 +21,9 @@
           	<p class="text-info text-center">Aucune citation n'est associé à
                 {% if type == 'episode' %}
                 	cet épisode.
-                {% elseif type == 'serie' or type == 'saison' %}
+                {% elseif type == 'serie' %}
+                	cette série.
+                {% elseif type == 'saison' %}
                     cette {{ type }}.
                 {% else %}
                     ce {{ type }}.
@@ -40,3 +36,11 @@
     	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>
+
+{% block javascripts %} 
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            OuvrirModal('#btn-ajouter', '#modal_{{ type }}');
+        });
+    </script>
+{% endblock %}
