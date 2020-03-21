@@ -26,7 +26,7 @@ class ActeurController extends AppController
     public function liste(int $page = 1)
     {
         $repository = $this->getDoctrine()->getRepository(Acteur::class);
-
+        
         $nbr_max = $this->getNbrMax();
         $paginator = $repository->findAllElements($page, $nbr_max, array(
             'repository' => 'Acteur',

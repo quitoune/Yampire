@@ -25,7 +25,7 @@ class ChansonExtension extends AbstractExtension
      * @param string $path
      * @return string
      */
-    public function getCardChanson(Chanson $chanson, $index = false, $path = "", $session = null)
+    public function getCardChanson(Chanson $chanson, $index = false, $path = "", $session = null, string $path_episode = "")
     {
         $card_chanson  = '';
         
@@ -36,6 +36,11 @@ class ChansonExtension extends AbstractExtension
         }
         
         $card_chanson .= '<div class="card-body">';
+        if(!$index){
+            $card_chanson .= '<div class="row link-update">';
+            $card_chanson .= '<a href="' . $path . '"><i class="fas fa-pen"></i></a>';
+            $card_chanson .= '</div>';
+        }
         $card_chanson .= '<div class="row">';
         $card_chanson .= '<div class="col-2 symbol">';
         $card_chanson .= '<i class="fas fa-music"></i>';
@@ -50,8 +55,8 @@ class ChansonExtension extends AbstractExtension
         }
         
         $card_chanson .= '<div class="episode">';
-        if(!$index){
-            $card_chanson .= '<a href="' . $path . '">';
+        if($path_episode){
+            $card_chanson .= '<a href="' . $path_episode . '">';
         }
         if(!is_null($session) && $session->get('user') != null){
             $card_chanson .= $chanson->getEpisode()->getNom($session->get('user')['episode_vo']);
@@ -59,7 +64,7 @@ class ChansonExtension extends AbstractExtension
             $card_chanson .= $chanson->getEpisode()->getTitreOriginal();
         }
         $card_chanson .= ' (' . $chanson->getEpisode()->getCodeEpisode(false) . ')</div>';
-        if(!$index){
+        if($path_episode){
             $card_chanson .= '</a>';
         }
         $card_chanson .= '</div>';

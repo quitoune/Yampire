@@ -10,6 +10,7 @@ use App\Controller\AppController;
 use App\Entity\Question;
 use App\Entity\Citation;
 use App\Entity\Serie;
+use App\Entity\Personnage;
 
 class QuestionExtension extends AbstractExtension
 {
@@ -211,6 +212,36 @@ class QuestionExtension extends AbstractExtension
     }
     
     /**
+    *
+    * @param $doctrine
+    * @param string $id
+    * @param string $classe
+    * @param string $name
+    * @return string
+    */
+    public function getSelectPersonnage($doctrine, string $id, int $reponse, string $classe = "", string $name = ""){
+        $personnages = $doctrine->getRepository(Personnage::class)->findBy(array(), array('nom'=> 'ASC', 'prenom' => 'ASC'));
+        
+        if($name == ""){
+            $name = $id;
+        }
+        
+        $select  = "<select id = '" . $id . "' data-reponse='" . $reponse . "' name = '" . $name . "' class = 'form-control";
+        if($classe){
+            $select .= " " . $classe;
+        }
+        $select .= "'>";
+        $select .= "<option></option>";
+        foreach ($personnages as $perso){
+            $select .= "<option value='" . $perso->getId() . "'>" . $perso->getNomUsage() . "</option>";
+        }
+        
+        $select .= "</select>";
+        
+        return $select;
+    }
+    
+    /**
      * Affichage d'une question
      * 
      * @param Question $question
@@ -242,7 +273,7 @@ class QuestionExtension extends AbstractExtension
      */
     public function afficherCitation(Citation $citation = null, int $ordre = 0, $doctrine)
     {
-        $return = "OK";
+        $return = "";
         if(!is_null($citation)){
             $id = $citation->getId();
             
@@ -258,22 +289,54 @@ class QuestionExtension extends AbstractExtension
             
             $return .= '<div class="card-body">';
             
-            $return .= '<div class="form-group">';
-            $return .= '<label for="auteur_' . $id . '">Qui est l\'auteur de cette citation ? </label>';
-            $return .= '</div>';
+            $return .= '<div class="row">';
             
-            $return .= '<div class="form-group">';
-            $return .= '<label for="destinataire_' . $id . '">A qui est-elle destinée ?</label>';
-            $return .= '</div>';
-            
+            $return .= '<div class="col-lg-6 col-md-6 col-12">';
+            $return .= '<label for="personnage_' . $id . '" style="font-size: larger;">Qui la prononce ?</label>';
+            $return .= '<div class="col-lg-12 col-md-12 col-12">';
             $return .= '<div class="form-group w-100">';
-            $return .= '<label for="episode_' . $id . '">Dans quel épisode est-elle prononcée ?</label>';
-            $return .= $this->getSelectEpisode($doctrine, "episode_" . $id, $citation->getEpisode()->getId());
+            $return .= '<label for="from_personnage_' . $id . '">Auteur</label>';
+            $return .= $this->getSelectPersonnage($doctrine, "from_personnage_" . $id, (is_null($citation->getFromPersonnage()) ? '' : $citation->getFromPersonnage()->getId()), "", "citation[" . $id . "][from_personnage]");
+            $return .= '</div>';
+            $return .= '</div>';
+            
+            $return .= '<div class="col-lg-12 col-md-12 col-12">';
+            $return .= '<label for="moment_' . $id . '" style="font-size: larger;">Quand est-elle dit ?</label>';
+            $return .= '<div class="form-group w-100">';
+            $return .= '<label for="episode_' . $id . '">Episode</label>';
+            $return .= $this->getSelectEpisode($doctrine, "episode_" . $id, $citation->getEpisode()->getId(), "", "citation[" . $id . "][episode]");
+            $return .= '</div>';
+            $return .= '</div>';
+            $return .= '</div>';
+            
+            $return .= '<div class="col-lg-6 col-md-6 col-12">';
+            $return .= '<label for="destinataire_' . $id . '" style="font-size: larger;">Quels sont les destinataires ?</label>';
+            $return .= '<div class="col-lg-12 col-md-12 col-12">';
+            $return .= '<div class="form-group w-100">';
+            $return .= '<label for="to_personnage_1_' . $id . '">Destinataire 1</label>';
+            $return .= $this->getSelectPersonnage($doctrine, "to_personnage_1_" . $id, (is_null($citation->getToPersonnage1()) ? -1 : $citation->getToPersonnage1()->getId()), "", "citation[" . $id . "][to_personnage_1]");
+            $return .= '</div>';
+            $return .= '</div>';
+            
+            $return .= '<div class="col-lg-12 col-md-12 col-12">';
+            $return .= '<div class="form-group w-100">';
+            $return .= '<label for="to_personnage_2_' . $id . '">Destinataire 2</label>';
+            $return .= $this->getSelectPersonnage($doctrine, "to_personnage_" . $id, (is_null($citation->getToPersonnage2()) ? -1 : $citation->getToPersonnage2()->getId()), "", "citation[" . $id . "][to_personnage_2]");
+            $return .= '</div>';
+            $return .= '</div>';
+            
+            $return .= '<div class="col-lg-12 col-md-12 col-12">';
+            $return .= '<div class="form-group w-100">';
+            $return .= '<label for="to_personnage_' . $id . '">Destinataire Autre</label>';
+            $return .= '<input type="text" class="form-control" data-reponse="' . $citation->getToPersonnage() . '" name="citation[' . $id . '][to_personnage]" id="to_personnage_' . $id . '">';
+            $return .= '</div>';
+            $return .= '</div>';
+            $return .= '</div>';
+            
             $return .= '</div>';
             $return .= '</div>';
             
             $return .= '<div class="card-footer">';
-            $return .= '</div>';
             $return .= '</div>';
         }
         

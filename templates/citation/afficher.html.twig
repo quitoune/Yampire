@@ -3,5 +3,5 @@
 {% block title %} Citation - ID {{ citation.id }} {% endblock %}
 
 {% block body %}
-    {{ card_citation(citation, false, path_update) | raw }}
+    {{ card_citation(citation, false, path_update, app.session, path_episode) | raw }}
 {% endblock %}

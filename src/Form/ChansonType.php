@@ -27,6 +27,7 @@ class ChansonType extends AbstractType
         ->
         add('episode', EntityType::class, array(
             'class' => Episode::class,
+            'disabled' => $options['disabled_episode'],
 //             'choice_label' => ($options['session']->get('user')['episode_vo'] ? 'titreOriginal' : 'titre'),
             'choice_label' => function (Episode $episode) {
             return $episode->getTitre() . ' (' . $episode->getTitreOriginal() . ')';
@@ -49,6 +50,7 @@ class ChansonType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => Chanson::class,
             'choices_episodes' => array(),
+            'disabled_episode' => false,
             'update' => false
         ));
         

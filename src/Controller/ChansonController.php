@@ -97,6 +97,15 @@ class ChansonController extends AppController
         );
 
         return $this->render('chanson/afficher.html.twig', array(
+            'path_modifier' => $this->generateUrl('chanson_modifier', array(
+                'slug_song' => $chanson->getSlug(),
+                'page' => $page,
+                'slug' => $serie->getSlug()
+            )),
+            'path_episode' => $this->generateUrl('episode_afficher', array(
+                'slug_episode' => $chanson->getEpisode()->getSlug(),
+                'slug' => $serie->getSlug()
+            )),
             'page' => $page,
             'chanson' => $chanson,
             'paths' => $paths
@@ -191,7 +200,7 @@ class ChansonController extends AppController
      *
      * @Route("/{slug}/chanson/modifier/{slug_song}/{page}", name="chanson_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @ParamConverter("serie", options={"mapping"={"slug_song"="slug"}})
+     * @ParamConverter("chanson", options={"mapping"={"slug_song"="slug"}})
      * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
      * 
      * @param Request $request
@@ -217,7 +226,8 @@ class ChansonController extends AppController
             $manager->persist($chanson);
             $manager->flush();
 
-            return $this->redirectToRoute('chanson_liste', array(
+            return $this->redirectToRoute('chanson_afficher', array(
+                'slug_song' => $chanson->getSlug(),
                 'page' => $page,
                 'slug' => $serie->getSlug()
             ));
@@ -302,6 +312,89 @@ class ChansonController extends AppController
             'form' => $form->createView(),
             'page' => $page,
             'paths' => $paths
+        ));
+    }
+    
+    /**
+     * Formulaire d'ajout d'une chanson
+     *
+     * @Route("/chanson/ajax_ajouter/{type}/{id}", name="chanson_ajax_ajouter")
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * 
+     * @param Request $request
+     * @param SessionInterface $session
+     * @param string $type
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxAjouter(Request $request, SessionInterface $session, string $type, int $id){
+        $chanson = new Chanson();
+        
+        $disabled_episode = false;
+        $choices_episodes = array();
+        
+        switch($type){
+            case 'serie':
+                $repo = $this->getDoctrine()->getRepository(Serie::class);
+                $serie = $repo->findOneBy(array('id' => $id));
+                $objet = $serie;
+                
+                $choices_episodes = $serie->getEpisodes();
+                break;
+            case 'saison':
+                $repo = $this->getDoctrine()->getRepository(Saison::class);
+                $saison = $repo->findOneBy(array('id' => $id));
+                $serie = $saison->getSerie();
+                $objet = $saison;
+                
+                $choices_episodes = $saison->getEpisodes();
+                break;
+            case 'episode':
+                $disabled_episode = true;
+                $repo = $this->getDoctrine()->getRepository(Episode::class);
+                $episode = $repo->findOneBy(array('id' => $id));
+                $serie = $episode->getSerie();
+                $objet = $episode;
+                
+                $chanson->setEpisode($episode);
+                $choices_episodes = $episode->getSaison()->getEpisodes();
+                break;
+        }
+        
+        $form = $this->createForm(ChansonType::class, $chanson, array(
+            'session' => $session,
+            'disabled_episode' =>$disabled_episode,
+            'choices_episodes' => $choices_episodes
+        ));
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $chanson = $form->getData();
+            
+            $slug = $this->createSlug($request->request->all()["chanson"]["titre"], 'Chanson');
+            $chanson->setSlug($slug);
+            
+            $chanson->setDateCreation(new \DateTime());
+            $chanson->setUtilisateur($this->getUtilisateur());
+            
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($chanson);
+            $manager->flush();
+            
+            return $this->json(array(
+                'statut' => true
+            ));
+        }
+        
+        
+        
+        return $this->render('chanson/ajax_ajouter.html.twig', array(
+            'form' => $form->createView(),
+            'serie' => $serie,
+            'type' => $type,
+            'objet' => $objet
         ));
     }
 }

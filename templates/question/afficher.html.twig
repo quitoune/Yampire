@@ -1,15 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Questions{% endblock %}
+{% block title %} Question - ID {{ question.id }} {% endblock %}
 
 {% block body %}
-<div>
-	{% for question in questions %}
-		{{ afficher(question, 0, doctrine) | raw }}
-		<hr>
-	{% endfor %}
-</div>
+    {{ afficher(question, 0, doctrine) | raw }}
 {% endblock %}
+
 {% block javascripts %}
     <script type="text/javascript">
         $("select.form-control").select2();

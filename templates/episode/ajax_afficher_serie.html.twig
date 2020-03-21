@@ -1,7 +1,7 @@
 <div id="ajax_serie_episode_see">
 	<div class="row text-center" style="display: block; margin-bottom: 15px;">
 		{{ select("saison", saisons, {'class': 'form-control'}) |raw }}
-		<span style="margin-left: 10px">
+		<span id="nombre_episode" style="margin-left: 10px">
 		    {{ episodes | length }} épisode{% if episodes | length > 1 %}s{% endif %}
 		</span>
 	</div>
@@ -14,6 +14,12 @@
     		</div>
     	{% endfor %}
     </div>
+    
+    {% if episodes is empty %}
+		<div class="text-center empty-element">
+          	<p class="text-info text-center">Aucun épisode n'est associé à cette série.</p>
+		</div>
+    {% endif %}
 </div>
 
 {% block javascripts %}

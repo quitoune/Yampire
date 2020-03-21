@@ -4,7 +4,7 @@
 	    {% if pagination.pages_count > 0 %}
 	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
 	    {% endif %}
-	    {% if is_granted("ROLE_UTILISATEUR") %}
+	    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             {{ ajouter(path('citation_ajax_ajouter', {'slug':serie.slug, 'type':type, 'id': objet.id}), false, 'btn-ajouter') | raw }}
         {% endif %}
     </div>
@@ -17,8 +17,8 @@
 	</div>
 	
     {% if citations is empty %}
-        <div class="text-center">
-          	<p class="text-info text-center">Aucune citation n'est associé à
+        <div class="empty-element">
+          	<p class="text-info text-center">Aucune citation n'est associée à
                 {% if type == 'episode' %}
                 	cet épisode.
                 {% elseif type == 'serie' %}

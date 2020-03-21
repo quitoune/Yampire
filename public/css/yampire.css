@@ -112,14 +112,6 @@ img {
 	color: #9b111e!important;
 }
 
-/*svg:not(:root) {
-	vertical-align: text-top!important;
-}
-
-.sf-toolbar svg:not(:root) {
-	vertical-align: top!important;
-}*/
-
 /********************************************
 *
 * DEBUT SURCHARGE NAV BOOTSTRAP
@@ -340,6 +332,10 @@ li.page-item {
 	color: black;
 }
 
+.citation footer a {
+	color: #6c757d;
+}
+
 .chanson .episode a,
 .chanson .interprete {
 	color: black;
@@ -480,4 +476,18 @@ li.page-item {
 
 .marg-l-10 {
 	margin-left: 10px;
+}
+
+.link-update {
+	right: 5%;
+	z-index: 1000;
+    position: absolute;
+}
+
+.empty-element {
+	margin-top: 15px;
+}
+
+#nombre_episode {
+	margin-top: 15px;
 }

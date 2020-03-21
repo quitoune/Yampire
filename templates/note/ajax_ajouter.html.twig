@@ -15,7 +15,6 @@
             {% elseif type == 'episode' %}
                 Ajouter une note à l'épisode {{ titre("episode", objet, app.session) }} 
             {% endif %}
-        
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -34,7 +33,7 @@
     {{ form_end(form) }}
 </div>
 {% block javascripts %}
-    <script>
+    <script type="text-javascript">
         $('#bloc_modal').modal({
             'show' : true,
             'backdrop' : 'static'

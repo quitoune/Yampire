@@ -138,7 +138,7 @@ class Serie
         return $this->titre_court;
     }
 
-    public function setNomCourt(?string $titre_court): self
+    public function setTitreCourt(?string $titre_court): self
     {
         $this->titre_court = $titre_court;
 

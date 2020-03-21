@@ -91,7 +91,7 @@ class CitationExtension extends AbstractExtension
      * @param string $path
      * @return string
      */
-    public function getCardCitation(Citation $citation, $index = false, $path = ""){
+    public function getCardCitation(Citation $citation, $index = false, $path = "", $session = null, string $path_episode = ""){
         $texte = $citation->getTexte();
         if($index && strlen($texte) > 150){
             $texte = substr($texte, 0, 150) . '...';
@@ -121,12 +121,21 @@ class CitationExtension extends AbstractExtension
             $card_citation .= $citation->getEpisode()->getCodeEpisode(true);
         } else {
             $card_citation .= $this->getDestinataires($citation, true) . ' dans ';
+            if($path_episode){
+                $card_citation .= '<a href="' . $path_episode . '">';
+            }
             $card_citation .= '<cite title="Source Title">';
-            $card_citation .= $citation->getEpisode()->getTitreOriginal() . ' ';
-            $card_citation .= $citation->getEpisode()->getCodeEpisode(true);
-            
+            if(!is_null($session) && $session->get('user') != null){
+                $card_citation .= $citation->getEpisode()->getNom($session->get('user')['episode_vo']);
+            } else {
+                $card_citation .= $citation->getEpisode()->getTitreOriginal();
+            }
+            $card_citation .= '</cite>';
+            $card_citation .= ' (' . $citation->getEpisode()->getCodeEpisode(false) . ')';
+            if($path_episode){
+                $card_citation .= '</a>';
+            }
         }
-        $card_citation .= '</cite>';
         $card_citation .= '</footer>';
         $card_citation .= '</blockquote>';
         $card_citation .= '</div>';

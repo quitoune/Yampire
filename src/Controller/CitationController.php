@@ -260,11 +260,17 @@ class CitationController extends AppController
             'page' => $page,
             'slug' => $serie->getSlug()
         ));
+        
+        $path_episode = $this->generateUrl('episode_afficher', array(
+            'slug_episode' => $citation->getEpisode()->getSlug(),
+            'slug' => $serie->getSlug()
+        ));
 
         return $this->render('citation/afficher.html.twig', array(
             'page' => $page,
             'citation' => $citation,
             'path_update' => $path_update,
+            'path_episode' => $path_episode,
             'paths' => $paths
         ));
     }

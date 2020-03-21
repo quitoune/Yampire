@@ -48,7 +48,7 @@ function SubmitModal(objet, type, url, id_modal, url_base, id_bloc){
     
     $("form[name*='" + objet + "']").on('submit', function(event){
         
-    	$("#container").showLoading();
+    	$("html").showLoading();
         $("#" + objet + "_save").prop('disabled', true).html('Chargement...');
        
        event.preventDefault();
@@ -61,7 +61,7 @@ function SubmitModal(objet, type, url, id_modal, url_base, id_bloc){
            
            if(reponse.statut){
                $(id_modal).modal('hide');
-               Ajax(url_base, id_bloc, "#container");
+               Ajax(url_base, id_bloc, "html");
            } else {
                $('#modal_' + objet).html(reponse);
            }
@@ -71,7 +71,7 @@ function SubmitModal(objet, type, url, id_modal, url_base, id_bloc){
 
 function saveModal(id, url, url_base){
 	$(id).click(function(event){
-		$("body").showLoading();
+		$("html").showLoading();
         $(this).prop('disabled', true).html('Chargement...');
         
         event.preventDefault();
@@ -83,7 +83,7 @@ function saveModal(id, url, url_base){
     		$("body").hideLoading();
             if(reponse.statut){
                 $("#bloc_modal").modal('hide');
-                Ajax(url_base, "body", "body");
+                Ajax(url_base, "body", "html");
             } else {
                 $('#modal_nationalite .modal-body').html(reponse);
             }

@@ -1,31 +1,38 @@
 <div id="ajax_personnage_episode_see">
-	<div class="text-center" style="margin-bottom: 15px;">
-		{{ select("saison", saisons, {'class': 'form-control'}) |raw }}
-		{% if episodes is defined %}
-    	    {{ episodes | length }} épisode{% if episodes | length > 1 %}s{% endif %}
-    	{% endif %}
-    	{#{ ajouter(path('citation_ajouter', {'slug':objet.personnageSeries[0].serie.slug, 'page':pagination.page}), false, 'btn-ajouter') | raw }#}
-	</div>
-	
-    <div id="episode_saison">
-    	Chargement...
-	</div>
+    {% if saisons is empty %}
+    	<div class="text-center" style="width: 100%">0 épisode</div>
+		<div class="text-center empty-element" style="width: 100%">
+          	<p class="text-info text-center">Aucun épisode n'est associé à ce personnage.</p>
+		</div>
+	{% else %}
+    	<div class="text-center" style="margin-bottom: 15px;">
+    		{{ select("saison", saisons, {'class': 'form-control'}) |raw }}
+    	</div>
+    	
+		<div id="episode_saison">
+        	Chargement...
+    	</div>
+    	
+    	<div id="nombre_episode"></div>
+    {% endif %}
 </div>
 
 {% block javascripts %}
 	<script type="text/javascript">
         $( document ).ready(function() {
-        	var url = "{{ path('ajax_afficher_episodes', {'id': 'val', 'type': 'personnage', 'perso_id': personnage.id }) }}";
-            url = url.replace('val', $("#saison").val());
-            
-        	Ajax(url, "#episode_saison", "#ajax_personnage_episode_see");
-            
-			var saison_ch = $("#saison").select2();
-			saison_ch.on("change", function (e) {
-				var url_change = "{{ path('ajax_afficher_episodes', {'id': 'val', 'type': 'personnage', 'perso_id': personnage.id }) }}";
-				url_change = url_change.replace('val', $("#saison").val());
-				Ajax(url_change, "#episode_saison", "#ajax_personnage_episode_see");
-			});
+        	{% if saisons is not empty %}
+            	var url = "{{ path('ajax_afficher_episodes', {'id': 'val', 'type': 'personnage', 'perso_id': personnage.id }) }}";
+                url = url.replace('val', $("#saison").val());
+                
+            	Ajax(url, "#episode_saison", "#ajax_personnage_episode_see");
+                
+    			var saison_ch = $("#saison").select2();
+    			saison_ch.on("change", function (e) {
+    				var url_change = "{{ path('ajax_afficher_episodes', {'id': 'val', 'type': 'personnage', 'perso_id': personnage.id }) }}";
+    				url_change = url_change.replace('val', $("#saison").val());
+    				Ajax(url_change, "#episode_saison", "#ajax_personnage_episode_see");
+    			});
+			{% endif %}
         });
     </script>
 {% endblock %}

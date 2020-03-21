@@ -13,4 +13,10 @@
 	<div class="col-lg-12 col-sm-12 col-12 text-center">
 		{{ episodes | length }} épisode{% if episodes | length > 1 %}s{% endif %}
     </div>
+    
+    {% if episodes is empty %}
+		<div class="text-center empty-element"  style="width: 100%">
+          	<p class="text-info text-center">Aucun épisode n'est associé à cette saison.</p>
+		</div>
+    {% endif %}
 </div>

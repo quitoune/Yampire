@@ -3,5 +3,5 @@
 {% block title %} Chanson: {{ chanson.titre }} {% endblock %}
 
 {% block body %}
-    {{ card_chanson(chanson, false, path('episode_afficher', {'slug': chanson.episode.serie.slug, 'slug_episode': chanson.episode.slug}), app.session) | raw }}
+    {{ card_chanson(chanson, false, path_modifier, app.session, path_episode) | raw }}
 {% endblock %}

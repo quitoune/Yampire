@@ -51,9 +51,13 @@ class CitationType extends AbstractType
             ->add('episode', EntityType::class, array(
             'class' => Episode::class,
             'disabled' => $options['disabled_episode'],
-            'choice_label' => ($options['session']->get('user')['episode_vo'] ? 'titreOriginal' : 'titre'),
+//             'choice_label' => ($options['session']->get('user')['episode_vo'] ? 'titreOriginal' : 'titre'),
+            'choice_label' => function (Episode $episode) {
+                return $episode->getTitre() . ' (' . $episode->getTitreOriginal() . ')';
+            },
             'group_by' => function (Episode $episode) {
-                return $episode->getSerie()->getTitreCourt() . ' - Saison ' . $episode->getSaison()
+                return $episode->getSerie()
+                    ->getTitreCourt() . ' - Saison ' . $episode->getSaison()
                     ->getNumeroSaison();
             },
             'choices' => $options['choices_episodes']

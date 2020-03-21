@@ -81,6 +81,31 @@ class QuestionController extends AppController
     }
     
     /**
+     * Affichage d'un acteur
+     *
+     * @Route("/question/afficher/{id}", name="question_afficher")
+     * @ParamConverter("question", options={"mapping"={"id"="id"}})
+     *
+     * @param Question $question
+     * @param int $page
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function afficher(Question $question)
+    {
+        $paths = array(
+            'home' => $this->homeURL(),
+            'paths' => array(),
+            'active' => 'Affichage de la question - ID ' . $question->getId()
+        );
+        
+        return $this->render('question/afficher.html.twig', array(
+            'question' => $question,
+            'doctrine' => $this->getDoctrine(),
+            'paths' => $paths
+        ));
+    }
+    
+    /**
      * @Route("/question/ajouter", name="question_ajouter")
      * 
      * @return \Symfony\Component\HttpFoundation\Response

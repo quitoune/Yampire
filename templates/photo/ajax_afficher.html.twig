@@ -20,9 +20,9 @@
         {% endfor %}
     </div>
     
-	<div>
-		{% if photos is empty %}
-          	<p class="text-info text-center">Aucune photo n'est associé à 
+	{% if photos is empty %}
+		<div class="empty-element">
+          	<p class="text-info text-center">Aucune photo n'est associée à 
           	{% if type == 'acteur' %}
           		{% if objet.sexe %}
           			cette actrice
@@ -41,8 +41,8 @@
           		cette série
           	{% endif %}
           	.</p>
-        {% endif %}
-	</div>
+		</div>
+    {% endif %}
 	
 	<div>
     	{% include 'outils/ajax_pagination.html.twig' %}
