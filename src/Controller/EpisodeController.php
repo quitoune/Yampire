@@ -174,15 +174,13 @@ class EpisodeController extends AppController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $episode = $form->getData();
-
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($episode);
             $manager->flush();
 
             return $this->redirectToRoute('episode_afficher', array(
                 'page' => $page,
-                'slug_perso' => $episode->getSlug(),
+                'slug_episode' => $episode->getSlug(),
                 'slug' => $serie->getSlug()
             ));
         }

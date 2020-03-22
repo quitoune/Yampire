@@ -56,6 +56,9 @@
                 {% else %}
                     ce {{ type }}.
                 {% endif %}
+                {% if is_granted("ROLE_UTILISATEUR") %}
+            		{{ ajouter(path('note_ajax_ajouter', {'id':objet.id, 'type':type}), false, 'btn-ajouter') | raw }}
+            	{% endif %}
             </p>
         </div>
     {% endif %}
