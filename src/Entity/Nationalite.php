@@ -17,7 +17,12 @@ class Nationalite
      * @ORM\Column(type="integer")
      */
     private $id;
-
+    
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $nom;
+    
     /**
      * @ORM\Column(type="string", length=100)
      */
@@ -42,16 +47,28 @@ class Nationalite
     {
         return $this->id;
     }
-
+    
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+    
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+        
+        return $this;
+    }
+    
     public function getNomFeminin(): ?string
     {
         return $this->nom_feminin;
     }
-
+    
     public function setNomFeminin(string $nom_feminin): self
     {
         $this->nom_feminin = $nom_feminin;
-
+        
         return $this;
     }
 

@@ -27,7 +27,8 @@ class LoginListener
             'nom' => $user->getNom(),
             'username' => $user->getUsername(),
             'episode_vo' => $user->getEpisodeVo(),
-            'serie_vo' => $user->getSerieVo()
+            'serie_vo' => $user->getSerieVo(),
+            'film_vo' => $user->getFilmVo()
         ));
         
         if($user->getNbrMax()){

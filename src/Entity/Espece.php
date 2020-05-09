@@ -17,16 +17,16 @@ class Espece
      * @ORM\Column(type="integer")
      */
     private $id;
+    
+    /**
+     * @ORM\Column(type="string", length=100, unique=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
     private $nom;
-
-    /**
-     * @ORM\Column(type="string", length=100, unique=true)
-     */
-    private $slug;
 
     /**
      * @ORM\Column(type="text", nullable=true)
