@@ -1,0 +1,607 @@
+{
+    "PersonnageSerie-1": {
+        "setPersonnage": "Personnage-1",
+        "setSerie": "Serie-1",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-2": {
+        "setPersonnage": "Personnage-1",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-3": {
+        "setPersonnage": "Personnage-2",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-4": {
+        "setPersonnage": "Personnage-2",
+        "setSerie": "Serie-2",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-5": {
+        "setPersonnage": "Personnage-3",
+        "setSerie": "Serie-1",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-6": {
+        "setPersonnage": "Personnage-4",
+        "setSerie": "Serie-1",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-7": {
+        "setPersonnage": "Personnage-4",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-8": {
+        "setPersonnage": "Personnage-5",
+        "setSerie": "Serie-1",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-9": {
+        "setPersonnage": "Personnage-6",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-10": {
+        "setPersonnage": "Personnage-7",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-11": {
+        "setPersonnage": "Personnage-8",
+        "setSerie": "Serie-1",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-12": {
+        "setPersonnage": "Personnage-9",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-13": {
+        "setPersonnage": "Personnage-9",
+        "setSerie": "Serie-3",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-14": {
+        "setPersonnage": "Personnage-10",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-15": {
+        "setPersonnage": "Personnage-11",
+        "setSerie": "Serie-1",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-16": {
+        "setPersonnage": "Personnage-12",
+        "setSerie": "Serie-1",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-17": {
+        "setPersonnage": "Personnage-12",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-18": {
+        "setPersonnage": "Personnage-12",
+        "setSerie": "Serie-3",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-19": {
+        "setPersonnage": "Personnage-13",
+        "setSerie": "Serie-1",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-20": {
+        "setPersonnage": "Personnage-14",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-21": {
+        "setPersonnage": "Personnage-15",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-22": {
+        "setPersonnage": "Personnage-15",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-23": {
+        "setPersonnage": "Personnage-15",
+        "setSerie": "Serie-3",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-24": {
+        "setPersonnage": "Personnage-16",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-25": {
+        "setPersonnage": "Personnage-17",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-26": {
+        "setPersonnage": "Personnage-18",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-27": {
+        "setPersonnage": "Personnage-19",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-28": {
+        "setPersonnage": "Personnage-20",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-29": {
+        "setPersonnage": "Personnage-21",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-30": {
+        "setPersonnage": "Personnage-22",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-31": {
+        "setPersonnage": "Personnage-23",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-32": {
+        "setPersonnage": "Personnage-24",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-33": {
+        "setPersonnage": "Personnage-25",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-34": {
+        "setPersonnage": "Personnage-25",
+        "setSerie": "Serie-2",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-35": {
+        "setPersonnage": "Personnage-26",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-36": {
+        "setPersonnage": "Personnage-26",
+        "setSerie": "Serie-2",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-37": {
+        "setPersonnage": "Personnage-27",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-38": {
+        "setPersonnage": "Personnage-27",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-39": {
+        "setPersonnage": "Personnage-28",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-40": {
+        "setPersonnage": "Personnage-28",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-41": {
+        "setPersonnage": "Personnage-29",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-42": {
+        "setPersonnage": "Personnage-29",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-43": {
+        "setPersonnage": "Personnage-30",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-44": {
+        "setPersonnage": "Personnage-30",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-45": {
+        "setPersonnage": "Personnage-31",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-46": {
+        "setPersonnage": "Personnage-32",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-47": {
+        "setPersonnage": "Personnage-33",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-48": {
+        "setPersonnage": "Personnage-34",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-49": {
+        "setPersonnage": "Personnage-34",
+        "setSerie": "Serie-2",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-50": {
+        "setPersonnage": "Personnage-35",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-51": {
+        "setPersonnage": "Personnage-36",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-52": {
+        "setPersonnage": "Personnage-37",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-53": {
+        "setPersonnage": "Personnage-38",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-54": {
+        "setPersonnage": "Personnage-39",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-55": {
+        "setPersonnage": "Personnage-40",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-56": {
+        "setPersonnage": "Personnage-41",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-57": {
+        "setPersonnage": "Personnage-42",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-58": {
+        "setPersonnage": "Personnage-43",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-59": {
+        "setPersonnage": "Personnage-43",
+        "setSerie": "Serie-3",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-60": {
+        "setPersonnage": "Personnage-44",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-61": {
+        "setPersonnage": "Personnage-44",
+        "setSerie": "Serie-3",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-62": {
+        "setPersonnage": "Personnage-45",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-63": {
+        "setPersonnage": "Personnage-46",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-64": {
+        "setPersonnage": "Personnage-47",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-65": {
+        "setPersonnage": "Personnage-47",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-66": {
+        "setPersonnage": "Personnage-48",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-67": {
+        "setPersonnage": "Personnage-48",
+        "setSerie": "Serie-2",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-68": {
+        "setPersonnage": "Personnage-49",
+        "setSerie": "Serie-2",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-69": {
+        "setPersonnage": "Personnage-49",
+        "setSerie": "Serie-3",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-70": {
+        "setPersonnage": "Personnage-50",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-71": {
+        "setPersonnage": "Personnage-51",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-72": {
+        "setPersonnage": "Personnage-51",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-73": {
+        "setPersonnage": "Personnage-52",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-74": {
+        "setPersonnage": "Personnage-52",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-75": {
+        "setPersonnage": "Personnage-53",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-76": {
+        "setPersonnage": "Personnage-54",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-77": {
+        "setPersonnage": "Personnage-55",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-78": {
+        "setPersonnage": "Personnage-55",
+        "setSerie": "Serie-2",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-79": {
+        "setPersonnage": "Personnage-56",
+        "setSerie": "Serie-2",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-80": {
+        "setPersonnage": "Personnage-57",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-81": {
+        "setPersonnage": "Personnage-58",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-82": {
+        "setPersonnage": "Personnage-59",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-83": {
+        "setPersonnage": "Personnage-60",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-84": {
+        "setPersonnage": "Personnage-61",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-85": {
+        "setPersonnage": "Personnage-62",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-86": {
+        "setPersonnage": "Personnage-63",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-87": {
+        "setPersonnage": "Personnage-64",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-88": {
+        "setPersonnage": "Personnage-65",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-89": {
+        "setPersonnage": "Personnage-66",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-90": {
+        "setPersonnage": "Personnage-67",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-91": {
+        "setPersonnage": "Personnage-68",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-92": {
+        "setPersonnage": "Personnage-69",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-93": {
+        "setPersonnage": "Personnage-70",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-94": {
+        "setPersonnage": "Personnage-71",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-95": {
+        "setPersonnage": "Personnage-71",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-96": {
+        "setPersonnage": "Personnage-72",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-97": {
+        "setPersonnage": "Personnage-73",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-98": {
+        "setPersonnage": "Personnage-74",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-99": {
+        "setPersonnage": "Personnage-74",
+        "setSerie": "Serie-3",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-100": {
+        "setPersonnage": "Personnage-75",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-101": {
+        "setPersonnage": "Personnage-76",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-102": {
+        "setPersonnage": "Personnage-77",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-103": {
+        "setPersonnage": "Personnage-78",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-104": {
+        "setPersonnage": "Personnage-79",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-105": {
+        "setPersonnage": "Personnage-80",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-106": {
+        "setPersonnage": "Personnage-81",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-107": {
+        "setPersonnage": "Personnage-82",
+        "setSerie": "Serie-1",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-108": {
+        "setPersonnage": "Personnage-83",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-109": {
+        "setPersonnage": "Personnage-84",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-110": {
+        "setPersonnage": "Personnage-84",
+        "setSerie": "Serie-3",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-111": {
+        "setPersonnage": "Personnage-85",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-112": {
+        "setPersonnage": "Personnage-86",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-113": {
+        "setPersonnage": "Personnage-87",
+        "setSerie": "Serie-2",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-114": {
+        "setPersonnage": "Personnage-88",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-115": {
+        "setPersonnage": "Personnage-88",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-116": {
+        "setPersonnage": "Personnage-88",
+        "setSerie": "Serie-3",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-117": {
+        "setPersonnage": "Personnage-89",
+        "setSerie": "Serie-1",
+        "setPrincipal": "2"
+    },
+    "PersonnageSerie-118": {
+        "setPersonnage": "Personnage-89",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-119": {
+        "setPersonnage": "Personnage-89",
+        "setSerie": "Serie-3",
+        "setPrincipal": "1"
+    },
+    "PersonnageSerie-120": {
+        "setPersonnage": "Personnage-90",
+        "setSerie": "Serie-2",
+        "setPrincipal": "0"
+    },
+    "PersonnageSerie-121": {
+        "setPersonnage": "Personnage-90",
+        "setSerie": "Serie-3",
+        "setPrincipal": "1"
+    }
+}

@@ -1,0 +1,167 @@
+{
+    "ActeurPersonnage-1": {
+        "setActeur": "Acteur-1",
+        "setPersonnage": "Personnage-1",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-2": {
+        "setActeur": "Acteur-2",
+        "setPersonnage": "Personnage-2",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-3": {
+        "setActeur": "Acteur-3",
+        "setPersonnage": "Personnage-3",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-4": {
+        "setActeur": "Acteur-4",
+        "setPersonnage": "Personnage-4",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-5": {
+        "setActeur": "Acteur-5",
+        "setPersonnage": "Personnage-5",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-6": {
+        "setActeur": "Acteur-5",
+        "setPersonnage": "Personnage-6",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-7": {
+        "setActeur": "Acteur-6",
+        "setPersonnage": "Personnage-15",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-8": {
+        "setActeur": "Acteur-6",
+        "setPersonnage": "Personnage-2",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-9": {
+        "setActeur": "Acteur-7",
+        "setPersonnage": "Personnage-14",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-10": {
+        "setActeur": "Acteur-7",
+        "setPersonnage": "Personnage-2",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-11": {
+        "setActeur": "Acteur-8",
+        "setPersonnage": "Personnage-25",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-12": {
+        "setActeur": "Acteur-9",
+        "setPersonnage": "Personnage-74",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-13": {
+        "setActeur": "Acteur-10",
+        "setPersonnage": "Personnage-26",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-14": {
+        "setActeur": "Acteur-11",
+        "setPersonnage": "Personnage-87",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-15": {
+        "setActeur": "Acteur-11",
+        "setPersonnage": "Personnage-26",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-16": {
+        "setActeur": "Acteur-17",
+        "setPersonnage": "Personnage-89",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-17": {
+        "setActeur": "Acteur-16",
+        "setPersonnage": "Personnage-89",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-18": {
+        "setActeur": "Acteur-15",
+        "setPersonnage": "Personnage-89",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-19": {
+        "setActeur": "Acteur-18",
+        "setPersonnage": "Personnage-90",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-20": {
+        "setActeur": "Acteur-4",
+        "setPersonnage": "Personnage-8",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-21": {
+        "setActeur": "Acteur-3",
+        "setPersonnage": "Personnage-8",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-22": {
+        "setActeur": "Acteur-1",
+        "setPersonnage": "Personnage-8",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-23": {
+        "setActeur": "Acteur-2",
+        "setPersonnage": "Personnage-8",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-24": {
+        "setActeur": "Acteur-5",
+        "setPersonnage": "Personnage-7",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-25": {
+        "setActeur": "Acteur-12",
+        "setPersonnage": "Personnage-88",
+        "setPrincipal": "1"
+    },
+    "ActeurPersonnage-26": {
+        "setActeur": "Acteur-13",
+        "setPersonnage": "Personnage-88",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-27": {
+        "setActeur": "Acteur-14",
+        "setPersonnage": "Personnage-88",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-28": {
+        "setActeur": "Acteur-19",
+        "setPersonnage": "Personnage-48",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-29": {
+        "setActeur": "Acteur-20",
+        "setPersonnage": "Personnage-10",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-30": {
+        "setActeur": "Acteur-21",
+        "setPersonnage": "Personnage-30",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-31": {
+        "setActeur": "Acteur-22",
+        "setPersonnage": "Personnage-34",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-32": {
+        "setActeur": "Acteur-23",
+        "setPersonnage": "Personnage-49",
+        "setPrincipal": "0"
+    },
+    "ActeurPersonnage-33": {
+        "setActeur": "Acteur-24",
+        "setPersonnage": "Personnage-56",
+        "setPrincipal": "0"
+    }
+}

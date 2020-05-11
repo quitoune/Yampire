@@ -1,0 +1,60 @@
+{
+    "Utilisateur-1": {
+        "setUsername": "kitoune92",
+        "setPrenom": "Christine",
+        "setNom": "Henriot",
+        "setPassword": "chenriot",
+        "setEpisodeVo": "1",
+        "setSerieVo": "1",
+        "setRoles": [
+            "ROLE_ADMIN",
+            "ROLE_UTILISATEUR"
+        ],
+        "setSalt": "c1h2r3i4s5t6i7n8e9",
+        "setQuestion1": "Personnage préféré ?",
+        "setReponse1": "Caroline Forbes",
+        "setQuestion2": "Couleur favorite ?",
+        "setReponse2": "Rouge",
+        "setCorrection": "0",
+        "setNbrMax": "15",
+        "setNbrMaxAjax": "15"
+    },
+    "Utilisateur-2": {
+        "setUsername": "syaa92",
+        "setPrenom": "Ysabel",
+        "setNom": "Henriot",
+        "setPassword": "yhenriot",
+        "setEpisodeVo": "0",
+        "setSerieVo": "1",
+        "setRoles": [
+            "ROLE_UTILISATEUR"
+        ],
+        "setSalt": "y1s2a3b4e5l6",
+        "setQuestion1": "Chanteur préféré ?",
+        "setReponse1": "Ed Sheeran",
+        "setQuestion2": "Livre préféré ?",
+        "setReponse2": "The Mortal Instruments",
+        "setCorrection": "0",
+        "setNbrMax": "15",
+        "setNbrMaxAjax": "10"
+    },
+    "Utilisateur-3": {
+        "setUsername": "lbouret91",
+        "setPrenom": "Lucas",
+        "setNom": "Bouret",
+        "setPassword": "lbouret",
+        "setEpisodeVo": "0",
+        "setSerieVo": "0",
+        "setRoles": [
+            "ROLE_UTILISATEUR"
+        ],
+        "setSalt": "l1u2c3a4s5",
+        "setQuestion1": "Sport préféré ?",
+        "setReponse1": "Basket",
+        "setQuestion2": "Saga préférée ?",
+        "setReponse2": "Star Wars",
+        "setCorrection": "0",
+        "setNbrMax": "5",
+        "setNbrMaxAjax": "5"
+    }
+}

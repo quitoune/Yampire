@@ -1,0 +1,853 @@
+{
+    "Citation-1": {
+        "setFromPersonnage": "Personnage-8",
+        "setEpisode": "Episode-96",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Just a couple days ago, I was a psychich, I was immortal, I was in love. Now, my neck hurts, my soul is crushed, I'm sitting in bus stop in freaking Deleware.",
+        "setToPersonnage": "Un couple",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-2": {
+        "setFromPersonnage": "Personnage-25",
+        "setToPersonnage1": "Personnage-52",
+        "setEpisode": "Episode-179",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Darling, we need to stop meeting like this. This is how rumors begin.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-3": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-20",
+        "setEpisode": "Episode-34",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I'm not nice. I'm mean. I like it.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-4": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-66",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You want a love that consumes you. You want passion and adventure, and even little danger.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-5": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-94",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You do realize you are dating a reformed serial killer, right?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-6": {
+        "setFromPersonnage": "Personnage-35",
+        "setToPersonnage1": "Personnage-12",
+        "setToPersonnage2": "Personnage-9",
+        "setEpisode": "Episode-71",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Eh guys, have you seen Rebekah ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-7": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-25",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Why are you looking at him with your serious vampire look ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-8": {
+        "setFromPersonnage": "Personnage-26",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-48",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I'm a not a Brat!",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-9": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-12",
+        "setToPersonnage2": "Personnage-9",
+        "setEpisode": "Episode-100",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Group shot!",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-10": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-15",
+        "setEpisode": "Episode-68",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You know what they are? Children. Like lighting a candle's going to make everything OK, or even saying a prayer. Or pretending Elena's not going to end up just like the rest of us murdering vampires. Stupid, delusional, exasperating little children. And I know what you're going to say: 'It makes them feel better, Damon.' So what? For how long? A minute, a day? What difference does it make? Because in the end, when you lose somebody, every candle, every prayer is not going to make up for the fact that the only thing you have left is hole in your life where that somebody that you cared about used to be. And a rock with a birthday carved into it that I'm pretty sure is wrong. So thanks, friend. Thanks for leaving me here to babysit. Because I should be long gone by now. I didn't get the girl, remember? I'm just stuck here fighting my brother and taking care of the kids. You owe me big.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-11": {
+        "setFromPersonnage": "Personnage-4",
+        "setToPersonnage1": "Personnage-26",
+        "setToPersonnage2": "Personnage-2",
+        "setEpisode": "Episode-70",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Let me just name the million other people I'd rather be having dinner with right now.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-12": {
+        "setFromPersonnage": "Personnage-6",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-99",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Why ? What were you thinking ? That our hot, naked bodies collidedin one unforgettable night of passion ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-13": {
+        "setFromPersonnage": "Personnage-12",
+        "setToPersonnage1": "Personnage-41",
+        "setEpisode": "Episode-99",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Damn !",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-14": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-20",
+        "setEpisode": "Episode-31",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Just one thing. If you're setting me up in anyway, I will rip your heart out and shove it down your throat. It's something I'm very good at.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-15": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-99",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Stop defending me !",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-16": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-12",
+        "setToPersonnage2": "Personnage-9",
+        "setEpisode": "Episode-100",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I can hear you dumbass.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-17": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-24",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You suck.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-18": {
+        "setFromPersonnage": "Personnage-26",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-62",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "He's my play thing not yours.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-19": {
+        "setFromPersonnage": "Personnage-6",
+        "setToPersonnage1": "Personnage-66",
+        "setEpisode": "Episode-22",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Hello John, Goodbye John.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-20": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-1",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Hello brother.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-21": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-21",
+        "setEpisode": "Episode-21",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I believe in killing the messenger. Know why ? Because it sends a message.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-22": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-67",
+        "setEpisode": "Episode-61",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Hope's a bitch.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-23": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-82",
+        "setEpisode": "Episode-25",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You know, if you want to see me naked, all you have to do is ask.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-24": {
+        "setFromPersonnage": "Personnage-44",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-124",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Water literally started pooling in my eyes. Has that ever happened to you ? Like water just oozing out of my eyeballs like I'm some alien creature excreting fluids.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-25": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-11",
+        "setEpisode": "Episode-1",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "We're planning a June wedding.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-26": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-49",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "The only thing stronger than your craving love for blood is your love for this one girl.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-27": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-3",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Anyone, anytime, anyplace.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-28": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-78",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "If you're gonna  be bad, be bad with purpose. Otherwise, you're just not worth forgiving.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-29": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-77",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "He shot me in the head! Stupid, idiot bordeline brain-dead moron!",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-30": {
+        "setFromPersonnage": "Personnage-6",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-23",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Game on.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-31": {
+        "setFromPersonnage": "Personnage-19",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-8",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Have you met you ? You're not a nice person.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-32": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-26",
+        "setEpisode": "Episode-88",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Bitch!",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-33": {
+        "setFromPersonnage": "Personnage-15",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-48",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Or maybe they've finally realized you're just a dick.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-34": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-8",
+        "setEpisode": "Episode-91",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "It's because you never had sex with me.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-35": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-25",
+        "setEpisode": "Episode-57",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Oh yeah. Dear xxx, let's get together plot the destruction of your brother.\r\nXOXO",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-36": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-57",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Eat. T thought we would leave the grumpy xxx at home.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-37": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-89",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "He's your first love, I intend to be your last.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-38": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-47",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I'm a little boozey, so you'll forgive me if I miss your heart the first few tries. Oh, no that's not it. Hmm, oh, almost.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-39": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-5",
+        "setToPersonnage2": "Personnage-11",
+        "setEpisode": "Episode-59",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I can hear every word you're saying about Damon the vampire gigolo.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-40": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-47",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Oh, honey, I've been called worse.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-41": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-60",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Dear diary, a chipmunk asked me my name today. I told him it was Joe. That lie will haunt me forever.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-42": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-101",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You ? You hate me ! You told me once that calling me Satan was an insult to Satan.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-43": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-26",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Puppy ! Puppy with a tutu ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-44": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-11",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Vampire can't procreate but we love to try.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-45": {
+        "setFromPersonnage": "Personnage-25",
+        "setToPersonnage1": "Personnage-15",
+        "setEpisode": "Episode-37",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You don't have to be jalous I only appreciate younger women.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-46": {
+        "setFromPersonnage": "Personnage-14",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-65",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I am not your little bitch anymore.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-47": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-15",
+        "setEpisode": "Episode-61",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "The world won't stop working because you're an accidental psycho killer.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-48": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setToPersonnage2": "Personnage-11",
+        "setEpisode": "Episode-70",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Who is this guy? Witchipedia ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-49": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-12",
+        "setEpisode": "Episode-160",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "The last living boy in Mystic Falls. You know, it's shocking you managed to stay human this long.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-50": {
+        "setFromPersonnage": "Personnage-4",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-24",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Oh, maybe they're ninja turtles.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-51": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-26",
+        "setEpisode": "Episode-76",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Seriously ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-52": {
+        "setFromPersonnage": "Personnage-26",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-79",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You have a nice behind.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-53": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-53",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I'm gonna kill you and everyone you've ever met.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-54": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-1",
+        "setToPersonnage2": "Personnage-11",
+        "setEpisode": "Episode-51",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "When I kill someone they suppose to stay dead.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-55": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setToPersonnage2": "Personnage-4",
+        "setEpisode": "Episode-65",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "No,no, no !!! Did I mention no ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-56": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-58",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I mad at you because I love you!",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-57": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-50",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "We have a new housemate: Barbie Klaus.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-58": {
+        "setFromPersonnage": "Personnage-4",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-52",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "This is my happy face.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-59": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-64",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I have to prove anything love! I am the alpha male !",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-60": {
+        "setFromPersonnage": "Personnage-15",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-20",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Can we not kill anyone tonight ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-61": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-72",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You're beautiful but if you don't stop talking, I will kill you.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-62": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-68",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Am I wearing my \"I blew up the coucil\" tee-shirt ?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-63": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-15",
+        "setEpisode": "Episode-51",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Sometimes, I do things I don't have to.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-64": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-5",
+        "setEpisode": "Episode-47",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I'm shocked! Stefan is not a virgin.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-65": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-33",
+        "setEpisode": "Episode-69",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "It's a kitten. An adorable, explosive kitten!",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-66": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-14",
+        "setEpisode": "Episode-94",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Love me more than you hate him !",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-67": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-48",
+        "setEpisode": "Episode-254",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Psychopath on a mission, no time for chit-chat.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-68": {
+        "setFromPersonnage": "Personnage-83",
+        "setToPersonnage1": "Personnage-25",
+        "setEpisode": "Episode-253",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You're an amnesiac with zero life experiences. You really think you ought to be planning surprises?",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-69": {
+        "setFromPersonnage": "Personnage-14",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-50",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Everything I like about me, is you.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-70": {
+        "setFromPersonnage": "Personnage-2",
+        "setEpisode": "Episode-251",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "In all my travels, France never disappoints. Now I find I'm physically drawn to the place, as if locked in an orbit I'm helpless to alter. I suppose we're all satellites orbiting those we love. Recently, though, I'm left to orbit from afar, and to pass the time by dropping in on old acquaintances. Entres nous, in , the Gatineaux family and I had a little falling out. I'd really like to put that to rest. So if you'll just... stand aside? You must've heard of me. Klaus le Fou? Klaus le Dement? Niklaus der Morder? No? Nothing? I myself prefer Klaus the Mad. Do spread the word.",
+        "setToPersonnage": "Voix-off",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-71": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-39",
+        "setEpisode": "Episode-69",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Truth be told, I'm as evil as it gets.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-72": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-73",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Let's get you a drink. I'll tell you all about being the bad guy.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-73": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-73",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "In what world do the words 'tell no one' mean 'tell your brother and every teenage sycophant in town'.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-74": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-76",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Twelve... that's a number. That's how many of my hybrids I slaughtered with my sword. Three. That's how many days it took me to quell the urge to kill your brother, after he knowingly watched as I walked into a death trap. One that's the number of purposes you serve.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-75": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-89",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I received your graduation announcement. It was... very subtle. I assume you're expecting cash?.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-76": {
+        "setFromPersonnage": "Personnage-34",
+        "setToPersonnage1": "Personnage-25",
+        "setEpisode": "Episode-178",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "We've all done bad things. It's just, most people die before the list gets embarrassing. But, don't for a second compare yourself to Klaus.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-77": {
+        "setFromPersonnage": "Personnage-5",
+        "setEpisode": "Episode-1",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Dear diary, today will be different. It has to be. I will smile, and it will be believable. My smile will say \"I'm fine, thank you.\" \"Yes, I feel much better.\" I will no longer be the sad little girl who lost her parents. I will start fresh, be someone new. It's the only way I'll make it through.",
+        "setToPersonnage": "Journal",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-78": {
+        "setFromPersonnage": "Personnage-17",
+        "setToPersonnage1": "Personnage-3",
+        "setEpisode": "Episode-125",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I have to admit there is a certain amount of peace knowing I'll be one of the only people in Mystic Falls to die an ordinary death. I'm exceptionally ordinary. I'm okay with that. Caroline is anything but. She was meant to be extraordinary. She needs to know how proud I am of her.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-79": {
+        "setFromPersonnage": "Personnage-41",
+        "setToPersonnage1": "Personnage-6",
+        "setEpisode": "Episode-99",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "In a moment of weakness, you eat chocolate, or kiss the wrong boy. You don't jump off a clock tower.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-80": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-67",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I need to go sanitize my mouth.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-81": {
+        "setFromPersonnage": "Personnage-3",
+        "setToPersonnage1": "Personnage-4",
+        "setEpisode": "Episode-42",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I'm surrounded by idiots.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-82": {
+        "setFromPersonnage": "Personnage-34",
+        "setToPersonnage1": "Personnage-26",
+        "setEpisode": "Episode-177",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Oh, I still think you're a bitch. I've just grown to like that about you.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-83": {
+        "setFromPersonnage": "Personnage-25",
+        "setEpisode": "Episode-177",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "No one hurts my family and lives. No one.",
+        "setToPersonnage": "Agnès",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-84": {
+        "setFromPersonnage": "Personnage-25",
+        "setToPersonnage1": "Personnage-34",
+        "setEpisode": "Episode-179",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "The definition of the word broken suggest that somehing can be fixed.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-85": {
+        "setFromPersonnage": "Personnage-55",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-179",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Rebekah's out to get you. Elijah's out to get you. Is there anyone who isn't plotting your downfall? I doubt your trust your own reflection.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-86": {
+        "setFromPersonnage": "Personnage-34",
+        "setToPersonnage1": "Personnage-25",
+        "setEpisode": "Episode-179",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Remind me to annihilate your brother once you're healthy.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-87": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-79",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I know that you're in love with me. And anybody capable of love is capable of being saved.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-88": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-6",
+        "setEpisode": "Episode-104",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "What would you say if I told you that when a certain awful person was in town, I ran into him in the woods and sort of kissed him. He was there and obviously wanted to kiss me, so I thought \"we'll just make out,\" but then, it felt really good to kiss him, so then I kind of, totally had sex with him, but I swear, I didn't plan to do it. Now, I feel terrible.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-89": {
+        "setFromPersonnage": "Personnage-4",
+        "setToPersonnage1": "Personnage-1",
+        "setEpisode": "Episode-24",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I promise you I will not let anything happen to you.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-90": {
+        "setFromPersonnage": "Personnage-2",
+        "setEpisode": "Episode-177",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I was angry with my friend: I told my wrath, my wrath did end. I was angry with my foe:  I told it not, my wrath did grow. And I watered it in fears, Night and morning with my tears; And I sunned it with smiles. And with soft deceitful wiles, And it grew both day and night, 'Til it bore an apple bright. And my foe beheld it shine. And he knew that it was mine. And into my garden stole. When the night had veiled the pole; In the morning glad I see, My foe outstretched beneath the tree.",
+        "setToPersonnage": "Voix-off",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-91": {
+        "setFromPersonnage": "Personnage-74",
+        "setToPersonnage1": "Personnage-84",
+        "setEpisode": "Episode-252",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "My name is Hope Mikaelson. My grandmother practically invented dark magic. My mom is the Crescent Alpha, and my dad is Niklaus Mikaelson.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-92": {
+        "setFromPersonnage": "Personnage-74",
+        "setToPersonnage1": "Personnage-2",
+        "setEpisode": "Episode-252",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I was nine. And I saw this scary monster who looked like my dad. Who taught me how to mix paint. Who called me princess. I didn't know which version of you was real. And I waited for you. To explain it. Or, apologize. Or tell me that you loved me. I waited for you for years! But you didn't come.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-93": {
+        "setFromPersonnage": "Personnage-1",
+        "setToPersonnage1": "Personnage-17",
+        "setEpisode": "Episode-165",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "He was the only person who truly understood how much it hurt to lose you. And as strange as it sounds, that made me forgive him for everything else.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-94": {
+        "setFromPersonnage": "Personnage-25",
+        "setToPersonnage1": "Personnage-6",
+        "setEpisode": "Episode-84",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I just keep wanting to believe you, but how can I when, at every turn, you give me reason to doubt you? I don't know you.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-95": {
+        "setFromPersonnage": "Personnage-6",
+        "setToPersonnage1": "Personnage-41",
+        "setEpisode": "Episode-94",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I went back. For you.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-96": {
+        "setFromPersonnage": "Personnage-5",
+        "setToPersonnage1": "Personnage-6",
+        "setEpisode": "Episode-100",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "I forgive you. You weren't born evil. Life made you that way.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-97": {
+        "setFromPersonnage": "Personnage-49",
+        "setToPersonnage1": "Personnage-28",
+        "setEpisode": "Episode-232",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "When you were born, you gave me a gift-- you were my first friend. Today, you gifted me my life... And my brothers united... even if for a moment. I love you. Always and forever, brother. 'Til forever ends.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-98": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-25",
+        "setEpisode": "Episode-220",
+        "setUtilisateur": "Utilisateur-3",
+        "setTexte": "You speak to me of enemies when the greatest traitor of my life stands before me.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-99": {
+        "setFromPersonnage": "Personnage-2",
+        "setToPersonnage1": "Personnage-25",
+        "setEpisode": "Episode-172",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Forgive me, my brother. There's no power in love. Mercy makes you weak. Family makes you weak. If I'm going to win this war, I have to do it alone.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-100": {
+        "setFromPersonnage": "Personnage-89",
+        "setToPersonnage1": "Personnage-74",
+        "setToPersonnage2": "Personnage-88",
+        "setEpisode": "Episode-277",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Correction. That dead bitch Dana's sabotage.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-101": {
+        "setFromPersonnage": "Personnage-89",
+        "setToPersonnage1": "Personnage-15",
+        "setToPersonnage2": "Personnage-88",
+        "setEpisode": "Episode-274",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "So that is why I have decided to permanently unleash my inner bitch.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-102": {
+        "setFromPersonnage": "Personnage-89",
+        "setEpisode": "Episode-267",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "You're fine, Dana. You're just a-a little slutty.",
+        "setToPersonnage": "Dana",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-103": {
+        "setFromPersonnage": "Personnage-27",
+        "setToPersonnage1": "Personnage-27",
+        "setEpisode": "Episode-89",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Now, what's the saying? 'Kill me once, shame on you. Kill me twice, shame on...'",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-104": {
+        "setFromPersonnage": "Personnage-89",
+        "setToPersonnage1": "Personnage-74",
+        "setToPersonnage2": "Personnage-88",
+        "setEpisode": "Episode-289",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "We are three badass witches and one moderatly competent bird.",
+        "setDateCreation": "2020-03-23 23:28:28"
+    },
+    "Citation-105": {
+        "setFromPersonnage": "Personnage-89",
+        "setToPersonnage1": "Personnage-15",
+        "setEpisode": "Episode-295",
+        "setUtilisateur": "Utilisateur-1",
+        "setTexte": "Is she really this short ?",
+        "setDateCreation": "2020-04-02 18:55:22"
+    }
+}

@@ -1,0 +1,227 @@
+{
+    "Nationalite-1": {
+        "setNomFeminin": "Américaine",
+        "setNomMasculin": "Américain",
+        "setNom": "Amérique"
+    },
+    "Nationalite-2": {
+        "setNomFeminin": "Française",
+        "setNomMasculin": "Français",
+        "setNom": "France"
+    },
+    "Nationalite-3": {
+        "setNomFeminin": "Anglaise",
+        "setNomMasculin": "Anglais",
+        "setNom": "Angleterre"
+    },
+    "Nationalite-4": {
+        "setNomFeminin": "Australienne",
+        "setNomMasculin": "Australien",
+        "setNom": "Australie"
+    },
+    "Nationalite-5": {
+        "setNomFeminin": "Allemande",
+        "setNomMasculin": "Allemand",
+        "setNom": "Allemagne"
+    },
+    "Nationalite-6": {
+        "setNomFeminin": "Canadienne",
+        "setNomMasculin": "Canadien",
+        "setNom": "Canada"
+    },
+    "Nationalite-7": {
+        "setNomFeminin": "Ecossaise",
+        "setNomMasculin": "Ecossais",
+        "setNom": "Ecosse"
+    },
+    "Nationalite-8": {
+        "setNomFeminin": "Chinoise",
+        "setNomMasculin": "Chinois",
+        "setNom": "Chine"
+    },
+    "Nationalite-9": {
+        "setNomFeminin": "Japonnaise",
+        "setNomMasculin": "Japonnais",
+        "setNom": "Japon"
+    },
+    "Nationalite-10": {
+        "setNomFeminin": "Indienne",
+        "setNomMasculin": "Indien",
+        "setNom": "Inde"
+    },
+    "Nationalite-11": {
+        "setNomFeminin": "Espagnole",
+        "setNomMasculin": "Espagnol",
+        "setNom": "Espagne"
+    },
+    "Nationalite-12": {
+        "setNomFeminin": "Suédoise",
+        "setNomMasculin": "Suédois",
+        "setNom": "Suède"
+    },
+    "Nationalite-13": {
+        "setNomFeminin": "Colombienne",
+        "setNomMasculin": "Colombien",
+        "setNom": "Colombie"
+    },
+    "Nationalite-14": {
+        "setNomFeminin": "Russe",
+        "setNomMasculin": "Russe",
+        "setNom": "Russie"
+    },
+    "Nationalite-15": {
+        "setNomFeminin": "Néo-zélandaise",
+        "setNomMasculin": "Néo-zélandais",
+        "setNom": "Nouvelle-Zélande"
+    },
+    "Nationalite-16": {
+        "setNomFeminin": "Polonaise",
+        "setNomMasculin": "Polonais",
+        "setNom": "Pologne"
+    },
+    "Nationalite-17": {
+        "setNomFeminin": "Chilienne",
+        "setNomMasculin": "Chilien",
+        "setNom": "Chilie"
+    },
+    "Nationalite-18": {
+        "setNomFeminin": "Vénézuélienne",
+        "setNomMasculin": "Vénézuélien",
+        "setNom": "Vénézuela"
+    },
+    "Nationalite-19": {
+        "setNomFeminin": "Finlandaise",
+        "setNomMasculin": "Finlandais",
+        "setNom": "Finlande"
+    },
+    "Nationalite-20": {
+        "setNomFeminin": "Sud-Africaine",
+        "setNomMasculin": "Sud-Africain",
+        "setNom": "Afrique du Sud"
+    },
+    "Nationalite-21": {
+        "setNomFeminin": "Grecque",
+        "setNomMasculin": "Grecque",
+        "setNom": "Grèce"
+    },
+    "Nationalite-22": {
+        "setNomFeminin": "Galloise",
+        "setNomMasculin": "Gallois",
+        "setNom": "Pays de Galle"
+    },
+    "Nationalite-23": {
+        "setNomFeminin": "Italienne",
+        "setNomMasculin": "Italien",
+        "setNom": "Italie"
+    },
+    "Nationalite-24": {
+        "setNomFeminin": "Brésilienne",
+        "setNomMasculin": "Brésilien",
+        "setNom": "Brésil"
+    },
+    "Nationalite-25": {
+        "setNomFeminin": "Néerlandaise",
+        "setNomMasculin": "Néerlandais",
+        "setNom": "Pays-Bas"
+    },
+    "Nationalite-26": {
+        "setNomFeminin": "Ukrainienne",
+        "setNomMasculin": "Ukrainien",
+        "setNom": "Ukraine"
+    },
+    "Nationalite-27": {
+        "setNomFeminin": "Cambodgienne",
+        "setNomMasculin": "Cambodgien",
+        "setNom": "Cambodge"
+    },
+    "Nationalite-28": {
+        "setNomFeminin": "Islandaise",
+        "setNomMasculin": "Islandais",
+        "setNom": "Islande"
+    },
+    "Nationalite-29": {
+        "setNomFeminin": "Irlandaise",
+        "setNomMasculin": "Irlandais",
+        "setNom": "Irlande"
+    },
+    "Nationalite-30": {
+        "setNomFeminin": "Sénégalaise",
+        "setNomMasculin": "Sénégalais",
+        "setNom": "Sénégale"
+    },
+    "Nationalite-31": {
+        "setNomFeminin": "Mexicaine",
+        "setNomMasculin": "Mexicain",
+        "setNom": "Méxique"
+    },
+    "Nationalite-32": {
+        "setNomFeminin": "Dominicaine",
+        "setNomMasculin": "Dominicain",
+        "setNom": "Dominique"
+    },
+    "Nationalite-33": {
+        "setNomFeminin": "Autrichienne",
+        "setNomMasculin": "Autricien",
+        "setNom": "Autriche"
+    },
+    "Nationalite-34": {
+        "setNomFeminin": "Soudanaise",
+        "setNomMasculin": "Soudanais",
+        "setNom": "Soudan"
+    },
+    "Nationalite-35": {
+        "setNomFeminin": "Israélienne",
+        "setNomMasculin": "Israélien",
+        "setNom": "Israël"
+    },
+    "Nationalite-36": {
+        "setNomFeminin": "Nigérienne",
+        "setNomMasculin": "Nigérien",
+        "setNom": "Niger"
+    },
+    "Nationalite-37": {
+        "setNomFeminin": "Suisse",
+        "setNomMasculin": "Suisse",
+        "setNom": "Suisse"
+    },
+    "Nationalite-38": {
+        "setNomFeminin": "Belge",
+        "setNomMasculin": "Belge",
+        "setNom": "Belgique"
+    },
+    "Nationalite-39": {
+        "setNomFeminin": "Haïtienne",
+        "setNomMasculin": "Haïtien",
+        "setNom": "Haïti"
+    },
+    "Nationalite-40": {
+        "setNomFeminin": "Croate",
+        "setNomMasculin": "Croate",
+        "setNom": "Croatie"
+    },
+    "Nationalite-41": {
+        "setNomFeminin": "Bulgare",
+        "setNomMasculin": "Bulgare",
+        "setNom": "Bulgarie"
+    },
+    "Nationalite-42": {
+        "setNomFeminin": "Roumaine",
+        "setNomMasculin": "Roumain",
+        "setNom": "Roumanie"
+    },
+    "Nationalite-43": {
+        "setNomFeminin": "Béninoise",
+        "setNomMasculin": "Béninois",
+        "setNom": "Bénin"
+    },
+    "Nationalite-44": {
+        "setNomFeminin": "Danoise",
+        "setNomMasculin": "Danois",
+        "setNom": "Danemarque"
+    },
+    "Nationalite-45": {
+        "setNomFeminin": "Moldave",
+        "setNomMasculin": "Moldave",
+        "setNom": "Moldavie"
+    }
+}

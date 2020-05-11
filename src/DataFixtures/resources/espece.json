@@ -1,0 +1,55 @@
+{
+    "Espece-1": {
+        "setNom": "Humain",
+        "setSlug": "Humain"
+    },
+    "Espece-2": {
+        "setTag": "Tag-8",
+        "setNom": "Vampire",
+        "setSlug": "Vampire"
+    },
+    "Espece-3": {
+        "setNom": "Sorcier\/Sorcière",
+        "setSlug": "Sorcier-Sorciere"
+    },
+    "Espece-4": {
+        "setNom": "Loup-garou",
+        "setSlug": "loup-garou"
+    },
+    "Espece-5": {
+        "setTag": "Tag-9",
+        "setNom": "Hybride",
+        "setSlug": "Hybride",
+        "setInfoSup": "1\/2 vampire, 1\/2 loup-garou"
+    },
+    "Espece-6": {
+        "setNom": "Hérétique",
+        "setSlug": "Heretique",
+        "setInfoSup": "1\/2 vampire, 1\/2 sorcier"
+    },
+    "Espece-7": {
+        "setNom": "La Bête",
+        "setSlug": "La_Bete"
+    },
+    "Espece-8": {
+        "setNom": "Chasseur de la confrérie des Cinq",
+        "setSlug": "Chasseur_de_la_confrerie_des_Cinq"
+    },
+    "Espece-9": {
+        "setNom": "Immortel\/Immortelle",
+        "setSlug": "Immortel-Immortelle"
+    },
+    "Espece-10": {
+        "setNom": "Tribride",
+        "setSlug": "Tribride",
+        "setInfoSup": "1\/3 vampire, 1\/3 sorcier, 1\/3 loup-garou"
+    },
+    "Espece-11": {
+        "setNom": "Doppelgänger",
+        "setSlug": "Doppelganger"
+    },
+    "Espece-12": {
+        "setNom": "Sirène",
+        "setSlug": "Sirene"
+    }
+}

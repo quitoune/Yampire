@@ -1,0 +1,35 @@
+{
+    "Serie-1": {
+        "setPhoto": "Photo-5",
+        "setTag": "Tag-5",
+        "setSlug": "The_Vampire_Diaries",
+        "setTitre": "Vampire Diaries",
+        "setTitreOriginal": "The Vampire Diaries",
+        "setTitreCourt": "TVD",
+        "setNombreSaison": "8",
+        "setNombreEpisode": "171",
+        "setTerminee": "1"
+    },
+    "Serie-2": {
+        "setPhoto": "Photo-14",
+        "setTag": "Tag-6",
+        "setSlug": "The_Originals",
+        "setTitre": "The Originals",
+        "setTitreOriginal": "The Originals",
+        "setTitreCourt": "TO",
+        "setNombreSaison": "5",
+        "setNombreEpisode": "92",
+        "setTerminee": "1"
+    },
+    "Serie-3": {
+        "setPhoto": "Photo-20",
+        "setTag": "Tag-7",
+        "setSlug": "Legacies",
+        "setTitre": "Legacies",
+        "setTitreOriginal": "Legacies",
+        "setTitreCourt": "LEG",
+        "setNombreSaison": "2",
+        "setNombreEpisode": "36",
+        "setTerminee": "0"
+    }
+}
