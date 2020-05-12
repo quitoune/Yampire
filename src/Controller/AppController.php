@@ -259,7 +259,7 @@ class AppController extends AbstractController
         $slug = preg_replace('#&[^;]+;#', '', $slug);
         
         $slug = str_replace(array("/", "\\", "'"), '-', $slug);
-        $slug = str_replace(array("?", ",", "(", ")", ":", "[", "]"), '', $slug);
+        $slug = str_replace(array("?", ",", "(", ")", ":", "[", "]", '"'), '', $slug);
         $slug = trim($slug);
         $slug = implode("_", explode(' ', $slug));
         
