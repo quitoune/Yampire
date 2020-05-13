@@ -2,10 +2,9 @@
 
 namespace App\Twig;
 
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Twig\Extension\AbstractExtension;
 
 class DiversExtension extends AbstractExtension
 {
