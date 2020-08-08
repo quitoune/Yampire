@@ -19,7 +19,7 @@ class LoadPhotoTagData extends Fixture implements DependentFixtureInterface, Con
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/photo_tag.json";
+        $file .= "photo_tag.json";
         $photosArray = json_decode(file_get_contents($file), true);
         foreach ($photosArray as $name => $objet) {
             $photo = $this->getReference($name);

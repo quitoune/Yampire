@@ -19,7 +19,7 @@ class LoadWayToDieData extends Fixture implements ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/way_to_die.json";
+        $file .= "way_to_die.json";
         $way_to_diesArray = json_decode(file_get_contents($file), true);
         foreach ($way_to_diesArray as $name => $objet) {
 

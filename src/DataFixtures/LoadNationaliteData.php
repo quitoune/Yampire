@@ -19,7 +19,7 @@ class LoadNationaliteData extends Fixture implements ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/nationalite.json";
+        $file .= "nationalite.json";
         $nationalitesArray = json_decode(file_get_contents($file), true);
         foreach ($nationalitesArray as $name => $objet) {
             $nationalite = new Nationalite();

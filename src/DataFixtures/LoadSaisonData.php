@@ -20,7 +20,7 @@ class LoadSaisonData extends Fixture implements DependentFixtureInterface, Conta
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/saison.json";
+        $file .= "saison.json";
         $saisonsArray = json_decode(file_get_contents($file), true);
         foreach ($saisonsArray as $name => $objet) {
             

@@ -19,7 +19,7 @@ class LoadEpisodePersonnageData extends Fixture implements DependentFixtureInter
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/episode_personnage.json";
+        $file .= "episode_personnage.json";
         $episodesArray = json_decode(file_get_contents($file), true);
         foreach ($episodesArray as $name => $objet) {
             $episode = $this->getReference($name);

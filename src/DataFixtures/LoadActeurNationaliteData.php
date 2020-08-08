@@ -19,7 +19,7 @@ class LoadActeurNationaliteData extends Fixture implements DependentFixtureInter
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/acteur_nationalite.json";
+        $file .= "acteur_nationalite.json";
         $acteursArray = json_decode(file_get_contents($file), true);
         foreach ($acteursArray as $name => $objet) {
             $acteur = $this->getReference($name);

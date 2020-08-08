@@ -20,7 +20,7 @@ class LoadActeurData extends Fixture implements DependentFixtureInterface, Conta
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/acteur.json";
+        $file .= "acteur.json";
         $acteursArray = json_decode(file_get_contents($file), true);
         
         foreach ($acteursArray as $name => $objet) {

@@ -20,7 +20,7 @@ class LoadNoteData extends Fixture implements DependentFixtureInterface, Contain
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/note.json";
+        $file .= "note.json";
         $notesArray = json_decode(file_get_contents($file), true);
         foreach ($notesArray as $name => $objet) {
             

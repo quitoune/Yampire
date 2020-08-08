@@ -20,7 +20,7 @@ class LoadChansonData extends Fixture implements DependentFixtureInterface, Cont
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/chanson.json";
+        $file .= "chanson.json";
         $chansonsArray = json_decode(file_get_contents($file), true);
         foreach ($chansonsArray as $name => $objet) {
             

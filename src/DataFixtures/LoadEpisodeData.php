@@ -20,7 +20,7 @@ class LoadEpisodeData extends Fixture implements DependentFixtureInterface, Cont
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/episode.json";
+        $file .= "episode.json";
         $episodesArray = json_decode(file_get_contents($file), true);
         foreach ($episodesArray as $name => $objet) {
             

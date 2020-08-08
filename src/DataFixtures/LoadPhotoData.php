@@ -20,7 +20,7 @@ class LoadPhotoData extends Fixture implements DependentFixtureInterface, Contai
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/photo.json";
+        $file .= "photo.json";
         $photosArray = json_decode(file_get_contents($file), true);
 
         foreach ($photosArray as $name => $objet) {

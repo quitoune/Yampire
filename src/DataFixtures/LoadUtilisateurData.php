@@ -25,7 +25,7 @@ class LoadUtilisateurData extends Fixture implements ContainerAwareInterface
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/utilisateur.json";
+        $file .= "utilisateur.json";
         $utilisateursArray = json_decode(file_get_contents($file), true);
 
         foreach ($utilisateursArray as $name => $objet) {

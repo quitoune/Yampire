@@ -20,7 +20,7 @@ class LoadEspeceData extends Fixture implements DependentFixtureInterface, Conta
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/espece.json";
+        $file .= "espece.json";
         $especesArray = json_decode(file_get_contents($file), true);
         foreach ($especesArray as $name => $objet) {
 

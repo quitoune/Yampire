@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     pictures_directory: '%kernel.project_dir%/public/image/photo/'
-    resources_directory: '%kernel.project_dir%/src/DataFixtures/'
+    resources_directory: '%kernel.project_dir%/src/DataFixtures/resources/'
 
 services:
     # default configuration for services in *this* file

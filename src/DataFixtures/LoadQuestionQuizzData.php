@@ -20,7 +20,7 @@ class LoadQuestionQuizzData extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/question_quizz.json";
+        $file .= "question_quizz.json";
         $question_quizzsArray = json_decode(file_get_contents($file), true);
         foreach ($question_quizzsArray as $name => $objet) {
             

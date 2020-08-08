@@ -20,7 +20,7 @@ class LoadCitationData extends Fixture implements DependentFixtureInterface, Con
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/citation.json";
+        $file .= "citation.json";
         $citationsArray = json_decode(file_get_contents($file), true);
         foreach ($citationsArray as $name => $objet) {
             

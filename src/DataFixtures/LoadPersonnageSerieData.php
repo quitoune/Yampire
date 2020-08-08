@@ -20,7 +20,7 @@ class LoadPersonnageSerieData extends Fixture implements DependentFixtureInterfa
     public function load(ObjectManager $manager)
     {
         $file  = str_replace("\\", "/", $this->container->getParameter('resources_directory'));
-        $file .= "resources/personnage_serie.json";
+        $file .= "personnage_serie.json";
         $personnage_seriesArray = json_decode(file_get_contents($file), true);
         foreach ($personnage_seriesArray as $name => $objet) {
             
