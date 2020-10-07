@@ -5,6 +5,7 @@ namespace App\Twig;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class DiversExtension extends AbstractExtension
 {
