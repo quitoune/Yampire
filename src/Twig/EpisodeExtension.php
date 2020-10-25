@@ -48,7 +48,11 @@ class EpisodeExtension extends AbstractExtension
     public function getTitreMenu($serie, $session){
         $is_vo = 0;
         if($session->get('user')){
-            $is_vo = $session->get('user')['serie_vo'];
+            if(isset($session->get('user')['serie_vo'])){
+                $is_vo = $session->get('user')['serie_vo'];
+            } else {
+                $is_vo = 0;
+            }
         }
         
         if($is_vo){

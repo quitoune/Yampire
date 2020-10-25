@@ -32,16 +32,21 @@ class Photo
      * @ORM\OneToMany(targetEntity="App\Entity\Serie", mappedBy="photo")
      */
     private $series;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Saison", mappedBy="photo")
+     */
+    private $saisons;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Personnage", mappedBy="photo")
      */
     private $personnages;
-
+    
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Saison", mappedBy="photo")
+     * @ORM\OneToMany(targetEntity="App\Entity\Acteur", mappedBy="photo")
      */
-    private $saisons;
+    private $acteurs;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="photos")
@@ -51,8 +56,9 @@ class Photo
     public function __construct()
     {
         $this->series = new ArrayCollection();
-        $this->personnages = new ArrayCollection();
         $this->saisons = new ArrayCollection();
+        $this->personnages = new ArrayCollection();
+        $this->acteurs = new ArrayCollection();
         $this->tag = new ArrayCollection();
     }
 
@@ -117,6 +123,37 @@ class Photo
     }
 
     /**
+     * @return Collection|Saison[]
+     */
+    public function getSaisons(): Collection
+    {
+        return $this->saisons;
+    }
+
+    public function addSaison(Saison $saison): self
+    {
+        if (!$this->saisons->contains($saison)) {
+            $this->saisons[] = $saison;
+            $saison->setPhoto($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSaison(Saison $saison): self
+    {
+        if ($this->saisons->contains($saison)) {
+            $this->saisons->removeElement($saison);
+            // set the owning side to null (unless already changed)
+            if ($saison->getPhoto() === $this) {
+                $saison->setPhoto(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection|Personnage[]
      */
     public function getPersonnages(): Collection
@@ -148,30 +185,30 @@ class Photo
     }
 
     /**
-     * @return Collection|Saison[]
+     * @return Collection|Acteur[]
      */
-    public function getSaisons(): Collection
+    public function getActeurs(): Collection
     {
-        return $this->saisons;
+        return $this->acteurs;
     }
 
-    public function addSaison(Saison $saison): self
+    public function addActeur(Acteur $acteur): self
     {
-        if (!$this->saisons->contains($saison)) {
-            $this->saisons[] = $saison;
-            $saison->setPhoto($this);
+        if (!$this->acteurs->contains($acteur)) {
+            $this->acteurs[] = $acteur;
+            $acteur->setPhoto($this);
         }
 
         return $this;
     }
 
-    public function removeSaison(Saison $saison): self
+    public function removeActeur(Acteur $acteur): self
     {
-        if ($this->saisons->contains($saison)) {
-            $this->saisons->removeElement($saison);
+        if ($this->acteurs->contains($acteur)) {
+            $this->acteurs->removeElement($acteur);
             // set the owning side to null (unless already changed)
-            if ($saison->getPhoto() === $this) {
-                $saison->setPhoto(null);
+            if ($acteur->getPhoto() === $this) {
+                $acteur->setPhoto(null);
             }
         }
 

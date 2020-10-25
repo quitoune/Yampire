@@ -29,7 +29,21 @@ class IndexController extends AppController
                 );
             }
             
-        $session->set('series', $session_series);
+            $session->set('series', $session_series);
+        }
+        
+        if(is_null($session->get('user', null))){
+            $session->set('user', array(
+                'episode_vo' => 0,
+                'serie_vo' => 0
+            ));
+        } else {
+            if(!isset($session->get('user')['serie_vo'])){
+                $session->get('user')['serie_vo'] = 0;
+            }
+            if(!isset($session->get('user')['episode_vo'])){
+                $session->get('user')['episode_vo'] = 0;
+            }
         }
         
         return $this->render('index/index.html.twig', array(
