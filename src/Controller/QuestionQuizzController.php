@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Quizz;
@@ -11,7 +11,7 @@ use App\Entity\QuestionQuizz;
 class QuestionQuizzController extends AppController
 {
     /**
-     * Affichage d'un quizz
+     * Affichage d'une question d'un quizz
      *
      * @Route("/question_quizz/afficher/{id}/{ordre}/{nbr}", name="question_quizz_afficher")
      *

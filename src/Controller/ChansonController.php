@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Serie;
@@ -12,7 +12,6 @@ use App\Entity\Saison;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use App\Form\ChansonType;
-use App\Entity\Tag;
 
 class ChansonController extends AppController
 {
@@ -201,7 +200,7 @@ class ChansonController extends AppController
      * @Route("/{slug}/chanson/modifier/{slug_song}/{page}", name="chanson_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
      * @ParamConverter("chanson", options={"mapping"={"slug_song"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @param Request $request
      * @param SessionInterface $session
@@ -257,7 +256,7 @@ class ChansonController extends AppController
      *
      * @Route("/{slug}/chanson/ajouter/{page}", name="chanson_ajouter")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @param Request $request
      * @param SessionInterface $session
@@ -319,7 +318,7 @@ class ChansonController extends AppController
      * Formulaire d'ajout d'une chanson
      *
      * @Route("/chanson/ajax_ajouter/{type}/{id}", name="chanson_ajax_ajouter")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @param Request $request
      * @param SessionInterface $session

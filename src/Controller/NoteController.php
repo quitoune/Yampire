@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Acteur;
@@ -114,10 +114,10 @@ class NoteController extends AppController
     }
 
     /**
-     * Formulaire de modification d'une note dans une modal
+     * Formulaire de modification d'une note dans une pop-up
      *
      * @Route("/note/ajax/ajouter/{type}/{id}", name="note_ajax_ajouter")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param int $id
@@ -182,7 +182,7 @@ class NoteController extends AppController
      *
      * @Route("/note/ajax/modifier/{note_id}/{type}/{id}/{page}", name="note_ajax_modifier")
      * @ParamConverter("note", options={"mapping"={"note_id"="id"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Note $note
@@ -229,7 +229,7 @@ class NoteController extends AppController
      *
      * @Route("/note/ajax/supprimer/{note_id}/{type}/{id}/{page}", name="note_ajax_supprimer")
      * @ParamConverter("note", options={"mapping"={"note_id"="id"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @param Note $note
      * @param int $id

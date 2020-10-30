@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Nationalite;
@@ -52,7 +52,7 @@ class NationaliteController extends AppController
      * Formulaire de modification d'une nationalité
      *
      * @Route("/nationalite/modifier/{id}/{page}", name="nationalite_modifier")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Nationalite $nationalite
@@ -101,7 +101,7 @@ class NationaliteController extends AppController
      * Formulaire d'ajout d'une nationalité
      *
      * @Route("/nationalite/ajouter/{page}", name="nationalite_ajouter")
-     * @Security("is_granted('ROLE_ADMIN')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param int $page
@@ -150,6 +150,7 @@ class NationaliteController extends AppController
      *
      * @Route("/nationalite/confirmer/{id}/{page}", name="nationalite_confirmer")
      * @ParamConverter("nationalite", options={"mapping"={"id"="id"}})
+     * @IsGranted("ROLE_ADMIN")
      * 
      * @param Nationalite $nationalite
      * @param int $page
@@ -167,8 +168,10 @@ class NationaliteController extends AppController
      *
      * @Route("/nationalite/supprimer/{id}", name="nationalite_supprimer")
      * @ParamConverter("nationalite", options={"mapping"={"id"="id"}})
-     *
+     * @IsGranted("ROLE_ADMIN")
+     * 
      * @param Nationalite $nationalite
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function supprimer(Nationalite $nationalite)
     {

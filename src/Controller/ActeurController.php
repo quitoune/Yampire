@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Acteur;
@@ -107,7 +107,7 @@ class ActeurController extends AppController
      * Formulaire de modification d'un acteur
      *
      * @Route("/acteur/{slug}/modifier/{page}", name="acteur_modifier")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Acteur $acteur
@@ -268,7 +268,7 @@ class ActeurController extends AppController
      * Formulaire d'ajout d'un acteur
      *
      * @Route("/acteur/ajouter/{page}", name="acteur_ajouter")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param int $page

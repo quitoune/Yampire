@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Saison;
@@ -26,7 +26,7 @@ class PersonnageSaisonController extends AppController
      * Ajouter une connexion entre un personnage et une saison
      *
      * @Route("/personnage_saison/ajax_ajouter/{id}", name="ajax_ajouter_personnage_saison")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @param Request $request
      * @param Saison $saison

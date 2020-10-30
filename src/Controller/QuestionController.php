@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Question;
@@ -54,7 +54,7 @@ class QuestionController extends AppController
     );
     
     /**
-     * Liste des séries
+     * Liste des questions
      *
      * @Route("/question/liste/{page}", name="question_liste")
      *
@@ -81,7 +81,7 @@ class QuestionController extends AppController
     }
     
     /**
-     * Affichage d'un acteur
+     * Affichage d'une question
      *
      * @Route("/question/afficher/{id}", name="question_afficher")
      * @ParamConverter("question", options={"mapping"={"id"="id"}})
@@ -106,7 +106,10 @@ class QuestionController extends AppController
     }
     
     /**
+     * Ajouter une question
+     * 
      * @Route("/question/ajouter", name="question_ajouter")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @return \Symfony\Component\HttpFoundation\Response
      */

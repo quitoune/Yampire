@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Serie;
@@ -71,10 +71,11 @@ class SerieController extends AppController
     }
     
     /**
-     * Affichage d'une série
+     * Modification d'une série
      *
      * @Route("/serie/ajax/modifier/{id}", name="ajax_modifier_serie_fiche")
      * @ParamConverter("serie", options={"mapping"={"id"="id"}})
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Serie $serie
      * @return \Symfony\Component\HttpFoundation\Response
@@ -106,7 +107,7 @@ class SerieController extends AppController
     }
 
     /**
-     * Formulaire d'affichage d'une série
+     * Affichage d'une série
      *
      * @Route("/{slug}/afficher", name="serie_afficher")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
@@ -130,11 +131,11 @@ class SerieController extends AppController
     }
 
     /**
-     * Formulaire de modifcation d'une série
+     * Formulaire de modification d'une série
      *
      * @Route("/{slug}/modifier", name="serie_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Serie $serie
@@ -177,7 +178,7 @@ class SerieController extends AppController
      * Formulaire d'ajout d'une série
      *
      * @Route("/serie/ajouter", name="serie_ajouter")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param int $page

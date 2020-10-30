@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\WayToDie;
@@ -55,7 +55,7 @@ class WayToDieController extends AppController
      *
      * @Route("/way_to_die/modifier/{id}/{page}", name="way_to_die_modifier")
      * @ParamConverter("way_to_die", options={"mapping"={"id"="id"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param WayToDie $way_to_die
@@ -104,7 +104,7 @@ class WayToDieController extends AppController
      * Formulaire d'ajout d'une façon de mourir
      *
      * @Route("/way_to_die/ajouter/{page}", name="way_to_die_ajouter")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param int $page
@@ -153,6 +153,7 @@ class WayToDieController extends AppController
      *
      * @Route("/way_to_die/supprimer/{id}/{page}", name="way_to_die_supprimer")
      * @ParamConverter("way_to_die", options={"mapping"={"id"="id"}})
+     * @IsGranted("ROLE_ADMIN")
      *
      * @param WayToDie $way_to_die
      * @param int $page

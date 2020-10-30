@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Photo;
@@ -92,15 +92,12 @@ class PhotoController extends AppController
      *
      * @Route("/photo/ajax/liste/{id}/{type}/{page}", name="ajax_afficher_photos")
      *
-     * @ParamConverter("serie", options={"mapping"={"id"="id"}})
-     *
      * @param Serie $serie
      * @param int $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ajaxAfficherTags(int $id, string $type, int $page = 1)
+    public function ajaxAfficher(int $id, string $type, int $page = 1)
     {
-        //         $photos = $serie->getTag()->getPhotos();
         switch ($type) {
             case 'acteur':
                 $repository = $this->getDoctrine()->getRepository(Acteur::class);
@@ -173,10 +170,12 @@ class PhotoController extends AppController
      *
      * @ParamConverter("photo", options={"mapping"={"photo_id"="id"}})
      * @ParamConverter("tag", options={"mapping"={"tag_id"="id"}})
+     * 
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Photo $photo
      */
-    public function supprimer(Photo $photo, Tag $tag)
+    public function supprimerTag(Photo $photo, Tag $tag)
     {
         $photo->removeTag($tag);
 

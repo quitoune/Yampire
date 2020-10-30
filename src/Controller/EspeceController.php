@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Espece;
@@ -98,7 +98,7 @@ class EspeceController extends AppController
      * Formulaire de modification d'une espèce
      *
      * @Route("/espece/{slug}/modifier/{page}", name="espece_modifier")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Espece $espece
@@ -148,7 +148,7 @@ class EspeceController extends AppController
      * Formulaire d'ajout d'une espèce
      *
      * @Route("/espece/ajouter/{page}", name="espece_ajouter")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param int $page

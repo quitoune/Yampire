@@ -67,7 +67,7 @@ class AppController extends AbstractController
      * @return string
      */
     public function getNbrMaxAjax() {
-        return (!is_null($this->get('session')->get('nbr_max_ajax')) ? $this->get('session')->get('nbr_max_ajax') : self::nbr_max);
+        return (!is_null($this->get('session')->get('nbr_max_ajax')) ? $this->get('session')->get('nbr_max_ajax') : self::nbr_max_ajax);
     }
     
     /**
@@ -130,8 +130,9 @@ class AppController extends AbstractController
                 $names[$element->getPersonnage()->getId()] = $element->getPersonnage()->{$appelation}();
             }
             asort($names);
-//             $this->pre($names); die();
+            
             foreach ($names as $id => $name){
+                $name;
                 $sort_array[] = $repo->findOneBy(array(
                     'id' => $id
                 ));
@@ -219,7 +220,7 @@ class AppController extends AbstractController
     }
     
     /**
-     *
+     * Obtention de la liste des saisons rangé par série
      * @return array[]|string
      */
     public function getSaisons(){

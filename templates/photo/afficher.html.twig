@@ -4,11 +4,11 @@
 
 {% block body %}
 	<div class="row photo">
-    	<div class="col-4">
+		<div class="col-12">
     	    {{ photo(photo, "w-auto") | raw }}
     	</div>
-    	<div class="col-8" id="photo_tag">
-    		<div class="center_div">
+    	<div class="col-12" id="photo_tag">
+    		<div class="center_div text-center">
         		{% for tag in photo.tag %}
         			<span class="badge badge-pill badge-yampire">
         			    {{ tag.nom }} 

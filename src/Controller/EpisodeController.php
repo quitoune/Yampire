@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Serie;
@@ -157,7 +157,7 @@ class EpisodeController extends AppController
      * @Route("/{slug}/episode/{slug_episode}/modifier/{page}", name="episode_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
      * @ParamConverter("episode", options={"mapping"={"slug_episode"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Episode $episode
@@ -209,7 +209,7 @@ class EpisodeController extends AppController
      *
      * @Route("/{slug}/episode/ajouter/{page}", name="episode_ajouter")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Serie $serie
@@ -271,7 +271,7 @@ class EpisodeController extends AppController
      * Ajouter une connexion entre un personnage et un épisode
      *
      * @Route("/personnage_episode/ajax_ajouter/{id}", name="ajax_ajouter_personnage_episode")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param SessionInterface $session
@@ -315,7 +315,7 @@ class EpisodeController extends AppController
      * Supprimer une connexion entre un personnage et un épisode
      *
      * @Route("/personnage_episode/ajax_supprimer/{id}", name="ajax_supprimer_personnage_episode")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param SessionInterface $session

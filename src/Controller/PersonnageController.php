@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Personnage;
@@ -64,7 +64,7 @@ class PersonnageController extends AppController
     }
     
     /**
-     * Liste des personnages
+     * Liste des personnages d'une série
      *
      * @Route("/{slug}/personnage/liste/{page}", name="personnage_liste")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
@@ -337,7 +337,7 @@ class PersonnageController extends AppController
      * @Route("/{slug}/personnage/{slug_perso}/modifier/{page}", name="personnage_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
      * @ParamConverter("personnage", options={"mapping"={"slug_perso"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Personnage $personnage
@@ -460,7 +460,7 @@ class PersonnageController extends AppController
      * Formulaire d'ajout d'un personnage
      *
      * @Route("/{slug}/personnage/ajouter/{page}", name="personnage_ajouter")
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param int $page
@@ -519,6 +519,7 @@ class PersonnageController extends AppController
 
             // Ajout des épisodes
             foreach ($form_personnageEpisodes as $id_episode => $on) {
+                $on;
                 $episode = $repo_episode->findOneBy(array(
                     'id' => $id_episode
                 ));
@@ -667,7 +668,7 @@ class PersonnageController extends AppController
     }
     
     /**
-     * 
+     * Ajout d'épisodes dans lesquels le personnage apparait
      * @param Request $request
      * @param Personnage $personnage
      */

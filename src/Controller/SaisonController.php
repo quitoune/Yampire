@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Serie;
@@ -125,7 +125,7 @@ class SaisonController extends AppController
     }
 
     /**
-     * Formulaire d'affichage d'une saison
+     * Affichage d'une saison
      *
      * @Route("/{slug}/saison/afficher/{id}", name="saison_afficher")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
@@ -153,11 +153,11 @@ class SaisonController extends AppController
     }
 
     /**
-     * Formulaire de modifcation d'une saison
+     * Formulaire de modification d'une saison
      *
      * @Route("/{slug}/saison/modifier/{id}/{page}", name="saison_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param Saison $saison
@@ -209,7 +209,7 @@ class SaisonController extends AppController
      *
      * @Route("/{slug}/saison/ajouter/{page}", name="saison_ajouter")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param int $page
@@ -278,11 +278,11 @@ class SaisonController extends AppController
     }
     
     /**
-     * Formulaire d'ajout d'une saison dans une modal
+     * Formulaire d'ajout d'une saison dans une pop-up
      *
      * @Route("/saison/ajax/ajouter/{slug}", name="saison_ajax_ajouter")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @param Request $request
      * @param Serie $serie

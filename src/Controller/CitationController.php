@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Serie;
@@ -180,7 +180,7 @@ class CitationController extends AppController
      *
      * @Route("/{slug}/citation/modifier/{id}/{page}", name="citation_modifier")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @param Request $request
      * @param SessionInterface $session
@@ -280,7 +280,7 @@ class CitationController extends AppController
      *
      * @Route("/{slug}/citation/ajouter/{page}", name="citation_ajouter")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      *
      * @param Request $request
      * @param SessionInterface $session
@@ -341,7 +341,7 @@ class CitationController extends AppController
      *
      * @Route("/{slug}/citation/ajax_ajouter/{type}/{id}", name="citation_ajax_ajouter")
      * @ParamConverter("serie", options={"mapping"={"slug"="slug"}})
-     * @Security("is_granted('ROLE_ADMIN') or is_granted('ROLE_UTILISATEUR')")
+     * @IsGranted("ROLE_UTILISATEUR")
      * 
      * @param Request $request
      * @param SessionInterface $session
