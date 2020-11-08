@@ -8,7 +8,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans %}Séries{% endtrans %}
+                    {% trans %}serie.noms{% endtrans %}
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
@@ -19,7 +19,7 @@
             
         	<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans %}Episodes{% endtrans %}
+                    {% trans %}episode.noms{% endtrans %}
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
@@ -30,7 +30,7 @@
         	
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans %}Personnages{% endtrans %}
+                    {% trans %}personnage.noms{% endtrans %}
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                     {% for serie in app.session.get('series') %}
@@ -41,7 +41,7 @@
             
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans %}Citations{% endtrans %}
+                    {% trans %}citation.noms{% endtrans %}
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                 	{% for serie in app.session.get('series') %}
@@ -51,7 +51,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {% trans %}Chansons{% endtrans %}
+                    {% trans %}chanson.noms{% endtrans %}
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                 	{% for serie in app.session.get('series') %}
@@ -61,14 +61,14 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Univers
+                    {% trans %}onglet.univers{% endtrans %}
                 </a>
                 <div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('espece_liste') }}">Espèces</a>
-                    <a class="dropdown-item" href="{{ path('way_to_die_liste') }}">Façon de mourir</a>
-               		<a class="dropdown-item" href="{{ path('acteur_liste') }}">Acteurs</a>
+                    <a class="dropdown-item" href="{{ path('espece_liste') }}">{% trans %}espece.noms{% endtrans %}</a>
+                    <a class="dropdown-item" href="{{ path('way_to_die_liste') }}">{% trans %}facon_de_mourir.noms{% endtrans %}</a>
+               		<a class="dropdown-item" href="{{ path('acteur_liste') }}">{{ 'acteur.noms'|trans({'gender': 0 }) }}</a>
                     <a class="dropdown-item" href="{{ path('photo_liste') }}">Galerie de photos</a>
-                    <a class="dropdown-item" href="{{ path('nationalite_liste') }}">Nationalités</a>
+                    <a class="dropdown-item" href="{{ path('nationalite_liste') }}">{% trans %}nationalite.noms{% endtrans %}</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -96,20 +96,24 @@
      			<ul class="navbar-nav justify-content-end">
               		<li class="nav-item dropdown">
                 		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  			Bonjour {{ app.user.username }}
+                  			{% trans %}utilisateur.bonjour{% endtrans %} {{ app.user.username }}
                 		</a>
                 		<div class="dropdown-menu bg-yampire" aria-labelledby="navbarDropdown">
                   			<a class="dropdown-item" href=""><i class="fas fa-user"></i> Mon compte</a>
                   			{% if is_granted('ROLE_ADMIN') %}
-                    			<a class="dropdown-item" href="{{ path('utilisateur_liste', {'page': 1}) }}"><i class="fas fa-user-friends"></i> Utilisateurs</a>
+                    			<a class="dropdown-item" href="{{ path('utilisateur_liste', {'page': 1}) }}">
+                    				<i class="fas fa-user-friends"></i> {% trans %}utilisateur.annuaire{% endtrans %}
+                    			</a>
                     		{% endif %}
                   			<div class="dropdown-divider"></div>
-                  			<a class="dropdown-item" href='{{ path('security_logout') }}'><i class="fas fa-power-off"></i> Déconnexion</a>
+                  			<a class="dropdown-item" href='{{ path('security_logout') }}'>
+                  				<i class="fas fa-power-off"></i> {% trans %}connexion.deconnexion{% endtrans %}
+                  			</a>
                 		</div>
               		</li>
             	</ul>
         	{% else %}
-     			 <a href='{{ path('security_login') }}'><i class="fas fa-power-off"></i> Connexion</a>
+     			 <a href='{{ path('security_login') }}'><i class="fas fa-power-off"></i> {% trans %}connexion.connexion{% endtrans %}</a>
             {% endif %}
       		
     	</span>

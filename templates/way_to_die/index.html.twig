@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Façon de mourir{% endblock %}
+{% block title %}{% trans %}facon_de_mourir.noms{% endtrans %}{% endblock %}
 
 {% block body %}
     
     <div class="card text-center">
         <div class="card-header text-left">
-            {{ pagination.total }} façons de mourir - {{ pagination.page }} / {{ pagination.nbPages }}
+            {{ 'facon_de_mourir.num_mourir'|trans({'num': pagination.total }) }} - {{ pagination.page }} / {{ pagination.nbPages }}
             {% if is_granted("ROLE_UTILISATEUR") %}
                 {{ ajouter(path('way_to_die_ajouter', {'page':pagination.page})) | raw }}
             {% endif %}
@@ -16,7 +16,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Nom</th>
+                        <th>{% trans %}onglet.nom{% endtrans %}</th>
                         {% if is_granted("ROLE_UTILISATEUR") %}
                         	<th></th>
                         {% endif %}

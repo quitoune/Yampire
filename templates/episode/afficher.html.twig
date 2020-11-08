@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Episode: {{ titre("episode", episode, app.session) | raw }} {% endblock %}
+{% block title %}{% trans %}episode.nom{% endtrans %}: {{ titre("episode", episode, app.session) | raw }} {% endblock %}
 
 {% block body %}
     
@@ -9,38 +9,38 @@
         	<ul class="nav nav-tabs card-header-tabs" id="first">
         		<li class="nav-item">
         			<div class="nav-link active" data-link="{{ path('ajax_afficher_episode_fiche', {'slug':episode.serie.slug, 'slug_episode':episode.slug, 'page':page}) }}">
-        				Info
+        				{% trans %}onglet.infos{% endtrans %}
         			</div>
       			</li>
       			<li class="nav-item">
         			<div class="nav-link" data-link="{{ path('ajax_afficher_personnages', {'id':episode.id, 'type':'episode'}) }}">
-        				Personnages
+        				{% trans %}personnage.noms{% endtrans %}
         			</div>
       			</li>
       			<li class="nav-item">
         			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'slug': episode.serie.slug, 'id':episode.id, 'type':'episode'}) }}">
-        				Citations
+        				{% trans %}citation.noms{% endtrans %}
         			</div>
       			</li>
       			<li class="nav-item">
         			<div class="nav-link" data-link="{{ path('ajax_afficher_chansons', {'id':episode.id, 'type':'episode'}) }}">
-        				Chansons
+        				{% trans %}chanson.noms{% endtrans %}
         			</div>
       			</li>
       			<li class="nav-item">
         			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':episode.id, 'type':'episode'}) }}">
-        				Notes
+        				{% trans %}note.noms{% endtrans %}
         			</div>
       			</li>
       			<li class="nav-item">
         			<div class="nav-link" data-link="{{ path('ajax_afficher_photos', {'id':episode.id, 'type':'episode'}) }}">
-        				Photos
+        				{% trans %}photo.noms{% endtrans %}
         			</div>
       			</li>
     		</ul>
         </div>
         <div class="card-body text-center" id="bloc_episode">
-            Chargement...
+            {% trans %}chargement{% endtrans %}...
         </div>
     </div>
     

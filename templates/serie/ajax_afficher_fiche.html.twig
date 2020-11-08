@@ -13,33 +13,33 @@
             	</tr>
             {% endif %}
         	<tr>
-        		<th>Titre</th>
+        		<th>{% trans %}onglet.titre{% endtrans %}</th>
         		<td>{{ serie.titre }}</td>
         	</tr>
         	<tr>
-        		<th>Titre Original</th>
+        		<th>{% trans %}onglet.titre_original{% endtrans %}</th>
         		<td>{{ serie.titreOriginal }}</td>
         	</tr>
 			{% if serie.description is not null %}
 				<tr>
-					<th>Description</th>
+					<th>{% trans %}onglet.description{% endtrans %}</th>
 					<td>{{ serie.description }}</td>
 				</tr>
 			{% endif %}
         	<tr>
-        		<th>Abrégé</th>
+        		<th>{% trans %}serie.abrege{% endtrans %}</th>
         		<td>{{ serie.titreCourt }}</td>
         	</tr>
         	<tr>
-        		<th>Nombre de saison</th>
+        		<th>{% trans %}serie.nombre_saison{% endtrans %}</th>
         		<td>{{ serie.nombreSaison }}</td>
         	</tr>
         	<tr>
-        		<th>Nombre d'épisode</th>
+        		<th>{% trans %}serie.nombre_episode{% endtrans %}</th>
         		<td>{{ serie.nombreEpisode }}</td>
         	</tr>
         	<tr>
-        		<th>Terminée</th>
+        		<th>{% trans %}serie.terminee{% endtrans %}</th>
         		<td>{{ serie.terminee | bool }}</td>
         	</tr>
         </table>

@@ -8,30 +8,44 @@
         <div class="card-header float-left">
         	<ul class="nav nav-tabs card-header-tabs">
         		<li class="nav-item">
-        			<div class="nav-link active" data-link="{{ path('ajax_afficher_saison_fiche', {'id':saison.id}) }}">Infos</div>
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_saison_fiche', {'id':saison.id}) }}">
+        				{% trans %}onglet.infos{% endtrans %}
+        			</div>
       			</li>
         		<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('saison_afficher_episodes', {'id':saison.id}) }}">Episodes</div>
+        			<div class="nav-link" data-link="{{ path('saison_afficher_episodes', {'id':saison.id}) }}">
+        				{% trans %}episode.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_personnages', {'id':saison.id, 'type':'saison'}) }}">Personnages</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_personnages', {'id':saison.id, 'type':'saison'}) }}">
+        				{% trans %}personnage.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'slug':saison.serie.slug, 'id':saison.id, 'type':'saison'}) }}">Citations</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'slug':saison.serie.slug, 'id':saison.id, 'type':'saison'}) }}">
+        				{% trans %}citation.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_chansons', {'id':saison.id, 'type':'saison'}) }}">Chansons</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_chansons', {'id':saison.id, 'type':'saison'}) }}">
+        				{% trans %}chanson.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':saison.id, 'type':'saison'}) }}">Notes</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':saison.id, 'type':'saison'}) }}">
+        				{% trans %}note.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_photos', {'id':saison.id, 'type':'saison'}) }}">Photos</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_photos', {'id':saison.id, 'type':'saison'}) }}">
+        				{% trans %}photo.noms{% endtrans %}
+        			</div>
       			</li>
     		</ul>
         </div>
         <div class="card-body text-center" id="bloc_saison">
-           Chargement...
+           {% trans %}chargement{% endtrans %}...
         </div>
     </div>
     

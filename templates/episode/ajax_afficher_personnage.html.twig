@@ -1,6 +1,6 @@
 <div id="ajax_personnage_episode_see">
     {% if saisons is empty %}
-    	<div class="text-center" style="width: 100%">0 épisode</div>
+    	<div class="text-center" style="width: 100%">{{ 'episode.num_episode'|trans({'num': 0 }) }}</div>
 		<div class="text-center empty-element" style="width: 100%">
           	<p class="text-info text-center">Aucun épisode n'est associé à ce personnage.</p>
 		</div>
@@ -10,7 +10,7 @@
     	</div>
     	
 		<div id="episode_saison">
-        	Chargement...
+        	{% trans %}chargement{% endtrans %}...
     	</div>
     	
     	<div id="nombre_episode"></div>

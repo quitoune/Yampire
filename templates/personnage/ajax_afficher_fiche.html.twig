@@ -15,27 +15,26 @@
         		</tr>
             {% endif %}
         	<tr>
-        		<th>Nom complet</th>
+        		<th>{% trans %}personnage.nom_complet{% endtrans %}</th>
         		<td>{{ nom_complet(personnage) | raw }}</td>
         	</tr>
         	{% if personnage.dateNaissance is not null %}
             	<tr>
-            		<th>Date de naissance</th>
+            		<th>{% trans %}acteur.date_naissance{% endtrans %}</th>
             		<td>{{ personnage.dateNaissance | date('d/m/Y') }}</td>
             	</tr>
         	{% endif %}
         	<tr>
-        		<th>Sexe</th>
-        		<td>{{ personnage.sexe | sexe }}</td>
+        		<th>{% trans %}acteur.sexe{% endtrans %}</th>
+        		<td>{{ 'acteur.sexe_sel'|trans({'gender': personnage.sexe }) }}</td>
         	</tr>
         	<tr>
-        		<th>Espèce</th>
+        		<th>{% trans %}espece.nom{% endtrans %}</th>
         		<td>{{ personnage.espece.nom }}</td>
         	</tr>
         	{% if personnage.acteurPersonnages is not empty %}
             	<tr>
-            		<th>Interprété{% if personnage.sexe %}e{% endif %} par
-            		</th>
+            		<th>{{ 'personnage.interprete'|trans({'gender': personnage.sexe }) }}</th>
             		<td>
             		    {% for acteurPersonnages in personnage.acteurPersonnages %} 
             		    	<b>{{ acteurPersonnages.acteur.prenom }} {{ acteurPersonnages.acteur.nom }}</b> 
@@ -46,7 +45,7 @@
         	{% endif %}
         	{% if serieSaisons is not empty %}
             	<tr>
-            		<th colspan="2">Séries</th>
+            		<th colspan="2">{% trans %}serie.noms{% endtrans %}</th>
             	</tr>
             	{% for serieSaison in serieSaisons %} 
             		<tr>

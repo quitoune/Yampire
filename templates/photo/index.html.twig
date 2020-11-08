@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Photos{% endblock %}
+{% block title %}{% trans %}photo.noms{% endtrans %}{% endblock %}
 
 {% block body %}
     <div class="card text-center">
         <div class="card-header text-left">
-            {{ pagination.total }} photos - {{ pagination.page }} / {{ pagination.nbPages }}
+            {{ 'photo.num_photo'|trans({'num': pagination.total }) }} - {{ pagination.page }} / {{ pagination.nbPages }}
         </div>
         <div class="card-body">
         	<div class="row">

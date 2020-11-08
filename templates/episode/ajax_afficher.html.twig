@@ -11,14 +11,7 @@
 {% block javascripts %}
 	<script type="text/javascript">
         $( document ).ready(function() {
-            var type = "{{ type }}";
-            var length = "{{ episodes | length }}";
-            var html = length + " épisode";
-            if(length > 1){
-				html += "s";
-            }
-            $("#nombre_episode").html(html);
-			//Mettre à jour le footer avec la taille de épisodes
+            $("#nombre_episode").html("{{ 'episode.num_episode'|trans({'num': episodes | length }) }}");
         });
     </script>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {% if acteur.sexe %}Actrice{% else %}Acteur{% endif %}: {{ nom_acteur(acteur) }}
+    {{ 'acteur.nom'|trans({'gender': acteur.sexe, 'num': 1 }) }}: {{ nom_acteur(acteur) }}
 {% endblock %}
 
 {% block body %}
@@ -10,18 +10,24 @@
         <div class="card-header text-left">
         	<ul class="nav nav-tabs card-header-tabs" id="first">
       			<li class="nav-item">
-        			<div class="nav-link active" data-link="{{ path('ajax_afficher_acteur_fiche', {'id':acteur.id, 'page':page}) }}">Infos</div>
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_acteur_fiche', {'id':acteur.id, 'page':page}) }}">
+        				{% trans %}onglet.infos{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':acteur.id, 'type':'acteur'}) }}">Notes</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':acteur.id, 'type':'acteur'}) }}">
+        				{% trans %}note.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_photos', {'id':acteur.id, 'type':'acteur'}) }}">Photos</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_photos', {'id':acteur.id, 'type':'acteur'}) }}">
+        				{% trans %}photo.noms{% endtrans %}
+        			</div>
       			</li>
     		</ul>
         </div>
         <div class="card-body text-center" id="bloc_acteur">
-        	Chargement...
+        	{% trans %}chargement{% endtrans %}...
         </div>
     </div>
     

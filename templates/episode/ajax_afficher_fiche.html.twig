@@ -12,36 +12,36 @@
             	</tr>
         	{% endif %}
         	<tr>
-        		<th>Titre</th>
+        		<th>{% trans %}onglet.titre{% endtrans %}</th>
         		<td>{{ episode.titre }}</td>
-        		<th>Titre Original</th>
+        		<th>{% trans %}onglet.titre_original{% endtrans %}</th>
         		<td>{{ episode.titreOriginal }}</td>
         	</tr>
         	<tr>
-        		<th>Saison</th>
+        		<th>{% trans %}episode.saison{% endtrans %}</th>
         		<td>{{ episode.saison.numeroSaison }}</td>
         		<th></th>
         		<td></td>
         	</tr>
         	<tr>
-        		<th>N° épisode</th>
+        		<th>{% trans %}episode.numero_episode{% endtrans %}</th>
         		<td>{{ episode.numeroEpisode }}</td>
-        		<th>N° de production</th>
+        		<th>{% trans %}episode.numero_production{% endtrans %}</th>
         		<td>{{ episode.numeroProduction }}</td>
         	</tr>
         	<tr>
-        		<th>Première diffusion</th>
+        		<th>{% trans %}episode.premiere_diffusion{% endtrans %}</th>
         		<td>
         			{% if episode.premiereDiffusion is not null %}
         		        {{ episode.premiereDiffusion | date('d/m/Y') }}
         		    {% endif %}
         		</td>
-        		<th>Durée</th>
+        		<th>{% trans %}episode.duree{% endtrans %}</th>
         		<td>{{ episode.duree }}min</td>
         	</tr>
         	{% if episode.description is not null %}
             	<tr>
-            		<th>Description</th>
+            		<th>{% trans %}onglet.description{% endtrans %}</th>
             		<td colspan="3">{{ episode.description }}</td>
             	</tr>
         	{% endif %}

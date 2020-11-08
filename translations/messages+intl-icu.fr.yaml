@@ -1,0 +1,100 @@
+accueil: Accueil
+onglet:
+    infos: Infos
+    saisons: Saisons
+    nom: Nom
+    titre: Titre
+    titre_original: Titre original
+    description: Description
+    univers: Univers
+serie:
+    nom: Série
+    noms: Séries
+    role: "{role, select, 0 {Invité} 1 {Principal} other {Secondaire}}"
+    abrege: Abrégé
+    nombre_saison: Nombre de saisons
+    nombre_episode: Nombre d'épisodes
+    terminee: Terminée
+    saisons: Saisons
+saison:
+    numero: N° de la saison
+    no_element: Cette série n'a aucune saison.
+episode:
+    nom: Episode
+    noms: Episodes
+    num_episode: "{num, select, 0 {{num} épisode} 1 {{num} épisode} other {{num} épisodes}}"
+    duree: Durée
+    numero_episode: N° épisode
+    numero_production: N° de production
+    premiere_diffusion: Première diffusion
+    saison: Saison
+personnage: 
+    nom: Personnage
+    noms: Personnages
+    nom_complet: Nom complet
+    num_personnage: "{num, select, 0 {{num} épisode} 1 {{num} épisode} other {{num} épisodes}}"
+    interprete: "{gender, select, 1 {Interprétée par} other {Interprété par}}"
+citation: 
+    nom: Citation
+    noms: Citations
+    num_citation: "{num, select, 0 {{num} citation} 1 {{num} citation} other {{num} citations}}"
+chanson: 
+    nom: Chanson
+    noms: Chansons
+    num_chanson: "{num, select, 0 {{num} chanson} 1 {{num} chanson} other {{num} chansons}}"
+acteur:
+    nom: "{gender, select, 1 {Actrice} other  {Acteur}}"
+    noms: "{gender, select, 1 {Actrices} other  {Acteurs}}"
+    num_acteur: "{num, select, 0 {{num} acteur} 1 {{num} acteur} other {{num} acteurs}}"
+    nom_complet: Nom complet
+    date_naissance: Date de naissance
+    sexe: Sexe
+    sexe_sel: "{gender, select, 1 {Féminin} other {Masculin}}"
+espece:
+    nom: Espèce
+    noms: Espèces
+    pouvoirs: Pouvoirs
+    faiblesses: Faiblesses
+    info_sup: Informations supplémentaires
+    num_espece: "{num, select, 0 {{num} espèce} 1 {{num} espèce} other {{num} espèces}}"
+nationalite:
+    pays: Pays
+    nom: Nationalité
+    noms: Nationalités
+    num_nationalite: "{num, select, 0 {{num} nationalité} 1 {{num} nationalité} other {{num} nationalités}}"
+facon_de_mourir:
+    nom: Façon de mourir
+    noms: Façons de mourir
+    num_mourir: "{num, select, 0 {{num} façon de mourir} 1 {{num} façon de mourir} other {{num} façons de mourir}}"
+note:
+    noms: Notes
+    num_note: "{num, select, 0 {{num} note} 1 {{num} note} other {{num} notes}}"
+photo:
+    noms: Photos
+    no: Aucune photo n'est associée à  
+    num_photo: "{num, select, 0 {{num} photo} 1 {{num} photo} other {{num} photos}}"
+chargement: Chargement
+page: Page
+oui: Yes
+non: No
+connexion:
+    connexion: Connexion
+    se_connecter: Se connecter
+    id: Identifiant
+    mot_de_passe: Mot de passe
+    mot_de_passe_oubie: Mot de passe oublié
+    inscrire: S'inscrire
+    deconnexion: Déconnexion
+utilisateur:
+    bonjour: Bonjour
+    profil: Mon compte
+    annuaire: Annuaire
+jeu:
+    nom: Jeu
+    noms: Jeux
+    quizz:
+        nom: Quizz
+        noms: Quizzs
+        lancer_quizz: Lancer un quizz
+        creer_quizz: Créer un quizz
+

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Personnage: {{ nom_usage(personnage) }} {% endblock %}
+{% block title %}{% trans %}personnage.nom{% endtrans %}: {{ nom_usage(personnage) }} {% endblock %}
 
 {% block body %}
     
@@ -8,24 +8,34 @@
         <div class="card-header text-left">
         	<ul class="nav nav-tabs card-header-tabs" id="first">
         	<li class="nav-item">
-        			<div class="nav-link active" data-link="{{ path('ajax_afficher_personnage_fiche', {'slug_perso':personnage.slug, 'slug':serie.slug, 'page':page}) }}">Infos</div>
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_personnage_fiche', {'slug_perso':personnage.slug, 'slug':serie.slug, 'page':page}) }}">
+        			    {% trans %}onglet.infos{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('personnage_afficher_episodes', {'id':personnage.id}) }}">Episodes</div>
+        			<div class="nav-link" data-link="{{ path('personnage_afficher_episodes', {'id':personnage.id}) }}">
+        			    {% trans %}episode.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'slug': serie.slug, 'id':personnage.id, 'type':'personnage'}) }}">Citations</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_citations', {'slug': serie.slug, 'id':personnage.id, 'type':'personnage'}) }}">
+        				{% trans %}citation.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':personnage.id, 'type':'personnage'}) }}">Notes</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_notes', {'id':personnage.id, 'type':'personnage'}) }}">
+        				{% trans %}note.noms{% endtrans %}
+        			</div>
       			</li>
       			<li class="nav-item">
-        			<div class="nav-link" data-link="{{ path('ajax_afficher_photos', {'id':personnage.id, 'type':'personnage'}) }}">Photos</div>
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_photos', {'id':personnage.id, 'type':'personnage'}) }}">
+        				{% trans %}photo.noms{% endtrans %}
+        			</div>
       			</li>
     		</ul>
         </div>
         <div class="card-body text-center" id="bloc_personnage">
-            Chargement...
+            {% trans %}chargement{% endtrans %}...
         </div>
     </div>
     

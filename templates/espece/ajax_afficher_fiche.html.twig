@@ -6,19 +6,19 @@
     	</tr>
 	{% endif %}
 	<tr>
-		<th>Nom</th>
+		<th>{% trans %}onglet.nom{% endtrans %}</th>
 		<td>{{ espece.nom }}</td>
 	</tr>
 	<tr>
-		<th>Informations supplémentaires</th>
+		<th>{% trans %}espece.info_sup{% endtrans %}</th>
 		<td>{{ espece.infoSup }}</td>
 	</tr>
 	<tr>
-		<th>Pouvoirs</th>
+		<th>{% trans %}espece.pouvoirs{% endtrans %}</th>
 		<td>{{ espece.pouvoirs }}</td>
 	</tr>
 	<tr>
-		<th>Faiblesses</th>
+		<th>{% trans %}espece.faiblesses{% endtrans %}</th>
 		<td>{{ espece.faiblesses }}</td>
 	</tr>
 </table>

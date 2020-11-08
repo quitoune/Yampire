@@ -7,20 +7,20 @@
 	<div class="col col-9 center_img">
 		<table class="table table-sm table-borderless">
 			<tr>
-				<th>Série</th>
+				<th>{% trans %}serie.nom{% endtrans %}</th>
 				<td>{{ titre("serie", saison.serie, app.session) }}</td>
 			</tr>
 			<tr>
-				<th>N° de saison</th>
+				<th>{% trans %}saison.numero{% endtrans %}</th>
 				<td>{{ saison.numeroSaison }}</td>
 			</tr>
 			<tr>
-				<th>Nombre d'épisode</th>
+				<th>{% trans %}serie.nombre_episode{% endtrans %}</th>
 				<td>{{ saison.nombreEpisode }}</td>
 			</tr>
 			{% if saison.description is not null %}
 				<tr>
-					<th>Description</th>
+					<th>{% trans %}onglet.description{% endtrans %}</th>
 					<td>{{ saison.description }}</td>
 				</tr>
 			{% endif %}

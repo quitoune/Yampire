@@ -1,6 +1,6 @@
 <div id="ajax_{{ type }}_citation_see">
 	<div class="text-center">
-	    {{ pagination.nb_elements }} citation{% if pagination.nb_elements > 1 %}s{% endif %} 
+	    {{ 'citation.num_citation'|trans({'num': pagination.nb_elements }) }} 
 	    {% if pagination.pages_count > 0 %}
 	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
 	    {% endif %}
