@@ -74,7 +74,11 @@ class EpisodeExtension extends AbstractExtension
     public function getTitre(string $type, $objet, $session){
         $is_vo = 0;
         if($session->get('user')){
-            $is_vo = $session->get('user')[$type . '_vo'];
+            if(isset($session->get('user')[$type . '_vo'])){
+                $is_vo = $session->get('user')[$type . '_vo'];
+            } else {
+                $is_vo = 0;
+            }
         }
         
         if($is_vo){

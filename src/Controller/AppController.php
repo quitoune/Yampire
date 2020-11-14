@@ -179,7 +179,7 @@ class AppController extends AbstractController
                 return ' la citation ' . $objet->getId();
                 break;
             case 'episode':
-                if($this->get('session')->get('user')['episode_vo']){
+                if(isset($this->get('session')->get('user')['episode_vo']) && $this->get('session')->get('user')['episode_vo']){
                     return " l'épisode " . $objet->getId() . " - " . $objet->getTitreOriginal();
                 } else {
                     return " l'épisode " . $objet->getId() . " - " . $objet->getTitre();
@@ -201,10 +201,10 @@ class AppController extends AbstractController
                 return ' la saison ' . $objet->getId() . ' - Saison ' . $objet->getNumeroSaison();
                 break;
             case 'serie':
-                if(!$this->get('session')->get('user')['serie_vo'] && !is_null($objet->getTitre())){
-                    return " la série " . $objet->getId() . " - " . $objet->getTitre();
-                } else {
+                if(isset($this->get('session')->get('user')['serie_vo']) && $this->get('session')->get('user')['serie_vo']){
                     return " la série " . $objet->getId() . " - " . $objet->getTitreOriginal();
+                } else {
+                    return " la série " . $objet->getId() . " - " . $objet->getTitre();
                 }
                 break;
             case 'utilisateur':
