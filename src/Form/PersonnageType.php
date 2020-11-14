@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Personnage;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -12,6 +11,7 @@ use App\Form\newType\SexeType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Espece;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\AbstractType;
 
 class PersonnageType extends AbstractType
 {

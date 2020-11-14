@@ -53,3 +53,5 @@
 public/image/photo/*
 .settings/*
 src/DataFixtures/database/*
+.buildpath
+.project
