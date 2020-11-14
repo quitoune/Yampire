@@ -93,6 +93,9 @@
     "doctrine/reflection": {
         "version": "v1.0.0"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.1.1"
+    },
     "easycorp/easy-log-handler": {
         "version": "1.0",
         "recipe": {
@@ -113,6 +116,15 @@
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "laminas/laminas-code": {
+        "version": "3.5.0"
+    },
+    "laminas/laminas-eventmanager": {
+        "version": "3.3.0"
+    },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.1.1"
     },
     "monolog/monolog": {
         "version": "1.25.2"
@@ -347,6 +359,9 @@
     "symfony/polyfill-intl-idn": {
         "version": "v1.12.0"
     },
+    "symfony/polyfill-intl-normalizer": {
+        "version": "v1.20.0"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.12.0"
     },
@@ -519,6 +534,9 @@
     },
     "twig/twig": {
         "version": "v2.12.2"
+    },
+    "webimpress/safe-writer": {
+        "version": "2.1.0"
     },
     "webmozart/assert": {
         "version": "1.5.0"
