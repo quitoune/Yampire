@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  *     message="Le pseudo utilisé est déjà utilisé"
  * )
  */
-class Utilisateur implements AdvancedUserInterface
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -246,8 +246,8 @@ class Utilisateur implements AdvancedUserInterface
 
         return $this;
     }
-
-    public function getResponse1(): ?string
+    
+    public function getReponse1(): ?string
     {
         return $this->reponse_1;
     }
@@ -473,31 +473,8 @@ class Utilisateur implements AdvancedUserInterface
 
         return $this;
     }
-    
-    public function isAccountNonExpired()
-    {
-        return true;
-    }
-    public function isCredentialsNonExpired()
-    {
-        return true;
-    }
     public function eraseCredentials()
     {
         return true;
     }
-    public function isEnabled()
-    {
-        return true;
-    }
-    public function isAccountNonLocked()
-    {
-        return true;
-    }
-
-    public function getReponse1(): ?string
-    {
-        return $this->reponse_1;
-    }
-
 }
