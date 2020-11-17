@@ -13,18 +13,18 @@
     </div>
     
     <div class="modal-footer">
-        <button id="prev" class="btn btn-primary"  href="{{ path('question_quizz_afficher', {'id': quizz.id, 'nbr': nbr, 'ordre': ordre - 1}) }}"{% if ordre == 1 %}disabled{% endif %}>
+        <button id="prev" class="btn btn-yampire"  href="{{ path('question_quizz_afficher', {'id': quizz.id, 'nbr': nbr, 'ordre': ordre - 1}) }}"{% if ordre == 1 %}disabled{% endif %}>
         	<i class="fas fa-chevron-left"></i> Précédent
         </button>
         <button id="check" class="btn btn-success">
         	<i class="fas fa-check-double"></i> Vérifier
         </button>
         {% if ordre == nbr %}
-            <button class="btn btn-primary">
+            <button class="btn btn-yampire">
             	Terminer
             </button>
         {% else %}
-        	<button id="next" class="btn btn-primary" href="{{ path('question_quizz_afficher', {'id': quizz.id, 'nbr': nbr, 'ordre': ordre + 1}) }}">
+        	<button id="next" class="btn btn-yampire" href="{{ path('question_quizz_afficher', {'id': quizz.id, 'nbr': nbr, 'ordre': ordre + 1}) }}">
             	Suivant <i class="fas fa-chevron-right"></i>
             </button>
         {% endif %}

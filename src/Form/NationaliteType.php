@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Form;
 
 use App\Entity\Nationalite;
@@ -11,22 +10,26 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class NationaliteType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom_feminin', TextType::class, array(
+        $builder->add('nom', TextType::class, array(
+            'label' => 'Nom'
+        ))
+            ->add('nom_feminin', TextType::class, array(
             'label' => 'Nom féminin'
         ))
-        ->add('nom_masculin', TextType::class, array(
+            ->add('nom_masculin', TextType::class, array(
             'label' => 'Nom masculin'
         ))
-        ->add('save', SubmitType::class, array(
+            ->add('save', SubmitType::class, array(
             'label' => ($options['update'] ? 'Sauvegarder' : 'Ajouter'),
             'attr' => array(
                 'class' => 'btn btn-dark'
             )
         ));
     }
-    
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

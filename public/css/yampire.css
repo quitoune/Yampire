@@ -73,7 +73,7 @@ a:hover, .link:hover {
 }
 
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 15px;
     padding: 0px;
     background-color: white;
 }
@@ -294,6 +294,10 @@ li.page-item {
 * CHANSON
 *
 ********************************************/
+.border-info {
+    border-color: #800020!important;
+}
+
 .chanson.card {
 	width:70%;
 	margin-left:auto;
@@ -324,7 +328,7 @@ li.page-item {
 }
 
 .music {
-	color: #007bff;
+	color: #800080;
 }
 
 .chanson .episode {
@@ -363,16 +367,21 @@ li.page-item {
 }
 
 .citation .card-header {
-	background-color: #17a2b8;
-    color: black;
+	background-color: #800020;
+    color: white;
 }
 
 .citation .card-body {
-	color: #17a2b8;
+	color: #800080;
 }
 
 .citation .card-footer {
-	background-color: #d0ecf0;
+	background-color: #bf7f8f;
+	color: white!important;
+}
+
+.citation.card a {
+    color: white;
 }
 
 
@@ -490,4 +499,8 @@ li.page-item {
 
 #nombre_episode {
 	margin-top: 15px;
+}
+
+.register {
+    border: none;
 }

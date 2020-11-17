@@ -14,6 +14,20 @@
         	<div class="row">
             	<div class="col col-md-6 col-12">
                 	<div class="form-group">
+                        {{ form_label(form.nom) }}
+                        {{ form_widget(form.nom) }}
+                    
+                        <small>{{ form_help(form.nom) }}</small>
+                    
+                        <div class="form-error">
+                            {{ form_errors(form.nom) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col col-md-6 col-12">
+                	<div class="form-group">
                         <i class="fas fa-female"></i> <i class="fas fa-venus"></i> {{ form_label(form.nom_feminin) }}
                         {{ form_widget(form.nom_feminin) }}
                     

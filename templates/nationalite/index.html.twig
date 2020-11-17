@@ -15,6 +15,7 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
+                        <th>Pays</th>
                         <th><i class="fas fa-female"></i> <i class="fas fa-venus"></i></th>
                         <th><i class="fas fa-male"></i> <i class="fas fa-mars"></i></th>
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -25,6 +26,7 @@
                 {% for nationalite in nationalites %}
                     <tr>
                         <td> {{ nationalite.id }} </td>
+                        <td> {{ nationalite.nom }}</td>
                         <td> {{ nationalite.nomFeminin }}</td>
                         <td> {{ nationalite.nomMasculin }}</td>
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
