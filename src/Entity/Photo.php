@@ -51,7 +51,7 @@ class Photo
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="photos")
      */
-    private $tag;
+    private $tags;
 
     public function __construct()
     {
@@ -59,7 +59,7 @@ class Photo
         $this->saisons = new ArrayCollection();
         $this->personnages = new ArrayCollection();
         $this->acteurs = new ArrayCollection();
-        $this->tag = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,15 +218,15 @@ class Photo
     /**
      * @return Collection|Tag[]
      */
-    public function getTag(): Collection
+    public function getTags(): Collection
     {
-        return $this->tag;
+        return $this->tags;
     }
 
     public function addTag(Tag $tag): self
     {
-        if (!$this->tag->contains($tag)) {
-            $this->tag[] = $tag;
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
         }
 
         return $this;
@@ -234,8 +234,8 @@ class Photo
 
     public function removeTag(Tag $tag): self
     {
-        if ($this->tag->contains($tag)) {
-            $this->tag->removeElement($tag);
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
         }
 
         return $this;

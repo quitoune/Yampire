@@ -44,7 +44,7 @@ function OuvrirModal(id, id_content_modal){
 	});
 };
 
-function SubmitModal(objet, type, url, id_modal, url_base, id_bloc){
+function SubmitModal(objet, url, id_modal, url_base, id_bloc){
     
     $("form[name*='" + objet + "']").on('submit', function(event){
         

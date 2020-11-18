@@ -145,7 +145,7 @@ class PersonnageController extends AppController
     private function getSerieSaison(Personnage $personnage, bool $fiche = true){
         $serie_saison = array();
         
-        $query  = "SELECT Se.id as serie_id, Se.titre as serie_nom, Se.titre_court as serie_nom_court, ";
+        $query  = "SELECT Se.id as serie_id, Se.titre as serie_nom, Se.titre_original as serie_nom_original, Se.titre_court as serie_nom_court, ";
         $query .= "PSe.principal as serie_role, Sa.numero_saison as saison_numero, ";
         $query .= "Sa.id as saison_id, PSa.principal as saison_role ";
         $query .= "FROM `serie` Se, `personnage_serie` PSe, `personnage_saison` PSa, ";
@@ -163,9 +163,10 @@ class PersonnageController extends AppController
                 if(!isset($serie_saison[$seriesaison['serie_id']])){
                     
                     $serie_saison[$seriesaison['serie_id']] = array(
-                        'nom'     => $seriesaison['serie_nom'],
-                        'role'    => $seriesaison['serie_role'],
-                        'saisons' => array()
+                        'nom'          => $seriesaison['serie_nom'],
+                        'nom_original' => $seriesaison['serie_nom_original'],
+                        'role'         => $seriesaison['serie_role'],
+                        'saisons'      => array()
                     );
                 }
                 $serie_saison[$seriesaison['serie_id']]['saisons'][$seriesaison['saison_id']] = array(

@@ -35,7 +35,8 @@ class EpisodeType extends AbstractType
             'label' => 'Première diffusion',
             'required' => false,
             'widget' => 'choice',
-            'format' => 'ddMMyyyy'
+            'format' => 'ddMMyyyy',
+            'years' => range(1970, date('Y')+2),
         ))
         ->add('duree', IntegerType::class, array(
             'label' => 'Durée'

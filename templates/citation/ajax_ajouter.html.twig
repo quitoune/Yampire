@@ -63,6 +63,6 @@
 		
         var url = '{{ path('citation_ajax_ajouter', {'slug': serie.slug, 'id':objet.id, 'type':type}) }}';
         var url_base = '{{ path('ajax_afficher_citations', {'slug': serie.slug, 'id':objet.id, 'type':type}) }}';
-        SubmitModal("citation", "ajouter", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
+        SubmitModal("citation", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
     </script>
 {% endblock %}

@@ -27,6 +27,6 @@
         
         var url = '{{ path('note_ajax_modifier', {'note_id':note.id,'id':id, 'type':type, 'page':page}) }}';
         var url_base = '{{ path('ajax_afficher_notes', {'id':id, 'type':type, 'page':page}) }}';
-        SubmitModal("note", "modifier", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
+        SubmitModal("note", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
     </script>
 {% endblock %}

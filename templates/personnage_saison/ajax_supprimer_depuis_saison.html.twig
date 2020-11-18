@@ -45,6 +45,6 @@
         
         var url = '{{ path('ajax_supprimer_personnage_saison', {'id':saison.id}) }}';
         var url_base = '{{ path('ajax_afficher_personnages', {'id':saison.id, 'type':'saison'}) }}';
-        SubmitModal("personnage_saison", "supprimer", url, "#bloc_modal", url_base, "#bloc_saison");
+        SubmitModal("personnage_saison", url, "#bloc_modal", url_base, "#bloc_saison");
     </script>
 {% endblock %}

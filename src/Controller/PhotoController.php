@@ -12,6 +12,8 @@ use App\Entity\Episode;
 use App\Entity\Espece;
 use App\Entity\Personnage;
 use App\Entity\Saison;
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\PhotoType;
 
 class PhotoController extends AppController
 {
@@ -166,6 +168,22 @@ class PhotoController extends AppController
     /**
      * Supprimer un tag d'une photo
      *
+     * @Route("/photo/afficher_tag/{photo_id}", name="photo_tag_afficher")
+     *
+     * @ParamConverter("photo", options={"mapping"={"photo_id"="id"}})
+     *
+     * @param Photo $photo
+     */
+    public function afficherTag(Photo $photo)
+    {
+        return $this->render('photo/afficher_tag.html.twig', array(
+            'photo' => $photo
+        ));
+    }
+    
+    /**
+     * Supprimer un tag d'une photo
+     *
      * @Route("/photo/supprimer/{photo_id}/{tag_id}", name="photo_tag_supprimer")
      *
      * @ParamConverter("photo", options={"mapping"={"photo_id"="id"}})
@@ -185,6 +203,62 @@ class PhotoController extends AppController
 
         return $this->render('photo/afficher_tag.html.twig', array(
             'photo' => $photo
+        ));
+    }
+    
+    /**
+     * Ajouter un tag à une photo
+     *
+     * @Route("/photo/ajouter/{photo_id}", name="photo_tag_ajouter")
+     *
+     * @ParamConverter("photo", options={"mapping"={"photo_id"="id"}})
+     *
+     * @IsGranted("ROLE_UTILISATEUR")
+     *
+     * @param Photo $photo
+     */
+    public function ajouterTag(Request $request, Photo $photo)
+    {
+        $form = $this->createForm(PhotoType::class, $photo);
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $add_tags = $request->request->all()['photo']['tags'];
+            
+            $repo = $this->getDoctrine()->getRepository(Tag::class);
+            foreach ($add_tags as $add_tag){
+                $photo->addTag($repo->findOneBy(array('id' => $add_tag)));
+            }
+            
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($photo);
+            $manager->flush();
+            
+            if ($request->isXmlHttpRequest()) {
+                return $this->json(array(
+                    'statut' => true
+                ));
+            }
+        }
+        
+        $photo_tags = $photo->getTags();
+        
+        $all_tags = $this->getDoctrine()->getRepository(Tag::class)->findAll();
+        
+        $tags = array();
+        
+        foreach ($all_tags as $all_tag){
+            if (!$photo_tags->contains($all_tag)) {
+                $tags[] = $all_tag;
+            }
+        }
+        
+        return $this->render('photo/ajouter_tag.html.twig', array(
+            'form' => $form->createView(),
+            'photo' => $photo,
+            'tags' => $tags
         ));
     }
 }

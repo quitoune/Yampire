@@ -487,6 +487,10 @@ li.page-item {
 	margin-left: 10px;
 }
 
+.marg-b-15 {
+	margin-bottom: 15px;
+}
+
 .link-update {
 	right: 5%;
 	z-index: 1000;

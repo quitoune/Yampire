@@ -233,7 +233,10 @@ class EpisodeController extends AppController
             $slug = $this->createSlug($request->request->all()["episode"]["titre_original"], 'Episode');
             
             $tag = new Tag();
-            $tag->setNom(str_replace('_', ' ', $slug));
+            $tag_name = $episode->getSerie()->getTitreCourt() . ' - ';
+            $tag_name .= 'S' . $episode->getSaison()->getNumeroSaison();
+            $tag_name .= 'E' . ($episode->getNumeroEpisode() < 10 ? '0' . $episode->getNumeroEpisode() : $episode->getNumeroEpisode());
+            $tag->setNom($tag_name);
             
             $episode->setSlug($slug);
             $episode->setTag($tag);

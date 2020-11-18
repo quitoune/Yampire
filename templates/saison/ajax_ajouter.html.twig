@@ -48,6 +48,6 @@
         
         var url = '{{ path('saison_ajax_ajouter', {'slug':serie.slug}) }}';
         var url_base = '{{ path('ajax_afficher_saisons', {'slug':serie.slug}) }}';
-        SubmitModal("saison", "ajouter", url, "#bloc_modal", url_base, "#bloc_serie");
+        SubmitModal("saison", url, "#bloc_modal", url_base, "#bloc_serie");
     </script>
 {% endblock %}

@@ -32,7 +32,7 @@ personnage:
     nom: Personnage
     noms: Personnages
     nom_complet: Nom complet
-    num_personnage: "{num, select, 0 {{num} épisode} 1 {{num} épisode} other {{num} épisodes}}"
+    num_personnage: "{num, select, 0 {{num} personnage} 1 {{num} personnage} other {{num} personnages}}"
     interprete: "{gender, select, 1 {Interprétée par} other {Interprété par}}"
 citation: 
     nom: Citation

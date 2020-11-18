@@ -56,6 +56,6 @@
         
         var url = '{{ path('chanson_ajax_ajouter', {'id':objet.id, 'type':type}) }}';
         var url_base = '{{ path('ajax_afficher_chansons', {'id':objet.id, 'type':type}) }}';
-        SubmitModal("chanson", "ajouter", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
+        SubmitModal("chanson", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
     </script>
 {% endblock %}

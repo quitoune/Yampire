@@ -42,7 +42,7 @@
 
         var url = '{{ path('ajax_ajouter_personnage_episode', {'id':episode.id}) }}';
         var url_base = '{{ path('ajax_afficher_personnages', {'id':episode.id, 'type':'episode'}) }}';
-        SubmitModal("episode_personnage", "ajouter", url, "#bloc_modal", url_base, "#bloc_episode");
+        SubmitModal("episode_personnage", url, "#bloc_modal", url_base, "#bloc_episode");
         
     </script>
 {% endblock %}
