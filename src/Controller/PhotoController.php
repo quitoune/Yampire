@@ -125,10 +125,8 @@ class PhotoController extends AppController
         
         if(is_null($objet->getTag())){
             $id_tag = 0;
-//             $photos = array();
         } else {
             $id_tag = $objet->getTag()->getId();
-//             $photos = $objet->getTag()->getPhotos();
         }
         
         $repo = $this->getDoctrine()->getRepository(Photo::class);
@@ -162,7 +160,6 @@ class PhotoController extends AppController
         
         return $this->render('photo/ajax_afficher.html.twig', array(
             'photos' => $paginator['paginator'],
-//             'photos' => $photos,
             'objet' => $objet,
             'type' => $type,
             'pagination' => $pagination

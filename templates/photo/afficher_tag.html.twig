@@ -7,9 +7,11 @@
     	    </span>
     	</span>
     {% endfor %}
-	<span class="badge badge-pill badge-yampire ajouter" href="{{ path('photo_tag_ajouter', { 'photo_id': photo.id }) }}">
-		<i class="fas fa-plus"></i>
-	</span>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    	<span class="badge badge-pill badge-yampire ajouter" href="{{ path('photo_tag_ajouter', { 'photo_id': photo.id }) }}">
+    		<i class="fas fa-plus"></i>
+    	</span>
+	{% endif %}
 </div>
 {% block javascripts %}
 	<script type="text/javascript">
