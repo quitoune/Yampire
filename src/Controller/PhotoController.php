@@ -125,8 +125,10 @@ class PhotoController extends AppController
         
         if(is_null($objet->getTag())){
             $id_tag = 0;
+//             $photos = array();
         } else {
             $id_tag = $objet->getTag()->getId();
+//             $photos = $objet->getTag()->getPhotos();
         }
         
         $repo = $this->getDoctrine()->getRepository(Photo::class);
@@ -136,11 +138,11 @@ class PhotoController extends AppController
             'repository' => 'Photo',
             'field' => 'Photo.id',
             'order' => 'ASC',
-            'condition' => 'tag.id = ' . $id_tag,
+            'condition' => 'tags = ' . $id_tag,
             'jointure' => array(
                 array(
                     'oldrepository' => 'Photo',
-                    'newrepository' => 'tag'
+                    'newrepository' => 'tags'
                 )
             )
         ));
@@ -157,8 +159,10 @@ class PhotoController extends AppController
             )
         );
         
+        
         return $this->render('photo/ajax_afficher.html.twig', array(
             'photos' => $paginator['paginator'],
+//             'photos' => $photos,
             'objet' => $objet,
             'type' => $type,
             'pagination' => $pagination
