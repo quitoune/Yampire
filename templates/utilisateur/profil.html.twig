@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ utilisateur.username }}
+{% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        <div class="card-header text-left">
+        	<ul class="nav nav-tabs card-header-tabs" id="first">
+      			<li class="nav-item">
+        			<div class="nav-link active" data-link="{{ path('ajax_utilisateur_profil', {'username':utilisateur.username, 'page': 1}) }}">
+        				{% trans %}onglet.infos{% endtrans %}
+        			</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_utilisateur_profil', {'username':utilisateur.username, 'page': 2}) }}">
+        				{% trans %}onglet.config{% endtrans %}
+        			</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_utilisateur_profil', {'username':utilisateur.username, 'page': 3}) }}">
+        				{% trans %}onglet.connexion{% endtrans %}
+        			</div>
+      			</li>
+    		</ul>
+        </div>
+        <div class="card-body text-center" id="bloc_utilisateur">
+        	{% trans %}chargement{% endtrans %}...
+        </div>
+    </div>
+    
+    <div class="modal" tabindex="-1" role="dialog" id="bloc_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id ="modal_utilisateur">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/pagination.js') }}"></script>
+    <script src="{{ asset('js/tabs.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        	chargerTabs("{{ path('ajax_utilisateur_profil', {'username':utilisateur.username}) }}", '#bloc_utilisateur');
+            Pagination.demarrer();
+
+            $(".card .nav-link").click(function(){
+            	$(".card .nav-link").removeClass('active');
+            	$(this).addClass('active');
+            	chargerTabs($(this).data('link'), '#bloc_utilisateur');
+            });
+        });
+    </script>
+{% endblock %}

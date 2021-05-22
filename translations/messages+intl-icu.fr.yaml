@@ -3,10 +3,13 @@ onglet:
     infos: Infos
     saisons: Saisons
     nom: Nom
+    noms: Onglets
     titre: Titre
     titre_original: Titre original
     description: Description
     univers: Univers
+    connexion: Connexion
+    config: Configuration
 serie:
     nom: Série
     noms: Séries
@@ -89,6 +92,12 @@ utilisateur:
     bonjour: Bonjour
     profil: Mon compte
     annuaire: Annuaire
+    pseudo: Pseudo
+    prenom: Prénom
+    nom: Nom
+    traduction: Traduire les titres quand c'est possible
+    afficher: Nombre d'élément à afficher
+    pages: Pages principales
 jeu:
     nom: Jeu
     noms: Jeux
@@ -97,4 +106,11 @@ jeu:
         noms: Quizzs
         lancer_quizz: Lancer un quizz
         creer_quizz: Créer un quizz
+    correction:
+        0: A la fin du quizz
+        1: Après chaque question
+        type: Type de correction
+bouton:
+    ajouter: Ajouter
+    supprimer: Supprimer
 

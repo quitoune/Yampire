@@ -49,6 +49,55 @@ class UtilisateurController extends AppController
             'paths' => $paths
         ));
     }
+    
+    /**
+     *  Affichage du compte
+     * 
+     * @Route("/utilisateur/profil/{username}", name="utilisateur_profil")
+     * @Security("is_granted('ROLE_UTILISATEUR')")
+     * 
+     * @param Utilisateur $utilisateur
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function profil(Utilisateur $utilisateur)
+    {
+        $paths = array(
+            'home' => $this->homeURL(),
+            'paths' => array(),
+            'active' => 'Mon compte'
+        );
+        return $this->render('utilisateur/profil.html.twig', array(
+            'utilisateur' => $utilisateur,
+            'paths' => $paths
+        ));
+    }
+    
+    /**
+     *  Affichage du compte
+     *
+     * @Route("/utilisateur/ajax/profil/{username}/{page}", name="ajax_utilisateur_profil")
+     * @Security("is_granted('ROLE_UTILISATEUR')")
+     *
+     * @param Utilisateur $utilisateur
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxProfil(Utilisateur $utilisateur, int $page = 1)
+    {
+        switch($page){
+            case 1:
+                return $this->render('utilisateur/ajax_profil_info.html.twig', array(
+                'utilisateur' => $utilisateur
+                ));
+            case 2:
+                return $this->render('utilisateur/ajax_profil_config.html.twig', array(
+                'utilisateur' => $utilisateur
+                ));
+            case 3:
+                return $this->render('utilisateur/ajax_profil_connexion.html.twig', array(
+                'utilisateur' => $utilisateur
+                ));
+        }
+    }
 
     /**
      *

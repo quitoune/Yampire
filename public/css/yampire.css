@@ -92,7 +92,7 @@ img {
 
 #container {
 	overflow: auto;
-	padding-bottom: 5%;
+	padding-bottom: 3%;
 	height: -webkit-calc(100% - 110px);
 }
 
@@ -127,6 +127,11 @@ img {
 .nav-link:hover {
 	color: #000000!important;
 	font-weight:bolder;
+}
+
+nav .nav-link {
+    padding-top: 0!important;
+    padding-bottom: 0!important;
 }
 
 .dropdown-item:hover {
@@ -194,6 +199,10 @@ li.page-item {
     margin-left: 0;
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
+}
+
+ul {
+    margin-bottom: 0rem;
 }
 /********************************************
 *
@@ -507,4 +516,12 @@ li.page-item {
 
 .register {
     border: none;
+}
+
+.pad-5 {
+	padding: 5px!important;
+}
+
+.blockquote-footer cite {
+	color: #6c757d!important;
 }

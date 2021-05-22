@@ -1,0 +1,37 @@
+<div class="row text-left">
+	<div class="col col-12">
+		<b>{% trans %}utilisateur.traduction{% endtrans %}</b>
+	</div>
+	<div class="col col-6">
+		<b>{% trans %}serie.noms{% endtrans %}</b> {{ utilisateur.serieVo|unbool }}
+	</div>
+	<div class="col col-6">
+		<b>{% trans %}episode.noms{% endtrans %}</b> {{ utilisateur.episodeVo|unbool }}
+	</div>
+	<div class="col col-12">
+		<hr>
+	</div>
+	<div class="col col-12">
+		<b>{% trans %}jeu.quizz.noms{% endtrans %}</b>
+	</div>
+	<div class="col col-12">
+		<b>{% trans %}jeu.correction.type{% endtrans %}</b> 
+		{%  if utilisateur.correction %}
+			{% trans %}jeu.correction.1{% endtrans %}
+		{% else %}
+			{% trans %}jeu.correction.0{% endtrans %}
+		{% endif %}
+	</div>
+	<div class="col col-12">
+		<hr>
+	</div>
+	<div class="col col-12">
+		<b>{% trans %}utilisateur.afficher{% endtrans %}</b>
+	</div>
+	<div class="col col-6">
+		<b>{% trans %}utilisateur.pages{% endtrans %}</b> {{ utilisateur.nbrMax }}
+	</div>
+	<div class="col col-6">
+		<b>{% trans %}onglet.noms{% endtrans %}</b> {{ utilisateur.nbrMaxAjax }}
+	</div>
+</div>

@@ -86,6 +86,10 @@ input[type=password]:focus {
 	width: 100%!important;
 }
 
+.min-w .select2.select2-container.select2-container--default {
+	min-width: 320px!important;
+}
+
 .delete {
 	color: #dc3545;
     font-size: 20px;
@@ -115,4 +119,76 @@ input[type=password]:focus {
 
 .card-footer .form-group {
     margin-bottom: 0px;
+}
+
+span.badge.badge-pill.badge-yampire svg:hover {
+    cursor: pointer;
+}
+
+.delete-img {
+	width: 20%;
+}
+
+.delete-img input[type="checkbox"] {
+  	display: none;
+}
+
+.delete-img label {
+	border: 1px solid #fff;
+	padding: 10px;
+	display: block;
+	position: relative;
+	margin: 0;
+	width: 100%;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+}
+
+.delete-img label::before {
+	background-color: white;
+	color: white;
+	content: " ";
+	display: block;
+	border-radius: 50%;
+	border: 1px solid grey;
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 28px;
+	transition-duration: 0.4s;
+	transform: scale(0);
+}
+
+.delete-img label img {
+	height: auto;
+	width: 100%;
+	transition-duration: 0.2s;
+	transform-origin: 50% 50%;
+}
+
+.delete-img :checked+label {
+	border-color: #ddd;
+}
+
+.delete-img :checked+label::before {
+	content: "✓";
+	background-color: grey;
+	transform: scale(1);
+}
+
+.delete-img :checked+label img {
+	transform: scale(0.9);
+	box-shadow: 0 0 5px #333;
+	z-index: -1;
 }

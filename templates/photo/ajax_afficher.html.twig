@@ -4,20 +4,12 @@
 	    {% if pagination.pages_count > 0 %}
 	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
 	    {% endif %}
-    </div>
-    
-    <div class="row">
-    	{% for photo in photos %}
-        	<div class="col-img">
-        		<a href="{{ path('photo_afficher', { 'id':photo.id, 'page':1 }) }}">
-                    {% if photo is not null %}
-        				{{ photo(photo) | raw }}
-        			{% else %}
-                    	<span class="center">{{ photo.nom }}</span>
-        	        {% endif %}
-	            </a>
-            </div>
-        {% endfor %}
+	    <span class="link" data-link="{{ path('ajax_ajouter_photos', {'id': objet.id, 'type': type}) }}">
+	    	<i class="fas fa-plus"></i>
+	    </span>
+	    <span class="link" data-link="{{ path('ajax_supprimer_photos', {'id': objet.id, 'type': type}) }}">
+	    	<i class="fas fa-times"></i>
+	    </span>
     </div>
     
 	{% if photos is empty %}
@@ -42,9 +34,31 @@
           	{% endif %}
           	.</p>
 		</div>
+	{% else %}
+        <div class="row">
+        	{% for photo in photos %}
+            	<div class="col-img">
+            		<a href="{{ path('photo_afficher', { 'id':photo.id, 'page':1 }) }}">
+                        {% if photo is not null %}
+            				{{ photo(photo) | raw }}
+            			{% else %}
+                        	<span class="center">{{ photo.nom }}</span>
+            	        {% endif %}
+    	            </a>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 	
 	<div>
     	{% include 'outils/ajax_pagination.html.twig' %}
     </div>
 </div>
+    
+<script type="text/javascript">
+    $( document ).ready(function() {
+        $(".link").click(function(){
+        	chargerTabs($(this).data('link'), '#bloc_{{ type }}');
+        });
+    });
+</script>

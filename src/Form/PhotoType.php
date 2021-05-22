@@ -12,20 +12,23 @@ class PhotoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('save', SubmitType::class, array(
-                'attr' => array(
-                    'class' => 'btn btn-dark'
-                )
-            ))
-        ;
+        if($options['save']){
+            $builder
+                ->add('save', SubmitType::class, array(
+                    'attr' => array(
+                        'class' => 'btn btn-dark'
+                    )
+                ))
+            ;
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(array(
             'data_class' => Photo::class,
-            'allow_extra_fields' => true
-        ]);
+            'allow_extra_fields' => true,
+            'save' => false
+        ));
     }
 }

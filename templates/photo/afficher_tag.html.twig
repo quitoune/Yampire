@@ -10,8 +10,10 @@
     	</span>
     {% endfor %}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    	<span class="badge badge-pill badge-yampire ajouter" href="{{ path('photo_tag_ajouter', { 'photo_id': photo.id }) }}">
-    		<i class="fas fa-plus"></i>
+    	<span id="add_tag" class="min-w">
+        	<span class="badge badge-pill badge-yampire ajouter" data-link="{{ path('photo_tag_ajouter', { 'photo_id': photo.id }) }}">
+        		<i class="fas fa-plus"></i>
+        	</span>
     	</span>
 	{% endif %}
 </div>
@@ -22,7 +24,9 @@
     		$(".supprimer").click(function(){
     			Ajax($(this).data('link'), "#photo_tag");
     		});
-            OuvrirModal('.ajouter', '#modal_photo');
+    		$(".ajouter").click(function(){
+    			Ajax($(this).data('link'), "#add_tag");
+    		});
         {% endif %}
 	});
 	</script>

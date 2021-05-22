@@ -16,6 +16,10 @@ class DiversExtension extends AbstractExtension
                 $this,
                 'bool'
             )),
+            new TwigFilter('unbool', array(
+                $this,
+                'unbool'
+            )),
             new TwigFilter('sexe', array(
                 $this,
                 'sexe'
@@ -113,6 +117,17 @@ class DiversExtension extends AbstractExtension
     public function bool(int $value)
     {
         return ($value ? 'Oui' : 'Non');
+    }
+    
+    /**
+     * Retourne oui ou non
+     *
+     * @param int $value
+     * @return string
+     */
+    public function unbool(int $value)
+    {
+        return ($value ? 'Non' : 'Oui');
     }
     
     /**

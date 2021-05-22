@@ -50,6 +50,7 @@ class Photo
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="photos")
+     * @ORM\OrderBy({"nom" = "ASC"})
      */
     private $tags;
 

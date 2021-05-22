@@ -1,0 +1,35 @@
+<div id="ajax_{{ type }}_photo_ajouter">
+	<form name="photo" method="POST">
+	<div class="text-center">
+		Sélectionner les photos à ajouter de la galerie
+	</div>
+    <div class="row">
+    	{% for photo in photos %}
+        	<div class="delete-img">
+            	<input type="checkbox" id="{{ photo.id }}" name="photos[]" value="{{ photo.id }}"/>
+        		<label for="{{ photo.id }}">{{ photo(photo) | raw }}
+        		</label>
+            </div>
+        {% endfor %}
+    </div>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+	<div class="text-center">
+		<span id="photo_save" class="btn btn-yampire">{% trans %}bouton.ajouter{% endtrans %}</span>
+	</div>
+    </form>
+</div>
+{% block javascripts %}
+    <script type="text/javascript">
+		$("select").select2({
+			tags: true
+		});
+
+		
+        $("#photo_save").click(function(){
+            $("form").submit();
+        })
+        var url = '{{ path('ajax_ajouter_photos', {'id': objet.id, 'type': type}) }}';
+        var url_base = '{{ path('ajax_afficher_photos', {'id': objet.id, 'type': type}) }}';
+        SubmitModal("photo", url, "#bloc_modal", url_base, "#bloc_{{ type }}");
+    </script>
+{% endblock %}

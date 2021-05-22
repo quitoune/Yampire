@@ -1,44 +1,26 @@
-<div id="ajax_photo_ajouter">
-    {{ form_start(form) }}
-    <div class="modal-header">
-        <h5 class="modal-title">
-            {{ photo.nom }}
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    
-    <div class="modal-body">
-    	<div class="row">
-    		<div class="col-12 marg-b-15">
-        	    {{ photo(photo, "w-auto") | raw }}
-        	</div>
-        	<div class="col-12 w-100">
-                <select name="photo[tags][]" class="form-control" multiple>
-                	{% for tag in tags %}
-                		<option value="{{ tag.id }}">{{ tag.nom }}</option>
-                	{% endfor %}
-                </select>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal-footer">
-        {{ form_widget(form.save) }}
-    </div>
-    {{ form_rest(form) }}
-    {{ form_errors(form) }}
-    {{ form_end(form) }}
+{{ form_start(form) }}
+<select name="photo[tags][]" class="form-control" multiple>
+	{% for tag in tags %}
+		<option value="{{ tag.id }}">{{ tag.nom }}</option>
+	{% endfor %}
+</select>
+<span id="save" class="badge badge-pill badge-yampire ajouter pad-5">
+	<i class="fas fa-check"></i>
+</span>
+{{ form_rest(form) }}
+{{ form_errors(form) }}
+{{ form_end(form) }}
 </div>
 {% block javascripts %}
     <script type="text/javascript">
-        $('#bloc_modal').modal({
-            'show' : true,
-            'backdrop' : 'static'
-        });
-		$("select").select2();
-        
+		$("select").select2({
+			tags: true
+		});
+
+		
+        $("#save").click(function(){
+            $("form").submit();
+        })
         var url = '{{ path('photo_tag_ajouter', {'photo_id': photo.id }) }}';
         var url_base = '{{ path('photo_tag_afficher', {'photo_id': photo.id }) }}';
         SubmitModal("photo", url, "#bloc_modal", url_base, "#photo_tag");
