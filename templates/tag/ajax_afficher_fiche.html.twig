@@ -1,0 +1,84 @@
+<table class="table table-sm table-borderless">
+    {% if is_granted("ROLE_UTILISATEUR") %}
+    	<tr>
+    		<th></th>
+    		<td>{{ modifier(path('tag_modifier', {'id':tag.id, 'page':page}), false) | raw }}</td>
+    	</tr>
+	{% endif %}
+	<tr>
+		<th>{% trans %}onglet.nom{% endtrans %}</th>
+		<td>{{ tag.nom }}</td>
+	</tr>
+	<tr>
+		<th colspan="2">{% trans %}tag.associe{% endtrans %}</th>
+	</tr>
+	{% if tag.especes is not empty %}
+		<tr>
+    		<td>{% trans %}espece.noms{% endtrans %}</td>
+    		<td>
+        		{% for espece in tag.especes %}
+        			{{ espece.nom }}<br>
+        		{% endfor %}
+    		</td>
+		</tr>
+	{% endif %}
+	
+	
+	{% if tag.acteurs is not empty %}
+		<tr>
+    		<td>{{ 'acteur.noms'|trans({'gender': 0 }) }}</td>
+    		<td>
+        		{% for acteur in tag.acteurs %}
+        		    {{ acteur.prenom }} {{ acteur.nom }}<br>
+        		{% endfor %}
+    		</td>
+		</tr>
+	{% endif %}
+	
+	
+	{% if tag.personnages is not empty %}
+		<tr>
+    		<td>{% trans %}personnage.noms{% endtrans %}</td>
+    		<td>
+        		{% for personnage in tag.personnages %}
+        			{{ personnage.prenom }} {{ personnage.nom }}<br>
+        		{% endfor %}
+    		</td>
+		</tr>
+	{% endif %}
+	
+	{% if tag.series is not empty %}
+		<tr>
+    		<td>{% trans %}serie.noms{% endtrans %}</td>
+    		<td>
+        		{% for serie in tag.series %}
+        			{{ serie.titreOriginal }}<br>
+        		{% endfor %}
+    		</td>
+		</tr>
+	{% endif %}
+	
+	
+	{% if tag.saisons is not empty %}
+		<tr>
+    		<td>{% trans %}saison.noms{% endtrans %}</td>
+    		<td>
+        		{% for saison in tag.saisons %}
+        			{{ saison.serie.titreOriginal }} - Saison {{ saison.numeroSaison }}<br>
+        		{% endfor %}
+    		</td>
+		</tr>
+	{% endif %}
+	
+	
+	{% if tag.episodes is not empty %}
+		<tr>
+    		<td>{% trans %}episode.noms{% endtrans %}</td>
+    		<td>
+        		{% for episode in tag.episodes %}
+        			{{ episode.titreOriginal }}<br>
+        		{% endfor %}
+    		</td>
+		</tr>
+	{% endif %}
+</table>

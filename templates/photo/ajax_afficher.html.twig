@@ -1,15 +1,17 @@
-<div id="ajax_{{ type }}_photo_see">
+<div id="ajax_{{ type }}_photo_afficher">
 	<div>
         {{ 'photo.num_photo'|trans({'num': pagination.nb_elements }) }}
 	    {% if pagination.pages_count > 0 %}
 	    	 - Page {{ pagination.page }} / {{ pagination.pages_count }} 
 	    {% endif %}
-	    <span class="link" data-link="{{ path('ajax_ajouter_photos', {'id': objet.id, 'type': type}) }}">
-	    	<i class="fas fa-plus"></i>
-	    </span>
-	    <span class="link" data-link="{{ path('ajax_supprimer_photos', {'id': objet.id, 'type': type}) }}">
-	    	<i class="fas fa-times"></i>
-	    </span>
+	    {% if type != 'tag' and is_granted("ROLE_UTILISATEUR") %}
+    	    <span class="link" data-link="{{ path('ajax_ajouter_photos', {'id': objet.id, 'type': type}) }}">
+    	    	<i class="fas fa-plus"></i>
+    	    </span>
+    	    <span class="link" data-link="{{ path('ajax_supprimer_photos', {'id': objet.id, 'type': type}) }}">
+    	    	<i class="fas fa-times"></i>
+    	    </span>
+	    {% endif %}
     </div>
     
 	{% if photos is empty %}
@@ -31,6 +33,10 @@
           		cette saison
           	{% elseif type == 'serie' %}
           		cette série
+          	{% elseif type == 'tag' %}
+          		ce tag
+          	{% else %}
+          		cet élément
           	{% endif %}
           	.</p>
 		</div>

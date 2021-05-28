@@ -102,10 +102,14 @@ class PhotoController extends AppController
     {
         $objet = $this->getElement($id, $type);
 
-        if (is_null($objet->getTag())) {
-            $id_tag = 0;
+        if($type == 'tag'){
+            $id_tag = $objet->getId();
         } else {
-            $id_tag = $objet->getTag()->getId();
+            if (is_null($objet->getTag())) {
+                $id_tag = 0;
+            } else {
+                $id_tag = $objet->getTag()->getId();
+            }
         }
 
         $repo = $this->getDoctrine()->getRepository(Photo::class);
@@ -376,6 +380,9 @@ class PhotoController extends AppController
                 break;
             case 'serie':
                 $repository = $this->getDoctrine()->getRepository(Serie::class);
+                break;
+            case 'tag':
+                $repository = $this->getDoctrine()->getRepository(Tag::class);
                 break;
         }
         

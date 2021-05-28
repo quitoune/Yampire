@@ -20,6 +20,8 @@ serie:
     terminee: Terminée
     saisons: Saisons
 saison:
+    nom: Saison
+    noms: Saisons
     numero: N° de la saison
     no_element: Cette série n'a aucune saison.
 episode:
@@ -76,6 +78,10 @@ photo:
     noms: Photos
     no: Aucune photo n'est associée à  
     num_photo: "{num, select, 0 {{num} photo} 1 {{num} photo} other {{num} photos}}"
+tag:
+    nom: Tag
+    noms: Tags
+    associe: Eléments associés
 chargement: Chargement
 page: Page
 oui: Yes

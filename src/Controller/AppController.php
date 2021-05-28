@@ -216,6 +216,9 @@ class AppController extends AbstractController
             case 'way_to_die':
                 return ' la façon de mourir ' . $objet->getId() . ' - ' . $objet->getNom();
                 break;
+            case 'tag':
+                return ' du tag ' . $objet->getId() . ' - ' . $objet->getNom();
+                break;
         }
     }
     

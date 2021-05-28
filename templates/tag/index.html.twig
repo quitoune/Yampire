@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}tag.noms{% endtrans %}{% endblock %}
+
+{% block body %}
+    
+    <div class="card text-center">
+        <div class="card-header text-left">
+            {{ pagination.total }} tags - {{ pagination.page }} / {{ pagination.nbPages }}
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                    </tr>
+                </thead>
+                {% for tag in tags %}
+                    <tr>
+                        <td><a href="{{ path('tag_afficher', {'id':tag.id, 'page':pagination.page}) }}">{{ tag.id }}</a></td>
+                        <td>{{ tag.nom }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+                
+                {% if tags is empty %}
+                    <p class="text-info text-center">Il  n'y a aucun tag correspondant à la recherche.</p>
+                {% endif %}
+            </div>
+        <div class="card-footer text-muted">
+        {% include 'outils/pagination.html.twig' %}
+        </div>
+    </div> 
+{% endblock %}

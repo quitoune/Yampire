@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% trans %}tag.nom{% endtrans %} - Ajout {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        {{ form_start(form) }}
+		<div class="card-header">
+			Ajout d'un tag
+		</div>
+        
+        <div class="card-body">
+            <div class="row">
+            	<div class="col-lg-6 col-md-6 col-xs-12">
+            		{{ form_row(form.nom) }}
+            	</div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            {{ form_row(form.save) }}
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+	</div>
+{% endblock %}

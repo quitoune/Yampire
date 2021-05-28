@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {% trans %}tag.nom{% endtrans %}: {{ tag.nom }} {% endblock %}
+
+{% block body %}
+    
+    <div class="card">
+        <div class="card-header text-left">
+        	<ul class="nav nav-tabs card-header-tabs" id="first">
+        		<li class="nav-item">
+        			<div class="nav-link active" data-link="{{ path('ajax_afficher_tag_fiche', {'id':tag.id, 'page':page}) }}">
+        				{% trans %}onglet.infos{% endtrans %}
+        			</div>
+      			</li>
+      			<li class="nav-item">
+        			<div class="nav-link" data-link="{{ path('ajax_afficher_photos', {'id':tag.id, 'type':'tag'}) }}">
+        				{% trans %}photo.noms{% endtrans %}
+        			</div>
+      			</li>
+    		</ul>
+        </div>
+        <div class="card-body text-center" id="bloc_tag">
+            {% trans %}chargement{% endtrans %}...
+        </div>
+    </div>
+    
+    <div class="modal" tabindex="-1" role="dialog" id="bloc_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" id ="modal_tag">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    
+    <script src="{{ asset('js/pagination.js') }}"></script>
+    <script src="{{ asset('js/tabs.js') }}"></script>
+    
+    <script type="text/javascript">
+        $( document ).ready(function() {
+        	chargerTabs("{{ path('ajax_afficher_tag_fiche', {'id':tag.id, 'page': page}) }}", '#bloc_tag');
+            Pagination.demarrer();
+
+            $(".card .nav-link").click(function(){
+            	$(".card .nav-link").removeClass('active');
+            	$(this).addClass('active');
+            	chargerTabs($(this).data('link'), '#bloc_tag');
+            });
+        });
+    </script>
+{% endblock %}
